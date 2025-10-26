@@ -3,283 +3,187 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Hinna Orquiola — Virtual Assistant & Graphic Designer</title>
-  <meta name="description" content="Hinna Orquiola — Virtual Assistant & Graphic Designer. Chic black-white-gold portfolio." />
+  <title>Hinna Orquiola — Virtual Assistant, Graphic & Web Designer</title>
+  <meta name="description" content="Hinna Orquiola — Virtual Assistant, Graphic & Web Designer. Custom-coded websites, branding, book cover design, and reliable virtual assistance for modern businesses." />
+  <meta name="keywords" content="Hinna Orquiola, web design, website creation, graphic designer, virtual assistant, book cover designer, branding, Philippines" />
+  <meta property="og:title" content="Hinna Orquiola — Graphic & Web Designer" />
+  <meta property="og:description" content="Custom-coded websites, branding, and creative support for modern entrepreneurs." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hinnaorquiola.github.io/" />
+  <meta property="og:image" content="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'><rect width='100%' height='100%' fill='%230b0b0b'/><text x='50%' y='50%' font-family='Playfair Display, serif' font-size='56' fill='%23c9a84b' text-anchor='middle'>Hinna Orquiola</text></svg>" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-  <!-- Favicon: HO in matte gold (data URI SVG) -->
-  <link rel="icon" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64"><rect width="100%" height="100%" fill="%23000"/><text x="50%" y="52%" font-family="Playfair Display, serif" font-size="28" fill="%23c9a84b" font-weight="700" text-anchor="middle">HO</text></svg>'>
+
   <style>
-    :root{
-      --bg:#ffffff; --muted:#6b7280; --accent:#111111; --gold:#c9a84b; --gold-dark:#b2923f;
-      --maxw:1100px;
+    :root {
+      --bg: #ffffff; --muted: #6b7280; --accent: #111111; --gold: #c9a84b;
+      --maxw: 1100px;
     }
-    *{box-sizing:border-box}
+    * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body{
-      margin:0;font-family:'Poppins',sans-serif;background:var(--bg);color:var(--accent);-webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
+    body {
+      margin: 0; font-family: 'Poppins', sans-serif;
+      background: var(--bg); color: var(--accent);
     }
-
-    /* NAV */
-    header{
-      position:sticky;top:0;z-index:50;background:linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.6));
-      backdrop-filter: blur(6px); border-bottom:1px solid rgba(0,0,0,0.04);
+    header {
+      position: sticky; top: 0; background: #fff; border-bottom: 1px solid #eee;
+      z-index: 10;
     }
-    .nav-inner{max-width:var(--maxw);margin:0 auto;padding:14px 26px;display:flex;align-items:center;justify-content:space-between}
-    .brand{display:flex;flex-direction:column;}
-    .brand h1{font-family:'Playfair Display',serif;margin:0;font-size:20px;letter-spacing:0.6px;color:var(--accent)}
-    .brand p{margin:0;font-size:12px;color:var(--muted)}
+    .nav-inner { max-width: var(--maxw); margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; }
+    .brand h1 { margin: 0; font-family: 'Playfair Display', serif; color: var(--gold); font-size: 20px; }
+    .brand p { margin: 0; font-size: 12px; color: var(--muted); }
+    nav a { margin-left: 18px; text-decoration: none; color: var(--accent); font-weight: 500; }
+    nav a:hover { color: var(--gold); }
 
-    nav a{margin-left:22px;text-decoration:none;color:var(--accent);font-weight:500;font-size:14px;opacity:0.95}
-    nav a:hover{color:var(--gold)}
-
-    /* HERO with abstract texture */
-    .hero{
-      min-height:72vh;display:flex;align-items:center;justify-content:center;
-      background-color:#0b0b0b;color:#fff;position:relative;overflow:hidden;
+    .hero {
+      background: #0b0b0b; color: white; text-align: center; padding: 100px 20px 80px;
     }
-    /* abstract black-gold texture using layered SVG data URI and gradients */
-    .hero::before{
-      content:'';position:absolute;inset:0;
-      background-image:
-        radial-gradient(circle at 10% 10%, rgba(201,168,75,0.08) 0 4%, transparent 6%),
-        radial-gradient(circle at 90% 80%, rgba(201,168,75,0.06) 0 6%, transparent 10%),
-        linear-gradient(135deg, rgba(255,255,255,0.02), rgba(0,0,0,0.18)),
-        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width=\"1200\" height=\"800\"><defs><linearGradient id=\"g\" x1=\"0\" x2=\"1\"><stop offset=\"0\" stop-color=\"%23c9a84b\" stop-opacity=\"0.12\"/><stop offset=\"1\" stop-color=\"%23000000\" stop-opacity=\"0.12\"/></linearGradient></defs><rect width=\"100%\" height=\"100%\" fill=\"black\"/><g fill=\"none\" stroke=\"%23c9a84b\" stroke-opacity=\"0.08\"><path d=\"M0 200 C150 100 350 300 600 200 S1100 300 1200 200\" stroke-width=\"2\"/><path d=\"M0 400 C200 300 400 500 650 400 S1100 500 1200 400\" stroke-width=\"1.5\"/></g></svg>');
-      background-size:cover, cover, cover, cover;
-      mix-blend-mode:overlay;opacity:0.95;filter:contrast(0.95) saturate(0.9);
-      transform:scale(1.05);
-    }
-    .hero-content{max-width:var(--maxw);margin:0 auto;padding:60px 28px;position:relative;z-index:2;display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center}
-    .hero-left h2{font-family:'Playfair Display',serif;font-size:44px;margin:0 0 10px 0;color:#fff;line-height:1.02}
-    .hero-left p{color:rgba(255,255,255,0.85);max-width:680px;margin:0 0 16px 0;font-size:16px}
-    .hero-cta{display:flex;gap:12px;align-items:center;margin-top:10px}
-    .btn-primary{background:var(--gold);border:none;color:#0b0b0b;padding:12px 22px;border-radius:8px;font-weight:600;cursor:pointer;box-shadow:0 6px 18px rgba(201,168,75,0.08);transition:transform .18s ease,box-shadow .18s ease}
-    .btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(201,168,75,0.09)}
+    .hero h2 { font-family: 'Playfair Display', serif; font-size: 36px; margin-bottom: 10px; }
+    .hero p { max-width: 700px; margin: auto; color: rgba(255,255,255,0.85); }
+    .hero .btn { margin: 8px; padding: 12px 22px; border-radius: 8px; text-decoration: none; display: inline-block; font-weight: 600; }
+    .btn-primary { background: var(--gold); color: #0b0b0b; }
+    .btn-ghost { border: 1px solid #fff; color: #fff; }
 
-    /* right card */
-    .hero-right .card{background:rgba(255,255,255,0.03);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.06)}
+    main { max-width: var(--maxw); margin: auto; padding: 40px 20px; }
+    section { padding: 40px 0; border-bottom: 1px solid #eee; }
+    h3 { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--accent); border-bottom: 3px solid var(--gold); display: inline-block; padding-bottom: 6px; }
 
-    /* SECTIONS */
-    main{max-width:var(--maxw);margin:0 auto;padding:40px 24px}
-    section{padding:56px 0;border-bottom:1px solid rgba(0,0,0,0.04)}
-    h3{font-family:'Playfair Display',serif;font-size:28px;margin:0 0 18px;color:var(--accent);display:inline-block;border-bottom:3px solid var(--gold);padding-bottom:6px}
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 18px; margin-top: 20px; }
+    .service { background: #fff; padding: 20px; border: 1px solid #eee; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+    .service h4 { font-family: 'Playfair Display', serif; margin-bottom: 8px; }
+    .service p { color: var(--muted); font-size: 14px; }
 
-    .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
-    .service{background:#fff;padding:20px;border-radius:10px;border:1px solid #f0eae3;box-shadow:0 6px 18px rgba(0,0,0,0.03)}
-    .service h4{font-family:'Playfair Display',serif;margin:0 0 8px 0}
-    .service p{margin:0;color:var(--muted);font-size:14px}
+    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 18px; margin-top: 20px; }
+    .pf-item { border-radius: 10px; overflow: hidden; position: relative; height: 220px; cursor: pointer; background-size: cover; background-position: center; color: #fff; }
+    .pf-overlay { position: absolute; bottom: 0; width: 100%; padding: 14px; background: linear-gradient(180deg,transparent,rgba(0,0,0,0.6)); }
+    .pf-title { font-weight: 600; font-family: 'Playfair Display', serif; }
 
-    /* Portfolio grid */
-    .portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-    .pf-item{position:relative;border-radius:12px;overflow:hidden;height:220px;background:#fff;border:1px solid #eee;display:flex;align-items:end}
-    .pf-media{position:absolute;inset:0;background-size:cover;background-position:center;filter:grayscale(0.02) contrast(0.95)}
-    .pf-overlay{position:relative;padding:16px;z-index:2;background:linear-gradient(180deg,transparent,rgba(0,0,0,0.45));color:#fff;width:100%}
-    .pf-title{font-family:'Playfair Display',serif;font-size:18px;margin:0}
-    .pf-desc{font-size:13px;color:rgba(255,255,255,0.9);margin-top:6px}
+    footer { text-align: center; padding: 30px 10px; font-size: 14px; color: var(--muted); }
 
-    /* contact */
-    .contact-grid{display:grid;grid-template-columns:1fr 360px;gap:18px}
-    .contact-card{padding:20px;border-radius:10px;border:1px solid #eee;background:#fff}
-    .contact-card h4{margin:0 0 10px 0;font-family:'Playfair Display',serif}
-    .small{font-size:13px;color:var(--muted)}
-
-    /* footer */
-    footer{padding:28px 0;text-align:center;font-size:14px;color:var(--muted)}
-
-    /* animations */
-    .fade-up{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease}
-    .fade-up.in-view{opacity:1;transform:none}
-
-    /* responsive */
-    @media (max-width:900px){
-      .hero-content{grid-template-columns:1fr; text-align:center}
-      .hero-left h2{font-size:32px}
-      .hero-right{order:2}
-      .contact-grid{grid-template-columns:1fr}
+    @media(max-width:600px){
+      .hero h2 { font-size: 28px; }
+      .pf-item { height: 180px; }
     }
   </style>
 </head>
-<body>
 
+<body>
 <header>
   <div class="nav-inner">
     <div class="brand">
-      <h1 style="color:var(--gold)">Hinna Orquiola</h1>
-      <p>Virtual Assistant &amp; Graphic Designer</p>
+      <h1>Hinna Orquiola</h1>
+      <p>Virtual Assistant • Graphic & Web Designer</p>
     </div>
-
     <nav>
       <a href="#home">Home</a>
       <a href="#services">Services</a>
       <a href="#portfolio">Portfolio</a>
+      <a href="#book">Book</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
 </header>
 
-<section id="home" class="hero" aria-label="Hero">
-  <div class="hero-content">
-    <div class="hero-left">
-      <h2>Professional design and virtual support for modern businesses.</h2>
-      <p>I help small businesses create elegant visual branding while managing the details that keep everything running smoothly.</p>
-      <div class="hero-cta">
-        <button class="btn-primary" onclick="window.location.href='mailto:hinnaorquiola@gmail.com'">Email me</button>
-        <a href="#contact" style="align-self:center;color:rgba(255,255,255,0.9);text-decoration:underline">Let's talk</a>
-      </div>
-
-      <div style="margin-top:20px;color:rgba(255,255,255,0.9);font-size:13px">Based in the Philippines</div>
-    </div>
-
-    <div class="hero-right">
-      <div class="card">
-        <div style="display:flex;gap:12px;align-items:center">
-          <div style="width:56px;height:56px;border-radius:8px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));display:flex;align-items:center;justify-content:center;font-weight:700;color:#000">HO</div>
-          <div>
-            <div style="font-weight:700">Available for freelance & part-time work</div>
-            <div class="small" style="margin-top:6px">Specialising in brand visuals and efficient admin support.</div>
-          </div>
-        </div>
-        <div style="margin-top:12px" class="small">Suggest packages or message me for custom quotes. I’m happy to collaborate on short-term projects.</div>
-      </div>
-    </div>
+<section id="home" class="hero">
+  <h2>Design, Websites & Virtual Support — Crafted for Modern Brands</h2>
+  <p>I create elegant visuals, build responsive websites, and provide dependable virtual assistance for small businesses and creatives.</p>
+  <div style="margin-top:20px;">
+    <a class="btn btn-primary" href="mailto:hinnaorquiola@gmail.com">Email Me</a>
+    <a class="btn btn-ghost" href="#contact">Let's Talk</a>
   </div>
 </section>
 
 <main>
   <section id="services">
     <h3>Services</h3>
-    <div class="services-grid" style="margin-top:18px">
-      <article class="service fade-up">
+    <div class="services-grid">
+      <div class="service">
         <h4>Graphic Design</h4>
-        <p>Social media graphics, logos, posters, flyers, eBook & presentation layout — crafted with a chic, timeless style.</p>
-      </article>
+        <p>Logos, social media templates, posters, and marketing assets — all styled with elegance and clarity.</p>
+      </div>
 
-      <article class="service fade-up">
-        <h4>Virtual Assistant</h4>
-        <p>Email & calendar management, client communication, data entry, and social media scheduling to keep your business organized.</p>
-      </article>
+      <div class="service">
+        <h4>Website Design & Development</h4>
+        <p>Custom-coded, responsive websites built with HTML, CSS, and JavaScript — or simple portfolio and business pages hosted on GitHub Pages. Every design reflects your brand’s story and vision.</p>
+      </div>
 
-      <article class="service fade-up">
+      <div class="service">
+        <h4>Book Cover Design</h4>
+        <p>Professional covers for authors — from concept to print-ready layout. Includes eBook and paperback versions.</p>
+      </div>
+
+      <div class="service">
         <h4>Branding</h4>
-        <p>Logo concepts, color palettes and a concise brand one-pager to ensure consistent visual identity.</p>
-      </article>
+        <p>Visual identity systems: logos, palettes, and fonts for a cohesive and timeless brand image.</p>
+      </div>
+
+      <div class="service">
+        <h4>Virtual Assistant</h4>
+        <p>Reliable admin support: scheduling, communication, data management, and creative project coordination.</p>
+      </div>
     </div>
   </section>
 
   <section id="portfolio">
     <h3>Portfolio</h3>
-    <div class="portfolio-grid" style="margin-top:18px">
-      <div class="pf-item fade-up" aria-hidden="true">
-        <div class="pf-media" style="background-image:linear-gradient(180deg,rgba(0,0,0,0.25),rgba(0,0,0,0.25)),linear-gradient(135deg,rgba(201,168,75,0.08),rgba(0,0,0,0.1)),url('data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'800\\' height=\\'600\\'><rect width=\\'100%\\' height=\\'100%\\' fill=\\'%230b0b0b\\'/><g fill=\\'%23c9a84b\\' opacity=\\'0.06\\'><circle cx=\\'120\\' cy=\\'100\\' r=\\'90\\'/><rect x=\\'420\\' y=\\'40\\' width=\\'260\\' height=\\'160\\' rx=\\'12\\'/></g></svg>')"></div>
+    <div class="portfolio-grid">
+      <div class="pf-item" style="background-image:url('https://via.placeholder.com/600x400/0b0b0b/ffffff?text=Website+Layout+Mockup');">
         <div class="pf-overlay">
-          <div class="pf-title">Design Sample 1</div>
-          <div class="pf-desc">Social media template — editable in Canva.</div>
+          <div class="pf-title">Website Layout Mockup</div>
+          <div>Responsive design for a local café site.</div>
         </div>
       </div>
 
-      <div class="pf-item fade-up" aria-hidden="true">
-        <div class="pf-media" style="background-image:linear-gradient(180deg,rgba(0,0,0,0.25),rgba(0,0,0,0.25)),linear-gradient(135deg,rgba(201,168,75,0.06),rgba(0,0,0,0.08)),url('data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'800\\' height=\\'600\\'><rect width=\\'100%\\' height=\\'100%\\' fill=\\'%230b0b0b\\'/><g fill=\\'%23c9a84b\\' opacity=\\'0.06\\'><rect x=\\'80\\' y=\\'80\\' width=\\'240\\' height=\\'140\\' rx=\\'12\\'/><circle cx=\\'560\\' cy=\\'140\\' r=\\'76\\'/></g></svg>')"></div>
+      <div class="pf-item" style="background-image:url('https://via.placeholder.com/600x400/0b0b0b/ffffff?text=Landing+Page+Design');">
         <div class="pf-overlay">
-          <div class="pf-title">Design Sample 2</div>
-          <div class="pf-desc">Logo & identity concept.</div>
+          <div class="pf-title">Landing Page Design</div>
+          <div>Custom-coded promotional page with brand visuals.</div>
         </div>
       </div>
 
-      <div class="pf-item fade-up" aria-hidden="true">
-        <div class="pf-media" style="background-image:linear-gradient(180deg,rgba(0,0,0,0.25),rgba(0,0,0,0.25)),linear-gradient(135deg,rgba(201,168,75,0.06),rgba(0,0,0,0.08)),url('data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'800\\' height=\\'600\\'><rect width=\\'100%\\' height=\\'100%\\' fill=\\'%230b0b0b\\'/><g fill=\\'%23c9a84b\\' opacity=\\'0.06\\'><rect x=\\'60\\' y=\\'40\\' width=\\'220\\' height=\\'120\\' rx=\\'10\\'/><rect x=\\'340\\' y=\\'220\\' width=\\'320\\' height=\\'220\\' rx=\\'12\\'/></g></svg>')"></div>
+      <div class="pf-item" style="background-image:url('https://via.placeholder.com/600x400/0b0b0b/ffffff?text=Logo+%26+Branding');">
         <div class="pf-overlay">
-          <div class="pf-title">Design Sample 3</div>
-          <div class="pf-desc">Event poster mockup.</div>
+          <div class="pf-title">Logo & Branding</div>
+          <div>Identity package for a start-up client.</div>
         </div>
       </div>
 
-      <div class="pf-item fade-up" aria-hidden="true">
-        <div class="pf-media" style="background-image:linear-gradient(180deg,rgba(0,0,0,0.25),rgba(0,0,0,0.25)),linear-gradient(135deg,rgba(201,168,75,0.06),rgba(0,0,0,0.08)),url('data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'800\\' height=\\'600\\'><rect width=\\'100%\\' height=\\'100%\\' fill=\\'%230b0b0b\\'/><g fill=\\'%23c9a84b\\' opacity=\\'0.06\\'><rect x=\\'80\\' y=\\'60\\' width=\\'360\\' height=\\'240\\' rx=\\'12\\'/></g></svg>')"></div>
+      <div class="pf-item" style="background-image:url('https://via.placeholder.com/600x400/0b0b0b/ffffff?text=Social+Media+Template');">
         <div class="pf-overlay">
-          <div class="pf-title">Design Sample 4</div>
-          <div class="pf-desc">Flyer and promo layout.</div>
-        </div>
-      </div>
-
-      <div class="pf-item fade-up" aria-hidden="true">
-        <div class="pf-media" style="background-image:linear-gradient(180deg,rgba(0,0,0,0.25),rgba(0,0,0,0.25)),linear-gradient(135deg,rgba(201,168,75,0.06),rgba(0,0,0,0.08)),url('data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'800\\' height=\\'600\\'><rect width=\\'100%\\' height=\\'100%\\' fill=\\'%230b0b0b\\'/><g fill=\\'%23c9a84b\\' opacity=\\'0.06\\'><rect x=\\'100\\' y=\\'110\\' width=\\'260\\' height=\\'120\\' rx=\\'10\\'/></g></svg>')"></div>
-        <div class="pf-overlay">
-          <div class="pf-title">Design Sample 5</div>
-          <div class="pf-desc">eBook cover layout.</div>
-        </div>
-      </div>
-
-      <div class="pf-item fade-up" aria-hidden="true">
-        <div class="pf-media" style="background-image:linear-gradient(180deg,rgba(0,0,0,0.25),rgba(0,0,0,0.25)),linear-gradient(135deg,rgba(201,168,75,0.06),rgba(0,0,0,0.08)),url('data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'800\\' height=\\'600\\'><rect width=\\'100%\\' height=\\'100%\\' fill=\\'%230b0b0b\\'/><g fill=\\'%23c9a84b\\' opacity=\\'0.06\\'><rect x=\\'40\\' y=\\'40\\' width=\\'320\\' height=\\'220\\' rx=\\'10\\'/></g></svg>')"></div>
-        <div class="pf-overlay">
-          <div class="pf-title">Design Sample 6</div>
-          <div class="pf-desc">Branding mockup.</div>
+          <div class="pf-title">Social Media Templates</div>
+          <div>Elegant Canva-ready template designs.</div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="about">
-    <h3>About</h3>
-    <p class="small" style="margin-top:12px">I am from the Philippines. I create elegant visual branding and provide reliable admin support for small businesses.</p>
+  <section id="book">
+    <h3>Book</h3>
+    <p>My published book — designed and written by me.</p>
+    <div style="margin-top:18px;">
+      <img src="https://via.placeholder.com/160x240/0b0b0b/c9a84b?text=Book+Cover" alt="Book Cover" style="border-radius:8px;border:1px solid #eee;">
+      <p style="margin-top:10px;"><strong>[Book Title]</strong><br>View it here: <a href="https://link-to-your-book.example" target="_blank">Read on store</a></p>
+    </div>
   </section>
 
   <section id="contact">
     <h3>Contact</h3>
-    <div class="contact-grid" style="margin-top:18px">
-      <div class="contact-card">
-        <h4>Let's work together</h4>
-        <p class="small">Email: <a href="mailto:hinnaorquiola@gmail.com">hinnaorquiola@gmail.com</a></p>
-        <p class="small">LinkedIn: <a href="https://www.linkedin.com/in/hinna-orquiola-432629375/" target="_blank">hinna-orquiola</a></p>
-        <p class="small" style="margin-top:12px">I’m available for freelance and part-time projects — message me for quotes or custom packages.</p>
-      </div>
-
-      <div class="contact-card">
-        <form method="POST" action="https://formspree.io/f/yourFormID" onsubmit="alert('This demo form uses Formspree. Replace action with your form endpoint to receive messages.');return false;">
-          <label for="name" class="small">Your name</label>
-          <input id="name" name="name" required style="margin-top:6px;padding:10px;border-radius:8px;border:1px solid #eee;width:100%">
-
-          <label for="email" class="small" style="margin-top:10px">Email</label>
-          <input id="email" name="email" type="email" required style="margin-top:6px;padding:10px;border-radius:8px;border:1px solid #eee;width:100%">
-
-          <label for="message" class="small" style="margin-top:10px">Message</label>
-          <textarea id="message" name="message" rows="5" required style="margin-top:6px;padding:10px;border-radius:8px;border:1px solid #eee;width:100%"></textarea>
-
-          <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
-            <button type="submit" class="btn-primary" style="background:var(--accent);color:var(--gold)">Send message</button>
-            <div style="font-size:12px;color:var(--muted)">Or email: <a href="mailto:hinnaorquiola@gmail.com">hinnaorquiola@gmail.com</a></div>
-          </div>
-        </form>
-      </div>
-    </div>
+    <p>Email me directly or fill out the form below.</p>
+    <p><strong>Email:</strong> <a href="mailto:hinnaorquiola@gmail.com">hinnaorquiola@gmail.com</a></p>
+    <form method="POST" action="https://formspree.io/f/yourFormID" style="max-width:400px;">
+      <label>Name</label><br>
+      <input type="text" name="name" required style="width:100%;padding:8px;margin-bottom:8px;"><br>
+      <label>Email</label><br>
+      <input type="email" name="email" required style="width:100%;padding:8px;margin-bottom:8px;"><br>
+      <label>Message</label><br>
+      <textarea name="message" rows="5" style="width:100%;padding:8px;margin-bottom:10px;"></textarea><br>
+      <button type="submit" class="btn-primary" style="border:none;">Send</button>
+    </form>
   </section>
 </main>
 
 <footer>
-  <div style="border-top:3px solid var(--gold);padding-top:18px;max-width:var(--maxw);margin:0 auto;">
-    <div style="display:flex;justify-content:center;gap:14px;margin-bottom:10px">
-      <a href="https://www.linkedin.com/in/hinna-orquiola-432629375/" target="_blank" style="color:var(--accent);text-decoration:none">LinkedIn</a>
-      <a href="mailto:hinnaorquiola@gmail.com" style="color:var(--accent);text-decoration:none">Email</a>
-      <a href="https://github.com/hinnaorquiola" target="_blank" style="color:var(--accent);text-decoration:none">GitHub</a>
-    </div>
-    <div style="color:var(--muted);font-size:13px">© 2025 Hinna Orquiola — Virtual Assistant &amp; Graphic Designer</div>
-  </div>
+  © 2025 Hinna Orquiola — Virtual Assistant • Graphic & Web Designer
 </footer>
-
-<script>
-// simple IntersectionObserver to add 'in-view' class for fade animations
-document.addEventListener('DOMContentLoaded', function(){
-  const els = document.querySelectorAll('.fade-up');
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){ entry.target.classList.add('in-view'); io.unobserve(entry.target); }
-    });
-  }, {threshold: 0.12});
-  els.forEach(el => io.observe(el));
-});
-</script>
-
 </body>
 </html>
-
