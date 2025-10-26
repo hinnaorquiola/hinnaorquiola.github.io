@@ -222,20 +222,54 @@
   </div>
 </section>
 
-  <section id="contact">
-    <h3>Contact</h3>
-    <p>Email me directly or fill out the form below.</p>
-    <p><strong>Email:</strong> <a href="mailto:hinnaorquiola@gmail.com">hinnaorquiola@gmail.com</a></p>
-    <form method="POST" action="https://formspree.io/f/yourFormID" style="max-width:400px;">
-      <label>Name</label><br>
-      <input type="text" name="name" required style="width:100%;padding:8px;margin-bottom:8px;"><br>
-      <label>Email</label><br>
-      <input type="email" name="email" required style="width:100%;padding:8px;margin-bottom:8px;"><br>
-      <label>Message</label><br>
-      <textarea name="message" rows="5" style="width:100%;padding:8px;margin-bottom:10px;"></textarea><br>
-      <button type="submit" class="btn-primary" style="border:none;">Send</button>
-    </form>
-  </section>
+  <section id="contact" style="padding:60px 0;">
+  <h3>Contact Me</h3>
+  <p style="margin-top:12px;color:#6b7280;">
+    Get in touch for collaborations, design inquiries, or project discussions.
+  </p>
+
+  <form action="https://formspree.io/f/xkgpnljp" method="POST" style="margin-top:24px;max-width:500px;">
+    <div class="form-group">
+      <input type="text" name="name" placeholder="Your Name" required
+        style="width:100%;padding:12px;margin-bottom:12px;border-radius:8px;border:1px solid #c9a84b;background:#0b0b0b;color:white;">
+    </div>
+    <div class="form-group">
+      <input type="email" name="_replyto" placeholder="Your Email" required
+        style="width:100%;padding:12px;margin-bottom:12px;border-radius:8px;border:1px solid #c9a84b;background:#0b0b0b;color:white;">
+    </div>
+    <div class="form-group">
+      <textarea name="message" placeholder="Your Message" required
+        style="width:100%;padding:12px;height:140px;margin-bottom:12px;border-radius:8px;border:1px solid #c9a84b;background:#0b0b0b;color:white;"></textarea>
+    </div>
+    <button type="submit"
+      style="padding:12px 24px;border:none;background:#c9a84b;color:#0b0b0b;border-radius:8px;cursor:pointer;font-weight:bold;">
+      Send Message
+    </button>
+  </form>
+
+  <p id="thankyou" style="display:none;margin-top:16px;color:#c9a84b;font-weight:bold;">✅ Your message has been sent successfully!</p>
+
+  <script>
+    // Show thank-you message after submission
+    const form = document.querySelector('form[action="https://formspree.io/f/xkgpnljp"]');
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        form.reset();
+        document.getElementById("thankyou").style.display = "block";
+      } else {
+        alert("There was a problem sending your message. Please try again later.");
+      }
+    });
+  </script>
+</section>
+
 </main>
 
 <footer>
