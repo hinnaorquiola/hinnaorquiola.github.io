@@ -64,6 +64,84 @@
       .hero h2 { font-size: 28px; }
       .pf-item { height: 180px; }
     }
+
+    /* --- SHOP: Image-focused product grid (Style A) --- */
+#shop { padding: 48px 20px; }
+.shop-inner { max-width: var(--maxw); margin: auto; }
+.shop-header { display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom: 18px; }
+.shop-header h3 { margin:0; font-size:30px; }
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+/* product card */
+.product-card {
+  position: relative;
+  height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(16,24,40,0.06);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.product-card:focus { outline: 3px solid rgba(201,168,75,0.25); outline-offset: 3px; }
+.product-card:hover, .product-card:focus { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(16,24,40,0.12); }
+
+/* gradient overlay near bottom to keep text readable */
+.product-overlay {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 14px;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 100%);
+  color: white;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
+
+/* title and subtle styling */
+.product-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height:1.1;
+}
+
+/* Shop Now badge */
+.shop-badge {
+  font-weight:700;
+  font-size:12px;
+  padding:6px 10px;
+  border-radius:8px;
+  background: var(--gold);
+  color:#0b0b0b;
+  transform: translateY(6px);
+  opacity: 0;
+  transition: opacity .18s ease, transform .18s ease;
+}
+.product-card:hover .shop-badge,
+.product-card:focus .shop-badge {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* small caption visible on mobile */
+.product-caption { display:none; font-size:13px; color: rgba(255,255,255,0.95); }
+
+/* responsive */
+@media(max-width:900px){
+  .product-card { height: 260px; }
+}
+@media(max-width:600px){
+  .shop-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .product-card { height: 200px; }
+  .product-caption { display:block; }
+}
   </style>
 </head>
 
@@ -263,6 +341,74 @@
   </div>
 </section>
 
+
+<!-- SHOP SECTION -->
+<section id="shop" aria-label="Shop">
+  <div class="shop-inner">
+    <div class="shop-header">
+      <h3>Shop</h3>
+      <p style="color:var(--muted); margin:0;">Designs & merch — click an item to visit the store</p>
+    </div>
+
+    <div class="shop-grid">
+      <!-- 1 -->
+      <a class="product-card" href="https://www.zazzle.com/with_love_meow_cozy_cat_notebook-256751342812898173" target="_blank" rel="noopener" style="background-image:url('images/with_love_meow.jpg');" aria-label="With Love Meow Cozy Cat Notebook">
+        <div class="product-overlay">
+          <div>
+            <div class="product-title">With Love, Meow — Cozy Cat Notebook</div>
+            <div class="product-caption">Notebook • Office & school</div>
+          </div>
+          <div class="shop-badge">Shop Now</div>
+        </div>
+      </a>
+
+      <!-- 2 -->
+      <a class="product-card" href="https://www.zazzle.com/music_is_healing_artistic_binder-256563711087318276" target="_blank" rel="noopener" style="background-image:url('images/music_is_healing.jpg');" aria-label="Music is Healing Artistic Binder">
+        <div class="product-overlay">
+          <div>
+            <div class="product-title">Music is Healing — Artistic Binder</div>
+            <div class="product-caption">Binder • Office</div>
+          </div>
+          <div class="shop-badge">Shop Now</div>
+        </div>
+      </a>
+
+      <!-- 3 -->
+      <a class="product-card" href="https://www.zazzle.com/avery_signature_binder-127686375771686957" target="_blank" rel="noopener" style="background-image:url('images/avery_signature.jpg');" aria-label="Avery Signature Binder">
+        <div class="product-overlay">
+          <div>
+            <div class="product-title">Avery Signature Binder</div>
+            <div class="product-caption">Signature Binder</div>
+          </div>
+          <div class="shop-badge">Shop Now</div>
+        </div>
+      </a>
+
+      <!-- 4 -->
+      <a class="product-card" href="https://www.zazzle.com/she_has_a_choice_empowerment_art_binder_for_women-256082215616110385" target="_blank" rel="noopener" style="background-image:url('images/she_has_a_choice.jpg');" aria-label="She Has a Choice Empowerment Binder">
+        <div class="product-overlay">
+          <div>
+            <div class="product-title">She Has a Choice — Empowerment Binder</div>
+            <div class="product-caption">Empowerment • Women</div>
+          </div>
+          <div class="shop-badge">Shop Now</div>
+        </div>
+      </a>
+
+      <!-- 5 -->
+      <a class="product-card" href="https://www.zazzle.com/vintage_lady_cat_binder-256654261653686468" target="_blank" rel="noopener" style="background-image:url('images/vintage_lady_cat.jpg');" aria-label="Vintage Lady and Cat Binder">
+        <div class="product-overlay">
+          <div>
+            <div class="product-title">Vintage Lady & Cat Binder</div>
+            <div class="product-caption">Binder • Vintage</div>
+          </div>
+          <div class="shop-badge">Shop Now</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
   
  <section id="book">
   <h3>Book</h3>
@@ -350,5 +496,19 @@
 <footer>
   © 2025 Hinna Orquiola — Virtual Assistant • Graphic & Web Designer
 </footer>
+
+  <script>
+  // Make sure product cards are keyboard accessible even if they're anchors
+  document.querySelectorAll('.product-card').forEach(function(card) {
+    card.setAttribute('tabindex', '0');
+    card.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        // emulate anchor click
+        e.preventDefault();
+        window.open(card.href, '_blank', 'noopener');
+      }
+    });
+  });
+</script>  
 </body>
 </html>
