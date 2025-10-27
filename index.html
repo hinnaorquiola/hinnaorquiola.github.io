@@ -274,6 +274,56 @@
     text-align: center;
   }
 }
+    /* --- HERO POLISH --- */
+#home {
+  padding: 60px 20px; /* reduced space for better visual centering */
+}
+.hero-left h1 {
+  font-size: 42px;
+  line-height: 1.12;
+}
+@media(max-width:900px){
+  .hero-left h1 {
+    font-size: 36px;
+  }
+}
+
+/* Better alignment on mobile */
+@media(max-width:900px){
+  .hero-left, .hero-right {
+    text-align:center;
+  }
+  .hero-btns {
+    justify-content: center;
+  }
+}
+
+/* --- SHOP HOVER UPGRADE --- */
+.product-card {
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.product-card:hover {
+  transform: scale(1.04);
+  box-shadow: 0 16px 34px rgba(0,0,0,.18);
+}
+
+/* --- SECTION SPACING IMPROVEMENTS --- */
+.section, #value-highlights {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+/* Keep the Shop section a little tighter */
+#shop {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* Hero image ratio fix */
+.hero-img {
+  max-height: 540px;
+  object-fit: cover;
+}
   </style>
 </head>
 
