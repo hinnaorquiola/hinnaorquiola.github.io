@@ -708,6 +708,88 @@
   </div>
 </section>
 
+  <!-- 🟡 STEP B — FEATURED PRODUCT SLIDER -->
+<!-- ========================= -->
+<section id="featured" class="reveal" style="padding:60px 0; background-color:#faf7f2;">
+  <div class="container" style="max-width:1100px; margin:auto; text-align:center;">
+    <h2 style="font-size:2rem; color:#222; margin-bottom:1rem;">Featured Creations</h2>
+    <p style="color:#555;">Explore my latest book and design works</p>
+
+    <div class="slider" style="position:relative; overflow:hidden; margin-top:40px;">
+      <div class="slides" style="display:flex; transition:transform 0.6s ease;">
+        <!-- Slide 1 -->
+        <div class="slide" style="min-width:100%; box-sizing:border-box;">
+          <img src="images/book_cover.jpg" alt="I Was Everyone But Me" style="width:300px; border-radius:16px;">
+          <h3 style="margin-top:12px;">I Was Everyone But Me</h3>
+          <a href="https://www.amazon.com/dp/B0FHHQYF62" target="_blank" style="color:#bfa14a; text-decoration:none;">View on Amazon</a>
+        </div>
+        <!-- Slide 2 -->
+        <div class="slide" style="min-width:100%; box-sizing:border-box;">
+          <img src="images/Reveries.png" alt="Book Cover Design" style="width:300px; border-radius:16px;">
+          <h3 style="margin-top:12px;">Book Cover Design</h3>
+          <p style="color:#666;">Creative storytelling through design</p>
+        </div>
+        <!-- Slide 3 -->
+        <div class="slide" style="min-width:100%; box-sizing:border-box;">
+          <img src="images/Only Us.png" alt="Illustration Sample" style="width:300px; border-radius:16px;">
+          <h3 style="margin-top:12px;">Illustration & Animation</h3>
+          <p style="color:#666;">From sketches to motion storytelling</p>
+        </div>
+      </div>
+
+      <!-- Arrows -->
+      <button class="prev" style="position:absolute; top:50%; left:20px; transform:translateY(-50%); background:none; border:none; font-size:2rem; color:#bfa14a; cursor:pointer;">&#10094;</button>
+      <button class="next" style="position:absolute; top:50%; right:20px; transform:translateY(-50%); background:none; border:none; font-size:2rem; color:#bfa14a; cursor:pointer;">&#10095;</button>
+    </div>
+  </div>
+</section>
+
+<script>
+let index = 0;
+const slides = document.querySelector('.slides');
+const total = document.querySelectorAll('.slide').length;
+
+document.querySelector('.next').onclick = () => {
+  index = (index + 1) % total;
+  slides.style.transform = `translateX(-${index * 100}%)`;
+};
+
+document.querySelector('.prev').onclick = () => {
+  index = (index - 1 + total) % total;
+  slides.style.transform = `translateX(-${index * 100}%)`;
+};
+
+// Auto-slide
+setInterval(() => {
+  index = (index + 1) % total;
+  slides.style.transform = `translateX(-${index * 100}%)`;
+}, 6000);
+</script>
+
+
+<!-- ========================= -->
+<!-- 🟡 STEP D — TESTIMONIALS SECTION -->
+<!-- ========================= -->
+<section id="testimonials" class="reveal" style="padding:80px 0; background-color:#fff;">
+  <div class="container" style="max-width:1100px; margin:auto; text-align:center;">
+    <h2 style="font-size:2rem; color:#222;">What Clients Say</h2>
+    <div class="testimonials" style="display:flex; flex-wrap:wrap; justify-content:center; gap:30px; margin-top:40px;">
+      <div class="card" style="flex:1 1 300px; background:#faf7f2; padding:25px; border-radius:16px; box-shadow:0 2px 6px rgba(0,0,0,0.08);">
+        <p style="font-style:italic; color:#444;">“Working with Hinna was a dream — her designs brought my story to life!”</p>
+        <h4 style="margin-top:15px; color:#bfa14a;">— Evelyn, Author</h4>
+      </div>
+      <div class="card" style="flex:1 1 300px; background:#faf7f2; padding:25px; border-radius:16px; box-shadow:0 2px 6px rgba(0,0,0,0.08);">
+        <p style="font-style:italic; color:#444;">“Professional, kind, and creative. Every detail was thoughtful.”</p>
+        <h4 style="margin-top:15px; color:#bfa14a;">— Lucas, Business Owner</h4>
+      </div>
+      <div class="card" style="flex:1 1 300px; background:#faf7f2; padding:25px; border-radius:16px; box-shadow:0 2px 6px rgba(0,0,0,0.08);">
+        <p style="font-style:italic; color:#444;">“Her illustrations carry emotion and soul — exactly what my project needed.”</p>
+        <h4 style="margin-top:15px; color:#bfa14a;">— Aria, Producer</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
   
  <section id="book" class="reveal">
   <h3>Book</h3>
@@ -742,52 +824,28 @@
   </div>
 </section>
 
-  <section id="contact" class="reveal" style="padding:60px 0;">
-  <h3>Contact Me</h3>
-  <p style="margin-top:12px;color:#6b7280;">
-    Get in touch for collaborations, design inquiries, or project discussions.
-  </p>
-
-  <form action="https://formspree.io/f/xkgpnljp" method="POST" style="margin-top:24px;max-width:500px;">
-    <div class="form-group">
-      <input type="text" name="name" placeholder="Your Name" required
-        style="width:100%;padding:12px;margin-bottom:12px;border-radius:8px;border:1px solid #c9a84b;background:#0b0b0b;color:white;">
+  <section id="contact" class="reveal" style="padding:80px 0; background-color:#faf7f2;">
+  <div class="container" style="max-width:1100px; margin:auto; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:40px;">
+    
+    <!-- Left Side -->
+    <div style="flex:1 1 400px;">
+      <img src="images/profile_photo.jpg" alt="Hinna Orquiola" style="width:160px; border-radius:50%; margin-bottom:20px;">
+      <h2 style="color:#222;">Let’s Create Together</h2>
+      <p style="margin:10px 0; color:#555;">Have a project in mind? I’d love to collaborate with you on your next design, illustration, or animation.</p>
+      <p style="color:#bfa14a; font-weight:600;">📧 hinnaorquiola@gmail.com</p>
+      <p style="margin-top:5px;">🌐 <a href="https://www.youtube.com/@StoryverseAnimations-t4b" target="_blank" style="color:#bfa14a;">Storyverse Animations</a></p>
     </div>
-    <div class="form-group">
-      <input type="email" name="_replyto" placeholder="Your Email" required
-        style="width:100%;padding:12px;margin-bottom:12px;border-radius:8px;border:1px solid #c9a84b;background:#0b0b0b;color:white;">
-    </div>
-    <div class="form-group">
-      <textarea name="message" placeholder="Your Message" required
-        style="width:100%;padding:12px;height:140px;margin-bottom:12px;border-radius:8px;border:1px solid #c9a84b;background:#0b0b0b;color:white;"></textarea>
-    </div>
-    <button type="submit"
-      style="padding:12px 24px;border:none;background:#c9a84b;color:#0b0b0b;border-radius:8px;cursor:pointer;font-weight:bold;">
-      Send Message
-    </button>
-  </form>
 
-  <p id="thankyou" style="display:none;margin-top:16px;color:#c9a84b;font-weight:bold;">✅ Your message has been sent successfully!</p>
-
-  <script>
-    // Show thank-you message after submission
-    const form = document.querySelector('form[action="https://formspree.io/f/xkgpnljp"]');
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      const data = new FormData(form);
-      const response = await fetch(form.action, {
-        method: form.method,
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-      if (response.ok) {
-        form.reset();
-        document.getElementById("thankyou").style.display = "block";
-      } else {
-        alert("There was a problem sending your message. Please try again later.");
-      }
-    });
-  </script>
+    <!-- Right Side (Formspree) -->
+    <div style="flex:1 1 400px;">
+      <form action="https://formspree.io/f/xkgpnljp" method="POST" style="display:flex; flex-direction:column; gap:15px;">
+        <input type="text" name="name" placeholder="Your Name" required style="padding:12px; border:1px solid #ddd; border-radius:8px;">
+        <input type="email" name="email" placeholder="Your Email" required style="padding:12px; border:1px solid #ddd; border-radius:8px;">
+        <textarea name="message" rows="5" placeholder="Your Message" required style="padding:12px; border:1px solid #ddd; border-radius:8px;"></textarea>
+        <button type="submit" style="padding:12px; background-color:#bfa14a; color:#fff; border:none; border-radius:8px; cursor:pointer;">Send Message</button>
+      </form>
+    </div>
+  </div>
 </section>
 
 </main>
