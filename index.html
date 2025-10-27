@@ -708,65 +708,6 @@
   </div>
 </section>
 
-  <!-- 🟡 STEP B — FEATURED PRODUCT SLIDER -->
-<!-- ========================= -->
-<section id="featured" class="reveal" style="padding:60px 0; background-color:#faf7f2;">
-  <div class="container" style="max-width:1100px; margin:auto; text-align:center;">
-    <h2 style="font-size:2rem; color:#222; margin-bottom:1rem;">Featured Creations</h2>
-    <p style="color:#555;">Explore my latest book and design works</p>
-
-    <div class="slider" style="position:relative; overflow:hidden; margin-top:40px;">
-      <div class="slides" style="display:flex; transition:transform 0.6s ease;">
-        <!-- Slide 1 -->
-        <div class="slide" style="min-width:100%; box-sizing:border-box;">
-          <img src="images/book_cover.jpg" alt="I Was Everyone But Me" style="width:300px; border-radius:16px;">
-          <h3 style="margin-top:12px;">I Was Everyone But Me</h3>
-          <a href="https://www.amazon.com/dp/B0FHHQYF62" target="_blank" style="color:#bfa14a; text-decoration:none;">View on Amazon</a>
-        </div>
-        <!-- Slide 2 -->
-        <div class="slide" style="min-width:100%; box-sizing:border-box;">
-          <img src="images/Reveries.png" alt="Book Cover Design" style="width:300px; border-radius:16px;">
-          <h3 style="margin-top:12px;">Book Cover Design</h3>
-          <p style="color:#666;">Creative storytelling through design</p>
-        </div>
-        <!-- Slide 3 -->
-        <div class="slide" style="min-width:100%; box-sizing:border-box;">
-          <img src="images/Only Us.png" alt="Illustration Sample" style="width:300px; border-radius:16px;">
-          <h3 style="margin-top:12px;">Illustration & Animation</h3>
-          <p style="color:#666;">From sketches to motion storytelling</p>
-        </div>
-      </div>
-
-      <!-- Arrows -->
-      <button class="prev" style="position:absolute; top:50%; left:20px; transform:translateY(-50%); background:none; border:none; font-size:2rem; color:#bfa14a; cursor:pointer;">&#10094;</button>
-      <button class="next" style="position:absolute; top:50%; right:20px; transform:translateY(-50%); background:none; border:none; font-size:2rem; color:#bfa14a; cursor:pointer;">&#10095;</button>
-    </div>
-  </div>
-</section>
-
-<script>
-let index = 0;
-const slides = document.querySelector('.slides');
-const total = document.querySelectorAll('.slide').length;
-
-document.querySelector('.next').onclick = () => {
-  index = (index + 1) % total;
-  slides.style.transform = `translateX(-${index * 100}%)`;
-};
-
-document.querySelector('.prev').onclick = () => {
-  index = (index - 1 + total) % total;
-  slides.style.transform = `translateX(-${index * 100}%)`;
-};
-
-// Auto-slide
-setInterval(() => {
-  index = (index + 1) % total;
-  slides.style.transform = `translateX(-${index * 100}%)`;
-}, 6000);
-</script>
-
-
 <!-- ========================= -->
 <!-- 🟡 STEP D — TESTIMONIALS SECTION -->
 <!-- ========================= -->
