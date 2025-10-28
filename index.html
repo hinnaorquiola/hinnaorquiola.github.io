@@ -177,7 +177,34 @@
   flex-direction: column;
   justify-content: space-between;
 }
-   
+
+.share-buttons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background-color: #000;
+  border: 1px solid #c9a84b;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.share-buttons a:hover {
+  background-color: #c9a84b;
+  transform: translateY(-3px);
+}
+
+.share-icon {
+  width: 20px;
+  height: 20px;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+}
+
+.share-buttons a:hover .share-icon {
+  filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%);
+}
+    
 /* small caption visible on mobile */
 .product-caption { display:none; font-size:13px; color: rgba(255,255,255,0.95); }
 
@@ -852,6 +879,25 @@
 
   </div>
 </section>
+
+  <!-- Share Buttons Section -->
+<div class="share-section" style="text-align:center;margin-top:60px;">
+  <h4 style="color:#c9a84b;margin-bottom:12px;">Share this website</h4>
+  <div class="share-buttons" style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://hinnaorquiola.github.io/" target="_blank" class="share-btn" title="Share on Facebook">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" class="share-icon">
+    </a>
+    <a href="https://www.instagram.com/?url=https://hinnaorquiola.github.io/" target="_blank" class="share-btn" title="Share on Instagram">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" class="share-icon">
+    </a>
+    <a href="https://twitter.com/intent/tweet?url=https://hinnaorquiola.github.io/&text=Check%20out%20this%20portfolio!" target="_blank" class="share-btn" title="Share on X">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X" class="share-icon">
+    </a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://hinnaorquiola.github.io/&title=Check%20out%20this%20portfolio!" target="_blank" class="share-btn" title="Share on LinkedIn">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" class="share-icon">
+    </a>
+  </div>
+</div>
 
 </main>
 
