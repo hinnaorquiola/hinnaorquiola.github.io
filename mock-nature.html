@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nature Retreat | Mock Design by Hinna Orquiola</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9f9f7;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1950&q=80') 
+                  center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 180px 20px;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    /* About Section */
+    .about {
+      text-align: center;
+      padding: 80px 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .about h2 {
+      color: #3a5a40;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .about p {
+      color: #444;
+      font-size: 1.1rem;
+    }
+
+    /* CTA Section */
+    .cta {
+      background: #ccd5ae;
+      text-align: center;
+      padding: 70px 20px;
+      border-radius: 12px;
+      margin: 60px auto;
+      max-width: 900px;
+    }
+
+    .cta h3 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: #283618;
+    }
+
+    .cta p {
+      color: #444;
+      font-size: 1.1rem;
+      margin-bottom: 25px;
+    }
+
+    .cta a {
+      display: inline-block;
+      background: #3a5a40;
+      color: white;
+      padding: 12px 28px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    .cta a:hover {
+      background: #2b4b31;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Find Your Calm in Nature</h1>
+      <p>Breathe. Escape. Reconnect.</p>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about">
+    <h2>Welcome to Whispering Pines Retreat</h2>
+    <p>Immerse yourself in nature’s embrace. Our retreat offers a space for reflection, quiet, and renewal — 
+      surrounded by lush forests and gentle mountain air. Here, serenity is not found, it’s felt.</p>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta">
+    <h3>Ready to Begin Your Escape?</h3>
+    <p>Join us for a weekend of stillness and discovery among the trees.</p>
+    <a href="#">Book Your Escape</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Mock website design created by Hinna Orquiola | For portfolio display only</p>
+  </footer>
+
+</body>
+</html>
