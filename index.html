@@ -151,6 +151,24 @@
   transform: translateY(0);
 }
 
+.shop-item img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.shop-item:hover img {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.shop-item .btn {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.shop-item:hover .btn {
+  opacity: 1;
+}
+ 
 /* ======== Book Now Buttons ======== */
 .book-btn {
   display: inline-block;
@@ -752,6 +770,9 @@ body.dark-mode footer {
     <div class="shop-header">
       <h3>Shop</h3>
       <p style="color:var(--muted); margin:0;">Designs & merch — click an item to visit the store</p>
+      <p style="color:#6b7280; margin-bottom: 20px;">
+All designs are original and created by me — crafted to bring creativity to your everyday tools.
+</p>
     </div>
 
     <div class="shop-grid">
