@@ -413,6 +413,51 @@
   opacity: 1;
   transform: translateY(0);
 }
+    
+/* Default Light Mode */
+body.light-mode {
+  background-color: #ffffff;
+  color: #111111;
+}
+
+body.light-mode section {
+  background-color: #f9f9f9;
+}
+
+body.light-mode h1, 
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode h4,
+body.light-mode a {
+  color: #222222;
+}
+
+body.light-mode .service-card,
+body.light-mode #contact,
+body.light-mode footer {
+  background-color: #ffffff;
+  border-color: #d1b25c;
+}
+
+/* Dark Mode (your current theme) */
+body.dark-mode {
+  background-color: #0b0b0b;
+  color: #f0f0f0;
+}
+
+body.dark-mode .service-card,
+body.dark-mode #contact,
+body.dark-mode footer {
+  background-color: #0b0b0b;
+  border-color: #c9a84b;
+}
+
+/* Small hover effect on toggle icon */
+#theme-toggle:hover {
+  transform: scale(1.2);
+  color: #d1b25c;
+}
+ 
   </style>
 </head>
 <body>
@@ -431,6 +476,16 @@
       <a href="#book">Book</a>
       <a href="#contact">Contact</a>
     </nav>
+    
+    <button id="theme-toggle" style="
+  background:none;
+  border:none;
+  color:#c9a84b;
+  font-size:22px;
+  cursor:pointer;
+  transition:transform 0.3s, color 0.3s;">
+  🌙
+</button>
   </div>
 </header>
 
@@ -1029,6 +1084,21 @@
 
   window.addEventListener('scroll', revealOnScroll);
   revealOnScroll(); // trigger on load
+</script>
+
+<script>
+  const toggleButton = document.getElementById('theme-toggle');
+  const currentTheme = localStorage.getItem('theme') || 'dark-mode';
+  document.body.classList.add(currentTheme);
+  toggleButton.textContent = currentTheme === 'dark-mode' ? '🌞' : '🌙';
+
+  toggleButton.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    document.body.classList.toggle('light-mode');
+    const theme = document.body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
+    localStorage.setItem('theme', theme);
+    toggleButton.textContent = theme === 'dark-mode' ? '🌞' : '🌙';
+  });
 </script>
 </body>
 </html>
