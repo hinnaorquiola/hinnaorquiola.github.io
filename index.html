@@ -86,6 +86,38 @@
       .pf-item { height: 180px; }
     }
 
+.portfolio-card {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.portfolio-card img, 
+.portfolio-card iframe {
+  width: 100%;
+  border: none;
+  display: block;
+}
+
+.portfolio-card .card-info {
+  padding: 14px 16px;
+  color: #444;
+  background: #fafafa;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
     /* --- SHOP: Image-focused product grid (Style A) --- */
 #shop { padding: 48px 20px; }
 .shop-inner { max-width: var(--maxw); margin: auto; }
@@ -708,6 +740,8 @@ body.dark-mode footer {
 
   </div>
 
+  <hr style="border:0;height:1px;background:#e5e7eb;margin:40px 0;">
+  
   <!-- 🎥 Animation & Illustrated Stories -->
   <h4 style="margin-top:50px;color:#c9a84b;">Animation & Illustrated Stories</h4>
   <p style="margin-top:10px;color:#6b7280;">
