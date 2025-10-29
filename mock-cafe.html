@@ -199,6 +199,42 @@ section, .hero, .menu, .gallery, .contact {
 footer, header, nav {
   width: 100%;
 }
+    /* General page container fix */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Limit content width and center everything */
+section, header, footer, .hero, .menu, .gallery {
+  max-width: 1200px; /* You can adjust this to 100%, 1100px, etc. */
+  margin: 0 auto;
+  padding: 0 20px; /* Adds breathing space on small screens */
+}
+
+/* Hero image full width and responsive */
+.hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Make menu and gallery more flexible */
+.menu, .gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* For smaller screens */
+@media (max-width: 768px) {
+  .menu-item, .gallery img {
+    width: 100%;
+  }
+}
   </style>
 </head>
 <body>
