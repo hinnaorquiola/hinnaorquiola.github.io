@@ -181,6 +181,24 @@
     .socials a:hover {
       color: #f5f0e1;
     }
+    /* === Layout Resize Fix === */
+section, .hero, .menu, .gallery, .contact {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Optional: make footer and navbar full width */
+footer, header, nav {
+  width: 100%;
+}
   </style>
 </head>
 <body>
