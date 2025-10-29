@@ -207,6 +207,70 @@
       font-size: 0.95em;
     }
   }
+    /* Fix layout width */
+body {
+  margin: 0;
+  background-color: #3b1f0e;
+  color: #f5e9d5;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Make the content span wider but still centered */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 20px;
+}
+
+/* Fix hero section */
+.hero {
+  position: relative;
+  text-align: center;
+  height: 80vh; /* smaller height */
+  overflow: hidden;
+}
+
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero h1 {
+  font-family: 'Pacifico', cursive;
+  color: #f5e9d5;
+  font-size: 3rem;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+.hero p {
+  color: #f5e9d5;
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 10px auto 20px;
+}
+
+/* Fix navbar space */
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+  background: #2c1608;
+  border-bottom: 1px solid #b9925e;
+}
+
+main {
+  padding-top: 100px; /* prevents overlap */
+}
+
+/* Make menu items more compact */
+.menu-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  text-align: center;
+}
 </style>
 </head>
 <body>
