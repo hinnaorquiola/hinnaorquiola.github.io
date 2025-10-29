@@ -3,298 +3,241 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Café Orquiola | Mock Restaurant Website</title>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <title>Café Orquiola</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    body {
+    /* --------------------------
+       Base Styles
+    -------------------------- */
+    * {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #2b1b0f;
-      color: #f5f0e1;
+      padding: 0;
+      box-sizing: border-box;
     }
 
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #3b1e0d;
+      color: #f5e6cc;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* --------------------------
+       Navbar
+    -------------------------- */
     header {
       position: fixed;
-      width: 100%;
       top: 0;
       left: 0;
-      background-color: #2b1b0f;
-      border-bottom: 1px solid #c9a84b;
-      z-index: 1000;
+      width: 100%;
+      background-color: #2a1203;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 40px;
+      padding: 15px 60px;
+      z-index: 1000;
     }
 
-    header h1 {
+    .logo {
       font-family: 'Pacifico', cursive;
-      color: #c9a84b;
-      font-size: 1.8em;
-      margin: 0;
+      font-size: 1.8rem;
+      color: #f5e6cc;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
     }
 
     nav a {
-      color: #f5f0e1;
-      margin: 0 12px;
-      text-decoration: none;
+      color: #f5e6cc;
       font-weight: 500;
-      transition: color 0.3s;
+      transition: color 0.3s ease;
     }
 
     nav a:hover {
-      color: #c9a84b;
+      color: #d4a373;
     }
 
+    /* --------------------------
+       Hero Section
+    -------------------------- */
     .hero {
+      margin-top: 70px; /* prevent overlap with fixed nav */
+      height: 100vh;
       background: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-      height: 90vh;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
       padding: 0 20px;
-      margin-top: 70px;
-      backdrop-filter: blur(3px);
     }
 
-    .hero h2 {
+    .hero h1 {
       font-family: 'Pacifico', cursive;
-      font-size: 2.8em;
-      color: #f5f0e1;
-      margin-bottom: 15px;
-      text-shadow: 2px 2px 4px #000;
+      font-size: 3rem;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
     }
 
     .hero p {
-      font-size: 1.2em;
-      max-width: 600px;
+      font-size: 1.2rem;
       margin-bottom: 25px;
     }
 
-    .btn {
-      background-color: #c9a84b;
-      color: #2b1b0f;
-      padding: 12px 24px;
+    .hero button {
+      background-color: #d4a373;
+      color: #3b1e0d;
+      border: none;
+      padding: 12px 28px;
       border-radius: 25px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background 0.3s;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
     }
 
-    .btn:hover {
-      background-color: #f5f0e1;
+    .hero button:hover {
+      background-color: #f5e6cc;
     }
 
+    /* --------------------------
+       Menu Section
+    -------------------------- */
     section {
-      padding: 80px 20px;
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 20px;
       text-align: center;
-      max-width: 1000px;
-      margin: 0 auto;
     }
 
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 40px;
+    h2 {
+      font-family: 'Pacifico', cursive;
+      color: #d4a373;
+      font-size: 2rem;
+      margin-bottom: 40px;
+    }
+
+    .menu-items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
     }
 
     .menu-item {
-      background: #3b2415;
-      border-radius: 12px;
+      background-color: #4e2b15;
+      border-radius: 15px;
       padding: 20px;
-      transition: transform 0.3s;
+      width: 250px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .menu-item:hover {
       transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     }
 
-    .menu-item h4 {
-      color: #c9a84b;
+    .menu-item h3 {
+      font-family: 'Pacifico', cursive;
+      color: #f5e6cc;
       margin-bottom: 10px;
     }
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
-      margin-top: 40px;
+    .menu-item p {
+      color: #d4a373;
+      font-weight: 500;
     }
 
-    .gallery img {
-      width: 100%;
-      border-radius: 12px;
-      height: 200px;
-      object-fit: cover;
-      filter: brightness(90%);
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      max-width: 500px;
-      margin: 0 auto;
-    }
-
-    input, textarea {
-      padding: 12px;
-      border-radius: 8px;
-      border: none;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    button {
-      background-color: #c9a84b;
-      color: #2b1b0f;
-      padding: 12px;
-      border: none;
-      border-radius: 25px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    button:hover {
-      background-color: #f5f0e1;
-    }
-
+    /* --------------------------
+       Footer
+    -------------------------- */
     footer {
+      background-color: #2a1203;
       text-align: center;
-      padding: 40px 20px;
-      background-color: #1a1008;
-      color: #f5f0e1;
-      margin-top: 40px;
-      border-top: 1px solid #c9a84b;
+      padding: 25px 10px;
+      font-size: 0.9rem;
+      color: #b89f85;
     }
 
-    .socials a {
-      color: #c9a84b;
-      margin: 0 10px;
-      font-size: 1.2em;
-      text-decoration: none;
+    /* --------------------------
+       Responsive
+    -------------------------- */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+      }
+
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .menu-item {
+        width: 90%;
+      }
     }
-
-    .socials a:hover {
-      color: #f5f0e1;
-    }
-    /* === Layout Resize Fix === */
-section, .hero, .menu, .gallery, .contact {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.hero img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-/* Optional: make footer and navbar full width */
-footer, header, nav {
-  width: 100%;
-}
-    /* General page container fix */
-body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Limit content width and center everything */
-section, header, footer, .hero, .menu, .gallery {
-  max-width: 1200px; /* You can adjust this to 100%, 1100px, etc. */
-  margin: 0 auto;
-  padding: 0 20px; /* Adds breathing space on small screens */
-}
-
-/* Hero image full width and responsive */
-.hero img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-}
-
-/* Make menu and gallery more flexible */
-.menu, .gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-/* For smaller screens */
-@media (max-width: 768px) {
-  .menu-item, .gallery img {
-    width: 100%;
-  }
-}
   </style>
 </head>
 <body>
+  <!-- Navbar -->
   <header>
-    <h1>Café Orquiola</h1>
+    <div class="logo">Café Orquiola</div>
     <nav>
-      <a href="#home">Home</a>
-      <a href="#menu">Menu</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#contact">Contact</a>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </nav>
   </header>
 
+  <!-- Hero Section -->
   <section class="hero" id="home">
-    <h2>Welcome to Café Orquiola</h2>
+    <h1>Welcome to Café Orquiola</h1>
     <p>Where warmth meets flavor — experience coffee crafted with care and passion.</p>
-    <a href="#menu" class="btn">View Menu</a>
+    <button>View Menu</button>
   </section>
 
+  <!-- Menu Section -->
   <section id="menu">
-    <h3 style="color:#c9a84b;">Our Menu</h3>
-    <div class="menu-grid">
-      <div class="menu-item"><h4>Latte</h4><p>$4.50</p></div>
-      <div class="menu-item"><h4>Cappuccino</h4><p>$5.00</p></div>
-      <div class="menu-item"><h4>Blueberry Muffin</h4><p>$3.00</p></div>
-      <div class="menu-item"><h4>Mocha</h4><p>$5.50</p></div>
-      <div class="menu-item"><h4>Espresso</h4><p>$3.50</p></div>
-      <div class="menu-item"><h4>Croissant</h4><p>$2.50</p></div>
+    <h2>Our Menu</h2>
+    <div class="menu-items">
+      <div class="menu-item">
+        <h3>Latte</h3>
+        <p>$4.50</p>
+      </div>
+      <div class="menu-item">
+        <h3>Cappuccino</h3>
+        <p>$5.00</p>
+      </div>
+      <div class="menu-item">
+        <h3>Blueberry Muffin</h3>
+        <p>$3.00</p>
+      </div>
+      <div class="menu-item">
+        <h3>Espresso</h3>
+        <p>$3.50</p>
+      </div>
     </div>
   </section>
 
-  <section id="gallery">
-    <h3 style="color:#c9a84b;">Gallery</h3>
-    <div class="gallery">
-      <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80" alt="Coffee">
-      <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80" alt="Cafe interior">
-      <img src="https://images.unsplash.com/photo-1498654896293-37aacf113fd9?auto=format&fit=crop&w=800&q=80" alt="Pastries">
-    </div>
-  </section>
-
-  <section id="contact">
-    <h3 style="color:#c9a84b;">Contact Us</h3>
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea rows="4" placeholder="Your Message"></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
-
+  <!-- Footer -->
   <footer>
-    <p>☕ Designed by Hinna Orquiola | This is a mockup design for portfolio purposes only.</p>
-    <div class="socials">
-      <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
-      <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
-      <a href="#"><i class="fab fa-x-twitter"></i> X</a>
-      <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
-    </div>
+    © 2025 Café Orquiola — This is a mock-up design created for portfolio purposes only.
   </footer>
-
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
