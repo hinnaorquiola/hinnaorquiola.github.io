@@ -580,7 +580,18 @@ header {
     font-size: 18px;
   }
 }
+    /* ===== FIX CLICKABLE ICONS ===== */
+header {
+  position: relative;
+  z-index: 1000;
+}
 
+.nav-inner, .hamburger, #theme-toggle {
+  position: relative;
+  z-index: 1001;
+  cursor: pointer;
+}
+    
   </style>
 </head>
 <body>
