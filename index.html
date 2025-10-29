@@ -512,7 +512,75 @@ body.dark-mode footer {
   transform: scale(1.2);
   color: #d1b25c;
 }
- 
+    /* ====== NAVIGATION BASE ====== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  flex-wrap: wrap;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #d4af37;
+}
+
+/* ====== HAMBURGER ICON ====== */
+.hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ====== MOBILE VIEW ====== */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 10px 0;
+    font-size: 18px;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -523,6 +591,7 @@ body.dark-mode footer {
       <p>Virtual Assistant • Graphic & Web Designer</p>
     </div>
     <nav>
+      <div class="nav-links">
       <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#services">Services</a>
@@ -530,7 +599,10 @@ body.dark-mode footer {
       <a href="#shop">My Products</a>
       <a href="#book">Book</a>
       <a href="#contact">Contact</a>
+        <!-- Add the hamburger icon -->
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
     </nav>
+    </div>
     
     <button id="theme-toggle" style="
   background:none;
@@ -1178,6 +1250,11 @@ body.dark-mode footer {
     localStorage.setItem('theme', theme);
     toggleButton.textContent = theme === 'dark-mode' ? '🌞' : '🌙';
   });
+</script>
+  <script>
+function toggleMenu() {
+  document.querySelector('.nav-links').classList.toggle('show');
+}
 </script>
 </body>
 </html>
