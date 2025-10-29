@@ -584,14 +584,16 @@ header {
   </style>
 </head>
 <body>
-<header>
-  <div class="nav-inner">
-    <div class="brand">
+<header class="site-header">
+  <div class="header-content">
+    <div class="logo-title">
       <h1>Hinna Orquiola</h1>
       <p>Virtual Assistant • Graphic & Web Designer</p>
     </div>
-    <nav>
-      <div class="nav-links">
+
+    <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+
+    <nav class="site-nav">
       <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#services">Services</a>
@@ -599,22 +601,11 @@ header {
       <a href="#shop">My Products</a>
       <a href="#book">Book</a>
       <a href="#contact">Contact</a>
-        <!-- Add the hamburger icon -->
-  <div class="hamburger" onclick="toggleMenu()">☰</div>
+      <span class="dark-mode-toggle">🌙</span>
     </nav>
-    </div>
-    
-    <button id="theme-toggle" style="
-  background:none;
-  border:none;
-  color:#c9a84b;
-  font-size:22px;
-  cursor:pointer;
-  transition:transform 0.3s, color 0.3s;">
-  🌙
-</button>
   </div>
 </header>
+
 
 <!-- ===== HERO SECTION ===== -->
 <section id="home">
@@ -1250,14 +1241,15 @@ header {
     localStorage.setItem('theme', theme);
     toggleButton.textContent = theme === 'dark-mode' ? '🌞' : '🌙';
   });
-</script>
-  <script>
-function toggleMenu() {
-  document.querySelector('.nav-links').classList.toggle('show');
-}
+
+  // Hamburger menu toggle
+  function toggleMenu() {
+    document.querySelector('.nav-links').classList.toggle('show');
+  }
 </script>
 </body>
 </html>
+
 
 
 
