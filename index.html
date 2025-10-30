@@ -641,6 +641,33 @@ header {
 .carousel-item { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
 .carousel-item.visible { opacity: 1; transform: translateY(0); }
 
+    /* --- PORTFOLIO POLISH UP TWEAKS --- */
+
+/* uniform card height */
+.carousel-thumb { 
+  height: 240px; 
+  object-fit: cover; 
+}
+
+/* smooth scroll behavior for anchor links */
+html { 
+  scroll-behavior: smooth; 
+}
+
+/* hover effect for more depth */
+.carousel-item:hover { 
+  transform: translateY(-5px) scale(1.02); 
+  box-shadow: 0 14px 32px rgba(0,0,0,0.12);
+}
+
+/* smaller yet visible arrows on mobile */
+@media (max-width:700px){
+  .carousel-arrow { 
+    width:34px; 
+    height:34px; 
+    font-size:14px; 
+  }
+}
   </style>
 </head>
 <body>
