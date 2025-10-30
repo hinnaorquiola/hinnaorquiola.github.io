@@ -701,6 +701,50 @@ html {
   margin-top: auto; /* ensures consistent bottom placement */
 }
 
+.carousel-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.carousel-meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  padding: 10px 0;
+}
+
+.carousel-title {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.carousel-desc {
+  flex-grow: 1;
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.card-btn {
+  align-self: flex-start;
+  margin-top: auto;
+  background: #d4b24e;
+  color: #000;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.card-btn:hover {
+  background: #c09b3f;
+}
+    
   </style>
 </head>
 <body>
