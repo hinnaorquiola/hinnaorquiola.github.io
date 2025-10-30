@@ -668,6 +668,39 @@ html {
     font-size:14px; 
   }
 }
+
+    .carousel-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* makes button stay at bottom */
+  height: 100%;
+}
+
+.carousel-meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.carousel-title {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.carousel-desc {
+  flex-grow: 1; /* pushes the button down */
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+.card-btn {
+  align-self: flex-start;
+  margin-top: auto; /* ensures consistent bottom placement */
+}
+
   </style>
 </head>
 <body>
