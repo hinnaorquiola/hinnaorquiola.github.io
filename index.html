@@ -543,6 +543,103 @@ header {
 .nav-links a:hover {
   color: #d4af37;
 }
+    /* ---------- Portfolio: grouped horizontal carousels ---------- */
+/* Uses your --gold and site typography */
+#portfolio {
+  background: #ffffff;
+  padding: 56px 20px;
+  color: var(--accent);
+}
+.portfolio-inner { max-width: var(--maxw); margin: auto; }
+
+.portfolio-header { display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:18px; }
+.portfolio-header h3 { margin:0; font-size:28px; color:var(--accent); border-bottom:3px solid var(--gold); padding-bottom:6px; display:inline-block; }
+
+/* carousel container */
+.carousel {
+  position: relative;
+  margin-top: 18px;
+}
+
+/* horizontal track */
+.carousel-track {
+  display:flex;
+  gap:18px;
+  overflow-x:auto;
+  scroll-snap-type: x mandatory;
+  padding: 8px 6px;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* each card */
+.carousel-item {
+  flex: 0 0 320px; /* desktop width */
+  scroll-snap-align: start;
+  background:#fff;
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid #f0f0f0;
+  box-shadow: 0 8px 30px rgba(16,24,40,0.03);
+  transition: transform .28s ease, box-shadow .28s ease;
+  position:relative;
+}
+.carousel-item:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(16,24,40,0.08); }
+
+/* image / iframe area */
+.carousel-thumb { width:100%; height:200px; display:block; object-fit:cover; background:#eee; }
+
+/* overlay content area */
+.carousel-meta { padding:12px 14px; }
+.carousel-title { font-family:'Playfair Display', serif; font-weight:700; margin-bottom:6px; font-size:16px; color:var(--accent); }
+.carousel-desc { font-size:13px; color:var(--muted); margin-bottom:12px; line-height:1.3; }
+
+/* button in card */
+.card-btn {
+  display:inline-block;
+  padding:8px 12px;
+  border-radius:8px;
+  font-weight:700;
+  text-decoration:none;
+  font-size:13px;
+  background:var(--gold);
+  color:#0b0b0b;
+  box-shadow:0 6px 16px rgba(0,0,0,0.08);
+}
+
+/* arrow controls */
+.carousel-arrow {
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:44px;
+  height:44px;
+  border-radius:10px;
+  background:var(--gold);
+  color:#0b0b0b;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  cursor:pointer;
+  box-shadow:0 8px 22px rgba(0,0,0,0.12);
+  border: none;
+}
+.carousel-arrow.left { left:-10px; }
+.carousel-arrow.right { right:-10px; }
+
+@media (max-width:1000px){
+  .carousel-item { flex: 0 0 280px; }
+  .carousel-thumb { height:180px; }
+}
+@media (max-width:700px){
+  .carousel-item { flex: 0 0 220px; }
+  .carousel-thumb { height:140px; }
+  .carousel-arrow { display:none; } /* rely on touch scroll on small screens */
+}
+
+/* subtle reveal for items (works with .reveal.active) */
+.carousel-item { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+.carousel-item.visible { opacity: 1; transform: translateY(0); }
 
   </style>
 </head>
@@ -725,122 +822,138 @@ header {
 </section>
 
   
-  <section id="portfolio" class="reveal" style="padding:60px 0;">
-  <h3>Portfolio</h3>
-  <p style="margin-top:12px;color:#6b7280;">
-    A showcase of my creative work — from book cover design to illustrated and animated storytelling.
-  </p>
+  <!-- ===== PORTFOLIO (Grouped Carousels) ===== -->
+<section id="portfolio" class="reveal">
+  <div class="portfolio-inner">
 
-  <!-- 🖼️ Book Cover Designs -->
-  <h4 style="margin-top:30px;color:#c9a84b;">Book Cover Design</h4>
-  <div class="portfolio-grid" style="margin-top:18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;">
-    
-    <!-- Book Cover 1 -->
-    <a href="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Reveries.png" target="_blank" class="pf-item" 
-       style="background-image:url('https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Reveries.png');">
-      <div class="pf-overlay">
-        <div class="pf-title">Reveries</div>
-        <div>Conceptual and minimalist book cover design evoking reflection and depth.</div>
-      </div>
-    </a>
-
-    <!-- Book Cover 2 -->
-    <a href="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Only%20Us%20(1).png" target="_blank" class="pf-item" 
-       style="background-image:url('https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Only%20Us%20(1).png');">
-      <div class="pf-overlay">
-        <div class="pf-title">A Story of Love: Forever Yours</div>
-        <div>Romantic design with soft tones and heartfelt typography capturing intimacy and emotion.</div>
-      </div>
-    </a>
-
-    <!-- Book Cover 3 -->
-    <a href="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Only%20Us%20(2).png" target="_blank" class="pf-item" 
-       style="background-image:url('https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Only%20Us%20(2).png');">
-      <div class="pf-overlay">
-        <div class="pf-title">The Last Door</div>
-        <div>Dark, mysterious, and cinematic design evoking suspense and introspection.</div>
-      </div>
-    </a>
-
-    <!-- Book Cover 4 -->
-    <a href="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Only%20Us.png" target="_blank" class="pf-item" 
-       style="background-image:url('https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Only%20Us.png');">
-      <div class="pf-overlay">
-        <div class="pf-title">Stay Close</div>
-        <div>Emotional cover with dramatic tones and striking composition symbolizing love and distance.</div>
-      </div>
-    </a>
-
-  </div>
-
-  <hr style="border:0;height:1px;background:#e5e7eb;margin:40px 0;">
-
-    <div class="portfolio-item">
-  <img src="images_nature_retreat_mockup.png" alt="Nature Retreat Website Concept" 
-       style="width:100%;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.1);">
-  
-  <div class="portfolio-info" style="margin-top:15px;">
-    <h3>Nature Retreat Website Concept</h3>
-    <p>A calming, eco-inspired mock website design that promotes sustainable travel and relaxation. 
-    Built using Figma and AI-powered layout tools.</p>
-    <p style="font-size:0.9em;color:#bfa14a;">Tools: Figma · Canva · AI-assisted Design</p>
-
-    <a href="https://hinnaorquiola.github.io/mock-nature.html" target="_blank" 
-       style="display:inline-block;margin-top:10px;padding:8px 14px;background:#bfa14a;color:#fff;
-       border-radius:6px;text-decoration:none;font-weight:600;transition:background 0.3s;">
-       View Project
-    </a>
-  </div>
-</div>
-
-  
-  <!-- 🎥 Animation & Illustrated Stories -->
-  <h4 style="margin-top:50px;color:#c9a84b;">Animation & Illustrated Stories</h4>
-  <p style="margin-top:10px;color:#6b7280;">
-    Original animated and illustrated stories created for my YouTube channel 
-    <strong>Storyverse Animations</strong>. Watch more on 
-    <a href="https://www.youtube.com/@StoryverseAnimations-t4b" target="_blank" style="color:#c9a84b;">YouTube →</a>
-  </p>
-
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin-top:24px;">
-
-    <!-- Video 1 -->
-    <div class="video-item" style="border:1px solid #c9a84b;border-radius:12px;overflow:hidden;background:#0b0b0b;padding-bottom:10px;">
-      <iframe width="100%" height="200" src="https://www.youtube.com/embed/UyIIO_p8vVM"
-              title="The War of Thorns and Wings | Storyverse Animation" frameborder="0" allowfullscreen></iframe>
-      <div style="padding:10px;color:white;text-align:center;">
-        <strong style="color:#c9a84b;">The War of Thorns and Wings</strong><br>
-        <span style="font-size:14px;color:#9ca3af;">A fantasy short film about courage, love, and the battle between light and shadow.</span>
-      </div>
+    <div class="portfolio-header">
+      <h3>Portfolio</h3>
+      <p style="color:var(--muted); margin:0;">Selected website, book cover, and animation work — swipe or use arrows to browse.</p>
     </div>
 
-    <!-- Video 2 -->
-    <div class="video-item" style="border:1px solid #c9a84b;border-radius:12px;overflow:hidden;background:#0b0b0b;padding-bottom:10px;">
-      <iframe width="100%" height="200" src="https://www.youtube.com/embed/v9SZyJkiz_M"
-              title="The Whispering Stars | Storyverse Animation" frameborder="0" allowfullscreen></iframe>
-      <div style="padding:10px;color:white;text-align:center;">
-        <strong style="color:#c9a84b;">The Whispering Stars</strong><br>
-        <span style="font-size:14px;color:#9ca3af;">An illustrated story that explores hope, memory, and the magic hidden in the night sky.</span>
+    <!-- ===== Websites Carousel ===== -->
+    <div class="carousel" id="carousel-websites" aria-label="Website design samples">
+      <button class="carousel-arrow left" data-target="carousel-websites" data-dir="left">◀</button>
+      <div class="carousel-track" role="list">
+        <!-- Website 1 -->
+        <a href="https://hinnaorquiola.github.io/mock-nature.html" target="_blank" rel="noopener" class="carousel-item">
+          <img class="carousel-thumb" src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/images_nature_retreat_mockup.png" alt="Nature Retreat Website Concept">
+          <div class="carousel-meta">
+            <div class="carousel-title">Nature Retreat — Website Concept</div>
+            <div class="carousel-desc">Clean, calm layout for a retreat brand. Click to view the full mockup.</div>
+            <a class="card-btn" href="https://hinnaorquiola.github.io/mock-nature.html" target="_blank" rel="noopener">View Site</a>
+          </div>
+        </a>
+
+        <!-- Website 2 -->
+        <a href="https://hinnaorquiola.github.io/mock-cafe.html" target="_blank" rel="noopener" class="carousel-item">
+          <img class="carousel-thumb" src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/images_cafe_mock.png" alt="Cafe Website Concept">
+          <div class="carousel-meta">
+            <div class="carousel-title">Cafe Concept — Website</div>
+            <div class="carousel-desc">Warm, inviting visuals and handcrafted typography for coffee brands.</div>
+            <a class="card-btn" href="https://hinnaorquiola.github.io/mock-cafe.html" target="_blank" rel="noopener">View Site</a>
+          </div>
+        </a>
+
+        <!-- Website 3 -->
+        <a href="https://hinnaorquiola.github.io/mock-fasion.html" target="_blank" rel="noopener" class="carousel-item">
+          <img class="carousel-thumb" src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/image_mock_fashion.png" alt="Fashion Website Concept">
+          <div class="carousel-meta">
+            <div class="carousel-title">Fashion — Website Concept</div>
+            <div class="carousel-desc">Minimalist e-commerce concept highlighting product imagery and editorial look.</div>
+            <a class="card-btn" href="https://hinnaorquiola.github.io/mock-fasion.html" target="_blank" rel="noopener">View Site</a>
+          </div>
+        </a>
       </div>
+      <button class="carousel-arrow right" data-target="carousel-websites" data-dir="right">▶</button>
     </div>
 
-    <!-- Video 3 -->
-    <div class="video-item" style="border:1px solid #c9a84b;border-radius:12px;overflow:hidden;background:#0b0b0b;padding-bottom:10px;">
-      <iframe width="100%" height="200" src="https://www.youtube.com/embed/ct5hn3dFRY0"
-              title="Sam and the Secret Language of Nature | Storyverse Animation" frameborder="0" allowfullscreen></iframe>
-      <div style="padding:10px;color:white;text-align:center;">
-        <strong style="color:#c9a84b;">Sam and the Secret Language of Nature</strong><br>
-        <span style="font-size:14px;color:#9ca3af;">A magical story of discovery, connection, and the harmony between humans and nature.</span>
+    <!-- ===== Book Covers Carousel ===== -->
+    <div style="margin-top:28px;"></div>
+    <div class="carousel" id="carousel-books" aria-label="Book cover designs">
+      <button class="carousel-arrow left" data-target="carousel-books" data-dir="left">◀</button>
+      <div class="carousel-track" role="list">
+        <!-- Book 1 -->
+        <a href="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Reveries.png" target="_blank" class="carousel-item">
+          <img class="carousel-thumb" src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Reveries.png" alt="Reveries">
+          <div class="carousel-meta">
+            <div class="carousel-title">Reveries</div>
+            <div class="carousel-desc">Conceptual and minimalist book cover design evoking reflection and depth.</div>
+            <a class="card-btn" href="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Reveries.png" target="_blank" rel="noopener">View Project</a>
+          </div>
+        </a>
+
+        <!-- Book 2 -->
+        <a href="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Only%20Us%20(1).png" target="_blank" class="carousel-item">
+          <img class="carousel-thumb" src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Only%20Us%20(1).png" alt="A Story of Love: Forever Yours">
+          <div class="carousel-meta">
+            <div class="carousel-title">A Story of Love: Forever Yours</div>
+            <div class="carousel-desc">Romantic design with soft tones and heartfelt typography capturing intimacy and emotion.</div>
+            <a class="card-btn" href="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Only%20Us%20(1).png" target="_blank" rel="noopener">View Project</a>
+          </div>
+        </a>
+
+        <!-- Book 3 -->
+        <a href="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Only%20Us%20(2).png" target="_blank" class="carousel-item">
+          <img class="carousel-thumb" src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Only%20Us%20(2).png" alt="The Last Door">
+          <div class="carousel-meta">
+            <div class="carousel-title">The Last Door</div>
+            <div class="carousel-desc">Dark, mysterious, and cinematic design evoking suspense and introspection.</div>
+            <a class="card-btn" href="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Only%20Us%20(2).png" target="_blank" rel="noopener">View Project</a>
+          </div>
+        </a>
+
+        <!-- Book 4 -->
+        <a href="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Only%20Us.png" target="_blank" class="carousel-item">
+          <img class="carousel-thumb" src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Only%20Us.png" alt="Stay Close">
+          <div class="carousel-meta">
+            <div class="carousel-title">Stay Close</div>
+            <div class="carousel-desc">Emotional cover with dramatic tones and striking composition symbolizing love and distance.</div>
+            <a class="card-btn" href="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Only%20Us.png" target="_blank" rel="noopener">View Project</a>
+          </div>
+        </a>
       </div>
+      <button class="carousel-arrow right" data-target="carousel-books" data-dir="right">▶</button>
     </div>
 
-  </div>
+    <!-- ===== Animation & Illustration Carousel ===== -->
+    <div style="margin-top:28px;"></div>
+    <div class="carousel" id="carousel-anim" aria-label="Animation and illustration samples">
+      <button class="carousel-arrow left" data-target="carousel-anim" data-dir="left">◀</button>
+      <div class="carousel-track" role="list">
+        <!-- Video 1 -->
+        <div class="carousel-item">
+          <iframe class="carousel-thumb" width="100%" height="200" src="https://www.youtube.com/embed/UyI1O_p8vWM" title="The War of Thorns and Wings" frameborder="0" allowfullscreen></iframe>
+          <div class="carousel-meta">
+            <div class="carousel-title">The War of Thorns and Wings</div>
+            <div class="carousel-desc">A fantasy short film about courage, love, and the battle between light and shadow.</div>
+            <a class="card-btn" href="https://www.youtube.com/watch?v=UyI1O_p8vWM" target="_blank" rel="noopener">View Video</a>
+          </div>
+        </div>
 
-  <div style="text-align:center;margin-top:30px;">
-    <a href="https://www.youtube.com/@StoryverseAnimations-t4b" target="_blank"
-       style="background:#c9a84b;color:#0b0b0b;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:bold;">
-      🎥 View All on YouTube
-    </a>
+        <!-- Video 2 -->
+        <div class="carousel-item">
+          <iframe class="carousel-thumb" width="100%" height="200" src="https://www.youtube.com/embed/v9SZyJkiz_M" title="The Whispering Stars" frameborder="0" allowfullscreen></iframe>
+          <div class="carousel-meta">
+            <div class="carousel-title">The Whispering Stars</div>
+            <div class="carousel-desc">An illustrated story that explores hope, memory, and the magic hidden in the night sky.</div>
+            <a class="card-btn" href="https://www.youtube.com/watch?v=v9SZyJkiz_M" target="_blank" rel="noopener">View Video</a>
+          </div>
+        </div>
+
+        <!-- Video 3 -->
+        <div class="carousel-item">
+          <iframe class="carousel-thumb" width="100%" height="200" src="https://www.youtube.com/embed/ct5hn3dFRY0" title="Sam and the Secret Language of Nature" frameborder="0" allowfullscreen></iframe>
+          <div class="carousel-meta">
+            <div class="carousel-title">Sam and the Secret Language of Nature</div>
+            <div class="carousel-desc">A magical story of discovery, connection, and the harmony between humans and nature.</div>
+            <a class="card-btn" href="https://www.youtube.com/watch?v=ct5hn3dFRY0" target="_blank" rel="noopener">View Video</a>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-arrow right" data-target="carousel-anim" data-dir="right">▶</button>
+    </div>
+
   </div>
 </section>
 
@@ -1210,6 +1323,38 @@ header {
     const theme = document.body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
     localStorage.setItem('theme', theme);
     toggleButton.textContent = theme === 'dark-mode' ? '🌞' : '🌙';
+  });
+</script>
+  <script>
+  // Carousel arrow scrolling
+  document.querySelectorAll('.carousel-arrow').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.getAttribute('data-target');
+      const dir = btn.getAttribute('data-dir');
+      const track = document.querySelector('#' + targetId + ' .carousel-track');
+      if (!track) return;
+      const width = track.querySelector('.carousel-item')?.getBoundingClientRect().width || 320;
+      const scrollAmount = (dir === 'left') ? - (width + 18) : (width + 18);
+      track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+  });
+
+  // Make carousel items visible when in viewport (simple intersection)
+  const items = document.querySelectorAll('.carousel-item');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.15 });
+
+  items.forEach(i => io.observe(i));
+
+  // Improve keyboard accessibility: allow arrow buttons to be focused
+  document.querySelectorAll('.carousel-arrow').forEach(btn => {
+    btn.setAttribute('tabindex','0');
+    btn.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') btn.click();
+    });
   });
 </script>
 </body>
