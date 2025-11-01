@@ -58,18 +58,23 @@
     nav a:hover { color: var(--gold); }
 
     /* ===== NAVBAR STYLES ===== */
-.nav-inner { max-width: var(--maxw); 
-            position: fixed;  
-            top: 0;
-            margin: auto; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            padding: 12px 20px; background: #ffffff; /* Always white background */ 
-            color: #222; 
-            position: relative; 
-            z-index: 100; 
-            box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
+.nav-inner {
+  max-width: var(--maxw);
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.95); /* slight transparency for style */
+  color: #222;
+  position: fixed;       /* ✅ makes it stick to the top */
+  top: 0;                /* ensures it stays at the top edge */
+  left: 0;
+  width: 100%;           /* full width across screen */
+  z-index: 1000;         /* keeps it above other content */
+  backdrop-filter: blur(8px); /* subtle glass effect */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
 
 /* Brand text */
 .brand h1 {
