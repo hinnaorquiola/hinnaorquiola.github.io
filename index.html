@@ -59,21 +59,19 @@
 
     /* ===== NAVBAR STYLES ===== */
 .nav-inner {
-  max-width: var(--maxw);
-  margin: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 20px;
-  background: rgba(255, 255, 255, 0.95); /* slight transparency for style */
-  color: #222;
-  position: fixed;       /* ✅ makes it stick to the top */
-  top: 0;                /* ensures it stays at the top edge */
-  left: 0;
-  width: 100%;           /* full width across screen */
-  z-index: 1000;         /* keeps it above other content */
-  backdrop-filter: blur(8px); /* subtle glass effect */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 12px 40px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  z-index: 1000;
+  box-sizing: border-box;
 }
 
 /* Brand text */
