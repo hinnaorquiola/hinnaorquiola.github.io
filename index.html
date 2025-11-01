@@ -58,7 +58,7 @@
     nav a:hover { color: var(--gold); }
 
     /* ===== NAVBAR STYLES ===== */
-/* === SHRINK ON SCROLL EFFECT === */
+/* === FIXED NAVBAR WITH SHRINK-ON-SCROLL EFFECT === */
 .nav-wrapper {
   position: fixed;
   top: 0;
@@ -71,69 +71,67 @@
   transition: all 0.3s ease;
 }
 
+/* Shrink and darken slightly on scroll */
 .nav-wrapper.scrolled {
   background: rgba(255, 255, 255, 0.98);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transform: scaleY(0.96);
+  transform: scaleY(0.97);
 }
 
+/* Inner container for centering */
 .nav-inner {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 14px 40px;
+  padding: 16px 40px;
   transition: padding 0.3s ease, transform 0.3s ease;
+  box-sizing: border-box;
 }
 
+/* Shrink inner padding smoothly */
 .nav-wrapper.scrolled .nav-inner {
-  padding: 8px 40px; /* smaller height when scrolling */
-  transform: translateY(-2px);
+  padding: 10px 40px;
+  transform: translateY(-1px);
 }
 
-/* Brand text */
+/* Brand styling */
 .brand h1 {
+  font-size: 1.4rem;
   margin: 0;
-  font-family: 'Playfair Display', serif;
-  color: var(--gold);
-  font-size: 20px;
+  color: #222;
 }
 
 .brand p {
+  font-size: 0.85rem;
+  color: #555;
   margin: 0;
-  font-size: 12px;
-  color: var(--muted);
 }
 
-/* Nav links */
-nav {
-  display: flex;
-  gap: 18px;
-}
-
+/* Navigation links */
 nav a {
-  text-decoration: none;
   color: #222;
+  text-decoration: none;
   font-weight: 500;
+  margin-left: 24px;
   transition: color 0.3s ease;
 }
 
 nav a:hover {
-  color: var(--gold);
+  color: #c9a84b; /* your gold accent */
 }
 
-/* --- TOGGLE MENU STYLES FOR MOBILE --- */
+/* === MOBILE VIEW === */
 .menu-toggle {
   display: none;
-  font-size: 22px;
-  cursor: pointer;
-  color: #222;
   background: none;
   border: none;
+  font-size: 22px;
+  color: #222;
+  cursor: pointer;
 }
 
-/* Mobile view */
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
@@ -142,9 +140,9 @@ nav a:hover {
   nav {
     display: none;
     flex-direction: column;
-    background: #ffffff; /* White background for toggle menu */
+    background: rgba(255, 255, 255, 0.97);
     position: absolute;
-    top: 60px;
+    top: 70px;
     right: 20px;
     width: 200px;
     padding: 15px;
@@ -157,13 +155,19 @@ nav a:hover {
   }
 
   nav a {
+    margin: 10px 0;
     color: #222;
-    padding: 8px 0;
   }
 
   nav a:hover {
-    color: var(--gold);
+    color: #c9a84b;
   }
+}
+
+/* Space for fixed navbar */
+body {
+  padding-top: 90px;
+  margin: 0;
 }
 
 /* ===== HAMBURGER ===== */
@@ -1673,7 +1677,8 @@ function toggleMenu() {
 }
 </script>
 
-  <script>
+ <script>
+  // Shrink-on-scroll animation
   window.addEventListener("scroll", () => {
     const nav = document.querySelector(".nav-wrapper");
     if (window.scrollY > 50) {
@@ -1682,7 +1687,14 @@ function toggleMenu() {
       nav.classList.remove("scrolled");
     }
   });
+
+  // Toggle menu for mobile
+  function toggleMenu() {
+    const nav = document.querySelector("nav");
+    nav.classList.toggle("active");
+  }
 </script>
+
 </body>
 </html>
 
