@@ -58,33 +58,17 @@
     nav a:hover { color: var(--gold); }
 
     /* ===== NAVBAR STYLES ===== */
-.nav-inner {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.95); /* transparent white */
-  backdrop-filter: blur(8px); /* glass effect */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 5%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  z-index: 1000;
-}
-
-/* keep your content centered in large screens */
-.nav-inner > * {
-  flex-shrink: 0;
-}
-
-@media (min-width: 1024px) {
-  .nav-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 12px 40px;
-  }
-}
+.nav-inner { max-width: var(--maxw); 
+            position: fixed;  
+            margin: auto; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 12px 20px; background: #ffffff; /* Always white background */ 
+            color: #222; 
+            position: relative; 
+            z-index: 100; 
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
 
 /* Brand text */
 .brand h1 {
