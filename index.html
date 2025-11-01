@@ -65,11 +65,15 @@
   justify-content: space-between;
   align-items: center;
   padding: 12px 20px;
-  background: #ffffff; /* Always white background */
+  background: rgba(255, 255, 255, 0.95); /* slight transparency for style */
   color: #222;
-  position: relative;
-  z-index: 100;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  position: fixed;       /* ✅ makes it stick to the top */
+  top: 0;                /* ensures it stays at the top edge */
+  left: 0;
+  width: 100%;           /* full width across screen */
+  z-index: 1000;         /* keeps it above other content */
+  backdrop-filter: blur(8px); /* subtle glass effect */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 /* Brand text */
@@ -424,7 +428,7 @@ nav a:hover {
   align-items: center;
   justify-content: center;
   gap: 48px;
-  padding: 80px 20px 60px;
+  padding: 120px 20px 60px; /* increased top padding to make room for fixed nav */
 }
 
 .hero-left {
