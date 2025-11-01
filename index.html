@@ -58,6 +58,17 @@
     nav a:hover { color: var(--gold); }
 
     /* ===== NAVBAR STYLES ===== */
+.nav-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  z-index: 1000;
+}
+    
 .nav-inner {
   position: fixed;
   top: 0;
@@ -916,6 +927,7 @@ html {
   
 <body>
 <!-- ===== NAVBAR START ===== -->
+<div class="nav-wrapper">
 <div class="nav-inner">
   <div class="brand">
     <h1>Hinna Orquiola</h1>
@@ -946,7 +958,7 @@ html {
       🌙
     </button>
   </div>
-
+  </div>
 
 <!-- ===== HERO SECTION ===== -->
 <section id="home">
