@@ -738,87 +738,7 @@ html {
   flex-direction: column;
   justify-content: space-between;
 }
-    /* === Hero Section Enhancements === */
-
-#home {
-  background: linear-gradient(135deg, #fff 0%, #faf7f2 100%);
-  position: relative;
-  overflow: hidden;
-}
-
-/* Text animation */
-.hero-left h1, .hero-left p, .intro-line, .hero-btns {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.8s ease forwards;
-}
-.hero-left h1 { animation-delay: 0.1s; }
-.hero-left p.tagline { animation-delay: 0.2s; }
-.hero-btns { animation-delay: 0.3s; }
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Hover effects for buttons */
-.btn-gold, .btn-outline {
-  transition: all 0.3s ease;
-}
-.btn-gold:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 16px rgba(201,168,75,0.4);
-}
-.btn-outline:hover {
-  transform: translateY(-3px);
-  background:#c9a84b;
-  color:#0b0b0b !important;
-}
-
-/* Floating image */
-.hero-img:hover {
-  transform: scale(1.03);
-}
-
-/* Social icons hover */
-.hero-socials a:hover {
-  color:#000;
-}
-
-/* Scroll indicator */
-.scroll-indicator {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 1.5rem;
-  color: #c9a84b;
-  animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translate(-50%, 0); }
-  50% { transform: translate(-50%, 6px); }
-}
-
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-  #home {
-    flex-direction: column;
-    text-align: center;
-  }
-  .hero-left {
-    text-align: center;
-  }
-  .hero-btns {
-    justify-content: center;
-  }
-  .hero-socials {
-    justify-content: center;
-  }
-}
+    
   </style>
 </head>
 <body>
@@ -852,34 +772,39 @@ html {
   </div>
 </header>
 
-<section id="home" class="reveal" style="padding:80px 0;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:40px;">
+<!-- ===== HERO SECTION ===== -->
+<section id="home">
+  <div class="hero-left">
+    <h1>
+      Designs that <span>Empower & Inspire</span>
+    </h1>
+    <p>Graphic & Web Designer ✦ Virtual Assistant ✦ Visual Storyteller</p>
 
-  <!-- Left Content -->
-  <div class="hero-left" style="max-width:520px;text-align:left;">
-    <p class="intro-line">Hi, I’m <strong>Hinna Orquiola</strong> — your creative partner.</p>
-    <h1 style="font-size:2.6rem;font-weight:700;margin:10px 0;color:#111;">Designs that <span style="color:#c9a84b;">Empower & Inspire</span></h1>
-    <p class="tagline" style="color:#6b7280;line-height:1.6;margin-bottom:30px;">
-      Helping brands and creators bring ideas to life through thoughtful design, illustration, and storytelling.
-    </p>
-
-    <div class="hero-btns" style="display:flex;flex-wrap:wrap;gap:15px;">
-      <a href="#portfolio" class="btn-gold" style="background:#c9a84b;color:#0b0b0b;padding:12px 28px;border-radius:6px;font-weight:600;text-decoration:none;transition:all 0.3s;">View My Portfolio</a>
-      <a href="#shop" class="btn-outline" style="border:1px solid #c9a84b;color:#c9a84b;padding:12px 28px;border-radius:6px;font-weight:600;text-decoration:none;transition:all 0.3s;">Visit My Store</a>
-    </div>
-
-    <div class="hero-socials" style="margin-top:25px;">
-      <a href="https://facebook.com" target="_blank" style="margin-right:15px;font-size:20px;color:#c9a84b;">🌐</a>
-      <a href="https://linkedin.com" target="_blank" style="margin-right:15px;font-size:20px;color:#c9a84b;">💼</a>
-      <a href="https://www.youtube.com/@StoryverseAnimations-t4b" target="_blank" style="font-size:20px;color:#c9a84b;">▶️</a>
+    <div class="hero-btns">
+      <a class="btn-primary" href="#portfolio">View My Portfolio</a>
+      <a class="btn-secondary" href="#shop">Visit My Store</a>
     </div>
   </div>
 
-  <!-- Right Content -->
-  <div class="hero-right" style="flex:1 1 300px;display:flex;justify-content:center;">
-    <img src="images/profile_photo.jpg" alt="Hinna Orquiola" class="hero-img" style="width:280px;border-radius:50%;box-shadow:0 10px 25px rgba(0,0,0,0.08);transition:transform 3s ease-in-out;">
+  <div class="hero-right">
+    <img class="hero-img" src="images/profile_photo.jpg" alt="Hinna Orquiola Profile">
   </div>
+</section>
 
-  <div class="scroll-indicator">⌄</div>
+<!-- ===== VALUE HIGHLIGHT ROW ===== -->
+<section id="value-highlights">
+  <div class="highlight">
+    <span>🎨</span>
+    <p>Creative Graphic Design</p>
+  </div>
+  <div class="highlight">
+    <span>💻</span>
+    <p>Website Design & Build</p>
+  </div>
+  <div class="highlight">
+    <span>🛍️</span>
+    <p>Unique Shop Products</p>
+  </div>
 </section>
 
 <main>
