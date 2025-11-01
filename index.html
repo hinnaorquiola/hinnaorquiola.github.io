@@ -57,43 +57,52 @@
     nav a:hover { color: var(--gold); }
 
     /* ===== NAVBAR STYLES ===== */
+/* Navbar container */
 .nav-inner {
+  max-width: var(--maxw);
+  margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #0b0b0b;
-  color: #fff;
-  padding: 15px 40px;
-  border-bottom: 1px solid #c9a84b;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  padding: 12px 20px;
+  background: #fff; /* <-- ensures the background is white in desktop view */
+  color: #222;
+  position: relative;
+  z-index: 10;
 }
 
+/* Brand text */
 .brand h1 {
-  font-size: 1.5rem;
-  color: #c9a84b;
   margin: 0;
+  font-family: 'Playfair Display', serif;
+  color: var(--gold);
+  font-size: 20px;
 }
 
 .brand p {
-  font-size: 0.85rem;
-  color: #aaa;
   margin: 0;
+  font-size: 12px;
+  color: var(--muted);
 }
 
 nav a {
-  margin-left: 20px;
-  color: #fff;
+  margin-left: 18px;
   text-decoration: none;
+  color: #222; /* Dark gray text for visibility */
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
 nav a:hover {
-  color: #c9a84b;
+  color: var(--gold);
 }
 
+/* Mobile Menu (keeps dark background only on small screens) */
+@media (max-width: 768px) {
+  .nav-inner {
+    background: #0b0b0b; /* Only dark in mobile view */
+  }
+}
 /* ===== HAMBURGER ===== */
 .hamburger {
   display: none;
