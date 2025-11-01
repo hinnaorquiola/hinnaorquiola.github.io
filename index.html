@@ -57,7 +57,7 @@
     nav a:hover { color: var(--gold); }
 
     /* ===== NAVBAR STYLES ===== */
-/* Navbar container */
+/* NAVBAR BASE STYLE */
 .nav-inner {
   max-width: var(--maxw);
   margin: auto;
@@ -65,10 +65,11 @@
   justify-content: space-between;
   align-items: center;
   padding: 12px 20px;
-  background: #fff; /* <-- ensures the background is white in desktop view */
+  background: #ffffff; /* Always white background */
   color: #222;
   position: relative;
-  z-index: 10;
+  z-index: 100;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
 }
 
 /* Brand text */
@@ -85,10 +86,15 @@
   color: var(--muted);
 }
 
+/* Nav links */
+nav {
+  display: flex;
+  gap: 18px;
+}
+
 nav a {
-  margin-left: 18px;
   text-decoration: none;
-  color: #222; /* Dark gray text for visibility */
+  color: #222;
   font-weight: 500;
   transition: color 0.3s ease;
 }
@@ -97,12 +103,49 @@ nav a:hover {
   color: var(--gold);
 }
 
-/* Mobile Menu (keeps dark background only on small screens) */
+/* --- TOGGLE MENU STYLES FOR MOBILE --- */
+.menu-toggle {
+  display: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #222;
+  background: none;
+  border: none;
+}
+
+/* Mobile view */
 @media (max-width: 768px) {
-  .nav-inner {
-    background: #0b0b0b; /* Only dark in mobile view */
+  .menu-toggle {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    flex-direction: column;
+    background: #ffffff; /* White background for toggle menu */
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    width: 200px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
+  }
+
+  nav.active {
+    display: flex;
+  }
+
+  nav a {
+    color: #222;
+    padding: 8px 0;
+  }
+
+  nav a:hover {
+    color: var(--gold);
   }
 }
+
 /* ===== HAMBURGER ===== */
 .hamburger {
   display: none;
@@ -862,8 +905,6 @@ html {
   }
 }
     
-
-    
   </style>
 </head>
 <body>
@@ -875,7 +916,7 @@ html {
   </div>
 
   <!-- Hamburger Icon -->
-  <div class="hamburger" id="hamburger">☰</div>
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
   <nav id="nav-links">
     <a href="#home">Home</a>
@@ -1600,13 +1641,12 @@ html {
 </script>
   
   <script>
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('nav-links');
-
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('show');
-    hamburger.textContent = navLinks.classList.contains('show') ? '×' : '☰';
-  });
+function toggleMenu() {
+  const nav = document.querySelector('nav');
+  const toggle = document.querySelector('.menu-toggle');
+  nav.classList.toggle('active');
+  toggle.textContent = nav.classList.contains('active') ? '❌' : '☰';
+}
 </script>
 
 </body>
