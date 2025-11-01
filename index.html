@@ -58,25 +58,6 @@
     nav a:hover { color: var(--gold); }
 
     /* ===== NAVBAR STYLES ===== */
-/* === SHRINK ON SCROLL EFFECT === */
-.nav-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  z-index: 1000;
-  transition: all 0.3s ease;
-}
-
-.nav-wrapper.scrolled {
-  background: rgba(255, 255, 255, 0.98);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transform: scaleY(0.96);
-}
-
 .nav-inner {
   position: fixed;
   top: 0;
@@ -94,11 +75,6 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   z-index: 1000;
   box-sizing: border-box;
-}
-
-.nav-wrapper.scrolled .nav-inner {
-  padding: 8px 40px; /* smaller height when scrolling */
-  transform: translateY(-2px);
 }
 
 /* Brand text */
@@ -940,12 +916,10 @@ html {
   
 <body>
 <!-- ===== NAVBAR START ===== -->
-<div class="nav-wrapper">  
 <div class="nav-inner">
   <div class="brand">
     <h1>Hinna Orquiola</h1>
     <p>Virtual Assistant • Graphic & Web Designer</p>
-  </div>
   </div>
 
   <!-- Hamburger Icon -->
@@ -1681,25 +1655,6 @@ function toggleMenu() {
   toggle.textContent = nav.classList.contains('active') ? '❌' : '☰';
 }
 </script>
-
- <script>
-  // Shrink-on-scroll animation
-  window.addEventListener("scroll", () => {
-    const nav = document.querySelector(".nav-wrapper");
-    if (window.scrollY > 50) {
-      nav.classList.add("scrolled");
-    } else {
-      nav.classList.remove("scrolled");
-    }
-  });
-
-  // Toggle menu for mobile
-  function toggleMenu() {
-    const nav = document.querySelector("nav");
-    nav.classList.toggle("active");
-  }
-</script>
-
 </body>
 </html>
 
