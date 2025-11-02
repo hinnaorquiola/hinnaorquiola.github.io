@@ -1718,84 +1718,55 @@ html {
   </form>
 </section>
 
-  <!-- ===== CONTACT SECTION (REPLACE YOUR EXISTING #contact) ===== -->
+ <!-- ===== CONTACT SECTION (FINAL RESPONSIVE VERSION) ===== -->
 <section id="contact">
   <div class="contact-container">
-    <!-- LEFT: Intro / contact info -->
+    <!-- LEFT: Info -->
     <div class="contact-left">
       <h2>Let’s Create Together</h2>
       <p>
-        Have a project or idea? Tell me the basics below — I'll reply within 1–2 business days.
+        Have a project or idea in mind? Fill out the form below and I’ll get back to you within 1–2 business days.
       </p>
 
-      <div class="contact-info" aria-hidden="false">
-        <p><strong>Email</strong><br><a href="mailto:hinnaorquiola@gmail.com">hinnaorquiola@gmail.com</a></p>
-        <p style="margin-top:8px;"><strong>Typical turnaround</strong><br>2–10 business days depending on project scope</p>
+      <div class="contact-info">
+        <p><strong>Email:</strong> <a href="mailto:hinnaorquiola@gmail.com">hinnaorquiola@gmail.com</a></p>
+        <p><strong>Turnaround:</strong> 2–10 business days depending on project scope</p>
       </div>
     </div>
 
-    <!-- RIGHT: Form -->
+    <!-- RIGHT: Contact Form -->
     <div class="contact-right">
-      <!-- Replace action with your form handler (Formspree / Netlify Forms / server endpoint) -->
       <form action="https://formspree.io/f/xkgpnljp" method="POST" novalidate>
         <!-- Name -->
-        <label for="contact-name" class="sr-only">Full name</label>
-        <input id="contact-name" name="name" type="text" placeholder="Full name" required aria-required="true">
+        <input type="text" name="name" placeholder="Full Name" required aria-required="true">
 
         <!-- Email -->
-        <label for="contact-email" class="sr-only">Email address</label>
-        <input id="contact-email" name="email" type="email" placeholder="you@example.com" required aria-required="true">
+        <input type="email" name="email" placeholder="Email Address" required aria-required="true">
 
-        <!-- Row: Service + Timeline (two dropdowns side-by-side on wide screens) -->
-        <div style="display:flex; gap:12px; align-items:stretch; flex-wrap:wrap;">
-          <div style="flex:1; min-width:140px;">
-            <label for="contact-service" class="sr-only">Select a service</label>
-            <select id="contact-service" name="service" required>
-              <option value="">Select a service</option>
-              <option value="website">Website Design & Development</option>
-              <option value="book_cover">Book Cover Design</option>
-              <option value="graphic_design">Graphic Design</option>
-              <option value="illustration">Illustration</option>
-              <option value="virtual_assistant">Virtual Assistant</option>
-              <option value="maintenance">Website Maintenance</option>
-              <option value="animation">Animation / Motion</option>
-            </select>
-          </div>
+        <!-- Two dropdowns side by side on desktop -->
+        <div class="contact-row">
+          <select name="service" required aria-required="true">
+            <option value="">Select a Service</option>
+            <option value="website">Website Design & Development</option>
+            <option value="book_cover">Book Cover Design</option>
+            <option value="graphic_design">Graphic Design</option>
+            <option value="illustration">Illustration</option>
+            <option value="virtual_assistant">Virtual Assistance</option>
+          </select>
 
-          <div style="flex:1; min-width:140px;">
-            <label for="contact-timeline" class="sr-only">Timeline</label>
-            <select id="contact-timeline" name="timeline" required>
-              <option value="">Timeline</option>
-              <option value="urgent">Urgent — 1–2 weeks</option>
-              <option value="standard">Standard — 3–4 weeks</option>
-              <option value="flexible">Flexible — 5+ weeks</option>
-            </select>
-          </div>
+          <select name="timeline" required aria-required="true">
+            <option value="">Select Timeline</option>
+            <option value="urgent">Urgent — 1–2 weeks</option>
+            <option value="standard">Standard — 3–4 weeks</option>
+            <option value="flexible">Flexible — 5+ weeks</option>
+          </select>
         </div>
 
-        <!-- Budget dropdown (single full-width) -->
-        <label for="contact-budget" class="sr-only">Budget range</label>
-        <select id="contact-budget" name="budget" style="margin-top:6px;">
-          <option value="">Budget (optional)</option>
-          <option value="$500-999">$500–$999</option>
-          <option value="$1000-2499">$1,000–$2,499</option>
-          <option value="$2500+">$2,500+</option>
-        </select>
-
         <!-- Message -->
-        <label for="contact-message" class="sr-only">Project details</label>
-        <textarea id="contact-message" name="message" placeholder="Tell me about your project: goals, deadlines, links, and anything else..." required aria-required="true"></textarea>
-
-        <!-- Honeypot (optional simple spam trap) -->
-        <input type="text" name="_gotcha" style="display:none">
+        <textarea name="message" placeholder="Please tell me about your project..." required aria-required="true"></textarea>
 
         <!-- Submit -->
         <button type="submit" class="submit-btn">Send Message</button>
-
-        <!-- Optional success / error anchors (if using JS, you can show/hide these) -->
-        <div aria-live="polite" style="margin-top:10px;font-size:0.95rem;color:#444;">
-          <span id="contact-status"></span>
-        </div>
       </form>
     </div>
   </div>
