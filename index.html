@@ -1758,7 +1758,8 @@ html {
 
     <!-- RIGHT: Contact Form -->
     <div class="contact-right">
-      <form action="https://formspree.io/f/xkgpnljp" method="POST" novalidate>
+      <form action="https://formspree.io/f/xkgpnljp" method="POST">
+
         <!-- Name -->
         <input type="text" name="name" placeholder="Full Name" required aria-required="true">
 
@@ -1781,6 +1782,13 @@ html {
             <option value="urgent">Urgent — 1–2 weeks</option>
             <option value="standard">Standard — 3–4 weeks</option>
             <option value="flexible">Flexible — 5+ weeks</option>
+          </select>
+
+          <select name="timeline" required aria-required="true">
+            <option value="">Budget range</option>
+            <option value="$500-999">$500–$999</option>
+            <option value="$1000-2499">$1,000–$2,499</option>
+            <option value="$2500+">$2,500+</option>
           </select>
         </div>
 
