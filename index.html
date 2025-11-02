@@ -940,7 +940,7 @@ html {
 }
 
     
-  /* ===== CONTACT SECTION (Responsive Fixed Version) ===== */
+/* ===== CONTACT SECTION (FINAL RESPONSIVE VERSION) ===== */
 #contact {
   background-color: #f8f4ed;
   padding: 80px 20px;
@@ -981,30 +981,48 @@ html {
   margin: 8px 0;
 }
 
-/* Contact Form Styling */
+/* Form Layout */
 .contact-right form {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
+/* Two dropdowns row */
+.contact-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Inputs, selects, and textarea */
 .contact-right input,
-.contact-right textarea,
-.contact-right select {
+.contact-right select,
+.contact-right textarea {
   width: 100%;
   padding: 12px 14px;
   border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 1rem;
   box-sizing: border-box;
+  font-family: inherit;
 }
 
+/* Textarea */
 .contact-right textarea {
   resize: vertical;
   min-height: 120px;
 }
 
-.contact-right button {
+/* Required fields visual feedback */
+.contact-right input:required:invalid,
+.contact-right select:required:invalid,
+.contact-right textarea:required:invalid {
+  border-color: #d33;
+}
+
+/* Submit button */
+.submit-btn {
   padding: 12px 20px;
   border: none;
   border-radius: 8px;
@@ -1012,14 +1030,14 @@ html {
   color: #0b0b0b;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background 0.3s ease;
 }
 
-.contact-right button:hover {
+.submit-btn:hover {
   background: #b6953d;
 }
 
-/* Mobile adjustments */
+/* Mobile Adjustments */
 @media (max-width: 768px) {
   #contact {
     padding: 60px 16px;
@@ -1032,12 +1050,16 @@ html {
     gap: 30px;
   }
 
+  .contact-row {
+    flex-direction: column;
+  }
+
   .contact-left, .contact-right {
     width: 100%;
   }
 
-  .contact-right form {
-    align-items: stretch;
+  .submit-btn {
+    width: 100%;
   }
 }
 
