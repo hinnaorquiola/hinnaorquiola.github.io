@@ -151,6 +151,48 @@
       font-size: 0.9rem;
       padding-bottom: 40px;
     }
+
+    /* === Comment Section === */
+.comment-section {
+  margin-top: 80px;
+  padding: 40px;
+  background: #fafafa;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.comment-section h3 {
+  color: #c9a84b;
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+}
+
+.comment-section input,
+.comment-section textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.comment-section button {
+  background: #c9a84b;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.comment-section button:hover {
+  background: #b08f3e;
+}
+
   </style>
 </head>
 <body>
@@ -240,7 +282,17 @@
     truly good business.
   </p>
 
-  <!-- Share Section -->
+    
+<section class="comment-section">
+  <h3>Leave a Comment</h3>
+  <form action="https://formspree.io/f/xkgpnljp" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="_replyto" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Your Comment" rows="5" required></textarea>
+    <button type="submit">Post Comment</button>
+  </form>
+</section>
+    
     <!-- Share Section -->
 <div class="share">
   <p>Share this post:</p>
