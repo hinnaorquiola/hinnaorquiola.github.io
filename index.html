@@ -911,8 +911,33 @@ html {
     transform: translateY(0);
   }
 }
+.blog-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* aligns “Read More” at the bottom */
+  min-height: 320px; /* consistent card height */
+}
 
- 
+.blog-card a {
+  color: #c9a84b;
+  font-weight: 600;
+  margin-top: auto; /* pushes link to bottom */
+  align-self: flex-start;
+  text-decoration: none;
+  transition: color 0.3s, transform 0.2s;
+}
+
+.blog-card a:hover {
+  color: #222;
+  transform: translateX(4px);
+}
+
   </style>
 </head>
   
