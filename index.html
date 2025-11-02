@@ -938,6 +938,26 @@ html {
   color: #222;
   transform: translateX(4px);
 }
+
+    
+    @media (max-width: 768px) {
+  #contact .container {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+  #contact form {
+    width: 100%;
+  }
+  #contact h2 {
+    margin-top: 0;
+  }
+}
+
+/* Button hover effect */
+#contact button:hover {
+  background-color: #b2933f;
+}
   
   </style>
 </head>
@@ -1578,85 +1598,84 @@ html {
   </form>
 </section>
 
-  
-  <section id="contact" class="reveal" style="padding:80px 40px; background-color:#faf7f2;">
+  <section id="contact" style="padding:80px 40px; background-color:#faf7f2;">
   <div class="container" 
-       style="max-width:1100px; margin:auto; padding:0 40px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:40px;">
+       style="max-width:1100px; margin:auto; padding:0 40px; display:flex; flex-wrap:wrap; align-items:flex-start; justify-content:space-between; gap:30px;">
 
     <!-- Left Side -->
-    <div style="flex:1 1 400px;">
+    <div style="flex:1; min-width:350px; max-width:500px;">
       <h2 style="color:#222; margin-top:20px;">Let’s Create Together</h2>
       <p style="margin:10px 0; color:#555;">
-        Have a project in mind? I’d love to collaborate with you on your next design, illustration, or animation.
+        Have a project in mind? I’d love to collaborate with you on your next design,
+        illustration, or animation.
       </p>
+
       <p style="color:#bfa14a; font-weight:600; margin-bottom:5px;">
-        ✉️ hinnaorquiola@gmail.com
+        📧 hinnaorquiola@gmail.com
       </p>
+
       <p style="margin-top:5px;">
-        🌐 <a href="https://www.youtube.com/@StoryverseAnimations-t4b" 
-               target="_blank" 
-               style="color:#bfa14a; text-decoration:none;">
+        🌐
+        <a href="https://www.youtube.com/@StoryverseAnimations-t4b" 
+           target="_blank" 
+           style="color:#bfa14a; text-decoration:none;">
           Storyverse Animations
         </a>
       </p>
     </div>
 
-    <!-- Right Side (Formspree) -->
-    <form action="https://formspree.io/f/xkgpnljp" method="POST"
-  style="display:flex; flex-direction:column; gap:15px; max-width:500px; margin:auto;">
+    <!-- Right Side (Form) -->
+    <form action="https://formspree.io/f/xkqgnljp" method="POST"
+          style="display:flex; flex-direction:column; gap:15px; max-width:500px; width:100%;">
 
-  <!-- Name -->
-  <input type="text" name="name" placeholder="Full Name" required
-    style="padding:12px; border-radius:8px; border:1px solid #c9a84b; background:#fff; color:#000;">
+      <!-- Name -->
+      <input type="text" name="name" placeholder="Full Name" required
+             style="padding:12px; border-radius:8px; border:1px solid #c9a84b; background:#fff; color:#000;">
 
-  <!-- Email -->
-  <input type="email" name="email" placeholder="Email Address" required
-    style="padding:12px; border-radius:8px; border:1px solid #c9a84b; background:#fff; color:#000;">
+      <!-- Email -->
+      <input type="email" name="email" placeholder="Email Address" required
+             style="padding:12px; border-radius:8px; border:1px solid #c9a84b; background:#fff; color:#000;">
 
-  <!-- Service Selection -->
-  <select name="service" required
-    style="padding:12px; border-radius:8px; border:1px solid #c9a84b; background:#fff; color:#000;">
-    <option value="">Select a Service</option>
-    <option>Website Design</option>
-    <option>Book Cover Design</option>
-    <option>Digital Illustration</option>
-    <option>Virtual Assistance</option>
-  </select>
+      <!-- Service Selection -->
+      <select name="service" required
+              style="padding:12px; border-radius:8px; border:1px solid #c9a84b; background:#fff; color:#000;">
+        <option value="">Select a Service</option>
+        <option>Website Design</option>
+        <option>Book Cover Design</option>
+        <option>Digital Illustration</option>
+        <option>Virtual Assistance</option>
+      </select>
 
-  <!-- Timeline -->
-  <label for="timeline" style="font-weight:100; color:#000;"></label>
-  <select id="timeline" name="timeline" required
-    style="padding:12px; border-radius:8px; border:1px solid #c9a84b; background:#fff; color:#000;">
-    <option value="">Select timeline</option>
-    <option>Urgent (1–2 weeks)</option>
-    <option>Standard (3–4 weeks)</option>
-    <option>Flexible (5+ weeks)</option>
-  </select>
+      <!-- Timeline -->
+      <select id="timeline" name="timeline" required
+              style="padding:12px; border-radius:8px; border:1px solid #c9a84b; background:#fff; color:#000;">
+        <option value="">Select timeline</option>
+        <option>Urgent (1–2 weeks)</option>
+        <option>Standard (3–4 weeks)</option>
+        <option>Flexible (5+ weeks)</option>
+      </select>
 
-  <!-- Budget -->
-  <label for="budget" style="font-weight:100; color:#000;"></label>
-  <select id="budget" name="budget" required
-    style="padding:12px; border-radius:8px; border:1px solid #c9a84b; background:#fff; color:#000;">
-    <option value="">Select budget range</option>
-    <option>$500–999</option>
-    <option>$1000–2499</option>
-    <option>$2500+</option>
-  </select>
+      <!-- Budget -->
+      <select id="budget" name="budget" required
+              style="padding:12px; border-radius:8px; border:1px solid #c9a84b; background:#fff; color:#000;">
+        <option value="">Select budget range</option>
+        <option>$500–999</option>
+        <option>$1000–2499</option>
+        <option>$2500+</option>
+      </select>
 
-  <!-- Message -->
-  <textarea name="message" rows="5" placeholder="Tell me about your project..." required
-    style="padding:12px; border-radius:8px; border:1px solid #c9a84b; background:#fff; color:#000;"></textarea>
+      <!-- Message -->
+      <textarea name="message" rows="5" placeholder="Tell me about your project..." required
+                style="padding:12px; border-radius:8px; border:1px solid #c9a84b; background:#fff; color:#000;"></textarea>
 
-  <!-- Submit -->
-  <button type="submit"
-    style="padding:12px; background:#c9a84b; border:none; border-radius:8px; color:#0b0b0b; font-weight:600; cursor:pointer; transition:0.3s;">
-    Send Message
-  </button>
-
-</form>
-
+      <!-- Submit Button -->
+      <button type="submit"
+              style="padding:12px; background:#c9a84b; border:none; border-radius:8px; color:#fff; font-weight:600; cursor:pointer; transition:0.3s;">
+        Send Message
+      </button>
+    </form>
   </div>
-</section>
+
 
   <!-- Share Buttons Section -->
 <div class="share-section" style="text-align:center;margin-top:60px;">
