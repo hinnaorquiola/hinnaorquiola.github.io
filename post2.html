@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>How I Use AI Tools in My Creative Workflow | Hinna Orquiola</title>
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
+    /* === BASE STYLES === */
     body {
-      font-family: "Poppins", sans-serif;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
       background: #fafafa;
       color: #222;
       line-height: 1.8;
@@ -18,68 +21,155 @@
       max-width: 1000px;
       margin: 120px auto 80px;
       padding: 0 40px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s ease forwards;
     }
 
-    h2 {
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* === PROGRESS BAR === */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: #c9a84b;
+      width: 0%;
+      z-index: 1001;
+      transition: width 0.2s;
+    }
+
+    /* === HEADER === */
+    .blog-header {
+      text-align: left;
+      margin-bottom: 40px;
+    }
+
+    .blog-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.3rem;
       color: #c9a84b;
       margin-bottom: 10px;
-      font-size: 2rem;
     }
 
-    .meta {
-      color: #999;
-      font-size: 0.9rem;
-      margin-bottom: 30px;
+    .post-meta {
+      color: #777;
+      font-size: 0.95rem;
     }
 
-    img {
+    /* === IMAGE === */
+    .post-hero {
       width: 100%;
       border-radius: 12px;
       margin-bottom: 40px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
 
-    h3 {
+    /* === CONTENT === */
+    h2 {
+      font-family: 'Playfair Display', serif;
       color: #c9a84b;
       margin-top: 40px;
-      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 18px;
+      color: #333;
     }
 
     blockquote {
       border-left: 4px solid #c9a84b;
       padding-left: 16px;
-      margin: 30px 0;
-      color: #555;
+      margin: 24px 0;
+      color: #666;
       font-style: italic;
+      background: #f9f9f9;
+      border-radius: 4px;
     }
 
-    ul {
-      margin-left: 25px;
-      list-style: disc;
+    /* === SHARE SECTION === */
+    .share {
+  margin-top: 50px;
+  text-align: center;
+  border-top: 1px solid #eee;
+  padding-top: 25px;
+}
+
+.share p {
+  color: #555;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.share a {
+  display: inline-block;
+  margin: 0 10px;
+  color: #000; /* black icons */
+  font-size: 1.3rem;
+  transition: color 0.3s, transform 0.2s;
+}
+
+.share a:hover {
+  color: #c9a84b; /* gold hover effect */
+  transform: translateY(-2px);
+}
+
+
+    /* === POST NAVIGATION === */
+    .post-nav {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 60px;
+      padding-top: 30px;
+      border-top: 1px solid #eee;
     }
 
-    a.back {
-      display: inline-block;
-      margin-top: 50px;
+    .post-nav a {
       color: #c9a84b;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 500;
     }
 
-    a.back:hover {
+    .post-nav a:hover {
       text-decoration: underline;
+    }
+
+    /* === FOOTER === */
+    footer {
+      margin-top: 60px;
+      text-align: center;
+      color: #888;
+      font-size: 0.9rem;
+      padding-bottom: 40px;
     }
   </style>
 </head>
-
 <body>
 
+  <!-- Progress Bar -->
+  <div id="progress-bar"></div>
 
-<main>
-    <h2>How I Use AI Tools in My Creative Workflow</h2>
-    <p class="meta">Published September 2025</p>
+  <main>
+    <!-- Header -->
+    <header class="blog-header">
+      <h1>How I Use AI Tools in My Creative Workflow</h1>
+      <p class="post-meta">Published September 2025 — by Hinna Orquiola</p>
+    </header>
 
-    <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/post2.png" alt="How to use AI concept">
+    <!-- Hero Image -->
+    <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/post2.png" 
+         alt="Visual storytelling concept" class="post-hero">
+
 
     <p>
       Artificial intelligence has become an essential part of modern creativity — not as a replacement for human imagination, but as a
@@ -87,7 +177,7 @@
       thoughtfully to boost productivity, refine visuals, and bring ideas to life faster without compromising authenticity.
     </p>
 
-    <h3>1. AI as an Idea Generator</h3>
+    <h2>1. AI as an Idea Generator</h2>
     <p>
       Every project begins with inspiration. Sometimes, a client provides a clear direction, but other times I start with just a mood or a story. In those moments,
       I use AI tools to <strong>explore possibilities</strong> — generating color palettes, layout concepts, or visual prompts that help me clarify the creative direction.
@@ -102,7 +192,7 @@
       “AI gives me more time to think creatively, not less.”
     </blockquote>
 
-    <h3>2. Enhancing Visual Storytelling</h3>
+    <h2>2. Enhancing Visual Storytelling</h2>
     <p>
       When I design book covers, marketing materials, or website layouts, I often use AI to <strong>enhance the narrative</strong> behind the visuals.
       For instance, AI-assisted mockups or style variations can help clients see multiple creative options before finalizing the direction.
@@ -113,20 +203,20 @@
       while keeping my own artistic sense in control of the outcome.
     </p>
 
-    <h3>3. Streamlining Repetitive Tasks</h3>
+    <h2>3. Streamlining Repetitive Tasks</h2>
     <p>
       As a virtual assistant, I also use AI to simplify administrative work — things like reformatting documents, summarizing meeting notes, or organizing design assets.
       This allows me to spend more time on <strong>meaningful creative work</strong> rather than repetitive tasks.
     </p>
 
-    <h3>4. Maintaining Authenticity</h3>
+    <h2>4. Maintaining Authenticity</h2>
     <p>
       It’s easy to rely too heavily on AI tools, but I believe that creativity should always remain personal.
       Every project I create — whether it’s a website, a brand identity, or an illustration — is guided by human emotion, experience, and storytelling.
       AI is just there to help shape the process more efficiently.
     </p>
 
-    <h3>5. The Future of Design with AI</h3>
+    <h2>5. The Future of Design with AI</h2>
     <p>
       The design world is evolving quickly, and AI will continue to be a valuable tool for creatives who embrace it with balance and ethics.
       The real value of a designer isn’t in generating ideas quickly, but in giving those ideas <strong>heart, clarity, and purpose</strong>.
@@ -137,8 +227,45 @@
       AI empowers me to stay curious, efficient, and open to innovation — while keeping the essence of storytelling alive.
     </p>
 
-    <a href="index.html#blog" class="back">← Back to Blog</a>
-  </main>
-    </body>
-</html>
+   <!-- Share Section -->
+<div class="share">
+  <p>Share this post:</p>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://hinnaorquiola.github.io/post3.html"
+     target="_blank" aria-label="Share on Facebook">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://hinnaorquiola.github.io/post3.html"
+     target="_blank" aria-label="Share on LinkedIn">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+  <a href="https://twitter.com/intent/tweet?url=https://hinnaorquiola.github.io/post3.html&text=The%20Art%20of%20Visual%20Storytelling%20by%20Hinna%20Orquiola"
+     target="_blank" aria-label="Share on X">
+    <i class="fab fa-x-twitter"></i>
+  </a>
+</div>
 
+
+    <!-- Navigation -->
+    <div class="post-nav">
+      <a href="post3.html">→ Next: The Art of Visual Storytelling</a>
+      <a href="index.html#blog">Back to Blog →</a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2025 Hinna Orquiola — All rights reserved.</p>
+    </footer>
+  </main>
+
+  <!-- Progress Bar Script -->
+  <script>
+    window.onscroll = function() {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = (scrollTop / scrollHeight) * 100;
+      document.getElementById("progress-bar").style.width = progress + "%";
+    };
+  </script>
+
+</body>
+</html>
