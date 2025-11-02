@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Art of Visual Storytelling | Hinna Orquiola</title>
-  <link rel="stylesheet" href="style.css">
-
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
+    /* === BASE STYLES === */
     body {
-      font-family: "Poppins", sans-serif;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
       background: #fafafa;
       color: #222;
       line-height: 1.8;
@@ -18,143 +19,223 @@
       max-width: 1000px;
       margin: 120px auto 80px;
       padding: 0 40px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s ease forwards;
     }
 
-    h2 {
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* === PROGRESS BAR === */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: #c9a84b;
+      width: 0%;
+      z-index: 1001;
+      transition: width 0.2s;
+    }
+
+    /* === HEADER === */
+    .blog-header {
+      text-align: left;
+      margin-bottom: 40px;
+    }
+
+    .blog-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.3rem;
       color: #c9a84b;
       margin-bottom: 10px;
-      font-size: 2rem;
     }
 
-    .meta {
-      color: #999;
-      font-size: 0.9rem;
-      margin-bottom: 30px;
+    .post-meta {
+      color: #777;
+      font-size: 0.95rem;
     }
 
-    img {
+    /* === IMAGE === */
+    .post-hero {
       width: 100%;
       border-radius: 12px;
       margin-bottom: 40px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
 
-    h3 {
+    /* === CONTENT === */
+    h2 {
+      font-family: 'Playfair Display', serif;
       color: #c9a84b;
       margin-top: 40px;
-      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 18px;
+      color: #333;
     }
 
     blockquote {
       border-left: 4px solid #c9a84b;
       padding-left: 16px;
-      margin: 30px 0;
-      color: #555;
+      margin: 24px 0;
+      color: #666;
       font-style: italic;
+      background: #f9f9f9;
+      border-radius: 4px;
     }
 
-    ul {
-      margin-left: 25px;
-      list-style: disc;
-    }
-
-    a.back {
-      display: inline-block;
+    /* === SHARE SECTION === */
+    .share {
       margin-top: 50px;
+      text-align: center;
+      border-top: 1px solid #eee;
+      padding-top: 25px;
+    }
+
+    .share p {
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .share a {
+      display: inline-block;
+      margin: 0 8px;
+      color: #c9a84b;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .share a:hover {
+      color: #000;
+    }
+
+    /* === POST NAVIGATION === */
+    .post-nav {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 60px;
+      padding-top: 30px;
+      border-top: 1px solid #eee;
+    }
+
+    .post-nav a {
       color: #c9a84b;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 500;
     }
 
-    a.back:hover {
+    .post-nav a:hover {
       text-decoration: underline;
+    }
+
+    /* === FOOTER === */
+    footer {
+      margin-top: 60px;
+      text-align: center;
+      color: #888;
+      font-size: 0.9rem;
+      padding-bottom: 40px;
     }
   </style>
 </head>
-
 <body>
 
+  <!-- Progress Bar -->
+  <div id="progress-bar"></div>
 
-<main>
-    <h2>The Art of Visual Storytelling</h2>
-    <p class="meta">Published August 2025</p>
+  <main>
+    <!-- Header -->
+    <header class="blog-header">
+      <h1>The Art of Visual Storytelling</h1>
+      <p class="post-meta">Published August 2025 — by Hinna Orquiola</p>
+    </header>
 
-    <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/post3.png" alt="Visual storytelling concept">
+    <!-- Hero Image -->
+    <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/post3.png" 
+         alt="Visual storytelling concept" class="post-hero">
 
+    <!-- Article Content -->
     <p>
-      Storytelling has always been at the heart of communication. In design, it becomes a visual language — one that connects emotion, purpose, and creativity. Visual storytelling transforms static images into meaningful experiences, allowing audiences to *feel* before they fully understand.
+      Visual storytelling is more than just creating beautiful images — it’s about communicating emotion, narrative, and meaning through design. 
+      Every color, shape, and movement contributes to how a story feels. A truly effective design doesn’t just capture attention — it captures the imagination.
     </p>
 
+    <h2>1. Emotion Through Color</h2>
     <p>
-      Every design tells a story — even when there are no words. Whether it’s a website, a poster, or a digital illustration, visuals shape how people perceive and remember a message. 
-      Great storytelling in design isn’t just about beauty; it’s about building emotion and clarity in every detail.
+      Color psychology plays a central role in how we perceive visuals. Warm tones inspire energy, joy, and familiarity; cool hues suggest calm, trust, and depth. 
+      When combined with thoughtful typography, they create mood and rhythm — the emotional language of a story.
     </p>
 
-    <h3>1. Why Stories Matter in Design</h3>
+    <blockquote>“Color is the silent narrator — it whispers the story’s mood before the characters speak.”</blockquote>
+
+    <h2>2. Framing the Narrative</h2>
     <p>
-      A well-crafted story transforms information into emotion. When people connect emotionally with what they see, they remember it longer. 
-      This is why the best brands tell stories visually — through color, tone, and layout that evoke trust and authenticity.
+      Composition defines focus. The placement of elements — whether minimal or dynamic — guides the viewer’s journey across the design. 
+      Every piece has its role: balance, tension, and symmetry act like punctuation marks within a visual sentence.
+    </p>
+
+    <h2>3. The Power of Motion and Sequence</h2>
+    <p>
+      Animation brings time into storytelling. Even subtle transitions — a fade, a scroll, a shift in light — can evoke emotion and enhance understanding. 
+      Motion should never distract; it should emphasize meaning.
+    </p>
+
+    <h2>4. Translating Vision to Impact</h2>
+    <p>
+      In my projects, I often merge illustration, design, and technology to convey a single idea clearly. 
+      Whether it’s a book cover, brand identity, or short animated film, my goal remains the same: make people *feel* something genuine.
     </p>
 
     <blockquote>
-      “Design is intelligence made visible.” — Alina Wheeler
+      “When design meets story, visuals stop being decoration — they become memory.”
     </blockquote>
 
-    <h3>2. The Core Elements of Visual Storytelling</h3>
     <p>
-      Every story has structure. In design, that structure is built with:
+      Visual storytelling reminds us that design is not just about what we see, but what we *understand*. 
+      It’s an art form where creativity meets empathy — and every design choice becomes part of a shared human story.
     </p>
 
-    <ul>
-      <li><strong>Color</strong> — defines mood and energy.</li>
-      <li><strong>Typography</strong> — adds voice and personality.</li>
-      <li><strong>Composition</strong> — directs attention and flow.</li>
-      <li><strong>Imagery</strong> — sparks emotion and recognition.</li>
-    </ul>
+    <!-- Share Section -->
+    <div class="share">
+      <p>Share this post:</p>
+      <a href="#" target="_blank">Facebook</a> |
+      <a href="#" target="_blank">LinkedIn</a> |
+      <a href="#" target="_blank">X</a>
+    </div>
 
-    <p>
-      The harmony of these elements creates an experience that feels intentional — a story the audience can instantly connect with.
-    </p>
+    <!-- Navigation -->
+    <div class="post-nav">
+      <a href="post2.html">← Previous: Why Good Design Is Good Business</a>
+      <a href="index.html#blog">Back to Blog →</a>
+    </div>
 
-    <h3>3. Crafting Emotion Through Visuals</h3>
-    <p>
-      Emotion is the bridge between design and storytelling. A minimalist design can express calm, while bold visuals may convey energy or confidence. 
-      As a designer, my role is to translate feelings into visuals that align with a message. 
-      The goal isn’t just to make something look good — it’s to make it *mean* something.
-    </p>
-
-    <h3>4. Consistency: The Thread That Holds Stories Together</h3>
-    <p>
-      Great visual storytelling relies on consistency. Repetition of style, tone, and imagery builds recognition — turning one design into a visual identity. 
-      A story feels believable when every piece of it speaks the same visual language.
-    </p>
-
-    <p>
-      Whether I’m designing a website or creating a brand campaign, I make sure that all elements support the same narrative — one that reflects the brand’s truth and values.
-    </p>
-
-    <h3>5. The Designer as a Storyteller</h3>
-    <p>
-      Design is not decoration. It’s communication. Every curve, color, and font choice says something. 
-      The art of visual storytelling lies in being intentional — crafting an experience that inspires understanding and connection.
-    </p>
-
-    <p>
-      To me, storytelling is where creativity meets empathy. It’s where visuals transcend aesthetics and become a bridge between the designer’s vision and the audience’s world.
-    </p>
-
-    <h3>6. Lasting Impressions</h3>
-    <p>
-      The most memorable designs stay with people long after they’ve scrolled away. They leave behind a feeling — a spark of connection. 
-      That’s the magic of visual storytelling. It’s not about trends or tools; it’s about timeless communication through emotion and design.
-    </p>
-
-    <p>
-      As I continue to evolve as a designer, my goal remains simple: to tell stories that resonate, inspire, and remind people that design, at its best, is a reflection of human experience.
-    </p>
-
-    <a href="index.html#blog" class="back">← Back to Blog</a>
+    <!-- Footer -->
+    <footer>
+      <p>© 2025 Hinna Orquiola — All rights reserved.</p>
+    </footer>
   </main>
+
+  <!-- Progress Bar Script -->
+  <script>
+    window.onscroll = function() {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = (scrollTop / scrollHeight) * 100;
+      document.getElementById("progress-bar").style.width = progress + "%";
+    };
+  </script>
 
 </body>
 </html>
