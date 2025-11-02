@@ -1602,28 +1602,58 @@ html {
     </div>
 
     <!-- Right Side (Formspree) -->
-    <div style="flex:1 1 400px;">
-      <form action="https://formspree.io/f/xkgpnljp" method="POST" 
-      style="display:flex; flex-direction:column; gap:15px; max-width:500px; margin:auto;">
+    <form action="https://formspree.io/f/xkgpnljp" method="POST"
+  style="display:flex; flex-direction:column; gap:15px; max-width:500px; margin:auto;">
+
+  <!-- Name -->
   <input type="text" name="name" placeholder="Full Name" required
-         style="padding:12px; border-radius:8px; border:1px solid #c9a84b; background:#fff; color:#000;">
+    style="padding:12px; border-radius:8px; border:1px solid #c9a84b; background:#fff; color:#000;">
+
+  <!-- Email -->
   <input type="email" name="email" placeholder="Email Address" required
-         style="padding:12px; border-radius:8px; border:1px solid #c9a84b; background:#fff; color:#000;">
-  <select name="service" style="padding:12px; border-radius:8px; border:1px solid #c9a84b; background:#fff; color:#000;">
+    style="padding:12px; border-radius:8px; border:1px solid #c9a84b; background:#fff; color:#000;">
+
+  <!-- Service Selection -->
+  <select name="service" required
+    style="padding:12px; border-radius:8px; border:1px solid #c9a84b; background:#fff; color:#000;">
     <option value="">Select a Service</option>
     <option>Website Design</option>
     <option>Book Cover Design</option>
     <option>Digital Illustration</option>
     <option>Virtual Assistance</option>
   </select>
+
+  <!-- Timeline -->
+  <label for="timeline" style="font-weight:600; color:#000;">What is your timeline?</label>
+  <select id="timeline" name="timeline" required
+    style="padding:12px; border-radius:8px; border:1px solid #c9a84b; background:#fff; color:#000;">
+    <option value="">Select timeline</option>
+    <option>Urgent (1–2 weeks)</option>
+    <option>Standard (3–4 weeks)</option>
+    <option>Flexible (5+ weeks)</option>
+  </select>
+
+  <!-- Budget -->
+  <label for="budget" style="font-weight:600; color:#000;">What budget range are we working with?</label>
+  <select id="budget" name="budget" required
+    style="padding:12px; border-radius:8px; border:1px solid #c9a84b; background:#fff; color:#000;">
+    <option value="">Select budget range</option>
+    <option>$500–999</option>
+    <option>$1000–2499</option>
+    <option>$2500+</option>
+  </select>
+
+  <!-- Message -->
   <textarea name="message" rows="5" placeholder="Tell me about your project..." required
-            style="padding:12px; border-radius:8px; border:1px solid #c9a84b; background:#fff; color:#000;"></textarea>
-  <button type="submit" 
-          style="padding:12px; background:#c9a84b; border:none; border-radius:8px; color:#0b0b0b; font-weight:600; cursor:pointer; transition:0.3s;">
+    style="padding:12px; border-radius:8px; border:1px solid #c9a84b; background:#fff; color:#000;"></textarea>
+
+  <!-- Submit -->
+  <button type="submit"
+    style="padding:12px; background:#c9a84b; border:none; border-radius:8px; color:#0b0b0b; font-weight:600; cursor:pointer; transition:0.3s;">
     Send Message
   </button>
+
 </form>
-    </div>
 
   </div>
 </section>
