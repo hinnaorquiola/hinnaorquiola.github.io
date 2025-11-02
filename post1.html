@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Why Good Design Is Good Business | Hinna Orquiola</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
     /* === BASE STYLES === */
     body {
@@ -97,29 +99,30 @@
 
     /* === SHARE SECTION === */
     .share {
-      margin-top: 50px;
-      text-align: center;
-      border-top: 1px solid #eee;
-      padding-top: 25px;
-    }
+  margin-top: 50px;
+  text-align: center;
+  border-top: 1px solid #eee;
+  padding-top: 25px;
+}
 
-    .share p {
-      color: #555;
-      margin-bottom: 10px;
-    }
+.share p {
+  color: #555;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
 
-    .share a {
-      display: inline-block;
-      margin: 0 8px;
-      color: #c9a84b;
-      font-weight: 500;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
+.share a {
+  display: inline-block;
+  margin: 0 10px;
+  color: #000; /* black icons */
+  font-size: 1.3rem;
+  transition: color 0.3s, transform 0.2s;
+}
 
-    .share a:hover {
-      color: #000;
-    }
+.share a:hover {
+  color: #c9a84b; /* gold hover effect */
+  transform: translateY(-2px);
+}
 
     /* === POST NAVIGATION === */
     .post-nav {
@@ -238,12 +241,23 @@
   </p>
 
   <!-- Share Section -->
-    <div class="share">
-      <p>Share this post:</p>
-      <a href="#" target="_blank">Facebook</a> |
-      <a href="#" target="_blank">LinkedIn</a> |
-      <a href="#" target="_blank">X</a>
-    </div>
+    <!-- Share Section -->
+<div class="share">
+  <p>Share this post:</p>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://hinnaorquiola.github.io/post3.html"
+     target="_blank" aria-label="Share on Facebook">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://hinnaorquiola.github.io/post3.html"
+     target="_blank" aria-label="Share on LinkedIn">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+  <a href="https://twitter.com/intent/tweet?url=https://hinnaorquiola.github.io/post3.html&text=The%20Art%20of%20Visual%20Storytelling%20by%20Hinna%20Orquiola"
+     target="_blank" aria-label="Share on X">
+    <i class="fab fa-x-twitter"></i>
+  </a>
+</div>
+
 
     <!-- Navigation -->
     <div class="post-nav">
