@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Why Good Design Is Good Business | Hinna Orquiola</title>
-  <link rel="stylesheet" href="style.css">
-
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
+    /* === BASE STYLES === */
     body {
-      font-family: "Poppins", sans-serif;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
       background: #fafafa;
       color: #222;
       line-height: 1.8;
@@ -18,68 +19,152 @@
       max-width: 1000px;
       margin: 120px auto 80px;
       padding: 0 40px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s ease forwards;
     }
 
-    h2 {
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* === PROGRESS BAR === */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: #c9a84b;
+      width: 0%;
+      z-index: 1001;
+      transition: width 0.2s;
+    }
+
+    /* === HEADER === */
+    .blog-header {
+      text-align: left;
+      margin-bottom: 40px;
+    }
+
+    .blog-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.3rem;
       color: #c9a84b;
       margin-bottom: 10px;
-      font-size: 2rem;
     }
 
-    .meta {
-      color: #999;
-      font-size: 0.9rem;
-      margin-bottom: 30px;
+    .post-meta {
+      color: #777;
+      font-size: 0.95rem;
     }
 
-    img {
+    /* === IMAGE === */
+    .post-hero {
       width: 100%;
       border-radius: 12px;
       margin-bottom: 40px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
 
-    h3 {
+    /* === CONTENT === */
+    h2 {
+      font-family: 'Playfair Display', serif;
       color: #c9a84b;
       margin-top: 40px;
-      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 18px;
+      color: #333;
     }
 
     blockquote {
       border-left: 4px solid #c9a84b;
       padding-left: 16px;
-      margin: 30px 0;
-      color: #555;
+      margin: 24px 0;
+      color: #666;
       font-style: italic;
+      background: #f9f9f9;
+      border-radius: 4px;
     }
 
-    ul {
-      margin-left: 25px;
-      list-style: disc;
-    }
-
-    a.back {
-      display: inline-block;
+    /* === SHARE SECTION === */
+    .share {
       margin-top: 50px;
+      text-align: center;
+      border-top: 1px solid #eee;
+      padding-top: 25px;
+    }
+
+    .share p {
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .share a {
+      display: inline-block;
+      margin: 0 8px;
+      color: #c9a84b;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .share a:hover {
+      color: #000;
+    }
+
+    /* === POST NAVIGATION === */
+    .post-nav {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 60px;
+      padding-top: 30px;
+      border-top: 1px solid #eee;
+    }
+
+    .post-nav a {
       color: #c9a84b;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 500;
     }
 
-    a.back:hover {
+    .post-nav a:hover {
       text-decoration: underline;
+    }
+
+    /* === FOOTER === */
+    footer {
+      margin-top: 60px;
+      text-align: center;
+      color: #888;
+      font-size: 0.9rem;
+      padding-bottom: 40px;
     }
   </style>
 </head>
-
 <body>
 
+  <!-- Progress Bar -->
+  <div id="progress-bar"></div>
 
-<main>
-    <h2>Why Good Design Is Good Business</h2>
-    <p class="meta">Published October 2025</p>
+  <main>
+    <!-- Header -->
+    <header class="blog-header">
+      <h1>Why Good Design Is Good Business</h1>
+      <p class="post-meta">Published October 2025 — by Hinna Orquiola</p>
+    </header>
 
-    <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/post1.png" alt="Good design is good business concept">
+    <!-- Hero Image -->
+    <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/post1.png" 
+         alt="Visual storytelling concept" class="post-hero">
 
   <p>
     Great design isn’t just about making things look beautiful — it’s about making them
@@ -95,7 +180,7 @@
     confidence, excitement, belonging, or calm.
   </p>
 
-  <h3 style="color:#c9a84b;margin-top:40px;">Design Builds Trust and Recognition</h3>
+  <h2>Design Builds Trust and Recognition</h2>
   <p>
     People make judgments in seconds. When your brand visuals are cohesive and professional,
     your audience subconsciously feels that you’re reliable and credible. A cluttered or inconsistent
@@ -108,17 +193,11 @@
     or email header, everything should feel part of the same story.
   </p>
 
-  <blockquote style="
-    font-style: italic;
-    color: #555;
-    border-left: 4px solid #c9a84b;
-    padding-left: 16px;
-    margin: 30px 0;
-  ">
+  <blockquote>
     “Good design is invisible — it simply feels right.”
   </blockquote>
 
-  <h3 style="color:#c9a84b;margin-top:40px;">Design Tells Your Story</h3>
+  <h2>Design Tells Your Story</h2>
   <p>
     Every business has a story to tell — why it started, who it serves, and what it believes in.
     Design translates that story visually. Through imagery, composition, and color psychology,
@@ -131,7 +210,7 @@
     communicate ideas and emotions that connect with people from the very first glance.
   </p>
 
-  <h3 style="color:#c9a84b;margin-top:40px;">Good Design Simplifies Experience</h3>
+  <h2>Good Design Simplifies Experience</h2>
   <p>
     Function and form must always go hand in hand. In web design, this means creating
     layouts that are not only beautiful but also intuitive — easy to navigate,
@@ -145,7 +224,7 @@
     clarity and ease of experience.
   </p>
 
-  <h3 style="color:#c9a84b;margin-top:40px;">Final Thoughts</h3>
+  <h2>Final Thoughts</h2>
   <p>
     Great design isn’t an expense — it’s an investment. It’s how you
     communicate who you are and what you stand for.
@@ -158,10 +237,35 @@
     truly good business.
   </p>
 
-  <a href="index.html#blog"
-     style="display:inline-block;margin-top:50px;color:#c9a84b;text-decoration:none;font-weight:600;">
-     ← Back to Blog
-  </a>
-</main>
-  </body>
+  <!-- Share Section -->
+    <div class="share">
+      <p>Share this post:</p>
+      <a href="#" target="_blank">Facebook</a> |
+      <a href="#" target="_blank">LinkedIn</a> |
+      <a href="#" target="_blank">X</a>
+    </div>
+
+    <!-- Navigation -->
+    <div class="post-nav">
+      <a href="post2.html">→ Next: How I Use AI Tools in My Creative Workflow</a>
+      <a href="index.html#blog">Back to Blog →</a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2025 Hinna Orquiola — All rights reserved.</p>
+    </footer>
+  </main>
+
+  <!-- Progress Bar Script -->
+  <script>
+    window.onscroll = function() {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = (scrollTop / scrollHeight) * 100;
+      document.getElementById("progress-bar").style.width = progress + "%";
+    };
+  </script>
+
+</body>
 </html>
