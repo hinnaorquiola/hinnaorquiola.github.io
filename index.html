@@ -1125,7 +1125,7 @@ html {
 }
 
 /* ===== HERO VIDEO BACKGROUND ===== */
-/* ==== HERO VIDEO SECTION IMPROVED ==== */
+/* ==== HERO VIDEO SECTION ENHANCED ==== */
 .hero-video-section {
   position: relative;
   width: 100vw;
@@ -1136,6 +1136,7 @@ html {
   justify-content: center;
   color: #fff;
   text-align: left;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* Video background */
@@ -1152,15 +1153,20 @@ html {
   object-fit: cover;
 }
 
-/* Dark overlay to improve text readability */
+/* Gradient overlay for readability */
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
   z-index: 1;
 }
 
-/* Text + photo container */
+/* Content container */
 .hero-content {
   position: relative;
   z-index: 2;
@@ -1168,16 +1174,20 @@ html {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  max-width: 1100px;
+  max-width: 1200px;
   width: 100%;
-  gap: 50px;
-  padding: 0 40px;
+  gap: 60px;
+  padding: 40px 60px;
+  animation: fadeUp 1.2s ease forwards;
 }
 
-/* LEFT SIDE - TEXT */
+/* LEFT SIDE — Text */
 .hero-left {
   flex: 1;
   max-width: 550px;
+  opacity: 0;
+  animation: fadeUp 1.2s ease forwards;
+  animation-delay: 0.2s;
 }
 
 .hero-left .intro-line {
@@ -1196,7 +1206,7 @@ html {
 }
 
 .hero-left h1 span {
-  color: #d4af37; /* gold */
+  color: #d4af37;
 }
 
 .hero-left .tagline {
@@ -1213,7 +1223,8 @@ html {
   gap: 15px;
 }
 
-.btn-primary, .btn-secondary {
+.btn-primary,
+.btn-secondary {
   padding: 12px 28px;
   border-radius: 8px;
   font-weight: 600;
@@ -1240,12 +1251,15 @@ html {
   color: #000;
 }
 
-/* RIGHT SIDE - PHOTO */
+/* RIGHT SIDE — Photo */
 .hero-right {
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0;
+  animation: fadeUp 1.2s ease forwards;
+  animation-delay: 0.6s;
 }
 
 .hero-photo {
@@ -1254,37 +1268,63 @@ html {
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid #d4af37;
-  box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow:
+    0 0 30px rgba(212, 175, 55, 0.25),
+    0 0 60px rgba(212, 175, 55, 0.15);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: float 6s ease-in-out infinite;
 }
 
 .hero-photo:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
+  box-shadow:
+    0 0 40px rgba(212, 175, 55, 0.35),
+    0 0 80px rgba(212, 175, 55, 0.2);
 }
 
-/* MOBILE STYLING */
+/* Fade + float animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Mobile adjustments */
 @media (max-width: 900px) {
   .hero-content {
-    flex-direction: column;
+    flex-direction: column-reverse;
     text-align: center;
-    padding: 0 20px;
+    gap: 40px;
+    padding: 40px 20px;
   }
+
   .hero-left {
     max-width: 100%;
   }
-  .hero-right {
-    order: -1;
-  }
+
   .hero-photo {
     width: 220px;
     height: 220px;
   }
+
   .hero-left h1 {
     font-size: 2.4rem;
   }
 }
-
   
   </style>
 </head>
@@ -1336,7 +1376,10 @@ html {
     <div class="hero-left">
       <p class="intro-line">Hi, I’m <strong>Hinna Orquiola</strong> — your creative partner.</p>
       <h1>Designs that <span>Empower & Inspire</span></h1>
-      <p class="tagline">Helping brands and creators bring ideas to life through thoughtful design, illustration, and storytelling.</p>
+      <p class="tagline">
+        Helping brands and creators bring ideas to life through thoughtful design,
+        illustration, and storytelling.
+      </p>
       <div class="hero-btns">
         <a class="btn-primary" href="#portfolio">View My Portfolio</a>
         <a class="btn-secondary" href="#shop">Visit My Store</a>
@@ -1348,6 +1391,7 @@ html {
     </div>
   </div>
 </section>
+
 
 <!-- ===== VALUE HIGHLIGHT ROW ===== -->
 <section id="value-highlights">
