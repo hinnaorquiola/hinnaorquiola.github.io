@@ -426,11 +426,16 @@ nav a:hover {
 
     /* ===== HERO SPLIT LAYOUT ===== */
 #home {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh; /* full-screen height */
+  background: linear-gradient(to right, #0b0b0b, #111); /* fallback if video fails */
+  color: white;
+  padding: 120px 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 48px;
-  padding: 120px 20px 60px; /* increased top padding to make room for fixed nav */
+  overflow: hidden; /* prevents scrollbars from video overflow */
 }
 
 .hero-left {
@@ -1100,6 +1105,24 @@ html {
     }
     #contact select { margin-top:6px; }
   }
+    /* ===== Make visual sections full width like Wirestock ===== */
+#home,
+#ai-tools,
+#portfolio,
+#shop,
+#cta {
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw); /* center full-width sections inside body */
+}
+
+/* Let the inner content still stay centered */
+#portfolio .portfolio-inner,
+#shop .shop-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
 
   </style>
 </head>
