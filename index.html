@@ -426,16 +426,11 @@ nav a:hover {
 
     /* ===== HERO SPLIT LAYOUT ===== */
 #home {
-  position: relative;
-  width: 100vw;
-  min-height: 100vh; /* full-screen height */
-  background: linear-gradient(to right, #0b0b0b, #111); /* fallback if video fails */
-  color: white;
-  padding: 120px 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden; /* prevents scrollbars from video overflow */
+  gap: 48px;
+  padding: 120px 20px 60px; /* increased top padding to make room for fixed nav */
 }
 
 .hero-left {
@@ -1105,227 +1100,7 @@ html {
     }
     #contact select { margin-top:6px; }
   }
-    /* ===== Make visual sections full width like Wirestock ===== */
-#home,
-#ai-tools,
-#portfolio,
-#shop,
-#cta {
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: calc(50% - 50vw); /* center full-width sections inside body */
-}
-
-/* Let the inner content still stay centered */
-#portfolio .portfolio-inner,
-#shop .shop-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/* ===== HERO VIDEO BACKGROUND ===== */
-/* ==== HERO VIDEO SECTION ENHANCED ==== */
-.hero-video-section {
-  position: relative;
-  width: 100vw;
-  min-height: 100vh;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  text-align: left;
-  font-family: 'Poppins', sans-serif;
-}
-
-/* Video background */
-.hero-video-section video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  z-index: 0;
-  transform: translate(-50%, -50%);
-  object-fit: cover;
-}
-
-/* Gradient overlay for readability */
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.8) 0%,
-    rgba(0, 0, 0, 0.5) 50%,
-    rgba(0, 0, 0, 0.7) 100%
-  );
-  z-index: 1;
-}
-
-/* Content container */
-.hero-content {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1200px;
-  width: 100%;
-  gap: 60px;
-  padding: 40px 60px;
-  animation: fadeUp 1.2s ease forwards;
-}
-
-/* LEFT SIDE — Text */
-.hero-left {
-  flex: 1;
-  max-width: 550px;
-  opacity: 0;
-  animation: fadeUp 1.2s ease forwards;
-  animation-delay: 0.2s;
-}
-
-.hero-left .intro-line {
-  font-size: 1.1rem;
-  color: #d1d1d1;
-  margin-bottom: 10px;
-}
-
-.hero-left h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 3.2rem;
-  font-weight: 700;
-  line-height: 1.2;
-  color: #f5f5f5;
-  margin-bottom: 20px;
-}
-
-.hero-left h1 span {
-  color: #d4af37;
-}
-
-.hero-left .tagline {
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.85);
-  margin-bottom: 30px;
-}
-
-/* Buttons */
-.hero-btns {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-
-.btn-primary,
-.btn-secondary {
-  padding: 12px 28px;
-  border-radius: 8px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: 0.3s ease;
-}
-
-.btn-primary {
-  background-color: #d4af37;
-  color: #000;
-}
-
-.btn-primary:hover {
-  background-color: #f5d76e;
-}
-
-.btn-secondary {
-  border: 2px solid #d4af37;
-  color: #d4af37;
-}
-
-.btn-secondary:hover {
-  background-color: #d4af37;
-  color: #000;
-}
-
-/* RIGHT SIDE — Photo */
-.hero-right {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  animation: fadeUp 1.2s ease forwards;
-  animation-delay: 0.6s;
-}
-
-.hero-photo {
-  width: 320px;
-  height: 320px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #d4af37;
-  box-shadow:
-    0 0 30px rgba(212, 175, 55, 0.25),
-    0 0 60px rgba(212, 175, 55, 0.15);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  animation: float 6s ease-in-out infinite;
-}
-
-.hero-photo:hover {
-  transform: scale(1.05);
-  box-shadow:
-    0 0 40px rgba(212, 175, 55, 0.35),
-    0 0 80px rgba(212, 175, 55, 0.2);
-}
-
-/* Fade + float animations */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-/* Mobile adjustments */
-@media (max-width: 900px) {
-  .hero-content {
-    flex-direction: column-reverse;
-    text-align: center;
-    gap: 40px;
-    padding: 40px 20px;
-  }
-
-  .hero-left {
-    max-width: 100%;
-  }
-
-  .hero-photo {
-    width: 220px;
-    height: 220px;
-  }
-
-  .hero-left h1 {
-    font-size: 2.4rem;
-  }
-}
-  
+    
   </style>
 </head>
   
@@ -1364,31 +1139,22 @@ html {
   </div>
 
 <!-- ===== HERO SECTION ===== -->
-<section id="home" class="hero-video-section">
-  <video autoplay muted loop playsinline id="heroVideo">
-    <source src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/hero-bg.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+<section id="home">
+  <div class="hero-left">
+    <p class="intro-line">Hi, I’m <strong>Hinna Orquiola</strong> — your creative partner.</p>
+    <h1 style="font-size:2.6rem;font-weight:700;margin:10px 0;color:#111;">Designs that <span style="color:#c9a84b;">Empower & Inspire</span></h1>
+    <p class="tagline" style="color:#6b7280;line-height:1.6;margin-bottom:30px;">
+      Helping brands and creators bring ideas to life through thoughtful design, illustration, and storytelling.
+    </p>
 
-  <div class="hero-overlay"></div>
-
-  <div class="hero-content">
-    <div class="hero-left">
-      <p class="intro-line">Hi, I’m <strong>Hinna Orquiola</strong> — your creative partner.</p>
-      <h1>Designs that <span>Empower & Inspire</span></h1>
-      <p class="tagline">
-        Helping brands and creators bring ideas to life through thoughtful design,
-        illustration, and storytelling.
-      </p>
-      <div class="hero-btns">
-        <a class="btn-primary" href="#portfolio">View My Portfolio</a>
-        <a class="btn-secondary" href="#shop">Visit My Store</a>
-      </div>
+    <div class="hero-btns">
+      <a class="btn-primary" href="#portfolio">View My Portfolio</a>
+      <a class="btn-secondary" href="#shop">Visit My Store</a>
     </div>
-
-    <div class="hero-right">
-      <img src="images/profile_photo.jpg" alt="Hinna Orquiola" class="hero-photo">
-    </div>
+  </div>
+  
+  <div class="hero-right">
+    <img class="hero-img" src="images/profile_photo.jpg" alt="Hinna Orquiola Profile">
   </div>
 </section>
 
