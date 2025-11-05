@@ -1124,6 +1124,73 @@ html {
   padding: 0 20px;
 }
 
+/* ===== HERO VIDEO BACKGROUND ===== */
+.hero-video-section {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh; /* full screen height */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.hero-video-section video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 0;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+/* Dark overlay to keep text readable */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+}
+
+/* Hero text content */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 20px;
+  max-width: 800px;
+}
+
+.hero-content h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  margin: 10px 0;
+  color: #fff;
+}
+
+.hero-content h1 span {
+  color: var(--gold);
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+}
+  
   </style>
 </head>
   
@@ -1162,22 +1229,26 @@ html {
   </div>
 
 <!-- ===== HERO SECTION ===== -->
-<section id="home">
-  <div class="hero-left">
-    <p class="intro-line">Hi, I’m <strong>Hinna Orquiola</strong> — your creative partner.</p>
-    <h1 style="font-size:2.6rem;font-weight:700;margin:10px 0;color:#111;">Designs that <span style="color:#c9a84b;">Empower & Inspire</span></h1>
-    <p class="tagline" style="color:#6b7280;line-height:1.6;margin-bottom:30px;">
-      Helping brands and creators bring ideas to life through thoughtful design, illustration, and storytelling.
-    </p>
+<section id="home" class="hero-video-section">
+  <video autoplay muted loop playsinline id="heroVideo">
+    <source src="videos/hero-bg.mp4" type="video/mp4">
+    <!-- Optional fallback -->
+    Your browser does not support the video tag.
+  </video>
 
-    <div class="hero-btns">
-      <a class="btn-primary" href="#portfolio">View My Portfolio</a>
-      <a class="btn-secondary" href="#shop">Visit My Store</a>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <div class="hero-left">
+      <p class="intro-line">Hi, I’m <strong>Hinna Orquiola</strong> — your creative partner.</p>
+      <h1>Designs that <span>Empower & Inspire</span></h1>
+      <p class="tagline">Helping brands and creators bring ideas to life through thoughtful design, illustration, and storytelling.</p>
+
+      <div class="hero-btns">
+        <a class="btn-primary" href="#portfolio">View My Portfolio</a>
+        <a class="btn-secondary" href="#shop">Visit My Store</a>
+      </div>
     </div>
-  </div>
-  
-  <div class="hero-right">
-    <img class="hero-img" src="images/profile_photo.jpg" alt="Hinna Orquiola Profile">
   </div>
 </section>
 
