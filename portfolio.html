@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Hinna Orquiola — Virtual Assistant, Graphic & Web Designer</title>
 
-  <meta name="description" content="Graphic & web design services plus inspirational and empowering shop products made with love. Explore my portfolio or shop unique notebooks, binders, and more.">
+  <meta name="description" content="Graphic & web design services plus inspirational and empowering shop products made with love.">
   <link rel="icon" type="image/png" href="favicon_ho.png">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
@@ -76,21 +76,21 @@
     .service-card:hover{transform:translateY(-8px)}
     .service-card:hover .card-bg{transform:scale(1.06)}
 
-    /* PORTFOLIO - gradient background + fluid gallery */
-    #portfolio{background:linear-gradient(180deg,#fff 0%, #e9e9e9 100%)}
+    /* PORTFOLIO - BLACK GRADIENT + fluid gallery */
+    #portfolio{background:linear-gradient(180deg,#000 0%, #111 100%); color: #fff; padding-top:56px; padding-bottom:36px}
     .gallery-wrap{width:100%;padding:0;margin-top:18px}
     .gallery{column-count:4;column-gap:18px;width:100%}
-    .gallery-item{break-inside:avoid;margin:0 0 18px;position:relative;overflow:hidden;border-radius:12px;cursor:pointer}
+    .gallery-item{break-inside:avoid;margin:0 0 18px;position:relative;overflow:hidden;border-radius:12px;cursor:pointer;background:#0f0f0f}
     .gallery-item img{width:100%;height:auto;display:block;transition:transform .45s cubic-bezier(.2,.9,.2,1),box-shadow .3s}
-    .gallery-item:hover img{transform:scale(1.04);box-shadow:0 18px 40px rgba(0,0,0,0.18)}
+    .gallery-item:hover img{transform:scale(1.04);box-shadow:0 24px 50px rgba(0,0,0,0.6)}
     .gallery-item .overlay{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;padding:14px;z-index:2;pointer-events:none}
     .controls{display:flex;gap:10px;opacity:0;transform:translateY(8px);transition:opacity .22s,transform .22s;pointer-events:auto}
     .gallery-item:hover .controls{opacity:1;transform:translateY(0)}
-    .control-btn{display:inline-block;padding:8px 12px;border-radius:8px;background:rgba(0,0,0,0.46);border:1px solid rgba(255,255,255,0.06);color:#fff;font-weight:700;text-decoration:none}
+    .control-btn{display:inline-block;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);color:#fff;font-weight:700;text-decoration:none}
     .control-btn:hover{background:#fff;color:#000}
 
     /* Modal (image-only) */
-    .lb-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:2200;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .28s}
+    .lb-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.96);z-index:2200;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .28s}
     .lb-overlay.open{opacity:1;pointer-events:auto}
     .lb-content{max-width:1100px;width:100%;max-height:90vh;display:flex;align-items:center;justify-content:center}
     .lb-content img{max-width:100%;max-height:90vh;border-radius:6px;box-shadow:0 18px 50px rgba(0,0,0,0.6)}
@@ -98,18 +98,17 @@
     .lb-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:36px;color:rgba(255,255,255,0.9);background:none;border:0;cursor:pointer;padding:12px}
     .lb-prev{left:18px}.lb-next{right:18px}
 
-    /* SHOP: shapes + product cards */
+    /* SHOP: visible shapes + product cards */
     .shop-section{position:relative;overflow:visible}
     .shop-section .shop-decor{position:absolute;inset:0;pointer-events:none;z-index:0}
-    /* explicit visible shapes using pseudo-elements so they are stronger */
-    .shop-section .shape-1{position:absolute;left:6%;top:8%;width:260px;height:260px;border-radius:50%;background:rgba(0,0,0,0.12);filter:blur(36px);z-index:0}
-    .shop-section .shape-2{position:absolute;right:8%;bottom:12%;width:220px;height:220px;background:rgba(0,0,0,0.10);transform:rotate(24deg);filter:blur(28px);z-index:0;border-radius:18px}
-    .shop-section .shape-3{position:absolute;left:68%;top:24%;width:140px;height:140px;background:rgba(0,0,0,0.08);border-radius:8px;filter:blur(20px);z-index:0}
+    .shop-section .shape-1{position:absolute;left:6%;top:8%;width:320px;height:320px;border-radius:50%;background:rgba(0,0,0,0.22);filter:blur(40px);z-index:0}
+    .shop-section .shape-2{position:absolute;right:6%;bottom:10%;width:260px;height:260px;background:rgba(0,0,0,0.18);transform:rotate(24deg);filter:blur(32px);z-index:0;border-radius:18px}
+    .shop-section .shape-3{position:absolute;left:68%;top:24%;width:160px;height:160px;background:rgba(0,0,0,0.14);border-radius:8px;filter:blur(22px);z-index:0}
     .shop-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
     .product-card{height:300px;border-radius:12px;overflow:hidden;position:relative;background-size:cover;background-position:center}
-    .product-overlay{position:absolute;left:0;right:0;bottom:0;padding:14px;background:linear-gradient(180deg,rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.35) 100%);color:#fff;display:flex;justify-content:space-between;align-items:center;transition:background .18s}
+    .product-overlay{position:absolute;left:0;right:0;bottom:0;padding:14px;background:linear-gradient(180deg,rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.35) 100%);color:#fff;display:flex;justify-content:space-between;align-items:center;transition:background .18s}
     .product-card .shop-btn{display:inline-block;padding:8px 12px;border-radius:6px;border:1.5px solid #fff;background:transparent;color:#fff;font-weight:700;opacity:0;transform:translateY(6px);transition:opacity .22s,transform .22s;pointer-events:none}
-    .product-card:hover .product-overlay{background:linear-gradient(180deg,rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 100%)}
+    .product-card:hover .product-overlay{background:linear-gradient(180deg,rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.48) 100%)}
     .product-card:hover .shop-btn{opacity:1;transform:translateY(0);pointer-events:auto}
     .product-card .shop-btn:hover{background:#fff;color:#000}
 
@@ -131,25 +130,25 @@
     .blog-card{background:#fff;border:1px solid rgba(0,0,0,0.18);border-radius:12px;padding:24px;transition:transform .22s,box-shadow .22s}
     .blog-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,0.06)}
 
-    /* CONTACT (match screenshot: left content, right form with 3 dropdowns) */
-    #contact{background:var(--white);color:var(--dark);padding:72px 24px}
+    /* CONTACT (black bg, white inputs) */
+    #contact{background:#000;color:var(--white);padding:72px 24px}
     .contact-container{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
-    .contact-left h2{font-family:'Playfair Display',serif;font-size:32px;margin:0 0 12px}
-    .contact-left p{color:var(--mid);margin:0 0 16px}
+    .contact-left h2{font-family:'Playfair Display',serif;font-size:32px;margin:0 0 12px;color:#fff}
+    .contact-left p{color:rgba(255,255,255,0.85);margin:0 0 16px}
     .contact-left .meta{margin-top:18px}
-    .contact-left .meta p{margin:6px 0;color:var(--mid);font-weight:600}
+    .contact-left .meta p{margin:6px 0;color:rgba(255,255,255,0.9);font-weight:600}
     .contact-right form{display:flex;flex-direction:column;gap:12px}
-    .contact-right input,.contact-right select,.contact-right textarea{padding:14px;border-radius:8px;border:1px solid rgba(0,0,0,0.12);background:#fff;color:var(--dark)}
+    .contact-right input,.contact-right select,.contact-right textarea{padding:14px;border-radius:8px;border:1px solid rgba(255,255,255,0.12);background:#fff;color:var(--dark)}
     .contact-right textarea{min-height:120px;resize:vertical}
-    .submit-btn{background:var(--black);color:var(--white);padding:12px 18px;border-radius:8px;border:1px solid rgba(0,0,0,0.08);font-weight:700;transition:all .18s}
-    .submit-btn:hover{background:var(--white);color:var(--black);box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+    .submit-btn{background:#fff;color:#000;padding:12px 18px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);font-weight:700;transition:all .18s}
+    .submit-btn:hover{background:#000;color:#fff;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
 
     /* AI HAND */
     .ai-hand{background:#0b0b0b;text-align:center;padding:40px 0 60px}
     .ai-hand img{max-width:550px;width:100%;height:auto;filter:grayscale(100%) contrast(110%) brightness(.95);opacity:.98;border-radius:4px}
 
     /* FOOTER */
-    footer{padding:36px 24px;text-align:center;color:var(--mid);background:var(--light)}
+    footer{padding:36px 24px;text-align:center;color:var(--muted);background:var(--light)}
     .share-row{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:12px}
     .social-icons{display:flex;gap:14px;align-items:center}
     .social-icons a{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:8px;background:rgba(0,0,0,0.06);color:rgba(0,0,0,0.7);transition:transform .16s,background .16s}
@@ -346,17 +345,17 @@
       <img src="images/robot-hand-background-presenting-technology-gesture.png" alt="AI robot hand reaching out illustration">
     </div>
 
-    <!-- PORTFOLIO (gradient background) -->
+    <!-- PORTFOLIO (black gradient background) -->
     <section id="portfolio" class="fullwidth" aria-label="Portfolio">
       <div class="container" style="max-width:1400px;padding-left:0;padding-right:0">
         <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:0 24px;">
-          <h3 class="section-title">Portfolio</h3>
-          <p style="color:var(--muted);margin:0">Selected website, book cover, and animation work — click any image to view.</p>
+          <h3 class="section-title" style="color:#fff">Portfolio</h3>
+          <p style="color:rgba(255,255,255,0.7);margin:0">Selected website, book cover, and animation work — click any image to view.</p>
         </div>
 
         <div class="gallery-wrap" style="padding:18px 24px 6px">
           <div class="gallery" id="gallery">
-            <!-- Website projects (View Website buttons) -->
+            <!-- example items -->
             <div class="gallery-item" data-index="0" data-type="site" data-link="https://hinnaorquiola.github.io/mock-nature.html">
               <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images_nature_mockup.png" alt="Nature Retreat — mock website">
               <div class="overlay"><div class="controls"><a class="control-btn" href="https://hinnaorquiola.github.io/mock-nature.html" target="_blank" rel="noopener">View Website</a></div></div>
@@ -377,13 +376,13 @@
               <div class="overlay"><div class="controls"><a class="control-btn" href="https://hinnaorquiola.github.io/mock-fashion.html" target="_blank" rel="noopener">View Website</a></div></div>
             </div>
 
-            <!-- Book covers (image only) -->
+            <!-- book covers -->
             <div class="gallery-item" data-index="4" data-type="image"><img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Reveries.png" alt="Reveries — book cover"></div>
             <div class="gallery-item" data-index="5" data-type="image"><img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Only%20Us%20(1).png" alt="Only Us (1) — book cover"></div>
             <div class="gallery-item" data-index="6" data-type="image"><img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Only%20Us%20(2).png" alt="Only Us (2) — book cover"></div>
             <div class="gallery-item" data-index="7" data-type="image"><img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Only%20Us.png" alt="Only Us — book cover"></div>
 
-            <!-- Animation thumbnails (View Video) -->
+            <!-- animations -->
             <div class="gallery-item" data-index="8" data-type="video" data-link="https://www.youtube.com/watch?v=UyIIO_p8vVM">
               <img src="https://img.youtube.com/vi/UyIIO_p8vVM/maxresdefault.jpg" alt="The War of Thorns and Wings — animation">
               <div class="overlay"><div class="controls"><a class="control-btn" href="https://www.youtube.com/watch?v=UyIIO_p8vVM" target="_blank" rel="noopener">View Video</a></div></div>
@@ -567,7 +566,7 @@
       </div>
     </section>
 
-    <!-- CONTACT (two-column form with 3 dropdowns) -->
+    <!-- CONTACT (black background, white inputs) -->
     <section id="contact" class="fullwidth" aria-label="Contact">
       <div class="contact-container">
         <div class="contact-left">
@@ -575,7 +574,7 @@
           <p>Have a project or idea in mind? Fill out the form below and I’ll get back to you within 1–2 business days.</p>
 
           <div class="meta">
-            <p style="margin-top:12px">Email: <a href="mailto:hinnaorquiola@gmail.com">hinnaorquiola@gmail.com</a></p>
+            <p style="margin-top:12px">Email: <a href="mailto:hinnaorquiola@gmail.com" style="color:inherit;text-decoration:underline">hinnaorquiola@gmail.com</a></p>
             <p>Turnaround: 2–10 business days depending on project scope</p>
           </div>
         </div>
@@ -637,7 +636,6 @@
         </div>
 
         <p style="margin:6px 0">© <span id="year"></span> Hinna Orquiola — Virtual Assistant, Graphic & Web Designer</p>
-        <p style="margin:6px 0">Follow: Instagram • Facebook</p>
       </div>
     </footer>
   </main>
@@ -662,7 +660,7 @@
       menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
 
-    // Navbar solid on scroll
+    // Navbar becomes solid on scroll
     const navInner = document.querySelector('.nav-inner');
     function handleNavScroll() {
       if(window.scrollY > 40) navInner.classList.add('solid');
@@ -741,7 +739,7 @@
 
       gallery.addEventListener('click', (e) => {
         const btn = e.target.closest('.control-btn');
-        if(btn) return; // let anchor open in new tab
+        if(btn) return; // allow link to open
         const item = e.target.closest('.gallery-item');
         if(!item) return;
         const index = parseInt(item.getAttribute('data-index'), 10);
