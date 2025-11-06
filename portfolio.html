@@ -145,13 +145,12 @@
     .submit-btn:hover{background:#000;color:#fff;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
 
     /* AI HAND */
-    .ai-hand{position:relative;background:#0b0b0b;height:320px;padding:0;}
-    .ai-hand img{position:absolute;right:0;bottom:-50px;max-width:480px;width:100%;filter:grayscale(100%) contrast(110%) brightness(.95);opacity:.98;border-radius:4px;pointer-events:none;}
-
-    @media(max-width:1024px){.ai-hand{height:280px;}.ai-hand img{max-width:400px;bottom:-40px;}}
-    @media(max-width:768px){.ai-hand{height:230px;}.ai-hand img{max-width:300px;bottom:-30px;}}
-    @media(max-width:480px){.ai-hand{height:190px;}.ai-hand img{max-width:230px;bottom:-20px;}}
-
+    .ai-hand{position:relative;}
+    .ai-hand img{position:absolute;bottom:0;right:0;max-width:700px;pointer-events:none;z-index:1;}
+    @media(max-width:1280px){.ai-hand img{max-width:620px;}}
+    @media(max-width:1024px){.ai-hand img{max-width:520px;}}
+    @media(max-width:768px){.ai-hand img{max-width:400px;}}
+    @media(max-width:480px){.ai-hand img{max-width:280px;}}
 
     /* FOOTER */
     footer{padding:36px 24px;text-align:center;color:var(--muted);background:var(--light)}
