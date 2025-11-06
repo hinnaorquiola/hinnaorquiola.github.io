@@ -262,14 +262,59 @@
     .service-card:hover{transform:translateY(-8px)}
     .service-card:hover .card-bg{transform:scale(1.06)}
 
-    /* ===== PORTFOLIO (full-width carousel-like grid) ===== */
-    .portfolio-grid{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
-      gap:20px;
+    /* ===== FLUID PORTFOLIO GALLERY (replaced old grid) ===== */
+    .gallery-wrap{
+      width:100%;
+      padding: 0;
+      margin-top:18px;
     }
-    .pf-item{border-radius:12px; overflow:hidden; background:#fff; box-shadow:0 8px 30px rgba(0,0,0,0.06)}
-    .pf-thumb{height:220px; object-fit:cover; display:block}
+    /* Use CSS columns to get a fluid, masonry-like effect */
+    .gallery {
+      column-count: 4;
+      column-gap: 18px;
+      width:100%;
+    }
+
+    .gallery-item{
+      break-inside: avoid;
+      margin: 0 0 18px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+    .gallery-item img{
+      width:100%;
+      height:auto;
+      vertical-align: middle;
+      display:block;
+      transition: transform .45s cubic-bezier(.2,.9,.2,1), box-shadow .3s ease;
+      will-change: transform;
+    }
+    .gallery-item:hover img{ transform: scale(1.04); box-shadow: 0 18px 40px rgba(0,0,0,0.18); }
+
+    /* adjust columns per breakpoint */
+    @media (max-width:1200px){ .gallery { column-count:3 } }
+    @media (max-width:900px){ .gallery { column-count:2 } }
+    @media (max-width:600px){ .gallery { column-count:1 } }
+
+    /* Modal / Lightbox (image-only) */
+    .lb-overlay{
+      position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:2200;
+      display:flex; align-items:center; justify-content:center; padding:24px;
+      opacity:0; pointer-events:none; transition:opacity .28s ease;
+    }
+    .lb-overlay.open{ opacity:1; pointer-events:auto; }
+    .lb-content{
+      max-width:1100px; width:100%; max-height:90vh; display:flex; align-items:center; justify-content:center;
+    }
+    .lb-content img{ max-width:100%; max-height:90vh; border-radius:6px; box-shadow:0 18px 50px rgba(0,0,0,0.6); }
+    .lb-close{ position:absolute; top:20px; right:20px; color:var(--white); font-size:28px; background:none; border:0; cursor:pointer; }
+
+    /* left/right nav in lightbox */
+    .lb-nav{ position:absolute; top:50%; transform:translateY(-50%); font-size:36px; color:rgba(255,255,255,0.9); background:none; border:0; cursor:pointer; padding:12px; }
+    .lb-prev{ left:18px; }
+    .lb-next{ right:18px; }
 
     /* ===== TESTIMONIALS (parallax image bg with overlay) ===== */
     .testimonials{
@@ -525,50 +570,64 @@
       </div>
     </section>
 
-    <!-- PORTFOLIO -->
+    <!-- PORTFOLIO: full-width fluid gallery (REPLACED) -->
     <section id="portfolio" class="fullwidth" style="background:var(--white)">
-      <div class="container">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
+      <div class="container" style="max-width:1400px; padding-left:0; padding-right:0;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px; padding:0 24px;">
           <h3 class="section-title">Portfolio</h3>
-          <p style="color:var(--muted);margin:0">Selected website, book cover, and animation work — swipe or use arrows to browse.</p>
+          <p style="color:var(--muted);margin:0">Selected website, book cover, and animation work — click any image to view.</p>
         </div>
 
-        <div class="portfolio-grid" style="margin-top:18px">
-          <!-- four project cards (kept your links) -->
-          <div class="pf-item">
-            <img class="pf-thumb" src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images_nature_mockup.png" alt="Nature Retreat Website">
-            <div style="padding:12px">
-              <h4 style="margin:0;font-family:'Playfair Display',serif">Nature Retreat</h4>
-              <p style="color:var(--mid);margin:6px 0">A calm, minimalist site design focused on eco-friendly getaways and peaceful stays.</p>
-              <a href="https://hinnaorquiola.github.io/mock-nature.html" class="card-btn" style="text-decoration:none">View Project</a>
+        <div class="gallery-wrap" style="padding:18px 24px 6px;">
+          <div class="gallery" id="gallery">
+            <!-- Portfolio images (combined from your original items) -->
+            <div class="gallery-item" data-index="0">
+              <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images_nature_mockup.png" alt="Nature Retreat — mock website">
             </div>
-          </div>
 
-          <div class="pf-item">
-            <img class="pf-thumb" src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images_business_consulting.png" alt="Consulting Firm Website">
-            <div style="padding:12px">
-              <h4 style="margin:0;font-family:'Playfair Display',serif">Consulting Firm</h4>
-              <p style="color:var(--mid);margin:6px 0">A sleek, professional landing page for strategy firms and entrepreneurs.</p>
-              <a href="https://hinnaorquiola.github.io/mock-consulting.html" class="card-btn">View Project</a>
+            <div class="gallery-item" data-index="1">
+              <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images_business_consulting.png" alt="Consulting Firm — mock website">
             </div>
-          </div>
 
-          <div class="pf-item">
-            <img class="pf-thumb" src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images_cafe_mock.png" alt="Café Orquiola Website">
-            <div style="padding:12px">
-              <h4 style="margin:0;font-family:'Playfair Display',serif">Café Orquiola</h4>
-              <p style="color:var(--mid);margin:6px 0">Warm, rustic layout with cozy tones perfect for a café or restaurant brand.</p>
-              <a href="https://hinnaorquiola.github.io/mock-cafe.html" class="card-btn">View Project</a>
+            <div class="gallery-item" data-index="2">
+              <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images_cafe_mock.png" alt="Café Orquiola — mock website">
             </div>
-          </div>
 
-          <div class="pf-item">
-            <img class="pf-thumb" src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/image_mock_fashion.png" alt="Fashion Website">
-            <div style="padding:12px">
-              <h4 style="margin:0;font-family:'Playfair Display',serif">Fashion Website</h4>
-              <p style="color:var(--mid);margin:6px 0">Minimalist e-commerce concept highlighting product imagery and editorial look.</p>
-              <a href="https://hinnaorquiola.github.io/mock-fashion.html" class="card-btn">View Project</a>
+            <div class="gallery-item" data-index="3">
+              <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/image_mock_fashion.png" alt="Fashion Website — mock site">
             </div>
+
+            <!-- Book covers -->
+            <div class="gallery-item" data-index="4">
+              <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Reveries.png" alt="Reveries — book cover">
+            </div>
+
+            <div class="gallery-item" data-index="5">
+              <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Only%20Us%20(1).png" alt="Book cover — A Story of Love">
+            </div>
+
+            <div class="gallery-item" data-index="6">
+              <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Only%20Us%20(2).png" alt="Book cover — The Last Door">
+            </div>
+
+            <div class="gallery-item" data-index="7">
+              <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Only%20Us.png" alt="Book cover — Stay Close">
+            </div>
+
+            <!-- Animation thumbnails (YouTube preview images) -->
+            <div class="gallery-item" data-index="8">
+              <img src="https://img.youtube.com/vi/UyIIO_p8vVM/maxresdefault.jpg" alt="The War of Thorns and Wings — animation">
+            </div>
+
+            <div class="gallery-item" data-index="9">
+              <img src="https://img.youtube.com/vi/v9SZyJkiz_M/maxresdefault.jpg" alt="The Whispering Stars — animation">
+            </div>
+
+            <div class="gallery-item" data-index="10">
+              <img src="https://img.youtube.com/vi/ct5hn3dFRY0/maxresdefault.jpg" alt="Sam and the Secret Language of Nature — animation">
+            </div>
+
+            <!-- add more items if you had them — these are the original ones present -->
           </div>
         </div>
       </div>
@@ -798,6 +857,16 @@
     </footer>
   </main>
 
+  <!-- LIGHTBOX / MODAL HTML -->
+  <div class="lb-overlay" id="lightbox" aria-hidden="true" role="dialog" aria-label="Image preview">
+    <button class="lb-close" id="lb-close" aria-label="Close">✕</button>
+    <button class="lb-nav lb-prev" id="lb-prev" aria-label="Previous image">‹</button>
+    <div class="lb-content" id="lb-content">
+      <img id="lb-image" src="" alt="">
+    </div>
+    <button class="lb-nav lb-next" id="lb-next" aria-label="Next image">›</button>
+  </div>
+
   <!-- SCRIPTS -->
   <script>
     // year in footer
@@ -847,7 +916,6 @@
       if(heroVideo) heroVideo.style.transform = 'translate(-50%,' + ( -scrolled * 0.08 ) + 'px)';
 
       if(testBG) {
-        // testimonials background moves slightly upward slower than page
         const rect = document.getElementById('testimonials')?.getBoundingClientRect?.();
         if(rect){
           const offset = (window.scrollY - rect.top) * 0.05;
@@ -868,13 +936,80 @@
       window.removeEventListener('scroll', parallax);
     }
 
-    // Smooth skip focus
+    // Smooth skip focus: close mobile nav if open when clicking anchors
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click', function(e){
-        // close mobile nav if open
         if(navLinks.classList.contains('open')) navLinks.classList.remove('open');
       });
     });
+
+    // LIGHTBOX (image-only) logic
+    (function(){
+      const gallery = document.getElementById('gallery');
+      const items = Array.from(gallery.querySelectorAll('.gallery-item img'));
+      const lightbox = document.getElementById('lightbox');
+      const lbImage = document.getElementById('lb-image');
+      const lbClose = document.getElementById('lb-close');
+      const lbPrev = document.getElementById('lb-prev');
+      const lbNext = document.getElementById('lb-next');
+      let currentIndex = 0;
+
+      function openAt(index){
+        if(index < 0) index = items.length - 1;
+        if(index >= items.length) index = 0;
+        currentIndex = index;
+        const src = items[currentIndex].src;
+        const alt = items[currentIndex].alt || '';
+        lbImage.src = src;
+        lbImage.alt = alt;
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        // lock scroll
+        document.documentElement.style.overflow = 'hidden';
+        // focus close for accessibility
+        lbClose.focus();
+      }
+
+      function closeLightbox(){
+        lightbox.classList.remove('open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        lbImage.src = '';
+        document.documentElement.style.overflow = '';
+      }
+
+      gallery.addEventListener('click', (e) => {
+        const tgt = e.target;
+        const item = tgt.closest('.gallery-item');
+        if(!item) return;
+        const index = parseInt(item.getAttribute('data-index'), 10);
+        openAt(index);
+      });
+
+      // overlay click closes when clicking outside the image
+      lightbox.addEventListener('click', (e) => {
+        if(e.target === lightbox) closeLightbox();
+      });
+
+      lbClose.addEventListener('click', closeLightbox);
+      lbPrev.addEventListener('click', () => openAt(currentIndex - 1));
+      lbNext.addEventListener('click', () => openAt(currentIndex + 1));
+
+      // keyboard events
+      document.addEventListener('keydown', (e) => {
+        if(lightbox.classList.contains('open')){
+          if(e.key === 'Escape') closeLightbox();
+          if(e.key === 'ArrowLeft') openAt(currentIndex - 1);
+          if(e.key === 'ArrowRight') openAt(currentIndex + 1);
+        }
+      });
+
+      // make sure data-index corresponds to order of items array
+      // (in case images added dynamically in the future)
+      items.forEach((img, i) => {
+        const figure = img.closest('.gallery-item');
+        if(figure) figure.setAttribute('data-index', i);
+      });
+    })();
 
     // Accessibility: allow escape to close mobile nav
     document.addEventListener('keydown', (e) => {
@@ -886,4 +1021,3 @@
   </script>
 </body>
 </html>
-
