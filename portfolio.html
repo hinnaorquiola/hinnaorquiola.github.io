@@ -103,18 +103,81 @@
     .lb-prev{left:18px}.lb-next{right:18px}
 
     /* SHOP: visible shapes + product cards */
-    .shop-section{position:relative;overflow:visible}
-    .shop-section .shop-decor{position:absolute;inset:0;pointer-events:none;z-index:0}
-    .shop-section .shape-1{position:absolute;left:6%;top:8%;width:320px;height:320px;border-radius:50%;background:rgba(0,0,0,0.22);filter:blur(40px);z-index:0}
-    .shop-section .shape-2{position:absolute;right:6%;bottom:10%;width:260px;height:260px;background:rgba(0,0,0,0.18);transform:rotate(24deg);filter:blur(32px);z-index:0;border-radius:18px}
-    .shop-section .shape-3{position:absolute;left:68%;top:24%;width:160px;height:160px;background:rgba(0,0,0,0.14);border-radius:8px;filter:blur(22px);z-index:0}
-    .shop-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-    .product-card{height:300px;border-radius:12px;overflow:hidden;position:relative;background-size:cover;background-position:center}
-    .product-overlay{position:absolute;left:0;right:0;bottom:0;padding:14px;background:linear-gradient(180deg,rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.35) 100%);color:#fff;display:flex;justify-content:space-between;align-items:center;transition:background .18s}
-    .product-card .shop-btn{display:inline-block;padding:8px 12px;border-radius:6px;border:1.5px solid #fff;background:transparent;color:#fff;font-weight:700;opacity:0;transform:translateY(6px);transition:opacity .22s,transform .22s;pointer-events:none}
-    .product-card:hover .product-overlay{background:linear-gradient(180deg,rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.48) 100%)}
-    .product-card:hover .shop-btn{opacity:1;transform:translateY(0);pointer-events:auto}
-    .product-card .shop-btn:hover{background:#fff;color:#000}
+    .shop-section {
+  position: relative;
+  overflow: visible;
+}
+
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.product-card {
+  position: relative;
+  height: 320px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-color: #fff;
+  border: 1px solid #eee;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.product-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  color: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+}
+
+.product-title {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.product-caption {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.shop-btn {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 6px;
+  background: var(--gold);
+  color: #000;
+  font-weight: 700;
+  border: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.shop-btn:hover {
+  background: #000;
+  color: var(--gold);
+}
+
+@media (max-width: 600px) {
+  .shop-banner h2 { font-size: 28px; }
+  .shop-banner p { font-size: 1rem; }
+}
 
     /* TESTIMONIALS */
 .testimonials {
@@ -462,6 +525,17 @@
     <!-- SHOP -->
     <section id="shop" class="fullwidth shop-section" aria-label="Shop"
   style="background:url('https://images.pexels.com/photos/4284288/pexels-photo-4284288.jpeg') center center / cover no-repeat;">
+      <div class="shop-banner" style="
+  background:url('https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/shop-banner.jpg') center/cover no-repeat;
+  padding:80px 24px;
+  text-align:center;
+  color:#fff;
+  border-radius:12px;
+  margin-bottom:40px;">
+  <h2 style="font-family:'Playfair Display',serif;font-size:36px;margin:0;">Welcome to My Design Store</h2>
+  <p style="margin-top:12px;color:#f0f0f0;">Browse notebooks, planners, binders, and creative merch — all designed with love!</p>
+  <a href="https://www.zazzle.com/store/euneye" target="_blank" class="btn" style="margin-top:16px;">Visit Full Zazzle Store →</a>
+</div>
       <div class="shop-decor" aria-hidden="true">
         <div class="shape-1"></div>
         <div class="shape-2"></div>
