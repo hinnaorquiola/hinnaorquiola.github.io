@@ -118,17 +118,19 @@
 
     /* TESTIMONIALS */
 .testimonials {
-  position: relative;
-  width: 100%;
-  padding: 64px 24px;
-  min-height: 420px; /* ✅ Prevents collapsing */
-  color: #fff;
+  position:relative;
+  min-height:360px;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:64px 24px;
+  overflow:hidden;
+  background:#000; /* new solid black background */
+}
 
-  /* ✅ Background now belongs to the section */
-  background-image: url('https://images.pexels.com/photos/434337/pexels-photo-434337.jpeg');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
+.testimonials .bg {
+  display:none; /* hide the existing background image */
 }
 
 .testimonials::before {
