@@ -232,11 +232,64 @@
     .book-right{padding:24px;text-align:center}
     .book-right img{width:180px;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,0.12)}
 
-    /* BLOG */
-    .blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
-    .blog-card{background:#fff;border:1px solid rgba(0,0,0,0.18);border-radius:12px;padding:24px;transition:transform .22s,box-shadow .22s}
-    .blog-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,0.06)}
 
+    /* BLOG */
+    .blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.blog-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  height: 360px;
+  color: #fff;
+  display: flex;
+  align-items: flex-end;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.blog-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
+  z-index: 0;
+}
+
+.blog-content {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+}
+
+.blog-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  background: #d4af37;
+  color: #000;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.blog-btn:hover {
+  background: #000;
+  color: #d4af37;
+}
+    
     /* CONTACT (black bg, white inputs) */
     #contact{background:#000;color:var(--white);padding:72px 24px}
     .contact-container{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
@@ -688,20 +741,40 @@
     </section>
 
     <!-- BLOG -->
-    <section id="blog" class="fullwidth">
-      <div class="container">
-        <h3 class="section-title">Blog</h3>
-        <p style="color:var(--mid)">Thoughts, design insights, and stories from my creative journey.</p>
+<section id="blog" class="fullwidth" aria-label="Blog" style="background:#fff;padding:80px 24px;">
+  <div class="container" style="max-width:1200px;margin:0 auto;">
+    <h3 class="section-title" style="color:#000;text-align:center;margin-bottom:40px;">Latest Blogs</h3>
 
-        <div class="blog-grid" style="margin-top:20px">
-          <article class="blog-card"><h4 style="color:#222;margin-bottom:10px">Why Good Design Is Good Business</h4><p style="color:#555">How strategic visuals can build trust and help your brand connect better with your audience.</p><p style="color:#999;font-size:.85rem;margin-top:10px">October 2025</p><a href="post1.html" target="_blank" style="color:var(--dark);font-weight:600;text-decoration:none">Read More →</a></article>
+    <div class="blog-grid">
 
-          <article class="blog-card"><h4 style="color:#222;margin-bottom:10px">How I Use AI Tools in My Creative Workflow</h4><p style="color:#555">A look at the tools I use to spark ideas, refine layouts, and speed up my design process responsibly.</p><p style="color:#999;font-size:.85rem;margin-top:10px">September 2025</p><a href="post2.html" target="_blank" style="color:var(--dark);font-weight:600;text-decoration:none">Read More →</a></article>
-
-          <article class="blog-card"><h4 style="color:#222;margin-bottom:10px">The Art of Visual Storytelling</h4><p style="color:#555">How images, motion, and color work together to communicate emotion and narrative.</p><p style="color:#999;font-size:.85rem;margin-top:10px">August 2025</p><a href="post3.html" target="_blank" style="color:var(--dark);font-weight:600;text-decoration:none">Read More →</a></article>
+      <article class="blog-card" style="background-image:url('https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/post1.png');">
+        <div class="blog-content">
+          <h4>Why Good Design Is Good Business</h4>
+          <p>How strategic visuals can build trust and help your brand connect better with your audience.</p>
+          <a href="https://hinnaorquiola.github.io/post1.html" target="_blank" class="blog-btn">Read More</a>
         </div>
-      </div>
-    </section>
+      </article>
+
+      <article class="blog-card" style="background-image:url('https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/post2.png');">
+        <div class="blog-content">
+          <h4>How I Use AI Tools in My Creative Workflow</h4>
+          <p>A look at the tools I use to spark ideas, refine layouts, and speed up my design process responsibly.</p>
+          <a href="https://hinnaorquiola.github.io/post2.html" target="_blank" class="blog-btn">Read More</a>
+        </div>
+      </article>
+
+      <article class="blog-card" style="background-image:url('https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/post3.png');">
+        <div class="blog-content">
+          <h4>The Art of Visual Storytelling</h4>
+          <p>How images, motion, and color work together to communicate emotion and narrative.</p>
+          <a href="https://hinnaorquiola.github.io/post3.html" target="_blank" class="blog-btn">Read More</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
 
     <!-- CONTACT (black background, white inputs) -->
     <section id="contact" class="fullwidth" aria-label="Contact">
