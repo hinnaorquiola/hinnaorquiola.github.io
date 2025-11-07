@@ -119,22 +119,18 @@
     /* TESTIMONIALS */
 .testimonials {
   position: relative;
-  min-height: 360px;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
   padding: 64px 24px;
-  overflow: hidden;
+  min-height: 420px; /* ✅ Prevents collapsing */
+  color: #fff;
 
-  /* ✅ Background image directly on the section */
-  background-image: url("https://images.pexels.com/photos/434337/pexels-photo-434337.jpeg");
-  background-size: cover;        /* ensures image fills the whole section */
-  background-position: center;   /* centers the subject of the image */
-  background-repeat: no-repeat;  /* avoids tiling */
+  /* ✅ Background now belongs to the section */
+  background-image: url('https://images.pexels.com/photos/434337/pexels-photo-434337.jpeg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
-/* ✅ Gradient overlay */
 .testimonials::before {
   content: "";
   position: absolute;
@@ -143,21 +139,27 @@
   z-index: 1;
 }
 
-/* ensures the text stays above the background gradient */
 .testimonials .inner {
   position: relative;
   z-index: 2;
+
+  /* ✅ keep the same grid layout you originally had */
+  max-width: 1100px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  text-align: center;
+  margin: 0 auto;
 }
 
-/* card styles (keep yours — just formatting for clarity) */
 .testimonial-card {
   background: rgba(255,255,255,0.03);
   padding: 24px;
   border-radius: 12px;
-  color: rgba(255,255,255,0.95);
   border: 1px solid rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.95);
 }
-
 
     /* ABOUT + BOOK (split) */
     .about-book{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;padding:0 24px}
