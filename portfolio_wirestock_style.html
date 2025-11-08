@@ -21,17 +21,14 @@
   img{display:block;max-width:100%;height:auto}
   a{color:inherit;text-decoration:none}
   /* Header */
-  header.site-header{position:fixed;inset:0 0 auto 0;height:var(--header-h);z-index:1400;display:flex;align-items:center;backdrop-filter:blur(6px)}
-  .nav-inner{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:calc(var(--gutter)/2);width:100;gap:12px;transition:background .25s,box-shadow .25s}
-  .nav-inner.solid{background:rgba(0,0,0,0.86);box-shadow:0 8px 30px rgba(0,0,0,0.28)}
-  .brand{display:flex;flex-direction:column}
-  .brand h1{margin:0;font-family:'Playfair Display',serif;font-size:clamp(16px,2.4vw,22px);color:var(--white)}
-  .brand p{margin:0;font-size:12px;color:rgba(255,255,255,0.9)}
-  nav.primary{display:flex;gap:14px;align-items:center}
-  nav.primary a{padding:8px 10px;border-radius:8px;color:var(--white);font-weight:600;transition:background .16s}
-  nav.primary a:hover{background:rgba(255,255,255,0.04)}
-  .menu-toggle{display:none;background:none;border:0;color:var(--white);font-size:22px;cursor:pointer}
-
+  header.site-header{position:fixed;inset:0 0 auto 0;height:var(--header-h);z-index:1200;backdrop-filter:blur(4px)}
+  .nav-inner{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:calc(var(--gutter)/2);width:100;gap:12px;transition:background .24s,box-shadow .24s}
+  .nav-inner.solid{background:rgba(0,0,0,0.8);box-shadow:0 6px 22px rgba(0,0,0,.28)}
+    .brand h1{margin:0;font-family:'Playfair Display',serif;font-size:clamp(16px,2.2vw,22px);color:var(--white)}
+    .brand p{margin:0;font-size:clamp(10px,1.2vw,12px);color:rgba(255,255,255,0.9)}
+    nav.primary{display:flex;gap:12px;align-items:center}
+    nav.primary a{padding:8px 10px;border-radius:8px;color:var(--white);font-weight:600}
+    .menu-toggle{display:none;background:none;border:0;color:var(--white);font-size:22px;cursor:pointer}
   /* Mobile sheet menu (Wirestock-like slide down) */
   .mobile-sheet{
     position:fixed;inset:var(--header-h) 0 auto 0;height:calc(100% - var(--header-h));background:rgba(7,7,7,0.98);
@@ -317,11 +314,7 @@
     </div>
   </section>
 
-  <!-- AI HAND -->
-  <div class="ai-hand container" aria-hidden="true" style="margin-top:-36px;text-align:right">
-    <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/AI hand.png" alt="AI robot hand reaching out illustration" style="max-width:760px;">
-  </div>
-
+  
   <!-- PORTFOLIO -->
   <section id="portfolio" class="fullwidth" aria-label="Portfolio">
     <div class="container" style="max-width:1400px;padding-left:0;padding-right:0">
