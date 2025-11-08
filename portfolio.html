@@ -43,9 +43,7 @@
     nav.primary a:hover{background:rgba(255,255,255,0.06)}
     .menu-toggle{display:none;background:none;border:0;color:inherit;font-size:22px;cursor:pointer}
     nav.primary.open { z-index: 1300; background: rgba(0,0,0,0.9); }
-    @media (max-width: 400px) {
-    .nav-inner { flex-direction: column; align-items: flex-start; gap: 8px; }}
-
+    
     /* HERO */
     .hero {position: relative;width: 100%;min-height: 100dvh;display: flex;align-items: center;justify-content: center;color: var(--white);overflow: hidden;background: #000; /* fallback color */}
     .hero-bg {position: absolute;top: 0;left: 0;width: 100%;height: 100%;background: url('https://images.pexels.com/photos/257852/pexels-photo-257852.jpeg') center center / cover no-repeat;filter: grayscale(100%) contrast(95%) brightness(0.6);z-index: 0;}
@@ -53,8 +51,7 @@
     .hero-inner {position: relative;z-index: 2;width: 100%;max-width: 1200px;padding: 40px 24px;display: flex;align-items: center;gap: 40px;}
     .hero-left { flex: 1 1 560px; }
     .hero-right { flex: 0 0 420px; text-align: right; }
-    .hero-img { width: 360px; border-radius: 16px; box-shadow: 0 12px 36px rgba(0,0,0,0.3); }@media (max-width:600px){
-    .hero-inner{flex-direction:column;text-align:center;gap:20px;padding:20px;}}
+    .hero-img { width: 360px; border-radius: 16px; box-shadow: 0 12px 36px rgba(0,0,0,0.3); }
 
 
     /* keep your text and button styles */
@@ -86,8 +83,6 @@
     .service-card:hover .card-bg{transform:scale(1.06)}
     @media (max-width: 768px){
     .services-row {grid-template-columns: 1fr 1fr;}}
-    @media (max-width: 480px){
-    .services-row {grid-template-columns: 1fr;}}
 
 
     /* PORTFOLIO - BLACK GRADIENT + fluid gallery */
@@ -167,9 +162,7 @@
     .contact-right textarea{min-height:120px;resize:vertical}
     .submit-btn{background:#d4af37;color:#000;padding:12px 18px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);font-weight:700;transition:all .18s}
     .submit-btn:hover{background:#000;color:#d4af37;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
-    @media (max-width:600px){
-    .contact-right input, .contact-right select, .contact-right textarea {
-    font-size: 16px; /* prevents iOS zoom-in bug */}}
+    
 
     /* AI HAND */
     .ai-hand{position:relative;}
@@ -196,16 +189,7 @@
     /* Responsive */
     @media (max-width:1200px){ .gallery{column-count:3} }
     @media (max-width:900px){ .gallery{column-count:2} }
-    @media (max-width:800px){
-    .menu-toggle{display:block}
-    nav.primary{display:none}
-    nav.primary.open{display:flex;flex-direction:column;gap:12px;background:rgba(255,255,255,0.02);padding:12px;border-radius:8px;position:absolute;right:24px;top:64px}}
-    @media (max-width:600px){
-    .gallery{column-count:1}
-    .about-book{grid-template-columns:1fr}
-    .contact-container{grid-template-columns:1fr}
-    .hero-left h1{font-size:30px}
-    .hero-right{display:none}}
+   
     /* --- MOBILE NAV FIXES --- */
 @media (max-width: 768px) {
   header.site-header {
@@ -275,10 +259,7 @@
     @media (max-width: 480px){
   .services-row {grid-template-columns: 1fr;}
 }
-@media (max-width: 600px){
-  .gallery{column-count:1}
-}
-
+    
     @media (max-width:600px){
   .contact-left h2 { font-size: 26px; text-align: center; }
   .contact-left p, .contact-left .meta { text-align: center; }
