@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hinna Orquiola — Virtual Assistant, Graphic & Web Designer</title>
+  <meta name="description" content="Graphic & web design services plus inspirational and empowering shop products made with love.">
+  <link rel="icon" type="image/png" href="favicon_ho.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Root Colors */
+    :root {
+      --white:#ffffff;--light:#f5f5f5;--gold:#d4af37;--muted:#9a9a9a;--mid:#555;--dark:#111;--black:#000;--gutter:24px;--header-height:64px;
+    }
+
+    body {margin:0;font-family:'Poppins',sans-serif;color:var(--dark);background:var(--white);overflow-x:hidden;}
+    img {max-width:100%;height:auto;display:block;}
+
+    /* Navigation */
+    header.site-header{position:fixed;top:0;left:0;right:0;z-index:1200;height:var(--header-height)}
+    .nav-wrap{display:flex;justify-content:center;height:100%}
+    .nav-inner{width:100%;max-width:1400px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;color:#fff;transition:background .25s}
+    .nav-inner.solid{background:rgba(0,0,0,0.88);box-shadow:0 6px 18px rgba(0,0,0,.25)}
+    .menu-toggle{display:none;background:none;border:0;color:#fff;font-size:22px;cursor:pointer}
+    nav.primary{display:flex;gap:18px}
+
+    /* Hero */
+    .hero{position:relative;min-height:calc(100dvh - var(--header-height));display:flex;align-items:center;justify-content:center;background:#000;color:#fff;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;background:url('https://images.pexels.com/photos/257852/pexels-photo-257852.jpeg')center/cover no-repeat;filter:grayscale(100%) brightness(0.6)}
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.45),rgba(0,0,0,0.75))}
+    .hero-inner{position:relative;z-index:2;max-width:1200px;width:100%;padding:40px 24px;display:flex;align-items:center;gap:40px}
+    .hero-left{flex:1 1 560px}
+    .hero-right{text-align:right}
+    .hero-img{width:360px;border-radius:16px;box-shadow:0 12px 36px rgba(0,0,0,0.3)}
+
+    /* AI hand */
+    .ai-hand{position:relative;padding-bottom:40px}
+    .ai-hand img{position:absolute;bottom:0;right:0;max-width:700px;pointer-events:none;z-index:1}
+
+    /* Responsive Fixes */
+    @media(max-width:768px){
+      .ai-hand img{position:static;max-width:100%;margin-top:20px;}
+    }
+    @media(max-width:700px){
+      .menu-toggle{display:block}
+      nav.primary{display:none;flex-direction:column;width:100%;text-align:center;background:rgba(0,0,0,0.95);padding:20px 0;}
+      nav.primary.open{display:flex;position:fixed;top:var(--header-height);left:0;width:100%;}
+      .hero-inner{flex-direction:column;text-align:center;padding:24px 18px;margin-top:calc(var(--header-height) + 8px)}
+      .hero-right{display:flex;justify-content:center;margin-top:20px}
+      .hero-img{width:220px}
+      .hero-left h1{font-size:30px}
+      .contact-container{grid-template-columns:1fr}
+    }
+    @media(max-width:480px){
+      .hero-inner{padding-top:80px;}
+      .hero-img{width:180px}
+      .shop-banner h2{font-size:28px;line-height:1.2}
+      .shop-banner{padding:60px 16px}
+    }
+  </style>
+</head>
+<body>
+  <!-- Minimal body content for testing -->
+  <header class="site-header"><div class="nav-wrap"><div class="nav-inner"><h1>Hinna Orquiola</h1><button class="menu-toggle">☰</button><nav class="primary"><a href="#">Home</a></nav></div></div></header>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-inner">
+      <div class="hero-left"><h1>Designs that Empower & Inspire</h1></div>
+      <div class="hero-right"><img class="hero-img" src="https://via.placeholder.com/360" alt="profile"></div>
+    </div>
+  </section>
+
+  <div class="ai-hand"><img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/AI%20hand.png"></div>
+
+</body>
+</html>
