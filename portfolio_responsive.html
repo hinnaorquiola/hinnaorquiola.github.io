@@ -78,12 +78,12 @@
     .book-btn{background:var(--gold);color:var(--black);padding:8px 12px;border-radius:8px;font-weight:700}
 
     /* Gallery */
-    .gallery-item{position:relative;overflow:hidden;border-radius:12px;cursor:pointer;background:#0f0f0f}
-    .gallery-item img{width:100%;height:auto;display:block;transition:transform .45s cubic-bezier(.2,.9,.2,1),box-shadow .3s}
-    .gallery-item:hover img{transform:scale(1.04);box-shadow:0 24px 50px rgba(0,0,0,0.6)}
-    .gallery-item .overlay{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;padding:14px;z-index:2;pointer-events:none}
-    .controls{display:flex;gap:10px;opacity:0;transform:translateY(8px);transition:opacity .22s,transform .22s;pointer-events:auto}
-    .gallery-item:hover .controls{opacity:1;transform:translateY(0)}
+    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .gallery-item{position:relative;overflow:hidden;border-radius:12px;background:#0f0f0f;min-height:160px}
+    .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+    .gallery-item:hover img{transform:scale(1.04)}
+    .controls{position:absolute;inset:auto 12px 12px 12px;display:flex;justify-content:center;opacity:0;transform:translateY(8px);transition:opacity .22s,transform .22s}
+    .gallery-item:hover .controls{opacity:1;transform:none}
     .control-btn{display:inline-block;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);color:#fff;font-weight:700;text-decoration:none}
     .control-btn:hover{background:#d4af37;color:#000}
 
