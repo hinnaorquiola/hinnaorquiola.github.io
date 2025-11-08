@@ -29,14 +29,7 @@
     nav.primary{display:flex;gap:12px;align-items:center}
     nav.primary a{padding:8px 10px;border-radius:8px;color:var(--white);font-weight:600}
     .menu-toggle{display:none;background:none;border:0;color:var(--white);font-size:22px;cursor:pointer}
-  /* Mobile sheet menu (Wirestock-like slide down) */
-  .mobile-sheet{
-    position:fixed;inset:var(--header-h) 0 auto 0;height:calc(100% - var(--header-h));background:rgba(7,7,7,0.98);
-    transform:translateY(-6px) translateY(-105%);transition:transform .42s var(--ease);padding:24px 20px;display:flex;flex-direction:column;gap:18px;z-index:1350;
-  }
-  .mobile-sheet.open{transform:translateY(0)}
-  .mobile-sheet a{color:var(--white);font-size:18px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.03)}
-
+  
   /* Hero (mobile-first) */
   .hero{position:relative;min-height:calc(100vh - var(--header-h));display:grid;align-items:center;justify-items:center;overflow:hidden;color:var(--white)}
   .hero-bg{position:absolute;inset:0;background-image:url('https://images.pexels.com/photos/257852/pexels-photo-257852.jpeg');background-position:center center;background-size:cover;filter:grayscale(100%) contrast(95%) brightness(0.6);z-index:0}
