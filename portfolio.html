@@ -137,9 +137,14 @@
   /* ABOUT + BOOK (split) */
   .about-book{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;padding:0 24px}
   .about-left{padding:24px}
-  .book-right{padding:24px;text-align:center}
+  .book-right{padding:24px;text-align:center;background: #fff;border-radius: 16px;box-shadow: 0 10px 28px rgba(0,0,0,0.06);padding: 32px;transition: transform .2s ease;}
   .book-right img{width:180px;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,0.12)}
-
+  .book-right:hover { transform: translateY(-4px); }
+  .about-book {background: linear-gradient(90deg, #f9f9f9 50%, #fff 50%);}
+  @media (max-width: 768px) {
+  .about-book { background: #f9f9f9; }}
+  .about-left img {border: 3px solid #fff;box-shadow: 0 10px 24px rgba(0,0,0,0.12);transition: transform .25s ease;}
+  .about-left img:hover {transform: scale(1.03);}
 
   /* BLOG */
   .blog-grid {display: grid;grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;}
@@ -582,23 +587,28 @@
       <div class="container about-book">
         <div id="about" class="about-left">
           <h3 class="section-title">About Me</h3>
-          <div style="display:flex;gap:18px;align-items:center;margin-top:12px;flex-wrap:wrap">
-            <img src="images/profile_photo.jpg" alt="Hinna Orquiola" style="width:160px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.08)">
-            <div>
-              <p style="color:var(--mid);margin:0 0 8px">I’m Hinna Orquiola, a creative partner focused on thoughtful design and meaningful storytelling. I craft websites, book covers, branding, and shop products that help creators and businesses communicate with clarity and style.</p>
-              <p style="font-style:italic;color:var(--dark);margin-top:10px">"Design is where story and strategy meet."</p>
-            </div>
-          </div>
-        </div>
+  <div style="display:flex;gap:18px;align-items:center;margin-top:12px;flex-wrap:wrap">
+    <img src="images/profile_photo.jpg" alt="Hinna Orquiola" style="width:160px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.08)">
+    <div>
+      <p style="color:var(--mid);margin:0 0 8px">
+        I’m Hinna Orquiola, a creative partner focused on thoughtful design and meaningful storytelling.
+        I craft websites, book covers, branding, and shop products that help creators and businesses
+        communicate with clarity and style.
+      </p>
 
-        <div id="book" class="book-right">
-          <h3 class="section-title">Book</h3>
-          <p style="margin-top:12px">My published book — designed and written by me.</p>
-          <div style="margin-top:18px;display:flex;align-items:center;gap:16px;justify-content:center;flex-direction:column">
-            <img src="https://m.media-amazon.com/images/I/91Xd1USf7BL._SY466_.jpg" alt="Cover of I Was Everyone But Me" style="width:160px;border-radius:8px;border:1px solid rgba(0,0,0,0.06)">
-            <p style="margin:0"><strong>I Was Everyone But Me: A Journey Back to Myself</strong></p>
-            <p style="margin:6px 0"><a href="https://www.amazon.com/dp/B0FHHQYF62" target="_blank" rel="noopener noreferrer">Buy on Amazon</a></p>
-          </div>
+      <p style="font-style:italic;color:var(--dark);margin-top:10px">
+        "Design is where story and strategy meet."
+      </p>
+    </div>
+  </div>
+
+  <!-- ✨ Mission statement block -->
+  <div style="margin-top:20px; padding:16px 18px; background:#fff; border-left:4px solid var(--gold); border-radius:8px;">
+    <p style="margin:0; color:#555;">
+      My mission is to empower creators and entrepreneurs by designing visuals that speak truth,
+      inspire confidence, and tell stories that last.
+    </p>
+  </div>
         </div>
       </div>
     </section>
