@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Hinna Orquiola — Virtual Assistant, Graphic & Web Designer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    body{margin:0;font-family:'Poppins',sans-serif;color:#111;}
+    header{position:fixed;top:0;width:100%;background:rgba(0,0,0,.85);color:#fff;padding:1rem;display:flex;justify-content:space-between;align-items:center;z-index:1000;}
+    nav a{color:#fff;text-decoration:none;margin:0 .5rem;font-weight:600;}
+    .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:#fff;background:url('https://images.pexels.com/photos/257852/pexels-photo-257852.jpeg')center/cover;}
+    .btn{background:#d4af37;color:#000;padding:.8em 1.2em;border-radius:8px;text-decoration:none;font-weight:700;margin:.3em;}
+    section{padding:80px 20px;max-width:1200px;margin:auto;}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
+    .card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 4px 10px rgba(0,0,0,.1);}
+    .card img{width:100%;height:auto;display:block;}
+    footer{text-align:center;padding:20px;background:#f5f5f5;color:#555;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Hinna Orquiola</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <section class="hero">
+    <h1>Designs that Empower & Inspire</h1>
+    <p>Helping brands and creators bring ideas to life through thoughtful design.</p>
+    <a href="#portfolio" class="btn">View Portfolio</a>
+  </section>
+  <section id="services">
+    <h2>Services</h2>
+    <div class="grid">
+      <div class="card"><img src="https://cdn.pixabay.com/photo/2016/02/18/19/25/pc-1207886_1280.jpg"><p>Book Cover Design</p></div>
+      <div class="card"><img src="https://images.pexels.com/photos/574087/pexels-photo-574087.jpeg"><p>Website Design</p></div>
+      <div class="card"><img src="https://cdn.pixabay.com/photo/2016/11/18/12/55/office-1834294_1280.jpg"><p>Graphic Design</p></div>
+    </div>
+  </section>
+  <footer>© <span id="year"></span> Hinna Orquiola — All Rights Reserved</footer>
+  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>
