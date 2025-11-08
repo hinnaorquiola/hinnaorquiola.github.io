@@ -627,15 +627,13 @@
   // footer year
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // mobile menu toggle (slide-down sheet)
-  const menuToggle = document.getElementById('menu-toggle');
-  const mobileSheet = document.getElementById('mobile-sheet');
-  menuToggle.addEventListener('click', () => {
-    const open = mobileSheet.classList.toggle('open');
-    mobileSheet.setAttribute('aria-hidden', open ? 'false' : 'true');
-    menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    if(open) document.documentElement.style.overflow = 'hidden'; else document.documentElement.style.overflow = '';
-  });
+  // mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    menuToggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
 
   // close mobile menu on internal link click
   mobileSheet.querySelectorAll('a[href^="#"]').forEach(a => {
