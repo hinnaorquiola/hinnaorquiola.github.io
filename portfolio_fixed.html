@@ -1,0 +1,930 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hinna Orquiola — Virtual Assistant, Graphic & Web Designer</title>
+
+  <meta name="description" content="Graphic & web design services plus inspirational and empowering shop products made with love.">
+  <link rel="icon" type="image/png" href="favicon_ho.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+   :root{
+      --white:#ffffff;
+      --light:#f5f5f5;
+      --gold: #d4af37;
+      --muted:#9a9a9a;
+      --mid:#555555;
+      --dark:#111111;
+      --black:#000000;
+      --gutter:24px;
+      --header-height:64px;
+    }
+
+    /* Reset / Base */
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:'Poppins',sans-serif;
+      color:var(--dark);
+      background:var(--white);
+      -webkit-font-smoothing:antialiased;
+      -webkit-text-size-adjust:100%;
+      -ms-text-size-adjust:100%;
+      overflow-x:hidden;
+    }
+    a{color:inherit}
+    img{max-width:100%;display:block;height:auto}
+
+    /* Skip link */
+    .skip-link{position:absolute;left:-9999px}
+    .skip-link:focus{position:fixed;left:var(--gutter);top:var(--gutter);background:#000;color:#fff;padding:8px 12px;border-radius:6px;z-index:9999}
+
+    /* NAV */
+    header.site-header{
+      position:fixed;
+      left:0;
+      right:0;
+      top:0;
+      z-index:1200;
+      height:var(--header-height);
+    }
+    .nav-wrap{display:flex;justify-content:center;height:100%}
+    .nav-inner{
+      width:100%;
+      max-width:1400px;
+      margin:0 auto;
+      padding:12px 24px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      transition:background .25s,box-shadow .25s,backdrop-filter .25s;
+      background:transparent;
+      color:#fff;
+      height:100%;
+      gap:12px;
+    }
+    .nav-inner.solid{background:rgba(0,0,0,0.88);box-shadow:0 6px 18px rgba(0,0,0,.25);backdrop-filter:blur(6px)}
+    .brand h1{margin:0;font-family:'Playfair Display',serif;font-size:20px;color:var(--white)}
+    .brand p{margin:0;font-size:11px;color:rgba(255,255,255,0.9)}
+    nav.primary{display:flex;gap:18px;align-items:center}
+    nav.primary a{padding:6px 8px;border-radius:6px;text-decoration:none;color:inherit;transition:background .18s}
+    nav.primary a:hover{background:rgba(255,255,255,0.06)}
+    .menu-toggle{display:none;background:none;border:0;color:inherit;font-size:22px;cursor:pointer}
+
+    /* HERO */
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: calc(100dvh - var(--header-height));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      overflow: hidden;
+      background: #000;
+    }
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.pexels.com/photos/257852/pexels-photo-257852.jpeg') center center / cover no-repeat;
+      filter: grayscale(100%) contrast(95%) brightness(0.6);
+      z-index: 0;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.75) 100%);
+      z-index: 1;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1200px;
+      padding: 40px 24px;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      margin-top: calc(var(--header-height) - 8px);
+    }
+    .hero-left { flex: 1 1 560px; }
+    .hero-right { flex: 0 0 420px; text-align: right; }
+    .hero-img { width: 360px; border-radius: 16px; box-shadow: 0 12px 36px rgba(0,0,0,0.3); }
+
+    .intro-line { opacity: 0.95; margin: 0 0 8px; font-weight: 600; }
+    .hero-left h1 { font-family: 'Playfair Display', serif; font-size: 48px; line-height: 1.02; margin: 6px 0 12px; color: var(--white); }
+    .hero-left p.tagline { color: rgba(255,255,255,0.9); max-width: 720px; margin-bottom: 22px; }
+    .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn {display: inline-block;padding: 12px 20px;border-radius: 10px;font-weight: 700;text-decoration: none;background: var(--gold);color: var(--black);box-shadow: 0 8px 24px rgba(0,0,0,0.18);transition: transform .18s;}
+    .btn.secondary {background: transparent;color: var(--gold);border: 2px solid rgba(255,255,255,0.18);}
+    .btn:hover { transform: translateY(-4px); }
+
+    main{width:100%}
+    section.fullwidth{width:100%;display:block;padding:64px 24px}
+    .container{max-width:1200px;margin:0 auto;padding:0 24px}
+    h3.section-title{font-family:'Playfair Display',serif;font-size:28px;margin:0 0 18px;color:var(--dark);display:inline-block}
+    p.lead{color:var(--mid);margin-top:6px}
+
+    /* SERVICES */
+    .services-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+    .service-card{position:relative;height:320px;border-radius:12px;overflow:hidden;display:flex;align-items:flex-end;padding:18px;color:white;transition:transform .28s; background:#222; border:4px solid rgba(255,255,255,0.8);}
+    .service-card .card-bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0;transform:scale(1);transition:transform .6s;filter:grayscale(100%) contrast(95%)}
+    .service-card::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.62));z-index:1}
+    .service-card .card-content{position:relative;z-index:2}
+    .service-card h4{margin:0 0 6px;font-family:'Playfair Display',serif}
+    .service-card p{margin:0 0 12px;color:rgba(255,255,255,0.95)}
+    .service-card .book-btn{background:var(--gold);color:var(--black);padding:8px 12px;border-radius:8px;font-weight:700}
+    .service-card:hover{transform:translateY(-8px)}
+    .service-card:hover .card-bg{transform:scale(1.06)}
+
+    /* PORTFOLIO - use grid for responsiveness */
+    #portfolio { background: #ffffff;color: #000;}
+    .gallery-wrap{width:100%;padding:0;margin-top:18px}
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:18px;
+      width:100%;
+    }
+    .gallery-item{position:relative;overflow:hidden;border-radius:12px;cursor:pointer;background:#0f0f0f}
+    .gallery-item img{width:100%;height:auto;display:block;transition:transform .45s cubic-bezier(.2,.9,.2,1),box-shadow .3s}
+    .gallery-item:hover img{transform:scale(1.04);box-shadow:0 24px 50px rgba(0,0,0,0.6)}
+    .gallery-item .overlay{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;padding:14px;z-index:2;pointer-events:none}
+    .controls{display:flex;gap:10px;opacity:0;transform:translateY(8px);transition:opacity .22s,transform .22s;pointer-events:auto}
+    .gallery-item:hover .controls{opacity:1;transform:translateY(0)}
+    .control-btn{display:inline-block;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);color:#fff;font-weight:700;text-decoration:none}
+    .control-btn:hover{background:#d4af37;color:#000}
+
+    /* Modal (image-only) */
+    .lb-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.96);z-index:2200;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .28s}
+    .lb-overlay.open{opacity:1;pointer-events:auto}
+    .lb-content{max-width:1100px;width:100%;max-height:90vh;display:flex;align-items:center;justify-content:center}
+    .lb-content img{max-width:100%;max-height:90vh;border-radius:6px;box-shadow:0 18px 50px rgba(0,0,0,0.6)}
+    .lb-close{position:absolute;top:20px;right:20px;color:#fff;font-size:28px;background:none;border:0;cursor:pointer}
+    .lb-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:36px;color:rgba(255,255,255,0.9);background:none;border:0;cursor:pointer;padding:12px}
+    .lb-prev{left:18px}.lb-next{right:18px}
+
+    /* SHOP */
+    .shop-section {position: relative;overflow: visible;}
+    .shop-grid {display: grid;grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));gap: 24px;max-width: 1200px;margin: 0 auto;}
+    .product-card {position: relative;height: 320px;border-radius: 12px;overflow: hidden;background-size: cover;background-position: center;background-color: #fff;border: 1px solid #eee;box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);transition: transform 0.2s ease, box-shadow 0.2s ease;}
+    .product-card:hover {transform: translateY(-6px);box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);}
+    .product-overlay {position: absolute;bottom: 0;left: 0;right: 0;background: rgba(255, 255, 255, 0.95);color: #000;display: flex;justify-content: space-between;align-items: center;padding: 14px 16px;}
+    .product-title {font-weight: 700;font-size: 1rem;}
+    .product-caption {font-size: 0.85rem;color: #555;}
+    .shop-btn {display: inline-block;padding: 8px 14px;border-radius: 6px;background: var(--gold);color: #000;font-weight: 700;border: none;transition: all 0.2s ease;cursor: pointer;}
+    .shop-btn:hover {background: #000;color: var(--gold);}
+
+    /* TESTIMONIALS */
+    .testimonials {position:relative;min-height:360px;color:#fff;display:flex;align-items:center;justify-content:center;padding:64px 24px;overflow:hidden;background:#000;}
+    .testimonials::before {content: "";position: absolute;inset: 0;background: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.65));z-index: 1;}
+    .testimonials .inner {position: relative;z-index: 2;max-width: 1100px;width: 100%;display: grid;grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));gap: 20px;text-align: center;margin: 0 auto;}
+    .testimonial-card {background: rgba(255,255,255,0.03);padding: 24px;border-radius: 12px;border: 1px solid rgba(255,255,255,0.06);color: rgba(255,255,255,0.95);}
+
+    /* ABOUT + BOOK (split) */
+    .about-book{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;padding:0 24px}
+    .about-left{padding:24px}
+    .book-right{padding:24px;text-align:center;background: #fff;border-radius: 16px;box-shadow: 0 10px 28px rgba(0,0,0,0.06);padding: 32px;transition: transform .2s ease;}
+    .book-right img{width:180px;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,0.12)}
+    .about-book {background: linear-gradient(90deg, #f9f9f9 50%, #fff 50%);}
+
+    /* BLOG */
+    .blog-grid {display: grid;grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;}
+    .blog-card {position: relative;border-radius: 12px;overflow: hidden;background-size: cover;background-position: center;height: 360px;color: #fff;display: flex;align-items: flex-end;box-shadow: 0 6px 18px rgba(0,0,0,0.1);transition: transform .2s ease, box-shadow .2s ease;}
+    .blog-card::before {content: "";position: absolute;inset: 0;background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.2));z-index: 0;}
+    .blog-content {position: relative;z-index: 1;padding: 20px;}
+    .blog-btn {display: inline-block;margin-top: 10px;padding: 8px 14px;border-radius: 6px;background: #d4af37;color: #000;font-weight: 700;text-decoration: none;transition: all 0.2s ease;}
+    .blog-btn:hover {background: #000;color: #d4af37;}
+
+    /* CONTACT */
+    #contact{background:#000;color:var(--white);padding:72px 24px}
+    .contact-container{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+    .contact-left h2{font-family:'Playfair Display',serif;font-size:32px;margin:0 0 12px;color:#fff}
+    .contact-left p{color:rgba(255,255,255,0.85);margin:0 0 16px}
+    .contact-left .meta{margin-top:18px}
+    .contact-left .meta p{margin:6px 0;color:rgba(255,255,255,0.9);font-weight:600}
+    .contact-right form{display:flex;flex-direction:column;gap:12px}
+    .contact-right input,.contact-right select,.contact-right textarea{padding:14px;border-radius:8px;border:1px solid rgba(255,255,255,0.12);background:#fff;color:var(--dark)}
+    .contact-right textarea{min-height:120px;resize:vertical}
+    .submit-btn{background:#d4af37;color:#000;padding:12px 18px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);font-weight:700;transition:all .18s}
+    .submit-btn:hover{background:#000;color:#d4af37;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+
+    /* AI HAND */
+    .ai-hand{position:relative;}
+    .ai-hand img{position:absolute;bottom:0;right:0;max-width:700px;pointer-events:none;z-index:1;}
+    @media(max-width:1280px){.ai-hand img{max-width:620px;}}
+    @media(max-width:1024px){.ai-hand img{max-width:520px;}}
+    @media(max-width:768px){.ai-hand img{max-width:400px;}}
+    @media(max-width:480px){.ai-hand img{max-width:280px;}}
+
+    /* FOOTER */
+    footer{padding:36px 24px;text-align:center;color:var(--muted);background:var(--light)}
+    .share-row{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:12px}
+    .social-icons{display:flex;gap:14px;align-items:center}
+    .social-icons a{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:8px;background:rgba(0,0,0,0.06);color:rgba(0,0,0,0.7);transition:transform .16s,background .16s}
+    .social-icons a svg{width:18px;height:18px}
+    .social-icons a:hover{transform:scale(1.08);background:rgba(0,0,0,0.12);color:#000}
+
+    /* Reveal animation */
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s ease}
+    .reveal.active{opacity:1;transform:translateY(0)}
+
+    /* Desktop -> tablet responsive tweaks */
+    @media (max-width:1200px){ .gallery{grid-template-columns:repeat(3,1fr);} }
+    @media (max-width:900px){ .gallery{grid-template-columns:repeat(2,1fr);} .services-row{grid-template-columns:1fr 1fr;} .about-book{grid-template-columns:1fr;} }
+    @media (max-width:700px){
+      .nav-inner{padding:10px 16px}
+      .menu-toggle{display:block}
+      nav.primary{display:none;flex-direction:column;width:100%;text-align:center;background:rgba(0,0,0,0.95);padding:20px 0;border-radius:0;}
+      nav.primary.open{display:flex;position:fixed;top:var(--header-height);left:0;width:100%;z-index:1300;}
+      nav.primary a{color:#fff;font-size:18px;padding:10px 0;}
+      .hero-inner{flex-direction:column;text-align:center;padding:24px 18px;margin-top:calc(var(--header-height) + 8px)}
+      .hero-right{flex:1 1 100%;display:flex;justify-content:center;margin-top:20px}
+      .hero-img{width:220px}
+      .hero-left h1{font-size:30px}
+      .about-left img{margin:0 auto 20px}
+      .contact-container{grid-template-columns:1fr}
+      .ai-hand img{position:static;display:block;margin:20px auto 0;max-width:320px}
+      .service-card{height:auto;padding:18px 14px}
+      .product-card{height:260px}
+    }
+    @media (max-width:480px){
+      section.fullwidth{padding:40px 16px}
+      .gallery{grid-template-columns:repeat(1,1fr)}
+      .hero-img{width:180px}
+      .hero-left h1{font-size:26px}
+      .brand h1{font-size:18px}
+      .nav-inner{padding:8px 12px}
+      .menu-toggle{font-size:20px}
+    }
+
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- NAV -->
+  <header class="site-header" role="banner">
+    <div class="nav-wrap">
+      <div class="nav-inner" id="site-nav">
+        <div class="brand" style="display:flex;flex-direction:column">
+          <h1>Hinna Orquiola</h1>
+          <p style="font-size:11px;margin:0;color:rgba(255,255,255,0.9)">Virtual Assistant • Graphic & Web Designer</p>
+        </div>
+
+        <nav class="primary" id="nav-links" aria-label="Primary">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#blog">Blog</a>
+          <a href="#shop">My Products</a>
+          <a href="#book">Book</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="hero" aria-label="Hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+
+  <div class="hero-inner">
+    <div class="hero-left">
+      <p class="intro-line">Hi, I’m <strong>Hinna Orquiola</strong> — your creative partner.</p>
+      <h1>Designs that <span style="color:var(--gold)">Empower & Inspire</span></h1>
+      <p class="tagline">Helping brands and creators bring ideas to life through thoughtful design, illustration, and storytelling.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#portfolio">View My Portfolio</a>
+        <a class="btn secondary" href="#shop">Visit My Store</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <img class="hero-img" src="images/profile_photo.jpg" alt="Hinna Orquiola Profile">
+    </div>
+  </div>
+</section>
+
+  <main id="main">
+    <!-- VALUE HIGHLIGHTS -->
+    <section id="value-highlights" class="fullwidth" aria-label="Value highlights">
+      <div class="container" style="text-align:center">
+        <div style="display:flex;justify-content:center;gap:42px;flex-wrap:wrap">
+          <div style="max-width:200px;text-align:center">
+            <div style="font-size:28px">🎨</div>
+            <p style="color:var(--mid);margin-top:8px">Creative Graphic Design</p>
+          </div>
+          <div style="max-width:200px;text-align:center">
+            <div style="font-size:28px">💻</div>
+            <p style="color:var(--mid);margin-top:8px">Website Design & Build</p>
+          </div>
+          <div style="max-width:200px;text-align:center">
+            <div style="font-size:28px">🛍️</div>
+            <p style="color:var(--mid);margin-top:8px">Unique Shop Products</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="fullwidth" aria-label="Services"
+  style="background:url('https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/hero-bg.jpg') center center / cover no-repeat; padding-bottom:120px;">
+      <div class="container">
+        <h3 class="section-title">Services</h3>
+        <p class="lead">Offering creative and professional solutions to help authors, entrepreneurs, and businesses build their presence with impact and clarity.</p>
+
+        <div class="services-row reveal" style="margin-top:24px">
+          <div class="service-card" role="article" aria-label="Book Cover Design">
+            <div class="card-bg" style="background-image: url('https://cdn.pixabay.com/photo/2016/02/18/19/25/pc-1207886_1280.jpg');"></div>
+            <div class="card-content">
+              <h4>Book Cover Design</h4>
+              <p>Custom covers tailored to your book’s story, genre, and audience — blending creativity with market appeal.</p>
+              <a href="#contact" class="book-btn">Book Now</a>
+            </div>
+          </div>
+
+          <div class="service-card" role="article" aria-label="Website Design & Development">
+            <div class="card-bg" style="background-image:url('https://images.pexels.com/photos/574087/pexels-photo-574087.jpeg');"></div>
+            <div class="card-content">
+              <h4>Website Design & Development</h4>
+              <p>Modern, responsive websites built with clean layouts and user-friendly navigation — helping your brand stand out online.</p>
+              <a href="#contact" class="book-btn">Book Now</a>
+            </div>
+          </div>
+
+          <div class="service-card" role="article" aria-label="Website Maintenance">
+            <div class="card-bg" style="background-image:url('https://cdn.pixabay.com/photo/2015/09/04/23/28/wordpress-923188_1280.jpg');"></div>
+            <div class="card-content">
+              <h4>Website Maintenance</h4>
+              <p>Keep your website running smoothly with regular updates, optimization, and technical support for better performance.</p>
+              <a href="#contact" class="book-btn">Book Now</a>
+            </div>
+          </div>
+
+          <div class="service-card" role="article" aria-label="Virtual Assistant Services">
+            <div class="card-bg" style="background-image:url('https://images.pexels.com/photos/4226140/pexels-photo-4226140.jpeg');"></div>
+            <div class="card-content">
+              <h4>Virtual Assistant Services</h4>
+              <p>Reliable admin and creative assistance to help you manage tasks, content, and communication efficiently.</p>
+              <a href="#contact" class="book-btn">Book Now</a>
+            </div>
+          </div>
+
+          <div class="service-card" role="article" aria-label="Graphic Design">
+            <div class="card-bg" style="background-image:url('https://cdn.pixabay.com/photo/2016/11/18/12/55/office-1834294_1280.jpg');"></div>
+            <div class="card-content">
+              <h4>Graphic Design</h4>
+              <p>Professional and creative designs for branding, marketing materials, and visual campaigns that capture your brand identity.</p>
+              <a href="#contact" class="book-btn">Book Now</a>
+            </div>
+          </div>
+
+          <div class="service-card" role="article" aria-label="Illustration & Animation">
+            <div class="card-bg" style="background-image:url('https://cdn.pixabay.com/photo/2020/04/18/02/05/fantasy-5057397_1280.jpg');"></div>
+            <div class="card-content">
+              <h4>Illustration & Animation</h4>
+              <p>Unique and expressive illustrations and motion graphics that bring stories, ideas, and concepts to life with a personal artistic touch.</p>
+              <a href="#contact" class="book-btn">Book Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI TOOLS -->
+    <section id="ai-tools" class="fullwidth" style="background:#0b0b0b;color:#fff;text-align:center; margin-bottom:80px;">
+      <div class="container">
+        <h3 class="section-title" style="color:#d4af37">How We Use AI in Design</h3>
+        <p class="lead" style="color:#ddd;max-width:900px;margin:12px auto 30px;">We thoughtfully integrate <strong>AI-powered tools</strong> to enhance creativity, streamline workflows, and deliver projects more efficiently — while ensuring every design remains <strong>original, human-driven, and aligned with your brand’s story.</strong></p>
+
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px">
+          <div style="flex:1 1 250px;background:#111;border-radius:12px;padding:24px;border:1px solid rgba(212, 175, 55, 1)">
+            <h4 style="color:#fff">✨ Creative Brainstorming</h4>
+            <p style="color:#ccc">We use AI tools to generate mood boards, concept prompts, and color palette ideas — helping us visualize themes faster and refine concepts.</p>
+          </div>
+
+          <div style="flex:1 1 250px;background:#111;border-radius:12px;padding:24px;border:1px solid rgba(212, 175, 55, 1)">
+            <h4 style="color:#fff">🎨 Design Enhancement</h4>
+            <p style="color:#ccc">AI assists with layout balancing, image clean-up, and idea variations — ensuring polished, high-quality visuals while keeping the artistic touch human.</p>
+          </div>
+
+          <div style="flex:1 1 250px;background:#111;border-radius:12px;padding:24px;border:1px solid rgba(212, 175, 55, 1)">
+            <h4 style="color:#fff">⚙️ Workflow Efficiency</h4>
+            <p style="color:#ccc">We automate repetitive tasks like resizing, background removal, and mockup generation — so more time goes into creative thinking and storytelling.</p>
+          </div>
+        </div>
+
+        <p style="margin-top:32px;color:#d4af37;font-weight:600">AI is a tool — creativity is the heart. Every design is uniquely crafted, never mass-produced.</p>
+      </div>
+    </section>
+
+    <!-- AI HAND IMAGE (static) -->
+    <div class="ai-hand">
+      <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/AI hand.png" alt="AI robot hand reaching out illustration">
+    </div>
+
+    <!-- PORTFOLIO (black gradient background) -->
+    <section id="portfolio" class="fullwidth" aria-label="Portfolio">
+      <div class="container" style="max-width:1400px;padding-left:0;padding-right:0">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:0 24px;">
+          <h3 class="section-title" style="color:#000">Portfolio</h3>
+          <p style="color:#555;margin:0">Selected website, book cover, and animation work — click any image to view.</p>
+        </div>
+
+        <div class="gallery-wrap" style="padding:18px 24px 6px">
+          <div class="gallery" id="gallery">
+            <!-- example items -->
+            <div class="gallery-item" data-index="0" data-type="site" data-link="https://hinnaorquiola.github.io/mock-nature.html">
+              <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images_nature_mockup.png" alt="Nature Retreat — mock website">
+              <div class="overlay"><div class="controls"><a class="control-btn" href="https://hinnaorquiola.github.io/mock-nature.html" target="_blank" rel="noopener">View Website</a></div></div>
+            </div>
+
+            <div class="gallery-item" data-index="1" data-type="site" data-link="https://hinnaorquiola.github.io/mock-consulting.html">
+              <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images_business_consulting.png" alt="Consulting Firm">
+              <div class="overlay"><div class="controls"><a class="control-btn" href="https://hinnaorquiola.github.io/mock-consulting.html" target="_blank" rel="noopener">View Website</a></div></div>
+            </div>
+
+            <div class="gallery-item" data-index="2" data-type="site" data-link="https://hinnaorquiola.github.io/mock-cafe.html">
+              <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images_cafe_mock.png" alt="Café Orquiola">
+              <div class="overlay"><div class="controls"><a class="control-btn" href="https://hinnaorquiola.github.io/mock-cafe.html" target="_blank" rel="noopener">View Website</a></div></div>
+            </div>
+
+            <div class="gallery-item" data-index="3" data-type="site" data-link="https://hinnaorquiola.github.io/mock-fashion.html">
+              <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/image_mock_fashion.png" alt="Fashion Website">
+              <div class="overlay"><div class="controls"><a class="control-btn" href="https://hinnaorquiola.github.io/mock-fashion.html" target="_blank" rel="noopener">View Website</a></div></div>
+            </div>
+
+            <!-- book covers -->
+            <div class="gallery-item" data-index="4" data-type="image"><img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Reveries.png" alt="Reveries — book cover"></div>
+            <div class="gallery-item" data-index="5" data-type="image"><img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Only%20Us%20(1).png" alt="Only Us (1) — book cover"></div>
+            <div class="gallery-item" data-index="6" data-type="image"><img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Only%20Us%20(2).png" alt="Only Us (2) — book cover"></div>
+            <div class="gallery-item" data-index="7" data-type="image"><img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Only%20Us.png" alt="Only Us — book cover"></div>
+
+            <!-- animations -->
+            <div class="gallery-item" data-index="8" data-type="video" data-link="https://www.youtube.com/watch?v=UyIIO_p8vVM">
+              <img src="https://img.youtube.com/vi/UyIIO_p8vVM/maxresdefault.jpg" alt="The War of Thorns and Wings — animation">
+              <div class="overlay"><div class="controls"><a class="control-btn" href="https://www.youtube.com/watch?v=UyIIO_p8vVM" target="_blank" rel="noopener">View Video</a></div></div>
+            </div>
+
+            <div class="gallery-item" data-index="9" data-type="video" data-link="https://www.youtube.com/watch?v=v9SZyJkiz_M">
+              <img src="https://img.youtube.com/vi/v9SZyJkiz_M/maxresdefault.jpg" alt="The Whispering Stars — animation">
+              <div class="overlay"><div class="controls"><a class="control-btn" href="https://www.youtube.com/watch?v=v9SZyJkiz_M" target="_blank" rel="noopener">View Video</a></div></div>
+            </div>
+
+            <div class="gallery-item" data-index="10" data-type="video" data-link="https://www.youtube.com/watch?v=ct5hn3dFRY0">
+              <img src="https://img.youtube.com/vi/ct5hn3dFRY0/maxresdefault.jpg" alt="Sam and the Secret Language of Nature — animation">
+              <div class="overlay"><div class="controls"><a class="control-btn" href="https://www.youtube.com/watch?v=ct5hn3dFRY0" target="_blank" rel="noopener">View Video</a></div></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta" class="fullwidth" style="background:var(--light);text-align:center;padding:48px 24px">
+      <div class="container">
+        <h2 style="font-family:'Playfair Display',serif;font-size:28px;margin:0">Like what you see?</h2>
+        <p style="color:var(--mid)">Want a website, illustration, or story like these? Let’s collaborate and bring your ideas to life!</p>
+        <a href="#contact" class="btn" style="margin-top:14px">Let’s Work Together</a>
+      </div>
+    </section>
+
+    <!-- SHOP -->
+<section id="shop" class="fullwidth shop-section" aria-label="Shop"
+  style="background:#f9f9f9;padding:80px 24px;position:relative;">
+      <div class="shop-banner" style="
+  background:url('https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Shop-banner.png') center/cover no-repeat;
+  padding:80px 24px;
+  text-align:center;
+  color:#fff;
+  border-radius:12px;
+  margin-bottom:40px;">
+  <h2 style="font-family:'Playfair Display',serif;font-size:36px;margin:0;display:flex;align-items:center;justify-content:center;gap:10px;">
+  <span>Welcome to My Design Store</span>
+  <img src="https://media.tenor.com/bFkvAnRiQUEAAAAi/stickergiant-swipe-up.gif" 
+       alt="Shop animation" 
+       style="width:48px;height:auto;">
+</h2>
+  <p style="margin-top:12px;color:#f0f0f0;">Browse notebooks, planners, binders, and creative merch — all designed with love!</p>
+  <a href="https://www.zazzle.com/store/euneye" target="_blank" class="btn" style="margin-top:16px;">Visit Full Zazzle Store →</a>
+</div>
+      <div class="shop-decor" aria-hidden="true">
+        <div class="shape-1"></div>
+        <div class="shape-2"></div>
+        <div class="shape-3"></div>
+      </div>
+
+      <div class="container">
+        <div style="display:flex;justify-content:space-between;align-items:baseline">
+          <h3 class="section-title">Shop</h3>
+          <p style="color:var(--muted);margin:0;max-width:650px;text-align:right">Designs & merch — click an item to visit the store. All designs are original and created by me — crafted to bring creativity to your everyday tools.</p>
+        </div>
+
+        <div class="shop-grid" style="margin-top:18px">
+          <a class="product-card" href="https://www.zazzle.com/with_love_meow_cozy_cat_notebook-256751342812898173" target="_blank" rel="noopener" style="background-image:url('images/with_love_meow.JPG');" aria-label="With Love Meow Cozy Cat Notebook">
+            <div class="product-overlay">
+              <div>
+                <div class="product-title">With Love, Meow — Cozy Cat Notebook</div>
+                <div class="product-caption">Notebook • Office & school</div>
+              </div>
+              <div><span class="shop-btn" role="button">Shop Now</span></div>
+            </div>
+          </a>
+
+          <a class="product-card" href="https://www.zazzle.com/music_is_healing_artistic_binder-256563711087318276" target="_blank" rel="noopener" style="background-image:url('images/music_is_healing.JPG');" aria-label="Music is Healing Artistic Binder">
+            <div class="product-overlay">
+              <div>
+                <div class="product-title">Music is Healing — Artistic Binder</div>
+                <div class="product-caption">Binder • Office</div>
+              </div>
+              <div><span class="shop-btn" role="button">Shop Now</span></div>
+            </div>
+          </a>
+
+          <a class="product-card" href="https://www.zazzle.com/avery_signature_binder-127686375771686957" target="_blank" rel="noopener" style="background-image:url('images/avery_signature.JPG');" aria-label="Avery Signature Binder">
+            <div class="product-overlay">
+              <div>
+                <div class="product-title">Avery Signature Binder</div>
+                <div class="product-caption">Signature Binder</div>
+              </div>
+              <div><span class="shop-btn" role="button">Shop Now</span></div>
+            </div>
+          </a>
+
+          <a class="product-card" href="https://www.zazzle.com/she_has_a_choice_empowerment_art_binder_for_women-256082215616110385" target="_blank" rel="noopener" style="background-image:url('images/she_has_a_choice.JPG');" aria-label="She Has a Choice Empowerment Binder">
+            <div class="product-overlay">
+              <div>
+                <div class="product-title">She Has a Choice — Empowerment Binder</div>
+                <div class="product-caption">Empowerment • Women</div>
+              </div>
+              <div><span class="shop-btn" role="button">Shop Now</span></div>
+            </div>
+          </a>
+
+          <a class="product-card" href="https://www.zazzle.com/vintage_lady_cat_binder-256654261653686468" target="_blank" rel="noopener" style="background-image:url('images/vintage_lady_cat.JPG');" aria-label="Vintage Lady and Cat Binder">
+            <div class="product-overlay">
+              <div>
+                <div class="product-title">Vintage Lady & Cat Binder</div>
+                <div class="product-caption">Binder • Vintage</div>
+              </div>
+              <div><span class="shop-btn" role="button">Shop Now</span></div>
+            </div>
+          </a>
+
+          <a class="product-card" href="https://www.zazzle.com/aesthetic_study_vibes_journal_planner-256096758976606902" target="_blank" rel="noopener" style="background-image:url('images/aesthetic_study_vibes.JPG');" aria-label="Aesthetic Study Vibes Journal Planner">
+            <div class="product-overlay">
+              <div>
+                <div class="product-title">Aesthetic Study Vibes — Journal Planner</div>
+                <div class="product-caption">Planner • Study</div>
+              </div>
+              <div><span class="shop-btn" role="button">Shop Now</span></div>
+            </div>
+          </a>
+
+          <a class="product-card" href="https://www.zazzle.com/infinite_bond_dog_owner_silhouette_binder-256563529412551030" target="_blank" rel="noopener" style="background-image:url('images/infinite_bond_dog.JPG');" aria-label="Infinite Bond Dog Owner Silhouette Binder">
+            <div class="product-overlay">
+              <div>
+                <div class="product-title">Infinite Bond — Dog Owner Silhouette Binder</div>
+                <div class="product-caption">Binder • Pets</div>
+              </div>
+              <div><span class="shop-btn" role="button">Shop Now</span></div>
+            </div>
+          </a>
+
+          <a class="product-card" href="https://www.zazzle.com/she_can_minimalist_fashion_sketch_binder-256679246216328041" target="_blank" rel="noopener" style="background-image:url('images/she_can.JPG');" aria-label="She Can Minimalist Fashion Sketch Binder">
+            <div class="product-overlay">
+              <div>
+                <div class="product-title">She Can — Minimalist Fashion Sketch Binder</div>
+                <div class="product-caption">Binder • Fashion</div>
+              </div>
+              <div><span class="shop-btn" role="button">Shop Now</span></div>
+            </div>
+          </a>
+        </div>
+
+        <div style="text-align:center;margin-top:28px">
+          <a href="https://www.zazzle.com/store/euneye" target="_blank" rel="noopener" class="btn">Visit My Store for More Products →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="testimonials" aria-label="Testimonials">
+  <div class="inner container">
+    <div class="testimonial-card">
+      <p style="font-style:italic">“Working with Hinna was a dream, her designs brought my story to life!”</p>
+      <h4 style="margin-top:12px;color:var(--light)">— Evelyn, Author</h4>
+    </div>
+
+    <div class="testimonial-card">
+      <p style="font-style:italic">“Professional, kind, and creative. Every detail was thoughtful.”</p>
+      <h4 style="margin-top:12px;color:var(--light)">— Lucas, Business Owner</h4>
+    </div>
+
+    <div class="testimonial-card">
+      <p style="font-style:italic">“Her illustrations carry emotion and soul — exactly what my project needed.”</p>
+      <h4 style="margin-top:12px;color:var(--light)">— Aria</h4>
+    </div>
+  </div>
+</section>
+
+    <!-- ABOUT + BOOK -->
+<section id="about-book" class="fullwidth" style="background:var(--light);padding:80px 24px;">
+  <div class="container about-book" style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;">
+
+    <!-- ABOUT ME -->
+    <div id="about" class="about-left">
+      <h3 class="section-title">About Me</h3>
+
+      <div style="display:flex;gap:18px;align-items:center;margin-top:12px;flex-wrap:wrap;">
+        <img 
+          src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/profile_photo.jpg" 
+          alt="Hinna Orquiola"
+          style="width:160px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.08);border:3px solid #fff;">
+
+        <div>
+          <p style="color:var(--mid);margin:0 0 8px;">
+            I’m Hinna Orquiola — a creative partner focused on thoughtful design and meaningful storytelling.
+            I craft websites, book covers, branding, and shop products that help creators and businesses
+            communicate with clarity and style.
+          </p>
+
+          <p style="font-style:italic;color:var(--dark);margin-top:10px;">
+            "Design is where story and strategy meet."
+          </p>
+        </div>
+      </div>
+
+      <!-- ✨ Mission statement -->
+      <div style="margin-top:20px; padding:16px 18px; background:#fff; border-left:4px solid var(--gold); border-radius:8px;">
+        <p style="margin:0; color:#555;">
+          My mission is to empower creators and entrepreneurs by designing visuals that speak truth,
+          inspire confidence, and tell stories that last.
+        </p>
+      </div>
+    </div>
+
+    <!-- BOOK FEATURE -->
+    <div id="book" class="book-right" style="text-align:center;background:#fff;border-radius:16px;box-shadow:0 10px 28px rgba(0,0,0,0.06);padding:32px;">
+      <p style="color:#333;">My published book — designed and written by me.</p>
+
+      <img 
+        src="https://m.media-amazon.com/images/I/91Xd1USf7BL._SL1500_.jpg" 
+        alt="I Was Everyone But Me: A Journey Back to Myself by Hinna Orquiola"
+        style="width:180px;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,0.12);margin:12px auto;">
+
+      <h4 style="margin-top:10px;font-family:'Playfair Display',serif;">
+        I Was Everyone But Me: A Journey Back to Myself
+      </h4>
+
+      <p style="margin-top:4px;">
+        View it here: 
+        <a href="https://www.amazon.com/dp/B0FHHQYF62" 
+           target="_blank" rel="noopener" 
+           style="color:var(--gold);font-weight:600;text-decoration:underline;">
+          Buy on Amazon
+        </a>
+      </p>
+    </div>
+  </div>
+</section>
+
+    <!-- BLOG -->
+<section id="blog" class="fullwidth" aria-label="Blog" style="background:#fff;padding:80px 24px;">
+  <div class="container" style="max-width:1200px;margin:0 auto;">
+    <h3 class="section-title" style="color:#000;text-align:center;margin-bottom:40px;">Latest Blogs</h3>
+
+    <div class="blog-grid">
+
+      <article class="blog-card" style="background-image:url('https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/post1.png');">
+        <div class="blog-content">
+          <h4>Why Good Design Is Good Business</h4>
+          <p>How strategic visuals can build trust and help your brand connect better with your audience.</p>
+          <a href="https://hinnaorquiola.github.io/post1.html" target="_blank" class="blog-btn">Read More</a>
+        </div>
+      </article>
+
+      <article class="blog-card" style="background-image:url('https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/post2.png');">
+        <div class="blog-content">
+          <h4>How I Use AI Tools in My Creative Workflow</h4>
+          <p>A look at the tools I use to spark ideas, refine layouts, and speed up my design process responsibly.</p>
+          <a href="https://hinnaorquiola.github.io/post2.html" target="_blank" class="blog-btn">Read More</a>
+        </div>
+      </article>
+
+      <article class="blog-card" style="background-image:url('https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/post3.png');">
+        <div class="blog-content">
+          <h4>The Art of Visual Storytelling</h4>
+          <p>How images, motion, and color work together to communicate emotion and narrative.</p>
+          <a href="https://hinnaorquiola.github.io/post3.html" target="_blank" class="blog-btn">Read More</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+    <!-- CONTACT (black background, white inputs) -->
+    <section id="contact" class="fullwidth" aria-label="Contact">
+      <div class="contact-container">
+        <div class="contact-left">
+          <h2 style="color:var(--gold);">Let’s Create Together</h2>
+          <p>Have a project or idea in mind? Fill out the form below and I’ll get back to you within 1–2 business days.</p>
+
+          <div class="meta">
+            <p style="margin-top:12px">Email: <a href="mailto:hinnaorquiola@gmail.com" style="color:inherit;text-decoration:underline">hinnaorquiola@gmail.com</a></p>
+            <p style="color:var(--gold);font-weight:600;">Turnaround: 2–10 business days depending on project scope</p>
+          </div>
+        </div>
+
+        <div class="contact-right">
+           <form id="contact-form" action="https://formspree.io/f/xkgpnljp" method="POST" style="display:flex;flex-direction:column;gap:16px;text-align:left;">
+            <input id="name" name="name" placeholder="Full Name" required>
+            <input id="email" name="email" placeholder="Email Address" type="email" required>
+
+            <select id="service" name="service" required>
+              <option value="">Select a Service</option>
+              <option>Book Cover Design</option>
+              <option>Website Design</option>
+              <option>Graphic Design</option>
+              <option>Virtual Assistant</option>
+            </select>
+
+            <select id="timeline" name="timeline" required>
+              <option value="">Select Timeline</option>
+              <option>1–2 weeks</option>
+              <option>2–4 weeks</option>
+              <option>1–2 months</option>
+            </select>
+
+            <select id="budget" name="budget" required>
+              <option value="">Budget range</option>
+              <option>$500–$999</option>
+              <option>$1000–$2,499</option>
+              <option>$2500+</option>
+            </select>
+
+            <textarea id="message" name="message" placeholder="Please tell me about your project..." required></textarea>
+
+            <button class="submit-btn" type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <div class="share-row">
+          <div style="font-weight:700;margin-bottom:6px">Share this website</div>
+          <div class="social-icons" aria-hidden="false">
+            <a href="https://www.facebook.com" target="_blank" rel="noopener" title="Facebook" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.675 0h-21.35C.597 0 0 .593 0 1.326v21.348C0 23.407.597 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.41c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.464.099 2.797.143v3.24l-1.918.001c-1.504 0-1.795.716-1.795 1.765v2.316h3.587l-.467 3.622h-3.12V24h6.116C23.403 24 24 23.407 24 22.674V1.326C24 .593 23.403 0 22.675 0z"/></svg>
+            </a>
+            <a href="https://www.instagram.com" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm8.5 3.5a1 1 0 110 2 1 1 0 010-2zM12 7a5 5 0 110 10 5 5 0 010-10zm0 2a3 3 0 100 6 3 3 0 000-6z"/></svg>
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener" title="X / Twitter" aria-label="X / Twitter">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 3.001a9.6 9.6 0 01-2.828.775A4.932 4.932 0 0022.337.364a9.864 9.864 0 01-3.127 1.195 4.92 4.92 0 00-8.384 4.482A13.96 13.96 0 011.671 1.149 4.822 4.822 0 003.195 7.86a4.897 4.897 0 01-2.228-.616v.061a4.919 4.919 0 003.946 4.827 4.996 4.996 0 01-2.216.084 4.936 4.936 0 004.604 3.417A9.868 9.868 0 010 20.407a13.94 13.94 0 007.548 2.212c9.056 0 14.01-7.505 14.01-14.01 0-.213-.005-.425-.015-.636A10.025 10.025 0 0023 3.001z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.025-3.036-1.851-3.036-1.853 0-2.136 1.446-2.136 2.941v5.664H9.351V9h3.413v1.561h.047c.476-.9 1.637-1.85 3.369-1.85 3.604 0 4.271 2.372 4.271 5.456v6.285zM5.337 7.433a2.063 2.063 0 110-4.126 2.063 2.063 0 010 4.126zM6.943 20.452H3.73V9h3.213v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.73v20.538C0 23.223.792 24 1.771 24h20.451C23.2 24 24 23.223 24 22.268V1.73C24 .774 23.2 0 22.225 0z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <p style="margin:6px 0">© <span id="year"></span> Hinna Orquiola — Virtual Assistant, Graphic & Web Designer</p>
+      </div>
+    </footer>
+  </main>
+
+  <!-- LIGHTBOX / MODAL -->
+  <div class="lb-overlay" id="lightbox" aria-hidden="true" role="dialog" aria-label="Image preview">
+    <button class="lb-close" id="lb-close" aria-label="Close">✕</button>
+    <button class="lb-nav lb-prev" id="lb-prev" aria-label="Previous image">‹</button>
+    <div class="lb-content" id="lb-content"><img id="lb-image" src="" alt=""></div>
+    <button class="lb-nav lb-next" id="lb-next" aria-label="Next image">›</button>
+  </div>
+
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.querySelector('nav.primary');
+    menuToggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    // Navbar becomes solid on scroll
+    const navInner = document.querySelector('.nav-inner');
+    function handleNavScroll() {
+      if(window.scrollY > 40) navInner.classList.add('solid');
+      else navInner.classList.remove('solid');
+    }
+    window.addEventListener('scroll', handleNavScroll);
+    handleNavScroll();
+
+    // IntersectionObserver reveal
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) entry.target.classList.add('active');
+      });
+    }, {threshold: 0.12});
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    document.querySelectorAll('.service-card').forEach(el => io.observe(el));
+    document.querySelectorAll('.blog-card').forEach(el => io.observe(el));
+
+
+    // Lightbox & gallery behavior
+    (function(){
+      const gallery = document.getElementById('gallery');
+      const items = Array.from(gallery.querySelectorAll('.gallery-item'));
+      const imgs = items.map(i => i.querySelector('img'));
+      const lightbox = document.getElementById('lightbox');
+      const lbImage = document.getElementById('lb-image');
+      const lbClose = document.getElementById('lb-close');
+      const lbPrev = document.getElementById('lb-prev');
+      const lbNext = document.getElementById('lb-next');
+      let currentIndex = 0;
+
+      items.forEach((item,i)=> item.setAttribute('data-index', i));
+
+      function openAt(index){
+        if(index < 0) index = imgs.length - 1;
+        if(index >= imgs.length) index = 0;
+        currentIndex = index;
+        const src = imgs[currentIndex].dataset.large || imgs[currentIndex].src;
+        lbImage.src = src;
+        lbImage.alt = imgs[currentIndex].alt || '';
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden','false');
+        document.documentElement.style.overflow = 'hidden';
+        lbClose.focus();
+      }
+
+      function closeLightbox(){
+        lightbox.classList.remove('open');
+        lightbox.setAttribute('aria-hidden','true');
+        lbImage.src = '';
+        document.documentElement.style.overflow = '';
+      }
+
+      gallery.addEventListener('click', (e) => {
+        const btn = e.target.closest('.control-btn');
+        if(btn) return; // allow link to open
+        const item = e.target.closest('.gallery-item');
+        if(!item) return;
+        const index = parseInt(item.getAttribute('data-index'), 10);
+        openAt(index);
+      });
+
+      lightbox.addEventListener('click', (e)=>{
+        if(e.target === lightbox) closeLightbox();
+      });
+      lbClose.addEventListener('click', closeLightbox);
+      lbPrev.addEventListener('click', ()=> openAt(currentIndex - 1));
+      lbNext.addEventListener('click', ()=> openAt(currentIndex + 1));
+
+      document.addEventListener('keydown', (e)=>{
+        if(lightbox.classList.contains('open')){
+          if(e.key === 'Escape') closeLightbox();
+          if(e.key === 'ArrowLeft') openAt(currentIndex - 1);
+          if(e.key === 'ArrowRight') openAt(currentIndex + 1);
+        }
+      });
+    })();
+
+    // Close mobile nav on anchor click
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', ()=> {
+        if(navLinks.classList.contains('open')) navLinks.classList.remove('open');
+      });
+    });
+
+    // Accessibility: Esc closes mobile nav
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape' && navLinks.classList.contains('open')) {
+        navLinks.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  </script>
+</body>
+</html>
