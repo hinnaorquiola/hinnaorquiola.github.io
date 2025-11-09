@@ -702,14 +702,6 @@
     window.addEventListener('scroll', handleNavScroll);
     handleNavScroll();
 
-    // reveal on scroll
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('active'); });
-    }, {threshold: 0.12});
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-    document.querySelectorAll('.service-card').forEach(el => io.observe(el));
-    document.querySelectorAll('.blog-card').forEach(el => io.observe(el));
-
     // Lightbox & gallery
     (function(){
       const gallery = document.getElementById('gallery');
