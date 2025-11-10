@@ -4,30 +4,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nature Retreat | Mock Design by Hinna Orquiola</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --forest-green: #3a5a40;
+      --light-green: #ccd5ae;
+      --dark-green: #283618;
+      --cream: #f9f9f7;
+      --text-dark: #333;
+    }
+
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background-color: #f9f9f7;
-      color: #333;
+      background-color: var(--cream);
+      color: var(--text-dark);
       line-height: 1.6;
+      scroll-behavior: smooth;
     }
 
-    /* Hero Section */
+    /* ===== HERO SECTION ===== */
     .hero {
-      background: url('https://cdn.pixabay.com/photo/2015/10/06/19/28/trees-975091_1280.jpg') 
-                  center/cover no-repeat;
+      background: url('https://cdn.pixabay.com/photo/2015/10/06/19/28/trees-975091_1280.jpg') center/cover no-repeat;
       color: white;
       text-align: center;
       padding: 180px 20px;
       position: relative;
+      overflow: hidden;
     }
 
     .hero::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.4);
+      background: rgba(0, 0, 0, 0.45);
     }
 
     .hero-content {
@@ -35,10 +45,12 @@
       z-index: 2;
       max-width: 700px;
       margin: auto;
+      animation: fadeIn 2s ease-in-out;
     }
 
     .hero h1 {
-      font-size: 3rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
       margin-bottom: 10px;
       letter-spacing: 1px;
     }
@@ -48,18 +60,19 @@
       opacity: 0.9;
     }
 
-    /* About Section */
+    /* ===== ABOUT SECTION ===== */
     .about {
       text-align: center;
-      padding: 80px 20px;
+      padding: 90px 20px;
       max-width: 800px;
       margin: auto;
     }
 
     .about h2 {
-      color: #3a5a40;
-      font-size: 2rem;
+      color: var(--forest-green);
+      font-size: 2.2rem;
       margin-bottom: 20px;
+      font-family: 'Playfair Display', serif;
     }
 
     .about p {
@@ -67,64 +80,140 @@
       font-size: 1.1rem;
     }
 
-    /* CTA Section */
-    .cta {
-      background: #ccd5ae;
+    /* ===== WHAT WE OFFER ===== */
+    .offers {
+      background: var(--light-green);
+      padding: 80px 20px;
+    }
+
+    .offers h2 {
       text-align: center;
-      padding: 70px 20px;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: var(--dark-green);
+      margin-bottom: 40px;
+    }
+
+    .offer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .offer {
+      background: white;
       border-radius: 12px;
-      margin: 60px auto;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .offer:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+    }
+
+    .offer img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .offer h3 {
+      color: var(--forest-green);
+      margin: 20px 0 10px;
+      font-size: 1.3rem;
+    }
+
+    .offer p {
+      padding: 0 20px 25px;
+      color: #555;
+      font-size: 1rem;
+    }
+
+    /* ===== CTA SECTION ===== */
+    .cta {
+      background: var(--forest-green);
+      text-align: center;
+      color: white;
+      padding: 80px 20px;
+      margin-top: 60px;
+      border-radius: 12px;
       max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .cta h3 {
-      font-size: 1.8rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
       margin-bottom: 15px;
-      color: #283618;
     }
 
     .cta p {
-      color: #444;
       font-size: 1.1rem;
       margin-bottom: 25px;
+      opacity: 0.9;
     }
 
     .cta a {
       display: inline-block;
-      background: #3a5a40;
-      color: white;
+      background: var(--light-green);
+      color: var(--dark-green);
       padding: 12px 28px;
       border-radius: 6px;
       text-decoration: none;
       font-weight: 600;
-      transition: background 0.3s ease;
+      transition: all 0.3s ease;
     }
 
     .cta a:hover {
-      background: #2b4b31;
+      background: white;
+      color: var(--forest-green);
+      transform: scale(1.05);
     }
 
-    /* Footer */
+    /* ===== FOOTER ===== */
     footer {
+      background: #f0efe8;
       text-align: center;
       padding: 40px 20px;
-      font-size: 0.9rem;
-      color: #666;
+      font-size: 0.95rem;
+      color: #555;
     }
 
+    footer p {
+      margin: 5px 0;
+    }
+
+    footer a {
+      color: var(--forest-green);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* ===== RESPONSIVE ===== */
     @media (max-width: 600px) {
-      .hero h1 {
-        font-size: 2.2rem;
-      }
-      .hero p {
-        font-size: 1rem;
-      }
+      .hero h1 { font-size: 2.3rem; }
+      .hero p { font-size: 1rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Hero -->
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
       <h1>Find Your Calm in Nature</h1>
@@ -132,23 +221,46 @@
     </div>
   </section>
 
-  <!-- About -->
+  <!-- ABOUT -->
   <section class="about">
     <h2>Welcome to Whispering Pines Retreat</h2>
     <p>Immerse yourself in nature’s embrace. Our retreat offers a space for reflection, quiet, and renewal — 
       surrounded by lush forests and gentle mountain air. Here, serenity is not found, it’s felt.</p>
   </section>
 
-  <!-- Call to Action -->
+  <!-- WHAT WE OFFER -->
+  <section class="offers">
+    <h2>What We Offer</h2>
+    <div class="offer-grid">
+      <div class="offer">
+        <img src="https://cdn.pixabay.com/photo/2016/11/29/13/12/adventure-1867053_1280.jpg" alt="Forest Trails">
+        <h3>Forest Trails</h3>
+        <p>Explore serene paths among pine trees and rivers, perfect for reflection and discovery.</p>
+      </div>
+      <div class="offer">
+        <img src="https://cdn.pixabay.com/photo/2016/03/27/21/36/meditation-1287207_1280.jpg" alt="Mindfulness Sessions">
+        <h3>Mindfulness Sessions</h3>
+        <p>Reconnect your mind and body with daily guided meditations and breathwork under the trees.</p>
+      </div>
+      <div class="offer">
+        <img src="https://cdn.pixabay.com/photo/2016/11/18/16/26/wood-1839564_1280.jpg" alt="Cabin Stay">
+        <h3>Cabin Stays</h3>
+        <p>Unplug and unwind in cozy eco-cabins that blend rustic charm with comfort and sustainability.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
   <section class="cta">
     <h3>Ready to Begin Your Escape?</h3>
     <p>Join us for a weekend of stillness and discovery among the trees.</p>
     <a href="#">Book Your Escape</a>
   </section>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer>
-    <p>Mock website design created by Hinna Orquiola | For portfolio display only</p>
+    <p>Mock website design created by <strong>Hinna Orquiola</strong> | For portfolio display only</p>
+    <p><a href="#top">Back to Top ↑</a></p>
   </footer>
 
 </body>
