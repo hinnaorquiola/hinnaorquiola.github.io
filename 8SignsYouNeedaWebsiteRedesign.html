@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>8 Signs You Need a Website Redesign | Hinna Orquiola</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* === BASE STYLES === */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: #fafafa;
+      color: #222;
+      line-height: 1.8;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 120px auto 80px;
+      padding: 0 40px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* === PROGRESS BAR === */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: #c9a84b;
+      width: 0%;
+      z-index: 1001;
+      transition: width 0.2s;
+    }
+
+    /* === HEADER === */
+    .blog-header {
+      text-align: left;
+      margin-bottom: 40px;
+    }
+
+    .blog-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.3rem;
+      color: #c9a84b;
+      margin-bottom: 10px;
+    }
+
+    .post-meta {
+      color: #777;
+      font-size: 0.95rem;
+    }
+
+    /* === IMAGE === */
+    .post-hero {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    /* === CONTENT === */
+    h2 {
+      font-family: 'Playfair Display', serif;
+      color: #c9a84b;
+      margin-top: 40px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 18px;
+      color: #333;
+    }
+
+    blockquote {
+      border-left: 4px solid #c9a84b;
+      padding-left: 16px;
+      margin: 24px 0;
+      color: #666;
+      font-style: italic;
+      background: #f9f9f9;
+      border-radius: 4px;
+    }
+
+    /* === SHARE SECTION === */
+    .share {
+  margin-top: 50px;
+  text-align: center;
+  border-top: 1px solid #eee;
+  padding-top: 25px;
+}
+
+.share p {
+  color: #555;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.share a {
+  display: inline-block;
+  margin: 0 10px;
+  color: #000; /* black icons */
+  font-size: 1.3rem;
+  transition: color 0.3s, transform 0.2s;
+}
+
+.share a:hover {
+  color: #c9a84b; /* gold hover effect */
+  transform: translateY(-2px);
+}
+
+    /* === POST NAVIGATION === */
+    .post-nav {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 60px;
+      padding-top: 30px;
+      border-top: 1px solid #eee;
+    }
+
+    .post-nav a {
+      color: #c9a84b;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .post-nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* === FOOTER === */
+    footer {
+      margin-top: 60px;
+      text-align: center;
+      color: #888;
+      font-size: 0.9rem;
+      padding-bottom: 40px;
+    }
+
+    /* === Comment Section === */
+.comment-section {
+  margin-top: 80px;
+  padding: 40px;
+  background: #fafafa;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.comment-section h3 {
+  color: #c9a84b;
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+}
+
+.comment-section input,
+.comment-section textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.comment-section button {
+  background: #c9a84b;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.comment-section button:hover {
+  background: #b08f3e;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Progress Bar -->
+  <div id="progress-bar"></div>
+
+  <main>
+    <!-- Header -->
+    <header class="blog-header">
+      <h1>8 Signs You Need a Website Redesign</h1>
+      <p class="post-meta">Published November 10 2025 — by Hinna Orquiola</p>
+    </header>
+
+    <!-- Hero Image -->
+    <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/blog-post4.webp" 
+         alt="Visual storytelling concept" class="post-hero">
+
+  <p>Let’s face it — your website is your online home. It’s where people form their <em>first impression</em> of your brand, products, or services. But just like any home, it needs a little renovation from time to time.</p>
+
+  <p>If your website isn’t performing the way it used to, or if it feels a bit… outdated, it might be time for a <strong>website redesign</strong>. Here are <strong>8 signs</strong> you shouldn’t ignore — and how a fresh design can turn things around.</p>
+
+  <blockquote>
+    <p>“A great website doesn’t just look beautiful — it works beautifully.”</p>
+  </blockquote>
+
+  <hr>
+
+  <h2>1. Your Website Looks Outdated</h2>
+  <p>Design trends evolve faster than we think. What looked modern five years ago might now feel clunky or old-fashioned. Outdated colors, fonts, or layouts can make visitors question your professionalism — even if your products or services are top-notch.</p>
+  <p>A redesign can instantly modernize your online presence. I create <strong>clean, responsive, and professional layouts</strong> that reflect your brand’s personality. Check out my 
+  <a href="https://hinnaorquiola.github.io/#services" target="_blank">Website Design and Development services</a> to see how I can help.</p>
+
+  <h2>2. It’s Not Mobile-Friendly</h2>
+  <p>If your site isn’t optimized for mobile devices, you could be losing more than half your visitors. Nothing turns people away faster than zooming, pinching, and struggling to click tiny buttons.</p>
+  <p>Every website I design is <strong>mobile-first</strong>, ensuring it looks great and functions perfectly on phones, tablets, and desktops. See my 
+  <a href="https://hinnaorquiola.github.io/#portfolio" target="_blank">portfolio of responsive websites</a> to get inspired.</p>
+
+  <h2>3. Your Site Loads Slowly</h2>
+  <p>Speed matters. Studies show visitors leave if a site takes more than three seconds to load. Slow websites frustrate users and hurt your Google rankings.</p>
+  <p>A redesign can fix that by optimizing images, updating your code, and simplifying backend elements. Learn more about how I can create a 
+  <a href="https://hinnaorquiola.github.io/#services" target="_blank">fast, performance-driven website</a> that keeps visitors engaged.</p>
+
+  <h2>4. Your Brand Has Outgrown Your Website</h2>
+  <p>Maybe you’ve updated your logo, changed your color palette, or shifted your niche — but your website still tells your <em>old</em> story. When your brand evolves, your site should too.</p>
+  <p>Let’s refresh your design so it matches who you are <strong>today</strong>. Check out how I help professionals and small businesses rebrand through thoughtful 
+  <a href="https://hinnaorquiola.github.io/#portfolio" target="_blank">website redesigns</a>.</p>
+
+  <blockquote>
+    <p>“Your website should evolve as your brand grows — it’s your digital reflection.”</p>
+  </blockquote>
+
+  <h2>5. You’re Not Getting Inquiries or Sales</h2>
+  <p>Your website might look okay, but if it’s not driving results, something’s off. Poor navigation, confusing layouts, or missing CTAs can quietly kill conversions.</p>
+  <p>A strategic redesign focuses on <strong>user experience and conversion flow</strong> — making sure visitors know exactly what to do next. Visit my 
+  <a href="https://hinnaorquiola.github.io/#portfolio" target="_blank">web design portfolio</a> to see examples of sites built to perform.</p>
+
+  <h2>6. Navigation Feels Confusing</h2>
+  <p>If your visitors have to “hunt” for information, they’ll leave quickly. A great website should feel effortless to explore — with intuitive menus, clear buttons, and easy paths to contact you.</p>
+  <p>In my redesigns, I make navigation <strong>clean and intuitive</strong>, guiding users naturally to what they’re looking for. See how I approach smart layouts on my 
+  <a href="https://hinnaorquiola.github.io/#services" target="_blank">web design services page</a>.</p>
+
+  <h2>7. You’re Embarrassed to Share Your Website</h2>
+  <p>Be honest — do you hesitate to drop your link when someone asks to see your work? That’s a red flag. You should feel proud to show off your website, not hide it.</p>
+  <p>If your current site doesn’t reflect your quality or confidence, it’s definitely time for a redesign. Together, we’ll create a website that makes you say, “Yes, that’s me!” 💛  
+  See my <a href="https://hinnaorquiola.github.io/#portfolio" target="_blank">recent redesign projects</a> for inspiration.</p>
+
+  <h2>8. It Doesn’t Reflect Your Goals Anymore</h2>
+  <p>Maybe you’ve shifted from freelancing to running a full business. Or maybe you’ve started offering new services, but your website hasn’t caught up. A redesign realigns your site with your <strong>current goals</strong> — whether that’s growing your client base, selling digital products, or building your personal brand.</p>
+  <p>Let’s build a site that supports your next level. Learn more about my 
+  <a href="https://hinnaorquiola.github.io/#services" target="_blank">website design and development approach</a> to see how we can bring your goals to life.</p>
+
+  <hr>
+
+  <h2> Ready for a Fresh Start?</h2>
+  <p>Your website should <em>work for you</em>, not against you. If any of these signs sound familiar, don’t wait too long — a redesign can breathe new life into your brand, attract more visitors, and help you stand out online.</p>
+
+  <p><strong><a href="https://hinnaorquiola.github.io/#contact" target="_blank">Let’s work together</a></strong> to create a website that looks stunning, loads fast, and tells your story perfectly.  
+  Your dream website is just one redesign away. 💻</p>
+</section>
+
+    
+<section class="comment-section">
+  <h3>Leave a Comment</h3>
+  <form action="https://formspree.io/f/xkgpnljp" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="_replyto" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Your Comment" rows="5" required></textarea>
+    <button type="submit">Post Comment</button>
+  </form>
+</section>
+    
+    <!-- Share Section -->
+<div class="share">
+  <p>Share this post:</p>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://hinnaorquiola.github.io/8SignsYouNeedaWebsiteRedesign.html"
+     target="_blank" aria-label="Share on Facebook">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://hinnaorquiola.github.io/8SignsYouNeedaWebsiteRedesign.html"
+     target="_blank" aria-label="Share on LinkedIn">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+  <a href="https://twitter.com/intent/tweet?url=https://hinnaorquiola.github.io/8SignsYouNeedaWebsiteRedesign.html&text=The%20Art%20of%20Visual%20Storytelling%20by%20Hinna%20Orquiola"
+     target="_blank" aria-label="Share on X">
+    <i class="fab fa-x-twitter"></i>
+  </a>
+</div>
+
+
+    <!-- Navigation -->
+    <div class="post-nav">
+      <a href="WhyGoodDesignIsGoodBusiness.html">→ Next: Why Good Design Is Good Business</a>
+      <a href="index.html#blog">Back to Blog →</a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2025 Hinna Orquiola — All rights reserved.</p>
+    </footer>
+  </main>
+
+  <!-- Progress Bar Script -->
+  <script>
+    window.onscroll = function() {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = (scrollTop / scrollHeight) * 100;
+      document.getElementById("progress-bar").style.width = progress + "%";
+    };
+  </script>
+
+</body>
+</html>
