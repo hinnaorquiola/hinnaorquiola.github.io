@@ -144,7 +144,7 @@
       .menu-toggle{display:block}
       nav.primary{display:none;position:fixed;inset:var(--header-h) 0 auto 0;flex-direction:column;background:rgba(0,0,0,0.95);padding:20px;gap:10px;z-index:1300}
       nav.primary.open{display:flex}
-      .hero-inner{grid-template-columns:1fr;margin-top:8px;text-align:left}
+      .hero-inner{grid-template-columns:1fr;margin-top:8px;min-height: 80vh;text-align:left}
       .hero-right{text-align:center}
       .hero-img{max-width:320px;margin:0 auto}
       .services-row{grid-template-columns:1fr}
@@ -203,6 +203,14 @@
     text-align: center;
   }
 }
+    @font-face {
+  font-family: 'Poppins';
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-display: swap;
+}
 
   </style>
 </head>
@@ -247,7 +255,7 @@
       </div>
 
       <div class="hero-right">
-        <img class="hero-img" src="images/profile_photo.jpg" alt="Hinna Orquiola Profile" loading="eager" fetchpriority="high">
+        <img class="hero-img" src="images/profile_photo.jpg" alt="Hinna Orquiola Profile" width="360" height="480" loading="eager" fetchpriority="high">
       </div>
     </div>
   </section>
