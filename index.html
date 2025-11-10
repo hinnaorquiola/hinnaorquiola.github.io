@@ -628,26 +628,31 @@
             <input id="name" name="name" placeholder="Full Name" required>
             <input id="email" name="email" placeholder="Email Address" type="email" required>
 
+            <label for="service">Select a Service</label>
             <select id="service" name="service" required>
-              <option value="">Select a Service</option>
-              <option>Book Cover Design</option>
-              <option>Website Design</option>
-              <option>Graphic Design</option>
-              <option>Virtual Assistant</option>
+            <option value="">-- Choose a service --</option>
+            <option value="book">Book Cover Design</option>
+            <option value="web">Website Design</option>
+            <option value="graphic">Graphic Design</option>
+            <option value="va">Virtual Assistant</option>
             </select>
 
+
+            <label for="timeline">Select Timeline</label>
             <select id="timeline" name="timeline" required>
-              <option value="">Select Timeline</option>
-              <option>1–2 weeks</option>
-              <option>2–4 weeks</option>
-              <option>1–2 months</option>
+            <option value="">-- Select timeframe --</option>
+            <option value="1-2weeks">1–2 weeks</option>
+            <option value="2-4weeks">2–4 weeks</option>
+            <option value="1-2months">1–2 months</option>
             </select>
 
+
+            <label for="budget">Budget Range</label>
             <select id="budget" name="budget" required>
-              <option value="">Budget range</option>
-              <option>$500–$999</option>
-              <option>$1000–$2,499</option>
-              <option>$2500+</option>
+            <option value="">-- Select your budget --</option>
+            <option value="500-999">$500–$999</option>
+            <option value="1000-2499">$1,000–$2,499</option>
+            <option value="2500plus">$2,500+</option>
             </select>
 
             <textarea id="message" name="message" placeholder="Please tell me about your project..." required></textarea>
