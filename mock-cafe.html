@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Café Orquiola — Enhanced</title>
+  <link rel="icon" href="/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     /* --------------------------
@@ -17,6 +18,7 @@
       --muted: #b89f85;
       --text: #f5e6cc;
       --glass: rgba(255,255,255,0.06);
+      --soft-shadow: 0 10px 30px rgba(0,0,0,0.35);
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
@@ -28,6 +30,7 @@
       -webkit-font-smoothing:antialiased;
       scroll-behavior:smooth;
       transition: background-color .35s ease, color .35s ease;
+      overflow-x:hidden;
     }
 
     a{color:inherit;text-decoration:none}
@@ -37,43 +40,51 @@
     -------------------------- */
     header{
       position:fixed;left:0;right:0;top:0;z-index:1200;
-      background:linear-gradient(180deg, rgba(42,18,3,0.95), rgba(42,18,3,0.85));
-      backdrop-filter: blur(4px);
+      background:linear-gradient(180deg, rgba(42,18,3,0.7), rgba(42,18,3,0.5));
+      backdrop-filter: blur(6px);
       display:flex;align-items:center;justify-content:space-between;padding:12px 36px;
-      border-bottom:1px solid rgba(0,0,0,0.25);
+      border-bottom:1px solid rgba(0,0,0,0.12);
     }
-    .logo{font-family:'Pacifico',cursive;font-size:1.6rem;color:var(--text)}
+    .logo{font-family:'Pacifico',cursive;font-size:1.6rem;color:var(--text);letter-spacing:0.4px}
     nav ul{list-style:none;display:flex;gap:18px;align-items:center}
     nav a{padding:8px 10px;border-radius:8px;font-weight:500;opacity:.95}
     nav a:hover{color:var(--accent)}
     nav a.active{box-shadow: inset 0 -3px 0 var(--accent)}
 
-    /* small mobile menu */
     .menu-toggle{display:none;background:none;border:1px solid rgba(255,255,255,0.06);padding:8px;border-radius:8px}
 
     /* --------------------------
        HERO
     -------------------------- */
     .hero{
-      width: 100vw;height: 100vh;margin-top: 0;background-size: cover;background-position: center center;display:flex;align-items:center;justify-content:center;position:relative;padding:40px 18px;text-align:center;
-      background-image:url('https://hinnaorquiola.github.io/cafe_orquiola.webp');background-size:cover;background-position:center;
+      width:100vw;
+      height:calc(100vh - 72px);
+      margin-top:72px; /* keep space for header */
+      display:flex;align-items:center;justify-content:center;position:relative;padding:40px 18px;text-align:center;
+      background-image:url('https://hinnaorquiola.github.io/cafe_orquiola.webp');
+      background-size:cover;background-position:center center;background-repeat:no-repeat;
     }
-    .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(10,10,10,0.45), rgba(10,10,10,0.45));pointer-events:none}
-    .hero-inner{position:relative;z-index:2;max-width:1000px}
-    .hero h1{font-family:'Pacifico',cursive;font-size:3.2rem;margin-bottom:8px;text-shadow: 0 6px 18px rgba(0,0,0,0.6)}
-    .hero p{font-size:1.15rem;margin-bottom:18px}
+    /* full-bleed hero wrapper so background always fills fullscreen */
+    .hero-wrap{position:relative;width:100%;height:100%;overflow:hidden}
+
+    .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(10,10,10,0.35), rgba(10,10,10,0.55));pointer-events:none}
+    .hero-inner{position:relative;z-index:2;max-width:1100px;padding:40px}
+    .hero h1{font-family:'Pacifico',cursive;font-size:3.2rem;margin-bottom:8px;text-shadow: 0 6px 18px rgba(0,0,0,0.6);opacity:0;transform:translateY(10px);transition:all .8s cubic-bezier(.2,.9,.2,1)}
+    .hero p{font-size:1.15rem;margin-bottom:18px;opacity:0;transform:translateY(10px);transition:all .9s cubic-bezier(.2,.9,.2,1)}
 
     .hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-    .btn{background:var(--accent);color:var(--bg-1);padding:12px 20px;border-radius:26px;border:none;cursor:pointer;font-weight:700}
+    .btn{background:var(--accent);color:var(--bg-1);padding:12px 20px;border-radius:26px;border:none;cursor:pointer;font-weight:700;box-shadow:var(--soft-shadow);transition:transform .18s ease}
+    .btn:hover{transform:translateY(-4px)}
     .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.08);color:var(--text)}
 
-    /* steam animation */
-    .steam{position:absolute;left:50%;top:40%;transform:translateX(-50%);width:160px;height:160px;pointer-events:none;opacity:.18}
-    .steam span{position:absolute;left:50%;bottom:0;width:6px;height:60px;background:linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.05));border-radius:999px;transform-origin:center bottom;filter:blur(6px);}
-    .steam span:nth-child(1){left:40%;animation:steam 4s ease-in-out infinite}
-    .steam span:nth-child(2){left:50%;height:75px;animation:steam 5.2s ease-in-out .6s infinite}
-    .steam span:nth-child(3){left:60%;height:55px;animation:steam 3.6s ease-in-out .2s infinite}
-    @keyframes steam{0%{transform:translateY(0) scaleX(1);opacity:0}10%{opacity:.6}100%{transform:translateY(-90px) scaleX(.6);opacity:0}}
+    /* scroll hint */
+    .scroll-arrow{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);z-index:3;opacity:.9}
+    .scroll-arrow svg{width:36px;height:36px;filter:drop-shadow(0 6px 10px rgba(0,0,0,0.4));animation:float 2.6s ease-in-out infinite}
+    @keyframes float{0%{transform:translate(-50%,0)}50%{transform:translate(-50%,-8px)}100%{transform:translate(-50%,0)}}
+
+    /* steam animation (slightly refined) */
+    .steam{position:absolute;left:50%;top:38%;transform:translateX(-50%);width:180px;height:180px;pointer-events:none;opacity:.12}
+    .steam span{position:absolute;left:50%;bottom:0;width:6px;height:60px;background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.05));border-radius:999px;transform-origin:center bottom;filter:blur(6px);}
 
     /* --------------------------
        SECTIONS
@@ -81,16 +92,21 @@
     section{max-width:1200px;margin:70px auto;padding:0 20px}
     h2{font-family:'Pacifico',cursive;color:var(--accent);font-size:1.9rem;margin-bottom:18px}
 
-    /* MENU CARDS */
+    /* Menu grid + filters */
+    .controls-bar{display:flex;gap:12px;align-items:center;justify-content:center;margin-bottom:18px}
+    .filter-btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:999px;cursor:pointer}
+    .filter-btn.active{background:var(--accent);color:var(--bg-1)}
+
     .menu-items{display:flex;flex-wrap:wrap;gap:20px;justify-content:center}
-    .menu-item{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));padding:18px;border-radius:14px;width:240px;transition:transform .28s ease, box-shadow .28s ease;box-shadow: 0 6px 18px rgba(0,0,0,0.35)}
-    .menu-item:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(0,0,0,0.5)}
+    .menu-item{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));padding:18px;border-radius:14px;width:240px;transition:transform .28s ease, box-shadow .28s ease;box-shadow: 0 6px 18px rgba(0,0,0,0.35);opacity:0;transform:translateY(12px)}
+    .menu-item:hover{transform:translateY(-8px) scale(1.01);box-shadow:0 18px 40px rgba(0,0,0,0.5)}
     .menu-item h3{font-family:'Pacifico',cursive;margin-bottom:8px}
     .price{color:var(--accent);font-weight:700}
+    .item-thumb{width:100%;height:130px;border-radius:10px;object-fit:cover;margin-bottom:10px}
 
-    /* GALLERY */
+    /* Gallery subtle parallax */
     .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-    .gallery-grid img{width:100%;height:170px;object-fit:cover;border-radius:12px;transition:transform .3s ease}
+    .gallery-grid img{width:100%;height:170px;object-fit:cover;border-radius:12px;transition:transform .35s ease;will-change:transform}
     .gallery-grid img:hover{transform:scale(1.05)}
 
     /* ABOUT */
@@ -99,14 +115,23 @@
     .founder{display:flex;gap:14px;align-items:center}
     .founder img{width:92px;height:92px;border-radius:12px;object-fit:cover}
 
+    /* Meet the team */
+    .team{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+    .team .member{background:var(--card);padding:12px;border-radius:10px;min-width:160px;text-align:center}
+    .member img{width:84px;height:84px;border-radius:10px;object-fit:cover;margin-bottom:8px}
+
+    /* EVENTS carousel */
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+    .events-wrap{position:relative;overflow:hidden}
+    .events-track{display:flex;gap:12px;transition:transform .5s cubic-bezier(.2,.9,.2,1)}
+    .event{min-width:280px;background:var(--card);padding:18px;border-radius:12px}
+    .carousel-controls{display:flex;gap:8px;align-items:center;justify-content:center;margin-top:12px}
+
     /* TESTIMONIALS */
     .testimonials{position:relative;padding:20px}
     .test-wrap{display:flex;gap:14px;overflow:hidden}
-    .testimonial{min-width:320px;background:var(--glass);padding:18px;border-radius:12px;backdrop-filter: blur(4px)}
+    .testimonial{min-width:320px;background:var(--glass);padding:18px;border-radius:12px;backdrop-filter: blur(4px);opacity:0;transform:translateY(12px)}
     .stars{color:var(--accent);margin-bottom:8px}
-
-    /* SPECIALS & EVENTS */
-    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
 
     /* CONTACT */
     .contact-content{display:flex;gap:40px;flex-wrap:wrap;align-items:flex-start}
@@ -115,18 +140,19 @@
     input,textarea,select{padding:12px;border-radius:10px;border:none;background:rgba(0,0,0,0.12);color:var(--text);outline:none}
     textarea{min-height:120px}
 
+    /* NEWSLETTER */
+    .newsletter{display:flex;gap:8px;align-items:center;justify-content:center;margin-top:12px}
+    .newsletter input{min-width:260px}
+
     /* FOOTER */
     footer{background:var(--bg-2);text-align:center;padding:20px;font-size:.95rem;color:var(--muted);margin-top:40px}
 
     /* FLOATING ORDER BUTTON */
     .floating{position:fixed;right:20px;bottom:20px;background:var(--accent);color:var(--bg-1);padding:14px 18px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,0.4);z-index:1400;cursor:pointer}
 
-    /* MUSIC + MODE TOGGLES */
+    /* TOGGLES */
     .controls{display:flex;gap:10px;align-items:center}
     .toggle{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px;border-radius:10px;cursor:pointer}
-
-    /* MAP */
-    .map{border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.04)}
 
     /* RESPONSIVE */
     @media(max-width:900px){
@@ -139,12 +165,16 @@
       .menu-toggle{display:inline-block}
       nav ul{display:none;position:absolute;right:16px;top:64px;background:linear-gradient(180deg, rgba(42,18,3,0.96), rgba(42,18,3,0.96));padding:12px;border-radius:8px;flex-direction:column}
       nav ul.show{display:flex}
+      .hero{height:60vh;margin-top:64px}
     }
 
     /* LIGHT MODE */
     .light{
       --bg-1:#fff;--bg-2:#fff;--card:#fff;--accent:#b96e2f;--muted:#6b6b6b;--text:#2a1203;--glass: rgba(42,18,3,0.04);
     }
+
+    /* reveal helper */
+    .reveal{opacity:1;transform:none}
 
     /* small niceties */
     .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
@@ -155,6 +185,7 @@
     <div style="display:flex;gap:14px;align-items:center">
       <div class="logo">Café Orquiola</div>
       <div class="controls" aria-hidden="true">
+        <button id="soundToggle" class="toggle" title="Toggle ambient sound">☕</button>
         <button id="musicToggle" class="toggle" title="Toggle background music">♫</button>
         <button id="modeToggle" class="toggle" title="Toggle light/dark">☀︎/🌙</button>
       </div>
@@ -174,20 +205,28 @@
     </nav>
   </header>
 
-  <!-- Audio for background music -->
+  <!-- Ambient & background audio (replace with your hosted files) -->
+  <audio id="ambient" loop src="/ambient-cafe.mp3" preload="none"></audio>
   <audio id="bgMusic" loop src="https://hinnaorquiola.github.io/cafe-music.mp3"></audio>
 
   <!-- HERO -->
   <section class="hero" id="home" aria-label="Hero">
-    <div class="steam" aria-hidden="true">
-      <span></span><span></span><span></span>
-    </div>
-    <div class="hero-inner">
-      <h1>Welcome to Café Orquiola</h1>
-      <p>Where warmth meets flavor — experience coffee crafted with care and passion.</p>
-      <div class="hero-cta">
-        <button class="btn" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">View Menu</button>
-        <button class="btn ghost" id="bookBtn">Book a Table</button>
+    <div class="hero-wrap">
+      <div class="steam" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+
+      <div class="hero-inner">
+        <h1 class="reveal-on-load">Welcome to Café Orquiola</h1>
+        <p class="reveal-on-load" style="transition-delay:.08s">Where warmth meets flavor — experience coffee crafted with care and passion.</p>
+        <div class="hero-cta reveal-on-load" style="transition-delay:.15s">
+          <button class="btn" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">View Menu</button>
+          <button class="btn ghost" id="bookBtn">Book a Table</button>
+        </div>
+      </div>
+
+      <div class="scroll-arrow" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M19 12l-7 7-7-7"/></svg>
       </div>
     </div>
   </section>
@@ -195,30 +234,55 @@
   <!-- MENU -->
   <section id="menu">
     <h2>Our Menu</h2>
-    <div class="menu-items" role="list">
-      <article class="menu-item" role="listitem">
+    <div class="controls-bar">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="coffee">Coffee</button>
+      <button class="filter-btn" data-filter="pastry">Pastries</button>
+      <button class="filter-btn" data-filter="cold">Cold Drinks</button>
+    </div>
+
+    <div class="menu-items" role="list" id="menuItems">
+      <!-- each item now has category and image -->
+      <article class="menu-item" role="listitem" data-type="coffee">
+        <img class="item-thumb" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80" alt="Latte">
         <h3>Latte</h3>
-        <p class="price">$4.50</p>
+        <p class="price">₱220</p>
+        <button class="btn ghost add-fav">❤</button>
       </article>
-      <article class="menu-item" role="listitem">
+
+      <article class="menu-item" role="listitem" data-type="coffee">
+        <img class="item-thumb" src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80" alt="Cappuccino">
         <h3>Cappuccino</h3>
-        <p class="price">$5.00</p>
+        <p class="price">₱250</p>
+        <button class="btn ghost add-fav">❤</button>
       </article>
-      <article class="menu-item" role="listitem">
-        <h3>Blueberry Muffin</h3>
-        <p class="price">$3.00</p>
-      </article>
-      <article class="menu-item" role="listitem">
-        <h3>Espresso</h3>
-        <p class="price">$3.50</p>
-      </article>
-      <article class="menu-item" role="listitem">
-        <h3>Mocha</h3>
-        <p class="price">$5.50</p>
-      </article>
-      <article class="menu-item" role="listitem">
+
+      <article class="menu-item" role="listitem" data-type="pastry">
+        <img class="item-thumb" src="https://cdn.pixabay.com/photo/2015/03/30/12/49/stools-698681_1280.jpg" alt="Croissant">
         <h3>Croissant</h3>
-        <p class="price">$2.50</p>
+        <p class="price">₱90</p>
+        <button class="btn ghost add-fav">❤</button>
+      </article>
+
+      <article class="menu-item" role="listitem" data-type="coffee">
+        <img class="item-thumb" src="https://cdn.pixabay.com/photo/2014/07/15/13/36/coffee-shop-393954_1280.jpg" alt="Espresso">
+        <h3>Espresso</h3>
+        <p class="price">₱180</p>
+        <button class="btn ghost add-fav">❤</button>
+      </article>
+
+      <article class="menu-item" role="listitem" data-type="cold">
+        <img class="item-thumb" src="https://cdn.pixabay.com/photo/2023/08/19/15/39/breakfast-8200753_1280.jpg" alt="Cold Brew">
+        <h3>Hazelnut Cold Brew</h3>
+        <p class="price">₱260</p>
+        <button class="btn ghost add-fav">❤</button>
+      </article>
+
+      <article class="menu-item" role="listitem" data-type="pastry">
+        <img class="item-thumb" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80" alt="Blueberry Muffin">
+        <h3>Blueberry Muffin</h3>
+        <p class="price">₱120</p>
+        <button class="btn ghost add-fav">❤</button>
       </article>
     </div>
   </section>
@@ -240,6 +304,22 @@
             <p style="margin-top:6px;color:var(--muted)">Founder & Head Barista — lover of slow mornings and perfect crema.</p>
           </div>
         </div>
+
+        <div style="margin-top:14px">
+          <h4>Meet the Team</h4>
+          <div class="team">
+            <div class="member">
+              <img src="https://images.unsplash.com/photo-1545996124-b3b9a5a2b9ab?auto=format&fit=crop&w=300&q=70" alt="Team member">
+              <div><strong>Rica</strong></div>
+              <small style="color:var(--muted)">Barista</small>
+            </div>
+            <div class="member">
+              <img src="https://images.unsplash.com/photo-1545996124-b3b9a5a2b9ab?auto=format&fit=crop&w=300&q=70" alt="Team member">
+              <div><strong>Marco</strong></div>
+              <small style="color:var(--muted)">Pastry Chef</small>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div>
@@ -253,7 +333,7 @@
         </div>
 
         <div class="card map">
-          <iframe title="Café Orquiola location" src="https://www.google.com/maps/place/Caf%C3%A9+Lucia/@11.2511034,124.9561036,13.25z/data=!4m10!1m2!2m1!1scafe+orquiola!3m6!1s0x33087717f2970755:0xdfb9b53768f0e65e!8m2!3d11.2183005!4d125.0063083!15sCg1jYWZlIG9ycXVpb2xhWg8iDWNhZmUgb3JxdWlvbGGSAQtjb2ZmZWVfc2hvcJoBI0NoWkRTVWhOTUc5blMwVkpRMEZuU1VSNFowMWxjRVZuRUFFqgFJEAEqESINY2FmZSBvcnF1aW9sYSgAMh8QASIbgnaeTT5XU6ExuzIjxSebhXsOQLh2uY9RLCoCMhEQAiINY2FmZSBvcnF1aW9sYeABAPoBBAgAED0!16s%2Fg%2F1v_z6fmh?entry=ttu&g_ep=EgoyMDI1MTEwOS4wIKXMDSoASAFQAw%3D%3D" width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          <iframe title="Café Orquiola location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.0000000000005!2d125.00000000000001!3d11.2183005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33087717f2970755%3A0xdfb9b53768f0e65e!2sTacloban!5e0!3m2!1sen!2sph!4v1660000000000" width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
       </div>
     </div>
@@ -262,7 +342,7 @@
   <!-- GALLERY -->
   <section id="gallery">
     <h2>Gallery</h2>
-    <div class="gallery-grid">
+    <div class="gallery-grid" id="galleryGrid">
       <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80" alt="Coffee Latte">
       <img src="https://cdn.pixabay.com/photo/2023/08/19/15/39/breakfast-8200753_1280.jpg" alt="Café Interior">
       <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80" alt="Cappuccino Art">
@@ -294,19 +374,25 @@
   <!-- EVENTS -->
   <section id="events">
     <h2>Events</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Open Mic Night</h3>
-        <p style="color:var(--muted)">Every Friday • 7:00 PM — Bring your songs & stories.</p>
+    <div class="events-wrap">
+      <div class="events-track" id="eventsTrack">
+        <div class="event">
+          <h3>Open Mic Night</h3>
+          <p style="color:var(--muted)">Every Friday • 7:00 PM — Bring your songs & stories.</p>
+        </div>
+        <div class="event">
+          <h3>Latte Art Workshop</h3>
+          <p style="color:var(--muted)">2nd Saturday of the month • 10:00 AM</p>
+        </div>
+        <div class="event">
+          <h3>Local Artists' Showcase</h3>
+          <p style="color:var(--muted)">Monthly rotating exhibits.</p>
+        </div>
       </div>
-      <div class="card">
-        <h3>Latte Art Workshop</h3>
-        <p style="color:var(--muted)">2nd Saturday of the month • 10:00 AM</p>
-      </div>
-      <div class="card">
-        <h3>Local Artists' Showcase</h3>
-        <p style="color:var(--muted)">Monthly rotating exhibits.</p>
-      </div>
+    </div>
+    <div class="carousel-controls">
+      <button id="prevEvent" class="filter-btn">◀</button>
+      <button id="nextEvent" class="filter-btn">▶</button>
     </div>
   </section>
 
@@ -345,8 +431,14 @@
         <p>🕒 Open Daily: 8:00 AM – 9:00 PM</p>
 
         <div style="margin-top:12px;display:flex;gap:8px">
-          <a href="#" aria-label="Instagram" title="Instagram"> <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-          <a href="#" aria-label="Facebook" title="Facebook"> <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2h-3a4 4 0 00-4 4v3H8v4h3v8h4v-8h3l1-4h-4V6a1 1 0 011-1h3V2z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a href="#" aria-label="Instagram" title="Instagram">Instagram</a>
+          <a href="#" aria-label="Facebook" title="Facebook">Facebook</a>
+          <a href="#" aria-label="Reviews" title="Leave a review" id="reviewBtn">Leave a Review</a>
+        </div>
+
+        <div class="newsletter">
+          <input id="newsletterEmail" placeholder="your@email.com" aria-label="Newsletter email">
+          <button id="subscribeBtn" class="btn">Subscribe</button>
         </div>
       </div>
 
@@ -383,11 +475,11 @@
   </dialog>
 
   <script>
-    // Simple utilities: header active state on scroll
+    // ---------- Utilities ----------
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('nav a');
     function onScroll(){
-      const y = window.scrollY + 120;
+      const y = window.scrollY + 140;
       sections.forEach(sec=>{
         const top = sec.offsetTop;
         const h = sec.offsetHeight;
@@ -407,64 +499,27 @@
     const navList = document.getElementById('navList');
     menuBtn?.addEventListener('click', ()=> navList.classList.toggle('show'));
 
-    // Light/Dark mode toggle
+    // Light/Dark mode
     const modeToggle = document.getElementById('modeToggle');
     modeToggle.addEventListener('click', ()=>{
       document.documentElement.classList.toggle('light');
-      // store preference
       if(document.documentElement.classList.contains('light')) localStorage.setItem('theme','light'); else localStorage.removeItem('theme');
     });
-    // load preference
     if(localStorage.getItem('theme')==='light') document.documentElement.classList.add('light');
 
-    // Background music toggle
+    // Ambient & background music toggles
+    const soundToggle = document.getElementById('soundToggle');
     const musicToggle = document.getElementById('musicToggle');
+    const ambient = document.getElementById('ambient');
     const bgMusic = document.getElementById('bgMusic');
+    soundToggle.addEventListener('click', ()=>{
+      if(ambient.paused){ ambient.play(); soundToggle.style.opacity=1; localStorage.setItem('ambient','on'); } else { ambient.pause(); soundToggle.style.opacity=.6; localStorage.setItem('ambient','off'); }
+    });
     musicToggle.addEventListener('click', ()=>{
-      if(bgMusic.paused){
-        bgMusic.play(); musicToggle.style.opacity=1;
-        localStorage.setItem('music','on');
-      } else { bgMusic.pause(); musicToggle.style.opacity=.6; localStorage.setItem('music','off'); }
+      if(bgMusic.paused){ bgMusic.play(); musicToggle.style.opacity=1; localStorage.setItem('music','on'); } else { bgMusic.pause(); musicToggle.style.opacity=.6; localStorage.setItem('music','off'); }
     });
-    // restore
+    if(localStorage.getItem('ambient')==='on') ambient.play(); else ambient.pause();
     if(localStorage.getItem('music')==='on') bgMusic.play(); else bgMusic.pause();
-
-    // Floating Order button action
-    document.getElementById('orderNow').addEventListener('click', ()=>{
-      // for demo, scroll to menu
-      document.getElementById('menu').scrollIntoView({behavior:'smooth'});
-    });
-
-    // Booking modal
-    const bookModal = document.getElementById('bookModal');
-    const bookBtn = document.getElementById('bookBtn');
-    const cancel = document.getElementById('cancelBook');
-    bookBtn?.addEventListener('click', ()=>bookModal.showModal());
-    cancel?.addEventListener('click', ()=>bookModal.close());
-    // Form submission handlers (demo only)
-    document.getElementById('bookForm').addEventListener('submit', (e)=>{
-      e.preventDefault && e.preventDefault();
-      alert('Thanks! Your reservation request has been received. (Demo)');
-      bookModal.close();
-    });
-
-    // Contact form demo handler
-    document.getElementById('contactForm').addEventListener('submit', (e)=>{
-      e.preventDefault();
-      const name = document.getElementById('name').value;
-      alert('Thanks '+name+'! We received your message. (Demo)');
-      e.target.reset();
-    });
-
-    // Simple testimonials auto-scroll
-    const wrap = document.getElementById('testWrap');
-    let tIndex = 0;
-    function rotateTestimonials(){
-      tIndex = (tIndex+1) % wrap.children.length;
-      wrap.style.transform = 'translateX('+(-tIndex* (wrap.children[0].offsetWidth + 14))+'px)';
-    }
-    let tTimer = setInterval(rotateTestimonials,4000);
-    window.addEventListener('resize', ()=>{wrap.style.transform='translateX(0)'; tIndex=0;});
 
     // Smooth scroll for nav links
     document.querySelectorAll('nav a').forEach(a=>{
@@ -476,16 +531,90 @@
       });
     });
 
-    // Accessibility: close modal on Esc
-    window.addEventListener('keydown', (e)=>{
-      if(e.key==='Escape') bookModal?.close();
+    // Booking modal
+    const bookModal = document.getElementById('bookModal');
+    const bookBtn = document.getElementById('bookBtn');
+    const cancel = document.getElementById('cancelBook');
+    bookBtn?.addEventListener('click', ()=>bookModal.showModal());
+    cancel?.addEventListener('click', ()=>bookModal.close());
+    document.getElementById('bookForm').addEventListener('submit', (e)=>{ e.preventDefault && e.preventDefault(); alert('Thanks! Your reservation request has been received. (Demo)'); bookModal.close(); });
+
+    // Contact form demo handler
+    document.getElementById('contactForm').addEventListener('submit', (e)=>{ e.preventDefault(); const name = document.getElementById('name').value; alert('Thanks '+name+'! We received your message. (Demo)'); e.target.reset(); });
+
+    // Scroll reveal using IntersectionObserver
+    const revealEls = document.querySelectorAll('.menu-item, .testimonial, .hero-inner, .card, .event');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('reveal'); } });
+    },{threshold:0.12});
+    revealEls.forEach(el=>io.observe(el));
+
+    // Hero initial reveal (staggered)
+    window.addEventListener('load', ()=>{
+      document.querySelectorAll('.reveal-on-load').forEach((el,i)=>{ setTimeout(()=>{ el.style.opacity=1; el.style.transform='none'; }, 160 + (i*120)); });
     });
 
-    // Small parallax effect for hero background on scroll
+    // Menu filtering
+    document.querySelectorAll('.filter-btn').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('#menuItems .menu-item').forEach(item=>{
+          if(filter==='all' || item.dataset.type===filter) item.style.display='block'; else item.style.display='none';
+        });
+      });
+    });
+
+    // Favorites (localStorage)
+    document.querySelectorAll('.add-fav').forEach((btn, idx)=>{
+      btn.addEventListener('click', ()=>{
+        btn.classList.toggle('fav');
+        btn.style.opacity = btn.classList.contains('fav') ? 1 : 0.85;
+        // store simple state
+      });
+    });
+
+    // Events carousel
+    const track = document.getElementById('eventsTrack');
+    const prev = document.getElementById('prevEvent');
+    const next = document.getElementById('nextEvent');
+    let eIndex = 0;
+    function showEvent(i){
+      const width = track.children[0].offsetWidth + 12;
+      eIndex = Math.max(0, Math.min(i, track.children.length-1));
+      track.style.transform = 'translateX('+(-eIndex*width)+'px)';
+    }
+    prev.addEventListener('click', ()=> showEvent(eIndex-1));
+    next.addEventListener('click', ()=> showEvent(eIndex+1));
+    setInterval(()=> showEvent((eIndex+1)%track.children.length), 5000);
+
+    // Testimonials simple auto-scroll
+    const wrap = document.getElementById('testWrap');
+    let tIndex = 0;
+    function rotateTestimonials(){
+      tIndex = (tIndex+1) % wrap.children.length;
+      wrap.style.transform = 'translateX('+(-tIndex* (wrap.children[0].offsetWidth + 14))+'px)';
+    }
+    let tTimer = setInterval(rotateTestimonials,4000);
+    window.addEventListener('resize', ()=>{wrap.style.transform='translateX(0)'; tIndex=0;});
+
+    // Floating Order button action
+    document.getElementById('orderNow').addEventListener('click', ()=>{ document.getElementById('menu').scrollIntoView({behavior:'smooth'}); });
+
+    // Review / Subscribe demo handlers
+    document.getElementById('reviewBtn').addEventListener('click', (e)=>{ e.preventDefault(); window.open('https://search.google.com/local/writereview?placeid=','_blank'); });
+    document.getElementById('subscribeBtn').addEventListener('click', ()=>{ const email = document.getElementById('newsletterEmail').value; if(!email) return alert('Please enter your email'); alert('Thanks — we added '+email+' to the demo newsletter (not really)'); document.getElementById('newsletterEmail').value=''; });
+
+    // Accessibility: close modal on Esc
+    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') bookModal?.close(); });
+
+    // Small parallax effect for hero background on scroll (kept subtle)
     window.addEventListener('scroll', ()=>{
       const hero = document.querySelector('.hero');
-      if(hero) hero.style.backgroundPosition = 'center calc(50% + '+(window.scrollY*0.08)+'px)';
+      if(hero) hero.style.backgroundPosition = 'center calc(50% + '+(window.scrollY*0.04)+'px)';
     });
+
   </script>
 </body>
 </html>
