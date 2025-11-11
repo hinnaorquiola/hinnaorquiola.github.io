@@ -657,14 +657,41 @@
     setInterval(()=> showEvent((eIndex+1)%track.children.length), 5000);
 
     // Testimonials simple auto-scroll
-    const wrap = document.getElementById('testWrap');
-    let tIndex = 0;
-    function rotateTestimonials(){
-      tIndex = (tIndex+1) % wrap.children.length;
-      wrap.style.transform = 'translateX('+(-tIndex* (wrap.children[0].offsetWidth + 14))+'px)';
-    }
-    let tTimer = setInterval(rotateTestimonials,4000);
-    window.addEventListener('resize', ()=>{wrap.style.transform='translateX(0)'; tIndex=0;});
+const wrap = document.getElementById('testWrap');
+const testimonials = wrap.children;
+let tIndex = 0;
+let tTimer;
+
+// Apply smooth slide
+wrap.style.display = "flex";
+wrap.style.transition = "transform 0.8s ease-in-out";
+
+function rotateTestimonials() {
+  const itemWidth = testimonials[0].offsetWidth + 14; // spacing
+  tIndex++;
+  
+  // If reached the end, reset to start smoothly
+  if (tIndex >= testimonials.length) {
+    tIndex = 0;
+  }
+
+  wrap.style.transform = `translateX(-${tIndex * itemWidth}px)`;
+}
+
+// Start auto-scroll
+tTimer = setInterval(rotateTestimonials, 5000);
+
+// Reset on resize
+window.addEventListener("resize", () => {
+  wrap.style.transition = "none";
+  wrap.style.transform = "translateX(0)";
+  tIndex = 0;
+  clearInterval(tTimer);
+  setTimeout(() => {
+    wrap.style.transition = "transform 0.8s ease-in-out";
+    tTimer = setInterval(rotateTestimonials, 5000);
+  }, 500);
+});
 
     // Floating Order button action
     document.getElementById('orderNow').addEventListener('click', ()=>{ document.getElementById('menu').scrollIntoView({behavior:'smooth'}); });
