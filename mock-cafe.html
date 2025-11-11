@@ -56,25 +56,23 @@
     /* --------------------------
        HERO
     -------------------------- */
-    .hero {
-  width: 100vw;
-  height: 100vh; /* full height, no subtraction */
+   .hero {
+  height: calc(100vh - 72px);
+  margin-top: 72px;
   display: flex;
   justify-content: center;
-  align-items: flex-end; /* move text lower instead of center */
+  align-items: flex-start;
   position: relative;
-  text-align: center;
-  background-image: url('https://hinnaorquiola.github.io/cafe_orquiola.webp');
-  background-size: cover;
   background-position: center center;
-  padding-bottom: 120px; /* adds space below hero text */
-  margin-top: 0; /* remove top offset */
 }
-    .hero-inner {
+
+.hero-inner {
   position: relative;
   z-index: 2;
   max-width: 1100px;
   padding: 0 40px;
+  margin-top: 38vh; /* pushes text lower into the tarp area */
+  text-align: center;
 }
 
     /* full-bleed hero wrapper so background always fills fullscreen */
