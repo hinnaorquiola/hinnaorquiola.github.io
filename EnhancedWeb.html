@@ -64,6 +64,7 @@
       --accent: var(--gold);
       --card-bg: #fff;
       --reveal-offset: 18px;
+      --carousel-duration: 5200ms;
     }
 
     [data-theme="dark"]{
@@ -89,10 +90,11 @@
     nav.primary a{padding:8px 10px;border-radius:8px;color:var(--white);font-weight:600}
     .menu-toggle{display:none;background:none;border:0;color:var(--white);font-size:22px;cursor:pointer}
     .theme-toggle{background:transparent;border:0;color:var(--white);font-size:18px;cursor:pointer;padding:8px;border-radius:8px}
+    .theme-indicator{width:12px;height:12px;border-radius:50%;display:inline-block;margin-left:8px;background:#fff;box-shadow:inset 0 0 0 2px rgba(0,0,0,0.05)}
 
     /* Hero */
     .hero{position:relative;min-height:calc(100vh - var(--header-h));display:flex;align-items:center;justify-content:center;color:var(--white);overflow:hidden}
-    .hero-bg{position:absolute;inset:0; width: 100%;height: 100%;background:url("https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/hero-bg.webp") center/cover no-repeat;filter:grayscale(100%) contrast(95%) brightness(0.6);z-index:0}
+    .hero-bg{position:absolute;inset:0; width: 100%;height: 120%;background:url("https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/hero-bg.webp") center/cover no-repeat;filter:grayscale(100%) contrast(95%) brightness(0.6);z-index:0;transform:translate3d(0,0,0)}
     .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.75));z-index:1}
     .hero-inner{position:relative;z-index:2;max-width:var(--max-width);width:100%;min-height: 80vh;padding:clamp(20px,4vw,48px);display:grid;grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));gap:clamp(18px,4vw,40px);align-items:center;margin-top:calc(var(--header-h) / 4)}
     .hero-left{min-width:0}
@@ -100,7 +102,8 @@
     .hero-img { width:100%; max-width:360px; height:auto; border-radius:16px; box-shadow:0 12px 36px rgba(0,0,0,0.35); display:block; margin:0 auto; object-fit:cover; }
 
     .intro-line{opacity:.95;margin:0 0 8px;font-weight:600}
-    .hero-left h1{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,48px);line-height:1.03;margin:6px 0 12px}
+    .hero-left h1{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,48px);line-height:1.03;margin:6px 0 12px; color:var(--white)}
+    .typed { color: var(--gold); border-right: 2px solid rgba(255,255,255,0.85); padding-right:6px; white-space:nowrap }
     .hero-left p.tagline{color:rgba(255,255,255,0.92);max-width:60ch;margin-bottom:18px}
     .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
     .btn{display:inline-block;padding:12px 20px;border-radius:12px;font-weight:700;background:var(--accent);color:var(--black);box-shadow:0 8px 28px rgba(0,0,0,0.18);transition:transform var(--transition)}
@@ -148,9 +151,14 @@
     .shop-btn {display: inline-block;padding: 8px 12px;border-radius: 8px;background: var(--accent);color: #000;font-weight: 700;border: none;transition: all 0.2s ease;cursor: pointer;}
     .shop-btn:hover {background: #000;color: var(--accent);}
 
-    /* Testimonials */
-    .testimonials{position:relative;min-height:260px;color:#fff;display:flex;align-items:center;justify-content:center;padding:clamp(28px,6vw,64px);background:#000}
-    .testimonials .inner{max-width:1100px;width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;text-align:center}
+    /* Testimonials carousel */
+    .testimonials { position: relative; min-height: 260px; padding: clamp(28px,6vw,64px); background: linear-gradient(180deg,#0d0d0d,#0a0a0a); color: #fff; overflow: hidden; }
+    .testimonials .carousel { display: flex; gap: 18px; align-items: center; justify-content:center; transition: transform 0.6s cubic-bezier(.2,.9,.2,1); will-change: transform; }
+    .testimonial-card { min-width: 300px; max-width: 520px; background: rgba(255,255,255,0.03); padding: 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.06); text-align: left; }
+    .testimonial-meta { margin-top: 12px; color: var(--light); font-weight: 600; }
+    .carousel-controls { position: absolute; right: 18px; top: 50%; transform: translateY(-50%); display:flex; gap:8px; z-index:10 }
+    .carousel-btn { background: rgba(255,255,255,0.06); border:0; padding:8px 10px; border-radius:8px; color:#fff; cursor:pointer }
+    .carousel-btn:hover { background: rgba(255,255,255,0.12) }
 
     /* About + Book */
     .about-book{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
@@ -159,12 +167,7 @@
     /* Blog */
     .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
     .blog-card { position: relative; overflow: hidden; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.25); height: 400px; display: flex; flex-direction: column; justify-content: flex-end; color: #fff; }
-    .blog-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
-    .blog-card::before { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.1)); z-index: 1; }
     .blog-content { position: relative; z-index: 2; padding: 20px; display: flex; flex-direction: column; justify-content: flex-end; height: 100%; }
-    .blog-content h3 { margin: 0 0 8px; font-size: 1.25rem; font-weight: 700; }
-    .blog-content p { margin: 0 0 16px; font-size: 0.95rem; line-height: 1.4; }
-    .blog-content .btn { margin-top: auto; align-self: flex-start; }
 
     /* Contact */
     #contact{background:var(--card-bg);color:var(--text);padding:clamp(36px,6vw,72px) var(--gutter)}
@@ -184,9 +187,6 @@
     .floating-cta{position:fixed;right:20px;bottom:22px;background:var(--accent);color:#000;border-radius:999px;padding:12px 16px;box-shadow:0 12px 36px rgba(0,0,0,0.18);z-index:1400;font-weight:800;display:flex;gap:10px;align-items:center}
     .floating-cta small{font-weight:600;color:#000;display:none}
     @media (min-width:720px){ .floating-cta small{display:inline} }
-
-    /* Theme toggle visual */
-    .theme-indicator{width:12px;height:12px;border-radius:50%;display:inline-block;margin-left:8px;background:#fff;box-shadow:inset 0 0 0 2px rgba(0,0,0,0.05)}
 
     /* Responsive breakpoints */
     @media (max-width:1200px){ .gallery{grid-template-columns:repeat(3,1fr)} .services-row{grid-template-columns:repeat(2,1fr)} }
@@ -249,11 +249,13 @@
 
   <!-- HERO -->
   <section id="home" class="hero" aria-label="Hero">
-    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-bg" id="hero-bg" aria-hidden="true"></div>
     <div class="hero-inner container">
       <div class="hero-left">
         <p class="intro-line">Hi, I’m <strong>Hinna Orquiola</strong> — your creative partner.</p>
-        <h1>Designs that <span style="color:var(--gold)">Empower & Inspire</span></h1>
+        <h1>
+          Designs that <span id="typed-wrapper" aria-live="polite"><span class="typed" id="typed"></span></span>
+        </h1>
         <p class="tagline">Helping brands and creators bring ideas to life through thoughtful design, illustration, and storytelling.</p>
         <div class="hero-cta">
           <a class="btn" href="#portfolio">View My Portfolio</a>
@@ -577,20 +579,27 @@
 
     <!-- TESTIMONIALS -->
     <section id="testimonials" class="testimonials reveal" aria-label="Testimonials">
-      <div class="inner container">
-        <div class="testimonial-card" style="background:rgba(255,255,255,0.03);padding:24px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);color:rgba(255,255,255,0.95);">
-          <p style="font-style:italic">“Working with Hinna was a dream, her designs brought my story to life!”</p>
-          <h4 style="margin-top:12px;color:var(--light)">— Evelyn, Author</h4>
+      <div class="container" style="position:relative;max-width:1100px;">
+        <div class="carousel-wrap" style="overflow:hidden;padding:6px 0;">
+          <div class="carousel" id="testimonial-carousel" role="list">
+            <div class="testimonial-card" role="listitem" aria-label="Testimonial 1">
+              <p style="font-style:italic">“Working with Hinna was a dream, her designs brought my story to life!”</p>
+              <div class="testimonial-meta">— Evelyn, Author</div>
+            </div>
+            <div class="testimonial-card" role="listitem" aria-label="Testimonial 2">
+              <p style="font-style:italic">“Professional, kind, and creative. Every detail was thoughtful.”</p>
+              <div class="testimonial-meta">— Lucas, Business Owner</div>
+            </div>
+            <div class="testimonial-card" role="listitem" aria-label="Testimonial 3">
+              <p style="font-style:italic">“Her illustrations carry emotion and soul — exactly what my project needed.”</p>
+              <div class="testimonial-meta">— Aria</div>
+            </div>
+          </div>
         </div>
 
-        <div class="testimonial-card" style="background:rgba(255,255,255,0.03);padding:24px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);color:rgba(255,255,255,0.95);">
-          <p style="font-style:italic">“Professional, kind, and creative. Every detail was thoughtful.”</p>
-          <h4 style="margin-top:12px;color:var(--light)">— Lucas, Business Owner</h4>
-        </div>
-
-        <div class="testimonial-card" style="background:rgba(255,255,255,0.03);padding:24px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);color:rgba(255,255,255,0.95);">
-          <p style="font-style:italic">“Her illustrations carry emotion and soul — exactly what my project needed.”</p>
-          <h4 style="margin-top:12px;color:var(--light)">— Aria</h4>
+        <div class="carousel-controls" aria-hidden="false">
+          <button class="carousel-btn" id="carousel-prev" aria-label="Previous testimonial">‹</button>
+          <button class="carousel-btn" id="carousel-next" aria-label="Next testimonial">›</button>
         </div>
       </div>
     </section>
@@ -723,9 +732,8 @@
         <h3 class="section-title">Join the Newsletter</h3>
         <p class="lead" style="max-width:700px;margin:10px auto 18px">Get occasional design tips, freebies, and updates on new shop drops. No spam — unsubscribe anytime.</p>
 
-        <!-- Using your Formspree endpoint so submissions arrive in the same inbox.
-             We'll include a hidden field to mark these as "newsletter". -->
-        <form id="newsletter-form" action="https://formspree.io/f/xkgpnljp" method="POST" style="display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;">
+        <!-- Newsletter posts to your provided endpoint -->
+        <form id="newsletter-form" action="https://formspree.io/f/xdkyowrw" method="POST" style="display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;">
           <input type="hidden" name="_subject" value="Newsletter signup">
           <input type="hidden" name="form_type" value="newsletter">
           <input type="text" name="name" id="newsletter-name" placeholder="Your name (optional)" style="padding:12px;border-radius:8px;border:1px solid rgba(0,0,0,0.08);min-width:200px">
@@ -887,7 +895,7 @@
       applyTheme(next);
     });
 
-    // Contact form feedback — Formspree will redirect by default; prevent default and use fetch to submit so we can show inline feedback
+    // Contact form feedback — use fetch to submit to Formspree and show inline feedback
     const contactForm = document.getElementById('contact-form');
     const contactFeedback = document.getElementById('contact-feedback');
 
@@ -920,7 +928,7 @@
       });
     }
 
-    // Newsletter form handling (sends to same Formspree endpoint)
+    // Newsletter form handling -> now posts to your newsletter Formspree endpoint
     const newsletterForm = document.getElementById('newsletter-form');
     const newsletterFeedback = document.getElementById('newsletter-feedback');
     if (newsletterForm) {
@@ -947,6 +955,132 @@
       });
     }
 
+    // Typing animation (fast: 60ms per char) — types once then stops (no loop)
+    (function(){
+      const typedEl = document.getElementById('typed');
+      const text = 'Empower & Inspire';
+      const speed = 60; // ms per char (fast)
+      let i = 0;
+
+      function typeNext() {
+        if (!typedEl) return;
+        if (i < text.length) {
+          typedEl.textContent += text.charAt(i);
+          i++;
+          setTimeout(typeNext, speed);
+        } else {
+          // remove caret after a short pause
+          setTimeout(()=> {
+            typedEl.style.borderRight = '0';
+          }, 400);
+        }
+      }
+
+      // start typing after small delay for effect
+      window.addEventListener('load', () => {
+        setTimeout(typeNext, 240);
+      });
+    })();
+
+    // Parallax effect for hero-bg (rAF optimized)
+    (function(){
+      const heroBg = document.getElementById('hero-bg');
+      if (!heroBg) return;
+      let latestY = 0;
+      let ticking = false;
+
+      function onScroll() {
+        latestY = window.scrollY;
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            // move background slower than scroll for parallax
+            const offset = Math.round(latestY * 0.25);
+            heroBg.style.transform = `translate3d(0, ${offset}px, 0) scale(1.02)`;
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }
+
+      // only attach if viewport height allows visible parallax
+      if (window.innerHeight > 300) {
+        window.addEventListener('scroll', onScroll, { passive: true });
+      }
+    })();
+
+    // Testimonials carousel: auto-rotate + manual controls + swipe
+    (function(){
+      const carousel = document.getElementById('testimonial-carousel');
+      const prevBtn = document.getElementById('carousel-prev');
+      const nextBtn = document.getElementById('carousel-next');
+      if (!carousel) return;
+      const cards = Array.from(carousel.children);
+      const cardCount = cards.length;
+      let index = 0;
+      let autoTimer = null;
+      const interval = 5200; // ms
+
+      // layout: set container width to cardCount * 100% and each card flex-basis accordingly
+      carousel.style.width = `${cardCount * 100}%`;
+      cards.forEach(card => card.style.flex = `0 0 ${100 / cardCount}%`);
+
+      function showIndex(i) {
+        index = (i + cardCount) % cardCount;
+        const translate = `translateX(-${(index * 100) / cardCount}%)`;
+        carousel.style.transform = translate;
+      }
+
+      function next() { showIndex(index + 1); }
+      function prev() { showIndex(index - 1); }
+
+      function startAuto() {
+        stopAuto();
+        autoTimer = setInterval(next, interval);
+      }
+      function stopAuto() {
+        if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+      }
+
+      // controls
+      nextBtn.addEventListener('click', () => { next(); startAuto(); });
+      prevBtn.addEventListener('click', () => { prev(); startAuto(); });
+
+      // pause on hover/focus
+      const container = carousel.parentElement;
+      container.addEventListener('mouseenter', stopAuto);
+      container.addEventListener('mouseleave', startAuto);
+      container.addEventListener('focusin', stopAuto);
+      container.addEventListener('focusout', startAuto);
+
+      // keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') prev();
+        if (e.key === 'ArrowRight') next();
+      });
+
+      // touch swipe
+      let touchStartX = 0;
+      let touchDelta = 0;
+      carousel.addEventListener('touchstart', (e) => {
+        stopAuto();
+        touchStartX = e.touches[0].clientX;
+      }, {passive:true});
+      carousel.addEventListener('touchmove', (e) => {
+        touchDelta = e.touches[0].clientX - touchStartX;
+      }, {passive:true});
+      carousel.addEventListener('touchend', () => {
+        if (Math.abs(touchDelta) > 40) {
+          if (touchDelta < 0) next(); else prev();
+        }
+        touchDelta = 0;
+        startAuto();
+      });
+
+      // init
+      showIndex(0);
+      startAuto();
+    })();
+
     // Reduce initial animations on mobile & prefer-reduced-motion
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReduced) {
@@ -963,4 +1097,3 @@
   </script>
 </body>
 </html>
-
