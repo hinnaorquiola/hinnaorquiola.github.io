@@ -61,14 +61,16 @@
   height: calc(100vh - 72px);
   margin-top: 72px;
   display: flex;
-  align-items: center;        /* centers vertically */
-  justify-content: center;    /* centers horizontally */
+  align-items: flex-end;     /* lower text placement */
+  justify-content: center;
+  padding-bottom: 120px;     /* moves the text down */
   text-align: center;
-  position: relative;         /* required for z-index layering */
+  position: relative;
   background-image: url('https://hinnaorquiola.github.io/cafe_orquiola.webp');
   background-size: cover;
   background-position: center center;
 }
+
     /* full-bleed hero wrapper so background always fills fullscreen */
     .hero-wrap{position:relative;width:100%;height:100%;overflow:hidden}
 
