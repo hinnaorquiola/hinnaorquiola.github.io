@@ -56,43 +56,44 @@
     /* --------------------------
        HERO
     -------------------------- */
+/* --- HERO (centered horizontally + positioned inside tarp) --- */
 .hero {
   width: 100vw;
   height: calc(100vh - 72px);
   margin-top: 72px;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: center; /* centers hero-inner horizontally */
+  align-items: flex-start; /* we'll manually drop the text */
   position: relative;
+  text-align: center;
   background-image: url('https://hinnaorquiola.github.io/cafe_orquiola.webp');
   background-size: cover;
   background-position: center center;
-  text-align: center;
   overflow: hidden;
 }
 
+/* hero text placement */
 .hero-inner {
   position: relative;
   z-index: 2;
   max-width: 1100px;
   padding: 0 40px;
-  margin-top: 36vh; /* desktop — in green tarp zone */
-  transition: margin-top 0.3s ease;
+  margin-top: 36vh; /* places text in tarp area */
+  left: 50%;
+  transform: translateX(-50%); /* <-- perfectly centers horizontally */
 }
 
-/* ---- responsive adjustments ---- */
-
-/* Tablet (medium screens) */
+/* Tablet & mobile adjustments */
 @media (max-width: 1024px) {
   .hero-inner {
-    margin-top: 32vh; /* slightly higher for narrower screens */
+    margin-top: 30vh;
   }
 }
 
-/* Mobile landscape / small tablets */
 @media (max-width: 768px) {
   .hero-inner {
     margin-top: 25vh;
+    transform: translateX(-50%); /* keep centering on smaller screens */
   }
   .hero h1 {
     font-size: 2rem;
@@ -102,10 +103,10 @@
   }
 }
 
-/* Mobile portrait (very small screens) */
 @media (max-width: 480px) {
   .hero-inner {
-    margin-top: 20vh; /* keeps text in view */
+    margin-top: 20vh;
+    transform: translateX(-50%);
   }
 }
 
