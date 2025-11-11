@@ -128,9 +128,9 @@
     .carousel-controls{display:flex;gap:8px;align-items:center;justify-content:center;margin-top:12px}
 
     /* TESTIMONIALS */
-    .testimonials{position:relative;padding:20px}
-    .test-wrap{display:flex;gap:14px;overflow:hidden}
-    .testimonial{min-width:320px;background:var(--glass);padding:18px;border-radius:12px;backdrop-filter: blur(4px);opacity:0;transform:translateY(12px)}
+    .testimonials{position:relative;overflow: hidden;padding:20px}
+    .test-wrap{display:flex;gap:14px;transition: transform 0.8s ease-in-out;will-change: transform}
+    .testimonial{min-width:100%;box-sizing: border-box;text-align: center;background:var(--glass);padding:18px;border-radius:12px;backdrop-filter: blur(4px);opacity:0;transform:translateY(12px)}
     .stars{color:var(--accent);margin-bottom:8px}
 
     /* CONTACT */
@@ -657,34 +657,27 @@
     setInterval(()=> showEvent((eIndex+1)%track.children.length), 5000);
 
     // Testimonials simple auto-scroll
-const wrap = document.getElementById('testWrap');
-const testimonials = wrap.children;
+const wrap = document.getElementById("testWrap");
+const testimonials = wrap.querySelectorAll(".testimonial");
 let tIndex = 0;
 let tTimer;
 
-// Apply smooth slide
-wrap.style.display = "flex";
-wrap.style.transition = "transform 0.8s ease-in-out";
-
-function rotateTestimonials() {
-  const itemWidth = testimonials[0].offsetWidth + 14; // spacing
-  tIndex++;
-  
-  // If reached the end, reset to start smoothly
-  if (tIndex >= testimonials.length) {
-    tIndex = 0;
-  }
-
-  wrap.style.transform = `translateX(-${tIndex * itemWidth}px)`;
+function showTestimonial(index) {
+  wrap.style.transform = `translateX(-${index * 100}%)`;
 }
 
-// Start auto-scroll
+function rotateTestimonials() {
+  tIndex++;
+  if (tIndex >= testimonials.length) tIndex = 0;
+  showTestimonial(tIndex);
+}
+
 tTimer = setInterval(rotateTestimonials, 5000);
 
-// Reset on resize
 window.addEventListener("resize", () => {
+  // Reset to first testimonial on resize
   wrap.style.transition = "none";
-  wrap.style.transform = "translateX(0)";
+  showTestimonial(0);
   tIndex = 0;
   clearInterval(tTimer);
   setTimeout(() => {
