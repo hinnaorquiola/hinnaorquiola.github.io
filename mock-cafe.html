@@ -191,37 +191,73 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 200px;
-  height: 200px;
+  width: 300px;    /* wider steam area */
+  height: 260px;   /* taller steam area */
   pointer-events: none;
-  opacity: 0.55;
-  z-index: 1; /* steam stays behind text */
+  opacity: 0.28;   /* softer overall opacity */
+  z-index: 1;
 }
 
 .steam span {
   position: absolute;
-  left: 50%;
   bottom: 0;
-  width: 10px;
-  height: 80px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0));
+  width: 8px;      /* thinner, softer wisps */
+  height: 120px;   /* longer steam movement */
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.55),
+    rgba(255,255,255,0)
+  );
   border-radius: 999px;
-  transform-origin: center bottom;
-  filter: blur(3px);
-  animation: rise 5s ease-in-out infinite;
+  filter: blur(8px);          /* softer blur */
+  animation: rise 6.5s ease-in-out infinite;
+  opacity: 0;
 }
 
-.steam span:nth-child(1) { left: 45%; animation-delay: 0s; }
-.steam span:nth-child(2) { left: 50%; animation-delay: 1.5s; }
-.steam span:nth-child(3) { left: 55%; animation-delay: 3s; }
+/* spread wisps horizontally */
+.steam span:nth-child(1) {
+  left: 35%;
+  animation-delay: 0s;
+}
+.steam span:nth-child(2) {
+  left: 50%;
+  animation-delay: 1.8s;
+}
+.steam span:nth-child(3) {
+  left: 65%;
+  animation-delay: 3.2s;
+}
+.steam span:nth-child(4) {
+  left: 45%;
+  animation-delay: 4.6s;
+}
+.steam span:nth-child(5) {
+  left: 55%;
+  animation-delay: 2.4s;
+}
 
+/* natural drifting movement */
 @keyframes rise {
-  0%   { transform: translate(-50%, 0) scale(1); opacity: 0; }
-  15%  { opacity: 1; }
-  60%  { opacity: 0.9; }
-  100% { transform: translate(-50%, -160px) scale(0.8); opacity: 0; }
+  0% {
+    transform: translateY(0) translateX(0) scale(0.9);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-140px) translateX(-15px);
+    opacity: 0.5;
+  }
+  80% {
+    transform: translateY(-240px) translateX(15px);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(-300px) translateX(0) scale(1.1);
+    opacity: 0;
+  }
 }
-
   </style>
 </head>
 <body>
@@ -257,7 +293,7 @@
   <section class="hero" id="home" aria-label="Hero">
     <div class="hero-wrap">
       <div class="steam" aria-hidden="true">
-        <span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
       </div>
 
       <div class="hero-inner">
