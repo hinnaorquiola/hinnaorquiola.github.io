@@ -7,201 +7,184 @@
   <meta name="description" content="Graphic & web design services plus inspirational and empowering shop products made with love.">
   <link rel="icon" type="image/png" href="favicon_ho.png">
 
-  <!-- Open Graph / Social -->
+  <!-- Open Graph / Social (kept) -->
   <meta property="og:title" content="Hinna Orquiola — Virtual Assistant, Graphic & Web Designer">
   <meta property="og:description" content="Thoughtful design, web development, and original merch — crafted to empower creators and businesses.">
   <meta property="og:image" content="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/hero-bg.webp">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://hinnaorquiola.github.io/">
-
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Hinna Orquiola — Virtual Assistant, Graphic & Web Designer">
-  <meta name="twitter:description" content="Thoughtful design, web development, and original merch — crafted to empower creators and businesses.">
 
-  <!-- Structured data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Hinna Orquiola",
-    "url": "https://hinnaorquiola.github.io/",
-    "sameAs": [
-      "https://www.facebook.com",
-      "https://www.instagram.com",
-      "https://twitter.com",
-      "https://www.linkedin.com"
-    ],
-    "jobTitle": "Virtual Assistant, Graphic & Web Designer",
-    "email": "mailto:hinnaorquiola@gmail.com"
-  }
-  </script>
-
-  <!-- Fonts + Performance -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"></noscript>
-  <link rel="preload" as="image" href="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/hero-bg.webp" fetchpriority="high">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
+    /* ====== Variables & Base ====== */
     :root{
       --white:#ffffff;
-      --light:#f5f5f5;
+      --light:#faf7f2;
       --gold:#d4af37;
-      --muted:#9a9a9a;
-      --mid:#555555;
-      --dark:#111111;
+      --gold-2:#f0c75e;
+      --muted:#7a7a7a;
+      --mid:#444444;
+      --dark:#0c0c0c;
       --black:#000000;
       --gutter:clamp(12px,2.4vw,32px);
-      --header-h:clamp(56px,6.5vh,80px);
+      --header-h:70px;
       --max-width:1200px;
-      --radius:12px;
+      --radius:16px;
       --glass: rgba(255,255,255,0.06);
-      --transition: .22s ease;
-      --bg: var(--white);
-      --text: var(--dark);
-      --accent: var(--gold);
-      --card-bg: #fff;
-      --reveal-offset: 18px;
-      --carousel-duration: 5200ms;
+      --transition:.28s ease;
+      --bg:var(--light);
+      --text:#111111;
+      --card-bg:#ffffff;
+      --accent:var(--gold);
+      --shadow: 0 8px 28px rgba(0,0,0,0.18);
     }
 
     [data-theme="dark"]{
       --bg:#060606;
-      --text:#eaeaea;
-      --card-bg:#0d0d0d;
+      --text:#e8e8e8;
+      --card-bg:#0f0f0f;
       --muted:#b5b5b5;
     }
 
-    /* Basic reset & fonts */
     html{scroll-behavior:smooth;font-family:'Poppins',sans-serif}
-    body{margin:0;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.45}
+    body{
+      margin:0;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;
+      overflow-x:hidden;line-height:1.45;
+      -webkit-font-smoothing:antialiased;
+    }
     img{max-width:100%;height:auto;display:block}
     a{color:inherit;text-decoration:none;cursor:pointer}
+    h1,h2,h3,h4{font-family:'Playfair Display',serif;margin:0;color:var(--text)}
+    p{margin:0}
 
-    /* Header */
-    header.site-header{position:fixed;inset:0 0 auto 0;height:var(--header-h);z-index:1200;backdrop-filter:blur(4px)}
-    .nav-inner{max-width:1400px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;padding:calc(var(--gutter) / 2);gap:12px;transition:background .24s,box-shadow .24s}
-    .nav-inner.solid{background:rgba(0,0,0,0.8);box-shadow:0 6px 22px rgba(0,0,0,.28)}
-    .brand h1{margin:0;font-family:'Playfair Display',serif;font-size:clamp(16px,2.2vw,22px);color:var(--white)}
-    .brand p{margin:0;font-size:clamp(10px,1.2vw,12px);color:rgba(255,255,255,0.9)}
+    /* ====== Header ====== */
+    header.site-header{position:fixed;inset:0 0 auto 0;height:var(--header-h);z-index:1200;backdrop-filter:blur(6px);transition:background .24s,box-shadow .24s}
+    .nav-inner{max-width:var(--max-width);margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;gap:12px}
+    .nav-inner.solid{background:rgba(0,0,0,0.85);box-shadow:0 6px 22px rgba(0,0,0,.35)}
+    .brand h1{font-size:clamp(16px,2.2vw,22px);color:var(--white);margin:0}
+    .brand p{margin:0;font-size:12px;color:rgba(255,255,255,0.9)}
     nav.primary{display:flex;gap:12px;align-items:center}
-    nav.primary a{padding:8px 10px;border-radius:8px;color:var(--white);font-weight:600}
+    nav.primary a{padding:8px 10px;border-radius:10px;color:var(--white);font-weight:600;transition:all var(--transition)}
+    nav.primary a:hover{background:var(--gold);color:var(--black);transform:scale(1.03)}
     .menu-toggle{display:none;background:none;border:0;color:var(--white);font-size:22px;cursor:pointer}
     .theme-toggle{background:transparent;border:0;color:var(--white);font-size:18px;cursor:pointer;padding:8px;border-radius:8px}
-    .theme-indicator{width:12px;height:12px;border-radius:50%;display:inline-block;margin-left:8px;background:#fff;box-shadow:inset 0 0 0 2px rgba(0,0,0,0.05)}
 
-    /* Hero */
+    /* ====== Hero ====== */
     .hero{position:relative;min-height:calc(100vh - var(--header-h));display:flex;align-items:center;justify-content:center;color:var(--white);overflow:hidden}
-    .hero-bg{position:absolute;inset:0; width: 100%;height: 120%;background:url("https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/hero-bg.webp") center/cover no-repeat;filter:grayscale(100%) contrast(95%) brightness(0.6);z-index:0;transform:translate3d(0,0,0)}
-    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.75));z-index:1}
-    .hero-inner{position:relative;z-index:2;max-width:var(--max-width);width:100%;min-height: 80vh;padding:clamp(20px,4vw,48px);display:grid;grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));gap:clamp(18px,4vw,40px);align-items:center;margin-top:calc(var(--header-h) / 4)}
+    .hero-bg{position:absolute;inset:0;width:100%;height:120%;background:url("https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/hero-bg.webp") center/cover no-repeat;filter:grayscale(20%) contrast(105%) brightness(0.55);z-index:0;transform:translate3d(0,0,0);animation:heroZoom 24s ease-in-out infinite alternate}
+    @keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.06)}}
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.78));z-index:1}
+    .hero-inner{position:relative;z-index:2;max-width:var(--max-width);width:100%;min-height:80vh;padding:clamp(20px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(18px,4vw,40px);align-items:center;margin-top:calc(var(--header-h)/4)}
     .hero-left{min-width:0}
     .hero-right{text-align:right}
-    .hero-img { width:100%; max-width:360px; height:auto; border-radius:16px; box-shadow:0 12px 36px rgba(0,0,0,0.35); display:block; margin:0 auto; object-fit:cover; }
-
+    .hero-img{width:100%;max-width:360px;aspect-ratio:3/4;border-radius:16px;box-shadow:0 12px 36px rgba(0,0,0,0.45);display:block;margin:0 auto;object-fit:cover;animation:float 6s ease-in-out infinite}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
     .intro-line{opacity:.95;margin:0 0 8px;font-weight:600}
-    .hero-left h1{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,48px);line-height:1.03;margin:6px 0 12px; color:var(--white)}
-    .typed { color: var(--gold); border-right: 2px solid rgba(255,255,255,0.85); padding-right:6px; white-space:nowrap }
+    .hero-left h1{font-size:clamp(28px,5vw,48px);line-height:1.03;margin:6px 0 12px;color:var(--white)}
+    .typed{color:var(--gold);border-right:2px solid rgba(255,255,255,0.85);padding-right:6px;white-space:nowrap}
     .hero-left p.tagline{color:rgba(255,255,255,0.92);max-width:60ch;margin-bottom:18px}
     .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{display:inline-block;padding:12px 20px;border-radius:12px;font-weight:700;background:var(--accent);color:var(--black);box-shadow:0 8px 28px rgba(0,0,0,0.18);transition:transform var(--transition)}
-    .btn.secondary{background:transparent;color:var(--accent);border:2px solid rgba(255,255,255,0.12)}
-    .btn:active{transform:translateY(1px)}
+    .btn{display:inline-block;padding:12px 20px;border-radius:12px;font-weight:700;background:linear-gradient(135deg,var(--gold),var(--gold-2));color:var(--black);box-shadow:var(--shadow);transition:transform var(--transition),box-shadow var(--transition)}
+    .btn.secondary{background:transparent;color:var(--gold);border:2px solid rgba(255,255,255,0.08)}
+    .btn:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(0,0,0,0.28)}
+    .btn.secondary:hover{background:var(--gold);color:var(--black)}
 
-    main{width:100%}
-
-    /* Sections */
-    section.fullwidth{width:100%;padding:clamp(32px,6vw,64px) var(--gutter)}
+    /* ====== Sections ====== */
+    section.fullwidth{width:100%;padding:clamp(48px,7vw,80px) var(--gutter)}
     .container{max-width:var(--max-width);margin:0 auto;padding:0 var(--gutter)}
-    h3.section-title{font-family:'Playfair Display',serif;font-size:clamp(20px,3vw,28px);margin:0 0 12px;color:var(--text);display:inline-block}
+    .section-title{font-family:'Playfair Display',serif;font-size:clamp(20px,3vw,28px);margin:0 0 12px;color:var(--text);display:inline-block;position:relative}
+    .section-title::after{content:"";display:block;height:4px;width:72px;border-radius:8px;background:linear-gradient(90deg,var(--gold),var(--gold-2));margin-top:8px}
+
     p.lead{color:var(--mid);margin-top:6px}
 
-    /* Services grid */
+    /* ====== Services grid ====== */
     .services-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-    .service-card{position:relative;border-radius:var(--radius);overflow:hidden;min-height:280px;display:flex;align-items:flex-end;padding:18px;color:#fff;background:#222;border:1px solid rgba(255,255,255,0.06);transition:transform .3s}
-    .service-card .card-bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0;transform:scale(1);transition:transform .6s;filter:grayscale(100%) contrast(95%)}
-    .service-card::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.62));z-index:1}
+    .service-card{position:relative;border-radius:var(--radius);overflow:hidden;min-height:260px;display:flex;align-items:flex-end;padding:18px;color:#fff;background:#111;border:1px solid rgba(255,255,255,0.04);transition:transform .32s}
+    .service-card .card-bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0;transform:scale(1);transition:transform .6s;filter:grayscale(20%) contrast(105%) brightness(0.6)}
+    .service-card::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.64));z-index:1}
     .service-card .card-content{position:relative;z-index:2}
     .service-card:hover{transform:translateY(-8px)}
     .service-card:hover .card-bg{transform:scale(1.06)}
-    .book-btn{background:var(--accent);color:var(--black);padding:8px 12px;border-radius:8px;font-weight:700}
 
-    /* Gallery */
+    /* ====== Gallery ====== */
     .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
     .gallery-item{position:relative;overflow:hidden;border-radius:12px;background:#0f0f0f;min-height:160px}
-    .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-    .gallery-item:hover img{transform:scale(1.04)}
+    .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .45s}
+    .gallery-item:hover img{transform:scale(1.03)}
     .controls{position:absolute;inset:auto 12px 12px 12px;display:flex;justify-content:center;opacity:0;transform:translateY(8px);transition:opacity .22s,transform .22s}
     .gallery-item:hover .controls{opacity:1;transform:none}
     .control-btn{display:inline-block;padding:8px 12px;border-radius:8px;background:rgba(255, 215, 0, 1);border:1px solid rgba(255,255,255,0.14);color:#fff;font-weight:700;text-decoration:none}
     .control-btn:hover{background:#d4af37;color:#000}
 
-    /* Lightbox */
+    /* ====== Lightbox ====== */
     .lb-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.96);z-index:2200;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .28s}
     .lb-overlay.open{opacity:1;pointer-events:auto}
     .lb-content{max-width:1100px;width:100%;max-height:90vh;display:flex;align-items:center;justify-content:center}
     .lb-content img{max-width:100%;max-height:90vh;border-radius:6px;box-shadow:0 18px 50px rgba(0,0,0,0.6)}
+    .lb-close,.lb-nav{position:absolute;background:transparent;border:0;color:#fff;font-size:26px;padding:12px;cursor:pointer}
+    .lb-close{right:18px;top:18px}
+    .lb-prev{left:18px;top:50%;transform:translateY(-50%)}
+    .lb-next{right:18px;top:50%;transform:translateY(-50%)}
 
-    /* Shop */
+    /* ====== Shop ====== */
     .shop-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;max-width:var(--max-width);margin:18px auto 0}
-    .product-card{position:relative;height:320px;border-radius:12px;overflow:hidden;background-size:cover;background-position:center;border:1px solid #eee;box-shadow:0 6px 18px rgba(0,0,0,0.05);display:flex;align-items:flex-end}
+    .product-card{position:relative;height:320px;border-radius:12px;overflow:hidden;background-size:cover;background-position:center;border:1px solid rgba(0,0,0,0.06);box-shadow:0 6px 18px rgba(0,0,0,0.06);display:flex;align-items:flex-end}
     .product-overlay{background:rgba(255,255,255,0.95);display:flex;justify-content:space-between;align-items:center;padding:14px}
-    .shop-btn {display: inline-block;padding: 8px 12px;border-radius: 8px;background: var(--accent);color: #000;font-weight: 700;border: none;transition: all 0.2s ease;cursor: pointer;}
-    .shop-btn:hover {background: #000;color: var(--accent);}
+    .shop-btn {display:inline-block;padding:8px 12px;border-radius:8px;background:var(--gold);color:#000;font-weight:700;cursor:pointer;border:0}
+    .shop-btn:hover {background:#000;color:var(--gold)}
 
-    /* Testimonials carousel */
-    .testimonials { position: relative; min-height: 260px; padding: clamp(28px,6vw,64px); background: linear-gradient(180deg,#0d0d0d,#0a0a0a); color: #fff; overflow: hidden; }
-    .testimonials .carousel { display: flex; gap: 18px; align-items: center; justify-content:center; transition: transform 0.6s cubic-bezier(.2,.9,.2,1); will-change: transform; }
-    .testimonial-card { min-width: 300px; max-width: 520px; background: rgba(255,255,255,0.03); padding: 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.06); text-align: left; }
-    .testimonial-meta { margin-top: 12px; color: var(--light); font-weight: 600; }
-    .carousel-controls { position: absolute; right: 18px; top: 50%; transform: translateY(-50%); display:flex; gap:8px; z-index:10 }
-    .carousel-btn { background: rgba(255,255,255,0.06); border:0; padding:8px 10px; border-radius:8px; color:#fff; cursor:pointer }
-    .carousel-btn:hover { background: rgba(255,255,255,0.12) }
+    /* ====== Testimonials ====== */
+    .testimonials{position:relative;min-height:260px;padding:clamp(28px,6vw,64px);background:linear-gradient(180deg,#0d0d0d,#0a0a0a);color:#fff;overflow:hidden}
+    .testimonials .carousel{display:flex;gap:18px;align-items:center;justify-content:center;transition:transform .6s cubic-bezier(.2,.9,.2,1)}
+    .testimonial-card{min-width:280px;max-width:520px;background:rgba(255,255,255,0.03);padding:24px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);text-align:left}
+    .testimonial-meta{margin-top:12px;color:var(--light);font-weight:600}
+    .carousel-controls{position:absolute;right:18px;top:50%;transform:translateY(-50%);display:flex;gap:8px;z-index:10}
+    .carousel-btn{background:rgba(255,255,255,0.06);border:0;padding:8px 10px;border-radius:8px;color:#fff;cursor:pointer}
+    .carousel-btn:hover{background:rgba(255,255,255,0.12)}
 
-    /* About + Book */
+    /* ====== About + Book ====== */
     .about-book{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
-    .book-right{background:var(--card-bg);padding:24px;border-radius:16px;box-shadow:0 8px 20px rgba(0,0,0,0.06);text-align:center}
+    .book-right{background:var(--card-bg);padding:24px;border-radius:16px;box-shadow:var(--shadow);text-align:center}
 
-    /* Blog */
-    .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-    .blog-card { position: relative; overflow: hidden; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.25); height: 400px; display: flex; flex-direction: column; justify-content: flex-end; color: #fff; }
-    .blog-content { position: relative; z-index: 2; padding: 20px; display: flex; flex-direction: column; justify-content: flex-end; height: 100%; }
+    /* ====== Blog ====== */
+    .blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+    .blog-card{position:relative;overflow:hidden;border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,0.18);height:360px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff}
+    .blog-content{position:relative;z-index:2;padding:20px;display:flex;flex-direction:column;justify-content:flex-end;height:100%}
+    .blog-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.12),rgba(0,0,0,0.6));z-index:1}
 
-    /* Contact */
+    /* ====== Contact ====== */
     #contact{background:var(--card-bg);color:var(--text);padding:clamp(36px,6vw,72px) var(--gutter)}
     .contact-container{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:32px}
     .contact-right form{display:flex;flex-direction:column;gap:12px}
     .contact-right input,.contact-right select,.contact-right textarea{padding:12px;border-radius:8px;border:1px solid rgba(0,0,0,0.08);background:var(--bg);color:var(--text)}
-    .submit-btn{background:var(--accent);color:#000;padding:12px;border-radius:8px;border:0;font-weight:700}
+    .submit-btn{background:var(--gold);color:#000;padding:12px;border-radius:8px;border:0;font-weight:700}
 
-    /* Footer */
-    footer{padding:28px var(--gutter);text-align:center;color:var(--muted);background:var(--light)}
+    /* ====== Footer ====== */
+    footer{padding:28px var(--gutter);text-align:center;color:var(--muted);background:linear-gradient(180deg,var(--card-bg),transparent)}
 
-    /* Utilities & reveal */
-    .reveal{opacity:0;transform:translateY(var(--reveal-offset));transition:opacity .6s ease,transform .6s ease}
+    /* ====== Utilities & Reveal ====== */
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
     .reveal.active{opacity:1;transform:none}
+    .floating-cta{position:fixed;right:20px;bottom:22px;background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#000;border-radius:999px;padding:12px 16px;box-shadow:0 12px 36px rgba(0,0,0,0.18);z-index:1400;font-weight:800;display:flex;gap:10px;align-items:center}
 
-    /* Floating CTA */
-    .floating-cta{position:fixed;right:20px;bottom:22px;background:var(--accent);color:#000;border-radius:999px;padding:12px 16px;box-shadow:0 12px 36px rgba(0,0,0,0.18);z-index:1400;font-weight:800;display:flex;gap:10px;align-items:center}
-    .floating-cta small{font-weight:600;color:#000;display:none}
-    @media (min-width:720px){ .floating-cta small{display:inline} }
-
-    /* Responsive breakpoints */
-    @media (max-width:1200px){ .gallery{grid-template-columns:repeat(3,1fr)} .services-row{grid-template-columns:repeat(2,1fr)} }
+    /* ====== Responsive ====== */
+    @media (max-width:1200px){.gallery{grid-template-columns:repeat(3,1fr)}.services-row{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:880px){
       .nav-inner{padding:12px}
       .menu-toggle{display:block}
       nav.primary{display:none;position:fixed;inset:var(--header-h) 0 auto 0;flex-direction:column;background:rgba(0,0,0,0.95);padding:20px;gap:10px;z-index:1300}
       nav.primary.open{display:flex}
-      .hero-inner{grid-template-columns:1fr;margin-top:8px;min-height: 80vh;text-align:left}
+      .hero-inner{grid-template-columns:1fr;margin-top:8px;min-height:70vh;text-align:left}
       .hero-right{text-align:center}
       .hero-img{max-width:320px;margin:0 auto}
       .services-row{grid-template-columns:1fr}
       .about-book{grid-template-columns:1fr}
       .contact-container{grid-template-columns:1fr}
-      .hero-left h1{font-size:clamp(24px,6vw,40px)}
     }
     @media (max-width:480px){
       .hero-inner{padding:18px;grid-template-columns:1fr}
@@ -210,16 +193,18 @@
       .gallery{grid-template-columns:repeat(1,1fr)}
       .product-card{height:260px}
       .floating-cta{right:12px;left:auto;bottom:16px;padding:10px 12px}
+      .blog-card{height:320px}
     }
-    /* Small polish */
-    .skip-link{position:absolute;left:-9999px}
+
+    /* small polish */
     .social-icons{display:flex;gap:12px;justify-content:center;align-items:center}
     .social-icons a{display:inline-flex;width:40px;height:40px;align-items:center;justify-content:center;border-radius:8px;background:rgba(0,0,0,0.06)}
     .hidden{display:none !important}
   </style>
 </head>
+
 <body data-theme="light">
-  <a href="#main" class="skip-link">Skip to main content</a>
+  <a href="#main" class="skip-link" style="position:absolute;left:-9999px">Skip to main content</a>
 
   <!-- NAV -->
   <header class="site-header" role="banner">
@@ -241,7 +226,7 @@
       </nav>
 
       <div style="display:flex;gap:8px;align-items:center">
-        <button class="theme-toggle" id="theme-toggle" aria-pressed="false" title="Toggle light/dark">🌓 <span class="theme-indicator" id="theme-indicator"></span></button>
+        <button class="theme-toggle" id="theme-toggle" aria-pressed="false" title="Toggle light/dark">🌓</button>
         <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
       </div>
     </div>
@@ -264,7 +249,6 @@
       </div>
 
       <div class="hero-right">
-        <!-- keep hero image eager for LCP -->
         <img class="hero-img" src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/profile_photo.jpg" alt="Hinna Orquiola Profile" width="360" height="480" loading="eager" fetchpriority="high">
       </div>
     </div>
@@ -341,20 +325,19 @@
       </div>
     </section>
 
-    <!-- SERVICES (kept) -->
+    <!-- SERVICES -->
     <section id="services" class="fullwidth reveal" aria-label="Services" style="background:url('https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/services-bg.webp') center/cover no-repeat;padding-bottom:120px;">
       <div class="container">
         <h3 class="section-title">Services</h3>
         <p class="lead">Offering creative and professional solutions to help authors, entrepreneurs, and businesses build their presence with impact and clarity.</p>
 
         <div class="services-row" style="margin-top:24px">
-          <!-- service cards preserved; background images lazy loaded -->
           <div class="service-card" role="article" aria-label="Book Cover Design">
             <div class="card-bg" style="background-image:url('https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/book-cover.webp')"></div>
             <div class="card-content">
               <h4>Book Cover Design</h4>
               <p>Custom covers tailored to your book’s story, genre, and audience — blending creativity with market appeal.</p>
-              <a href="#contact" class="book-btn">Book Now</a>
+              <a href="#contact" class="btn" style="margin-top:12px">Book Now</a>
             </div>
           </div>
 
@@ -363,7 +346,7 @@
             <div class="card-content">
               <h4>Website Design & Development</h4>
               <p>Modern, responsive websites built with clean layouts and user-friendly navigation — helping your brand stand out online.</p>
-              <a href="#contact" class="book-btn">Book Now</a>
+              <a href="#contact" class="btn" style="margin-top:12px">Book Now</a>
             </div>
           </div>
 
@@ -372,7 +355,7 @@
             <div class="card-content">
               <h4>Website Maintenance</h4>
               <p>Keep your website running smoothly with regular updates, optimization, and technical support for better performance.</p>
-              <a href="#contact" class="book-btn">Book Now</a>
+              <a href="#contact" class="btn" style="margin-top:12px">Book Now</a>
             </div>
           </div>
 
@@ -381,7 +364,7 @@
             <div class="card-content">
               <h4>Virtual Assistant Services</h4>
               <p>Reliable admin and creative assistance to help you manage tasks, content, and communication efficiently.</p>
-              <a href="#contact" class="book-btn">Book Now</a>
+              <a href="#contact" class="btn" style="margin-top:12px">Book Now</a>
             </div>
           </div>
 
@@ -390,7 +373,7 @@
             <div class="card-content">
               <h4>Graphic Design</h4>
               <p>Professional and creative designs for branding, marketing materials, and visual campaigns that capture your brand identity.</p>
-              <a href="#contact" class="book-btn">Book Now</a>
+              <a href="#contact" class="btn" style="margin-top:12px">Book Now</a>
             </div>
           </div>
 
@@ -399,7 +382,7 @@
             <div class="card-content">
               <h4>Illustration & Animation</h4>
               <p>Unique and expressive illustrations and motion graphics that bring stories, ideas, and concepts to life with a personal artistic touch.</p>
-              <a href="#contact" class="book-btn">Book Now</a>
+              <a href="#contact" class="btn" style="margin-top:12px">Book Now</a>
             </div>
           </div>
         </div>
@@ -416,7 +399,6 @@
 
         <div class="gallery-wrap" style="padding:18px 24px 6px">
           <div class="gallery" id="gallery">
-            <!-- preserved gallery items; images lazy-loaded -->
             <div class="gallery-item" data-index="0" data-type="site" data-link="https://hinnaorquiola.github.io/mock-nature.html">
               <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/nature-website.webp" alt="Nature Retreat — mock website" loading="lazy">
               <div class="overlay"><div class="controls"><a class="control-btn" href="https://hinnaorquiola.github.io/mock-nature.html" target="_blank" rel="noopener">View Website</a></div></div>
@@ -489,7 +471,6 @@
         </div>
 
         <div class="shop-grid" style="margin-top:18px">
-          <!-- product cards — images lazy -->
           <a class="product-card" href="https://www.zazzle.com/with_love_meow_cozy_cat_notebook-256751342812898173" target="_blank" rel="noopener" style="background-image:url('https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/with_love_meow.JPG');" aria-label="With Love Meow Cozy Cat Notebook">
             <div class="product-overlay">
               <div>
@@ -581,7 +562,7 @@
     <section id="testimonials" class="testimonials reveal" aria-label="Testimonials">
       <div class="container" style="position:relative;max-width:1100px;">
         <div class="carousel-wrap" style="overflow:hidden;padding:6px 0;">
-          <div class="carousel" id="testimonial-carousel" role="list">
+          <div class="carousel" id="testimonial-carousel" role="list" aria-live="polite">
             <div class="testimonial-card" role="listitem" aria-label="Testimonial 1">
               <p style="font-style:italic">“Working with Hinna was a dream, her designs brought my story to life!”</p>
               <div class="testimonial-meta">— Evelyn, Author</div>
@@ -643,32 +624,32 @@
            <article class="blog-card" style="background-image:url('https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/blog-post4.webp');min-height:260px;background-size:cover;background-position:center;">
             <div class="blog-content" style="padding:18px;color:#fff">
               <h4>8 Signs You Need a Website Redesign</h4>
-              <p>Is your website holding you back? Discover 8 signs it’s time for a redesign and how a fresh look can elevate your brand online.</p>
-              <a href="https://hinnaorquiola.github.io/8SignsYouNeedaWebsiteRedesign.html" target="_blank" class="blog-btn" style="display:inline-block;text-align:center;margin-top:8px;padding:8px 12px;border-radius:8px;background:var(--accent);color:#000;font-weight:700;">Read More</a>
+              <p style="margin-top:8px">Is your website holding you back? Discover 8 signs it’s time for a redesign and how a fresh look can elevate your brand online.</p>
+              <a href="https://hinnaorquiola.github.io/8SignsYouNeedaWebsiteRedesign.html" target="_blank" class="blog-btn" style="display:inline-block;text-align:center;margin-top:12px;padding:8px 12px;border-radius:8px;background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#000;font-weight:700;">Read More</a>
             </div>
           </article>
 
           <article class="blog-card" style="background-image:url('https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/post1.png');min-height:260px;background-size:cover;background-position:center;">
             <div class="blog-content" style="padding:18px;color:#fff">
               <h4>Why Good Design Is Good Business</h4>
-              <p>How strategic visuals can build trust and help your brand connect better with your audience.</p>
-              <a href="https://hinnaorquiola.github.io/WhyGoodDesignIsGoodBusiness.html" target="_blank" class="blog-btn" style="display:inline-block;text-align:center;margin-top:8px;padding:8px 12px;border-radius:8px;background:var(--accent);color:#000;font-weight:700;">Read More</a>
+              <p style="margin-top:8px">How strategic visuals can build trust and help your brand connect better with your audience.</p>
+              <a href="https://hinnaorquiola.github.io/WhyGoodDesignIsGoodBusiness.html" target="_blank" class="blog-btn" style="display:inline-block;text-align:center;margin-top:12px;padding:8px 12px;border-radius:8px;background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#000;font-weight:700;">Read More</a>
             </div>
           </article>
 
           <article class="blog-card" style="background-image:url('https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/post2.png');min-height:260px;background-size:cover;background-position:center;">
             <div class="blog-content" style="padding:18px;color:#fff">
               <h4>How I Use AI Tools in My Creative Workflow</h4>
-              <p>A look at the tools I use to spark ideas, refine layouts, and speed up my design process responsibly.</p>
-              <a href="https://hinnaorquiola.github.io/HowIUseAIToolsinMyCreativeWorkflow.html" target="_blank" class="blog-btn" style="display:inline-block;text-align:center;margin-top:8px;padding:8px 12px;border-radius:8px;background:var(--accent);color:#000;font-weight:700;">Read More</a>
+              <p style="margin-top:8px">A look at the tools I use to spark ideas, refine layouts, and speed up my design process responsibly.</p>
+              <a href="https://hinnaorquiola.github.io/HowIUseAIToolsinMyCreativeWorkflow.html" target="_blank" class="blog-btn" style="display:inline-block;text-align:center;margin-top:12px;padding:8px 12px;border-radius:8px;background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#000;font-weight:700;">Read More</a>
             </div>
           </article>
 
           <article class="blog-card" style="background-image:url('https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/post3.png');min-height:260px;background-size:cover;background-position:center;">
             <div class="blog-content" style="padding:18px;color:#fff">
               <h4>The Art of Visual Storytelling</h4>
-              <p>How images, motion, and color work together to communicate emotion and narrative.</p>
-              <a href="https://hinnaorquiola.github.io/TheArtofVisualStorytelling.html" target="_blank" class="blog-btn" style="display:inline-block;text-align:center;margin-top:8px;padding:8px 12px;border-radius:8px;background:var(--accent);color:#000;font-weight:700;">Read More</a>
+              <p style="margin-top:8px">How images, motion, and color work together to communicate emotion and narrative.</p>
+              <a href="https://hinnaorquiola.github.io/TheArtofVisualStorytelling.html" target="_blank" class="blog-btn" style="display:inline-block;text-align:center;margin-top:12px;padding:8px 12px;border-radius:8px;background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#000;font-weight:700;">Read More</a>
             </div>
           </article>
         </div>
@@ -732,7 +713,6 @@
         <h3 class="section-title">Join the Newsletter</h3>
         <p class="lead" style="max-width:700px;margin:10px auto 18px">Get occasional design tips, freebies, and updates on new shop drops. No spam — unsubscribe anytime.</p>
 
-        <!-- Newsletter posts to your provided endpoint -->
         <form id="newsletter-form" action="https://formspree.io/f/xdkyowrw" method="POST" style="display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;">
           <input type="hidden" name="_subject" value="Newsletter signup">
           <input type="hidden" name="form_type" value="newsletter">
@@ -764,8 +744,8 @@
 
   <!-- Floating CTA -->
   <a class="floating-cta" href="#contact" aria-label="Contact — Let's work together">
-    ✨ Let's Work
-    <small>• Contact</small>
+     Let's Work
+    <small style="display:none">• Contact</small>
   </a>
 
   <!-- LIGHTBOX -->
@@ -777,10 +757,10 @@
   </div>
 
   <script>
-    // footer year
+    /* ====== Footer Year ====== */
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // mobile menu toggle
+    /* ====== Mobile Menu Toggle ====== */
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.getElementById('nav-links');
     menuToggle.addEventListener('click', () => {
@@ -788,7 +768,7 @@
       menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
 
-    // navbar becomes solid on scroll (throttled)
+    /* ====== Navbar solid on scroll (throttled) ====== */
     const navInner = document.querySelector('.nav-inner');
     function handleNavScroll() {
       if (window.scrollY > 40) navInner.classList.add('solid');
@@ -801,7 +781,7 @@
     });
     handleNavScroll();
 
-    // reveal on scroll (IntersectionObserver)
+    /* ====== Reveal on scroll ====== */
     const io = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if(entry.isIntersecting) entry.target.classList.add('active');
@@ -811,7 +791,7 @@
     document.querySelectorAll('.service-card').forEach(el => io.observe(el));
     document.querySelectorAll('.blog-card').forEach(el => io.observe(el));
 
-    // Lightbox & gallery
+    /* ====== Lightbox & Gallery ====== */
     (function () {
       const gallery = document.getElementById('gallery');
       if (!gallery) return;
@@ -851,10 +831,17 @@
 
       gallery.addEventListener('click', (e) => {
         const btn = e.target.closest('.control-btn');
-        if (btn) return;
+        if (btn) return; // ignore control button clicks (external links)
         const item = e.target.closest('.gallery-item');
         if (!item) return;
         const index = parseInt(item.getAttribute('data-index'), 10);
+        // If item is a video or site, follow the link instead of lightbox
+        const type = item.getAttribute('data-type');
+        const link = item.getAttribute('data-link');
+        if (type === 'video' || type === 'site') {
+          if (link) window.open(link, '_blank', 'noopener');
+          return;
+        }
         openAt(index);
       });
 
@@ -874,15 +861,14 @@
       });
     })();
 
-    // Theme toggle (persist in localStorage)
+    /* ====== Theme toggle (persist) ====== */
     const themeToggle = document.getElementById('theme-toggle');
-    const themeIndicator = document.getElementById('theme-indicator');
 
     function applyTheme(theme) {
       document.documentElement.setAttribute('data-theme', theme);
       document.body.setAttribute('data-theme', theme);
       themeToggle.setAttribute('aria-pressed', theme === 'dark');
-      themeIndicator.style.background = theme === 'dark' ? '#222' : '#fff';
+      // indicator style adjustments could be here
     }
 
     const savedTheme = localStorage.getItem('ho_theme') || 'light';
@@ -895,11 +881,64 @@
       applyTheme(next);
     });
 
-    // Contact form feedback — use fetch to submit to Formspree and show inline feedback
-    const contactForm = document.getElementById('contact-form');
-    const contactFeedback = document.getElementById('contact-feedback');
+    /* ====== Testimonials carousel (simple) ====== */
+    (function(){
+      const carousel = document.getElementById('testimonial-carousel');
+      if (!carousel) return;
+      const cards = Array.from(carousel.children);
+      let idx = 0;
+      function show(i){
+        idx = (i + cards.length) % cards.length;
+        // center selected by using transform on container
+        const width = cards[0].getBoundingClientRect().width + 18;
+        carousel.style.transform = `translateX(${-(width * idx)}px)`;
+      }
+      // prev/next
+      document.getElementById('carousel-prev').addEventListener('click', ()=> show(idx-1));
+      document.getElementById('carousel-next').addEventListener('click', ()=> show(idx+1));
+      // auto-play
+      let autoplay = setInterval(()=> show(idx+1), 5200);
+      carousel.addEventListener('mouseenter', ()=> clearInterval(autoplay));
+      carousel.addEventListener('mouseleave', ()=> autoplay = setInterval(()=> show(idx+1), 5200));
+      // initial
+      // ensure container width small screens: cards wrap so we only use translate when single-row
+      function update() {
+        if (window.innerWidth < 880) carousel.style.transform = 'none';
+        else show(idx);
+      }
+      window.addEventListener('resize', update);
+      update();
+    })();
 
-    if (contactForm) {
+    /* ====== Typed text (hero) ====== */
+    (function(){
+      const words = ["inspire.", "connect.", "stand out.", "grow your brand."];
+      let i = 0, j = 0, currentWord = "", isDeleting = false;
+      const typed = document.getElementById('typed');
+      if(!typed) return;
+      function type() {
+        currentWord = words[i];
+        typed.textContent = currentWord.substring(0, j);
+        if (!isDeleting && j < currentWord.length) j++;
+        else if (isDeleting && j > 0) j--;
+        else if (!isDeleting && j === currentWord.length) {
+          isDeleting = true;
+          setTimeout(type, 1000);
+          return;
+        } else {
+          isDeleting = false;
+          i = (i + 1) % words.length;
+        }
+        setTimeout(type, isDeleting ? 80 : 120);
+      }
+      type();
+    })();
+
+    /* ====== Contact form (fetch to Formspree) ====== */
+    (function(){
+      const contactForm = document.getElementById('contact-form');
+      const contactFeedback = document.getElementById('contact-feedback');
+      if (!contactForm) return;
       contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const formData = new FormData(contactForm);
@@ -923,176 +962,37 @@
           }
         }).catch(() => {
           contactFeedback.style.display = 'block';
-          contactFeedback.textContent = 'Network error — please try again.';
+          contactFeedback.textContent = 'Network error — please try again later.';
         });
       });
-    }
+    })();
 
-    // Newsletter form handling -> now posts to your newsletter Formspree endpoint
-    const newsletterForm = document.getElementById('newsletter-form');
-    const newsletterFeedback = document.getElementById('newsletter-feedback');
-    if (newsletterForm) {
-      newsletterForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        newsletterFeedback.style.display = 'none';
-        const formData = new FormData(newsletterForm);
-        fetch(newsletterForm.action, {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        }).then(response => {
-          newsletterFeedback.style.display = 'block';
-          if (response.ok) {
-            newsletterFeedback.textContent = 'Thanks for subscribing — welcome aboard!';
-            newsletterForm.reset();
-          } else {
-            newsletterFeedback.textContent = 'There was a problem subscribing. Try again later.';
-          }
-        }).catch(() => {
-          newsletterFeedback.style.display = 'block';
-          newsletterFeedback.textContent = 'Network error — please try again.';
-        });
-      });
-    }
-
-    // Typing animation (fast: 60ms per char) — types once then stops (no loop)
+    /* ====== Newsletter form handler (basic feedback) ====== */
     (function(){
-      const typedEl = document.getElementById('typed');
-      const text = 'Empower & Inspire';
-      const speed = 60; // ms per char (fast)
-      let i = 0;
-
-      function typeNext() {
-        if (!typedEl) return;
-        if (i < text.length) {
-          typedEl.textContent += text.charAt(i);
-          i++;
-          setTimeout(typeNext, speed);
-        } else {
-          // remove caret after a short pause
-          setTimeout(()=> {
-            typedEl.style.borderRight = '0';
-          }, 400);
-        }
-      }
-
-      // start typing after small delay for effect
-      window.addEventListener('load', () => {
-        setTimeout(typeNext, 240);
+      const newsForm = document.getElementById('newsletter-form');
+      const newsFeedback = document.getElementById('newsletter-feedback');
+      if (!newsForm) return;
+      newsForm.addEventListener('submit', (e) => {
+        // keep default Formspree submission but show inline feedback
+        newsFeedback.style.display = 'block';
+        newsFeedback.textContent = 'Thanks — check your inbox for a confirmation link.';
+        setTimeout(()=> newsFeedback.style.display = 'none', 5000);
       });
     })();
 
-    // Parallax effect for hero-bg (rAF optimized)
+    /* ====== Floating CTA pulse style injection ====== */
     (function(){
-      const heroBg = document.getElementById('hero-bg');
-      if (!heroBg) return;
-      let latestY = 0;
-      let ticking = false;
-
-      function onScroll() {
-        latestY = window.scrollY;
-        if (!ticking) {
-          window.requestAnimationFrame(() => {
-            // move background slower than scroll for parallax
-            const offset = Math.round(latestY * 0.25);
-            heroBg.style.transform = `translate3d(0, ${offset}px, 0) scale(1.02)`;
-            ticking = false;
-          });
-          ticking = true;
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes pulse {
+          0% { box-shadow: 0 6px 18px rgba(212,175,55,0.22); transform: translateY(0); }
+          50% { box-shadow: 0 18px 48px rgba(212,175,55,0.12); transform: translateY(-3px); }
+          100% { box-shadow: 0 6px 18px rgba(212,175,55,0.22); transform: translateY(0); }
         }
-      }
-
-      // only attach if viewport height allows visible parallax
-      if (window.innerHeight > 300) {
-        window.addEventListener('scroll', onScroll, { passive: true });
-      }
+        .floating-cta { animation: pulse 3.5s infinite; }
+      `;
+      document.head.appendChild(style);
     })();
-
-    // Testimonials carousel: auto-rotate + manual controls + swipe
-    (function(){
-      const carousel = document.getElementById('testimonial-carousel');
-      const prevBtn = document.getElementById('carousel-prev');
-      const nextBtn = document.getElementById('carousel-next');
-      if (!carousel) return;
-      const cards = Array.from(carousel.children);
-      const cardCount = cards.length;
-      let index = 0;
-      let autoTimer = null;
-      const interval = 5200; // ms
-
-      // layout: set container width to cardCount * 100% and each card flex-basis accordingly
-      carousel.style.width = `${cardCount * 100}%`;
-      cards.forEach(card => card.style.flex = `0 0 ${100 / cardCount}%`);
-
-      function showIndex(i) {
-        index = (i + cardCount) % cardCount;
-        const translate = `translateX(-${(index * 100) / cardCount}%)`;
-        carousel.style.transform = translate;
-      }
-
-      function next() { showIndex(index + 1); }
-      function prev() { showIndex(index - 1); }
-
-      function startAuto() {
-        stopAuto();
-        autoTimer = setInterval(next, interval);
-      }
-      function stopAuto() {
-        if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
-      }
-
-      // controls
-      nextBtn.addEventListener('click', () => { next(); startAuto(); });
-      prevBtn.addEventListener('click', () => { prev(); startAuto(); });
-
-      // pause on hover/focus
-      const container = carousel.parentElement;
-      container.addEventListener('mouseenter', stopAuto);
-      container.addEventListener('mouseleave', startAuto);
-      container.addEventListener('focusin', stopAuto);
-      container.addEventListener('focusout', startAuto);
-
-      // keyboard navigation
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') prev();
-        if (e.key === 'ArrowRight') next();
-      });
-
-      // touch swipe
-      let touchStartX = 0;
-      let touchDelta = 0;
-      carousel.addEventListener('touchstart', (e) => {
-        stopAuto();
-        touchStartX = e.touches[0].clientX;
-      }, {passive:true});
-      carousel.addEventListener('touchmove', (e) => {
-        touchDelta = e.touches[0].clientX - touchStartX;
-      }, {passive:true});
-      carousel.addEventListener('touchend', () => {
-        if (Math.abs(touchDelta) > 40) {
-          if (touchDelta < 0) next(); else prev();
-        }
-        touchDelta = 0;
-        startAuto();
-      });
-
-      // init
-      showIndex(0);
-      startAuto();
-    })();
-
-    // Reduce initial animations on mobile & prefer-reduced-motion
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced) {
-      document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
-    }
-
-    // small initial reveal for elements already in view
-    window.addEventListener('load', ()=> {
-      document.querySelectorAll('.reveal').forEach(el => {
-        if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('active');
-      });
-    });
 
   </script>
 </body>
