@@ -47,18 +47,6 @@
 
     }
 
-    [data-theme="dark"]{
-      --bg:#060606;
-      --text:#e8e8e8;
-      --card-bg:#0f0f0f;
-      --muted:#b5b5b5;
-      --text-on-dark: #ffffff;
-      --text-on-light: #111111;
-    }
-    
-    [data-theme="dark"] .btn.secondary:hover {
-  color: var(--black);
-}
 
     html{scroll-behavior:smooth;font-family:'Poppins',sans-serif}
     body{
@@ -81,7 +69,6 @@
     nav.primary a{padding:8px 10px;border-radius:10px;color:var(--white);font-weight:600;transition:all var(--transition)}
     nav.primary a:hover{background:var(--gold);color:var(--black);transform:scale(1.03)}
     .menu-toggle{display:none;background:none;border:0;color:var(--white);font-size:22px;cursor:pointer}
-    .theme-toggle{background:transparent;border:0;color:var(--white);font-size:18px;cursor:pointer;padding:8px;border-radius:8px}
 
     /* ====== Hero ====== */
     .hero{position:relative;min-height:calc(100vh - var(--header-h));display:flex;align-items:center;justify-content:center;color:var(--white);overflow:hidden}
@@ -290,7 +277,6 @@ body {
       </nav>
 
       <div style="display:flex;gap:8px;align-items:center">
-        <button class="theme-toggle" id="theme-toggle" aria-pressed="false" title="Toggle light/dark">🌓</button>
         <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
       </div>
     </div>
@@ -925,25 +911,6 @@ body {
       });
     })();
 
-    /* ====== Theme toggle (persist) ====== */
-    const themeToggle = document.getElementById('theme-toggle');
-
-    function applyTheme(theme) {
-      document.documentElement.setAttribute('data-theme', theme);
-      document.body.setAttribute('data-theme', theme);
-      themeToggle.setAttribute('aria-pressed', theme === 'dark');
-      // indicator style adjustments could be here
-    }
-
-    const savedTheme = localStorage.getItem('ho_theme') || 'light';
-    applyTheme(savedTheme);
-
-    themeToggle.addEventListener('click', () => {
-      const current = document.documentElement.getAttribute('data-theme') || 'light';
-      const next = current === 'light' ? 'dark' : 'light';
-      localStorage.setItem('ho_theme', next);
-      applyTheme(next);
-    });
 
     /* ====== Testimonials carousel (simple) ====== */
     (function(){
