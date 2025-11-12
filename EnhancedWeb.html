@@ -196,37 +196,52 @@
       .blog-card{height:320px}
     }
 
+* {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+body {
+  overflow-x: hidden;
+}
     /* small polish */
     .social-icons{display:flex;gap:12px;justify-content:center;align-items:center}
     .social-icons a{display:inline-flex;width:40px;height:40px;align-items:center;justify-content:center;border-radius:8px;background:rgba(0,0,0,0.06)}
     .hidden{display:none !important}
     /* ==== RESPONSIVE DESIGN ==== */
-/* FIX HERO RESPONSIVENESS */
-@media (max-width: 480px) {
-  .hero {
-    min-height: auto;
-    padding-top: calc(var(--header-h) + 20px);
+/* ✅ Improved mobile nav + hero layout */
+@media (max-width: 992px) {
+  .menu-toggle { display:block; }
+
+  nav.primary {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    inset: var(--header-h) 0 0 0;
+    background: rgba(0,0,0,0.95);
+    padding: 32px 0;
+    text-align: center;
+    gap: 18px;
+    height: calc(100vh - var(--header-h));
+    overflow-y: auto;
+  }
+
+  nav.primary.open {
+    display: flex;
   }
 
   .hero-inner {
-    grid-template-columns: 1fr !important;
-    padding: 12px !important;
-    max-width: 100% !important;
-    min-height: auto !important;
-    margin-top: 0 !important;
+    grid-template-columns: 1fr;
+    min-height: auto;
+    margin-top: 0;
+    padding-top: 90px;
+    text-align: center;
+    row-gap: 24px;
   }
 
-  .hero-left h1 {
-    font-size: 1.8rem !important;
-    line-height: 1.2 !important;
-  }
-
-  .tagline {
-    font-size: 0.95rem;
-  }
-
-  .hero-img {
-    max-width: 260px !important;
+  .hero-img { 
+    max-width: 260px; 
+    width: 90%; 
+    margin: 0 auto;
   }
 }
 
