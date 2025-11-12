@@ -42,6 +42,9 @@
       --card-bg:#ffffff;
       --accent:var(--gold);
       --shadow: 0 8px 28px rgba(0,0,0,0.18);
+      --text-on-dark: #ffffff;
+      --text-on-light: #111111;
+
     }
 
     [data-theme="dark"]{
@@ -49,7 +52,13 @@
       --text:#e8e8e8;
       --card-bg:#0f0f0f;
       --muted:#b5b5b5;
+      --text-on-dark: #ffffff;
+      --text-on-light: #111111;
     }
+    
+    [data-theme="dark"] .btn.secondary:hover {
+  color: var(--black);
+}
 
     html{scroll-behavior:smooth;font-family:'Poppins',sans-serif}
     body{
@@ -85,12 +94,12 @@
     .hero-img{width:100%;max-width:360px;aspect-ratio:3/4;border-radius:16px;box-shadow:0 12px 36px rgba(0,0,0,0.45);display:block;margin:0 auto;object-fit:cover;animation:float 6s ease-in-out infinite}
     @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
     .intro-line{opacity:.95;margin:0 0 8px;font-weight:600}
-    .hero-left h1{font-size:clamp(28px,5vw,48px);line-height:1.03;margin:6px 0 12px;color:var(--white)}
+    .hero-left h1{font-size:clamp(28px,5vw,48px);line-height:1.03;margin:6px 0 12px;color: var(--text-on-dark)}
     .typed{color:var(--gold);border-right:2px solid rgba(255,255,255,0.85);padding-right:6px;white-space:nowrap}
     .hero-left p.tagline{color:rgba(255,255,255,0.92);max-width:60ch;margin-bottom:18px}
     .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
     .btn{display:inline-block;padding:12px 20px;border-radius:12px;font-weight:700;background:linear-gradient(135deg,var(--gold),var(--gold-2));color:var(--black);box-shadow:var(--shadow);transition:transform var(--transition),box-shadow var(--transition)}
-    .btn.secondary{background:transparent;color:var(--gold);border:2px solid rgba(255,255,255,0.08)}
+    .btn.secondary{background:transparent;color: var(--accent);border-color: var(--accent);border:2px solid rgba(255,255,255,0.08)}
     .btn:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(0,0,0,0.28)}
     .btn.secondary:hover{background:var(--gold);color:var(--black)}
 
@@ -242,6 +251,9 @@ body {
     max-width: 260px; 
     width: 90%; 
     margin: 0 auto;
+  }
+  .hero-cta {
+    justify-content: center;
   }
 }
 
