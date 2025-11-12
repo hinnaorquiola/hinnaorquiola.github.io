@@ -18,40 +18,23 @@
   <meta name="twitter:title" content="Hinna Orquiola — Virtual Assistant, Graphic & Web Designer">
   <meta name="twitter:description" content="Thoughtful design, web development, and original merch — crafted to empower creators and businesses.">
 
-  <!-- Structured data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Hinna Orquiola",
-    "url": "https://hinnaorquiola.github.io/",
-    "sameAs": [
-      "https://www.facebook.com",
-      "https://www.instagram.com",
-      "https://twitter.com",
-      "https://www.linkedin.com"
-    ],
-    "jobTitle": "Virtual Assistant, Graphic & Web Designer",
-    "email": "mailto:hinnaorquiola@gmail.com"
-  }
-  </script>
-
   <!-- Fonts + Performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"></noscript>
-  <link rel="preload" as="image" href="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/hero-bg.webp" fetchpriority="high">
 
   <style>
+    /* ---------- Brand tokens & improved palette ---------- */
     :root{
       --white:#ffffff;
-      --light:#f5f5f5;
-      --gold:#d4af37;
-      --muted:#9a9a9a;
-      --mid:#555555;
-      --dark:#111111;
+      --light:#fbfaf8; /* softer off-white */
+      --gold-1:#e9c768; /* primary gold (softer) */
+      --gold-2:#f5de95; /* lighter gold for gradients */
+      --muted:#8f8f8f;
+      --mid:#4b4b4b;
+      --dark:#121212; /* charcoal for dark mode */
       --black:#000000;
       --gutter:clamp(12px,2.4vw,32px);
       --header-h:clamp(56px,6.5vh,80px);
@@ -61,139 +44,148 @@
       --transition: .22s ease;
       --bg: var(--white);
       --text: var(--dark);
-      --accent: var(--gold);
-      --card-bg: #fff;
+      --accent: linear-gradient(135deg,var(--gold-1),var(--gold-2));
+      --accent-flat: var(--gold-1);
+      --card-bg: #ffffff;
       --reveal-offset: 18px;
       --carousel-duration: 5200ms;
     }
 
     [data-theme="dark"]{
-      --bg:#060606;
-      --text:#eaeaea;
-      --card-bg:#0d0d0d;
+      --bg:#080808;
+      --text:#e9e9e9;
+      --card-bg:#0f0f10;
       --muted:#b5b5b5;
+      --accent-flat:#f2d76b; /* slightly brighter accent in dark mode */
     }
 
-    /* Basic reset & fonts */
-    html{scroll-behavior:smooth;font-family:'Poppins',sans-serif}
-    body{margin:0;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.45}
+    /* ---------- Reset and type scale ---------- */
+    html{scroll-behavior:smooth;font-family:'Poppins',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial}
+    body{margin:0;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.6;font-size:16px}
     img{max-width:100%;height:auto;display:block}
     a{color:inherit;text-decoration:none;cursor:pointer}
 
-    /* Header */
-    header.site-header{position:fixed;inset:0 0 auto 0;height:var(--header-h);z-index:1200;backdrop-filter:blur(4px)}
-    .nav-inner{max-width:1400px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;padding:calc(var(--gutter) / 2);gap:12px;transition:background .24s,box-shadow .24s}
-    .nav-inner.solid{background:rgba(0,0,0,0.8);box-shadow:0 6px 22px rgba(0,0,0,.28)}
-    .brand h1{margin:0;font-family:'Playfair Display',serif;font-size:clamp(16px,2.2vw,22px);color:var(--white)}
-    .brand p{margin:0;font-size:clamp(10px,1.2vw,12px);color:rgba(255,255,255,0.9)}
+    /* ---------- Header ---------- */
+    header.site-header{position:fixed;inset:0 0 auto 0;height:var(--header-h);z-index:1200;backdrop-filter:blur(6px);background:transparent}
+    .nav-inner{max-width:1400px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;padding:calc(var(--gutter) / 2);gap:12px;transition:background .28s,box-shadow .28s}
+    .nav-inner.solid{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.45));box-shadow:0 6px 22px rgba(0,0,0,.18)}
+    .brand h1{margin:0;font-family:'Playfair Display',serif;font-size:clamp(16px,2.2vw,22px);color:var(--text)}
+    .brand p{margin:0;font-size:clamp(10px,1.2vw,12px);color:var(--muted)}
     nav.primary{display:flex;gap:12px;align-items:center}
-    nav.primary a{padding:8px 10px;border-radius:8px;color:var(--white);font-weight:600}
-    .menu-toggle{display:none;background:none;border:0;color:var(--white);font-size:22px;cursor:pointer}
-    .theme-toggle{background:transparent;border:0;color:var(--white);font-size:18px;cursor:pointer;padding:8px;border-radius:8px}
+    nav.primary a{padding:8px 10px;border-radius:8px;color:var(--mid);font-weight:600}
+    .menu-toggle{display:none;background:none;border:0;color:var(--mid);font-size:22px;cursor:pointer}
+    .theme-toggle{background:transparent;border:0;color:var(--mid);font-size:18px;cursor:pointer;padding:8px;border-radius:8px}
     .theme-indicator{width:12px;height:12px;border-radius:50%;display:inline-block;margin-left:8px;background:#fff;box-shadow:inset 0 0 0 2px rgba(0,0,0,0.05)}
 
-    /* Hero */
+    /* ---------- Hero (improved color grading + parallax) ---------- */
     .hero{position:relative;min-height:calc(100vh - var(--header-h));display:flex;align-items:center;justify-content:center;color:var(--white);overflow:hidden}
-    .hero-bg{position:absolute;inset:0; width: 100%;height: 120%;background:url("https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/hero-bg.webp") center/cover no-repeat;filter:grayscale(100%) contrast(95%) brightness(0.6);z-index:0;transform:translate3d(0,0,0)}
-    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.75));z-index:1}
+    .hero-bg{position:absolute;inset:0; width: 100%;height: 120%;background:url("https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/hero-bg.webp") center/cover no-repeat;filter:contrast(100%) brightness(0.85) saturate(95%);z-index:0;transform:translate3d(0,0,0);will-change:transform}
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(233,199,104,0.08), rgba(0,0,0,0.55));z-index:1}
     .hero-inner{position:relative;z-index:2;max-width:var(--max-width);width:100%;min-height: 80vh;padding:clamp(20px,4vw,48px);display:grid;grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));gap:clamp(18px,4vw,40px);align-items:center;margin-top:calc(var(--header-h) / 4)}
     .hero-left{min-width:0}
     .hero-right{text-align:right}
-    .hero-img { width:100%; max-width:360px; height:auto; border-radius:16px; box-shadow:0 12px 36px rgba(0,0,0,0.35); display:block; margin:0 auto; object-fit:cover; }
+    .hero-img { width:100%; max-width:360px; height:auto; border-radius:16px; box-shadow:0 12px 36px rgba(0,0,0,0.28); display:block; margin:0 auto; object-fit:cover; border:4px solid rgba(255,255,255,0.06)}
 
-    .intro-line{opacity:.95;margin:0 0 8px;font-weight:600}
+    .intro-line{opacity:.95;margin:0 0 8px;font-weight:600;color:var(--muted)}
     .hero-left h1{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,48px);line-height:1.03;margin:6px 0 12px; color:var(--white)}
-    .typed { color: var(--gold); border-right: 2px solid rgba(255,255,255,0.85); padding-right:6px; white-space:nowrap }
-    .hero-left p.tagline{color:rgba(255,255,255,0.92);max-width:60ch;margin-bottom:18px}
-    .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{display:inline-block;padding:12px 20px;border-radius:12px;font-weight:700;background:var(--accent);color:var(--black);box-shadow:0 8px 28px rgba(0,0,0,0.18);transition:transform var(--transition)}
-    .btn.secondary{background:transparent;color:var(--accent);border:2px solid rgba(255,255,255,0.12)}
+    .typed { color: var(--gold-2); border-right: 2px solid rgba(255,255,255,0.65); padding-right:6px; white-space:nowrap }
+    .hero-left p.tagline{color:rgba(255,255,255,0.95);max-width:60ch;margin-bottom:18px}
+
+    /* ---------- Buttons (consistent) ---------- */
+    .btn{display:inline-block;padding:12px 20px;border-radius:12px;font-weight:700;background:var(--accent-flat);color:var(--black);box-shadow:0 12px 30px rgba(0,0,0,0.12);transition:transform var(--transition),background .22s,color .22s}
+    .btn.secondary{background:transparent;color:var(--accent-flat);border:2px solid rgba(0,0,0,0.06)}
+    .btn:hover{transform:translateY(-3px);background:var(--black);color:var(--gold-2)}
+    .btn.secondary:hover{background:var(--accent-flat);color:var(--black);border-color:transparent}
     .btn:active{transform:translateY(1px)}
 
-    main{width:100%}
-
-    /* Sections */
-    section.fullwidth{width:100%;padding:clamp(32px,6vw,64px) var(--gutter)}
+    /* ---------- Sections ---------- */
+    section.fullwidth{width:100%;padding:clamp(36px,6vw,64px) var(--gutter)}
     .container{max-width:var(--max-width);margin:0 auto;padding:0 var(--gutter)}
     h3.section-title{font-family:'Playfair Display',serif;font-size:clamp(20px,3vw,28px);margin:0 0 12px;color:var(--text);display:inline-block}
     p.lead{color:var(--mid);margin-top:6px}
 
-    /* Services grid */
+    /* subtle separators via pseudo-element */
+    .section-sep{display:block;height:40px;margin:0 auto;max-width:1200px}
+    .wave-sep{display:block;width:100%;height:56px;overflow:hidden}
+
+    /* ---------- Services grid ---------- */
     .services-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-    .service-card{position:relative;border-radius:var(--radius);overflow:hidden;min-height:280px;display:flex;align-items:flex-end;padding:18px;color:#fff;background:#222;border:1px solid rgba(255,255,255,0.06);transition:transform .3s}
-    .service-card .card-bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0;transform:scale(1);transition:transform .6s;filter:grayscale(100%) contrast(95%)}
+    .service-card{position:relative;border-radius:var(--radius);overflow:hidden;min-height:280px;display:flex;align-items:flex-end;padding:18px;color:#fff;background:linear-gradient(180deg,rgba(0,0,0,0.12),rgba(0,0,0,0.4));border:1px solid rgba(0,0,0,0.06);transition:transform .34s}
+    .service-card .card-bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0;transform:scale(1);transition:transform .6s,filter .4s;filter:grayscale(40%) contrast(95%) brightness(0.85)}
     .service-card::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.62));z-index:1}
     .service-card .card-content{position:relative;z-index:2}
     .service-card:hover{transform:translateY(-8px)}
-    .service-card:hover .card-bg{transform:scale(1.06)}
-    .book-btn{background:var(--accent);color:var(--black);padding:8px 12px;border-radius:8px;font-weight:700}
+    .service-card:hover .card-bg{transform:scale(1.06);filter:grayscale(10%) brightness(0.98)}
+    .book-btn{background:var(--accent-flat);color:var(--black);padding:8px 12px;border-radius:8px;font-weight:700}
 
-    /* Gallery */
+    /* uniform image overlays */
+    .gallery-item img, .product-card{border-radius:12px}
+
+    /* ---------- Gallery ---------- */
     .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
     .gallery-item{position:relative;overflow:hidden;border-radius:12px;background:#0f0f0f;min-height:160px}
-    .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+    .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s,filter .4s}
     .gallery-item:hover img{transform:scale(1.04)}
+    .gallery-item::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,0.28));opacity:1}
     .controls{position:absolute;inset:auto 12px 12px 12px;display:flex;justify-content:center;opacity:0;transform:translateY(8px);transition:opacity .22s,transform .22s}
     .gallery-item:hover .controls{opacity:1;transform:none}
-    .control-btn{display:inline-block;padding:8px 12px;border-radius:8px;background:rgba(255, 215, 0, 1);border:1px solid rgba(255,255,255,0.14);color:#fff;font-weight:700;text-decoration:none}
-    .control-btn:hover{background:#d4af37;color:#000}
+    .control-btn{display:inline-block;padding:8px 12px;border-radius:8px;background:var(--gold-1);border:1px solid rgba(255,255,255,0.08);color:#000;font-weight:700;text-decoration:none}
 
-    /* Lightbox */
+    /* ---------- Lightbox ---------- */
     .lb-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.96);z-index:2200;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .28s}
     .lb-overlay.open{opacity:1;pointer-events:auto}
     .lb-content{max-width:1100px;width:100%;max-height:90vh;display:flex;align-items:center;justify-content:center}
     .lb-content img{max-width:100%;max-height:90vh;border-radius:6px;box-shadow:0 18px 50px rgba(0,0,0,0.6)}
 
-    /* Shop */
+    /* ---------- Shop ---------- */
     .shop-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;max-width:var(--max-width);margin:18px auto 0}
-    .product-card{position:relative;height:320px;border-radius:12px;overflow:hidden;background-size:cover;background-position:center;border:1px solid #eee;box-shadow:0 6px 18px rgba(0,0,0,0.05);display:flex;align-items:flex-end}
-    .product-overlay{background:rgba(255,255,255,0.95);display:flex;justify-content:space-between;align-items:center;padding:14px}
-    .shop-btn {display: inline-block;padding: 8px 12px;border-radius: 8px;background: var(--accent);color: #000;font-weight: 700;border: none;transition: all 0.2s ease;cursor: pointer;}
-    .shop-btn:hover {background: #000;color: var(--accent);}
+    .product-card{position:relative;height:320px;border-radius:12px;overflow:hidden;background-size:cover;background-position:center;border:1px solid rgba(0,0,0,0.06);box-shadow:0 6px 18px rgba(0,0,0,0.04);display:flex;align-items:flex-end}
+    .product-overlay{background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.98));display:flex;justify-content:space-between;align-items:center;padding:14px}
+    .shop-btn {display: inline-block;padding: 8px 12px;border-radius: 8px;background: var(--accent-flat);color: #000;font-weight: 700;border: none;transition: all 0.2s ease;cursor: pointer;}
+    .shop-btn:hover {background: #000;color: var(--accent-flat);}
 
-    /* Testimonials carousel */
+    /* ---------- Testimonials carousel ---------- */
     .testimonials { position: relative; min-height: 260px; padding: clamp(28px,6vw,64px); background: linear-gradient(180deg,#0d0d0d,#0a0a0a); color: #fff; overflow: hidden; }
     .testimonials .carousel { display: flex; gap: 18px; align-items: center; justify-content:center; transition: transform 0.6s cubic-bezier(.2,.9,.2,1); will-change: transform; }
     .testimonial-card { min-width: 300px; max-width: 520px; background: rgba(255,255,255,0.03); padding: 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.06); text-align: left; }
     .testimonial-meta { margin-top: 12px; color: var(--light); font-weight: 600; }
-    .carousel-controls { position: absolute; right: 18px; top: 50%; transform: translateY(-50%); display:flex; gap:8px; z-index:10 }
-    .carousel-btn { background: rgba(255,255,255,0.06); border:0; padding:8px 10px; border-radius:8px; color:#fff; cursor:pointer }
-    .carousel-btn:hover { background: rgba(255,255,255,0.12) }
 
-    /* About + Book */
+    /* ---------- About + Book ---------- */
     .about-book{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
     .book-right{background:var(--card-bg);padding:24px;border-radius:16px;box-shadow:0 8px 20px rgba(0,0,0,0.06);text-align:center}
 
-    /* Blog */
+    /* ---------- Blog ---------- */
     .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-    .blog-card { position: relative; overflow: hidden; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.25); height: 400px; display: flex; flex-direction: column; justify-content: flex-end; color: #fff; }
+    .blog-card { position: relative; overflow: hidden; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); height: 400px; display: flex; flex-direction: column; justify-content: flex-end; color: #fff; }
     .blog-content { position: relative; z-index: 2; padding: 20px; display: flex; flex-direction: column; justify-content: flex-end; height: 100%; }
 
-    /* Contact */
+    /* ---------- Contact ---------- */
     #contact{background:var(--card-bg);color:var(--text);padding:clamp(36px,6vw,72px) var(--gutter)}
     .contact-container{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:32px}
     .contact-right form{display:flex;flex-direction:column;gap:12px}
-    .contact-right input,.contact-right select,.contact-right textarea{padding:12px;border-radius:8px;border:1px solid rgba(0,0,0,0.08);background:var(--bg);color:var(--text)}
-    .submit-btn{background:var(--accent);color:#000;padding:12px;border-radius:8px;border:0;font-weight:700}
+    .contact-right input,.contact-right select,.contact-right textarea{padding:12px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);background:var(--bg);color:var(--text)}
+    .submit-btn{background:var(--accent-flat);color:#000;padding:12px;border-radius:8px;border:0;font-weight:700}
 
-    /* Footer */
+    /* ---------- Footer ---------- */
     footer{padding:28px var(--gutter);text-align:center;color:var(--muted);background:var(--light)}
 
-    /* Utilities & reveal */
+    /* ---------- Utilities & reveal ---------- */
     .reveal{opacity:0;transform:translateY(var(--reveal-offset));transition:opacity .6s ease,transform .6s ease}
     .reveal.active{opacity:1;transform:none}
 
-    /* Floating CTA */
-    .floating-cta{position:fixed;right:20px;bottom:22px;background:var(--accent);color:#000;border-radius:999px;padding:12px 16px;box-shadow:0 12px 36px rgba(0,0,0,0.18);z-index:1400;font-weight:800;display:flex;gap:10px;align-items:center}
+    /* ---------- Floating CTA (pulse) ---------- */
+    .floating-cta{position:fixed;right:20px;bottom:22px;background:var(--accent-flat);color:#000;border-radius:999px;padding:12px 16px;box-shadow:0 12px 36px rgba(0,0,0,0.18);z-index:1400;font-weight:800;display:flex;gap:10px;align-items:center}
     .floating-cta small{font-weight:600;color:#000;display:none}
     @media (min-width:720px){ .floating-cta small{display:inline} }
+    .floating-cta{animation: pulse 3.6s infinite ease-in-out;}
+    @keyframes pulse {0%,100%{box-shadow:0 6px 24px rgba(233,199,104,0.12)}50%{box-shadow:0 18px 48px rgba(233,199,104,0.14);transform:translateY(-2px)}}
 
-    /* Responsive breakpoints */
+    /* ---------- Responsive breakpoints ---------- */
     @media (max-width:1200px){ .gallery{grid-template-columns:repeat(3,1fr)} .services-row{grid-template-columns:repeat(2,1fr)} }
     @media (max-width:880px){
       .nav-inner{padding:12px}
       .menu-toggle{display:block}
-      nav.primary{display:none;position:fixed;inset:var(--header-h) 0 auto 0;flex-direction:column;background:rgba(0,0,0,0.95);padding:20px;gap:10px;z-index:1300}
+      nav.primary{display:none;position:fixed;inset:var(--header-h) 0 auto 0;flex-direction:column;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.9));padding:20px;gap:10px;z-index:1300}
       nav.primary.open{display:flex}
       .hero-inner{grid-template-columns:1fr;margin-top:8px;min-height: 80vh;text-align:left}
       .hero-right{text-align:center}
@@ -211,10 +203,11 @@
       .product-card{height:260px}
       .floating-cta{right:12px;left:auto;bottom:16px;padding:10px 12px}
     }
-    /* Small polish */
+
+    /* small polish */
     .skip-link{position:absolute;left:-9999px}
     .social-icons{display:flex;gap:12px;justify-content:center;align-items:center}
-    .social-icons a{display:inline-flex;width:40px;height:40px;align-items:center;justify-content:center;border-radius:8px;background:rgba(0,0,0,0.06)}
+    .social-icons a{display:inline-flex;width:40px;height:40px;align-items:center;justify-content:center;border-radius:8px;background:rgba(0,0,0,0.04)}
     .hidden{display:none !important}
   </style>
 </head>
@@ -225,8 +218,8 @@
   <header class="site-header" role="banner">
     <div class="nav-inner" id="site-nav" aria-hidden="false">
       <div class="brand" style="display:flex;flex-direction:column;align-items:flex-start;">
-        <h1 style="color:var(--white);margin:0">Hinna Orquiola</h1>
-        <p style="margin:0;color:rgba(255,255,255,0.9);font-size:12px">Virtual Assistant • Graphic & Web Designer</p>
+        <h1 style="margin:0">Hinna Orquiola</h1>
+        <p style="margin:0;font-size:12px">Virtual Assistant • Graphic & Web Designer</p>
       </div>
 
       <nav class="primary" id="nav-links" aria-label="Primary">
@@ -254,7 +247,7 @@
       <div class="hero-left">
         <p class="intro-line">Hi, I’m <strong>Hinna Orquiola</strong> — your creative partner.</p>
         <h1>
-          Designs that <span id="typed-wrapper" aria-live="polite"><span class="typed" id="typed"></span></span>
+          Designs that <span id="typed-wrapper" aria-live="polite"><span class="typed" id="typed">connect — captivate — convert</span></span>
         </h1>
         <p class="tagline">Helping brands and creators bring ideas to life through thoughtful design, illustration, and storytelling.</p>
         <div class="hero-cta">
@@ -290,6 +283,10 @@
         </div>
       </div>
     </section>
+
+    <div class="wave-sep" aria-hidden="true">
+      <!-- subtle divider (transparent) -->
+    </div>
 
     <!-- WHY WORK WITH ME -->
     <section id="why-me" class="fullwidth reveal" style="background:var(--card-bg);text-align:center;padding:60px 20px;">
@@ -473,10 +470,10 @@
 
     <!-- SHOP -->
     <section id="shop" class="fullwidth shop-section reveal" aria-label="Shop" style="background:#f9f9f9;padding:80px 24px;position:relative;">
-      <div class="shop-banner" style="background:url('https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Shop-banner.webp') center/cover no-repeat;padding:48px;text-align:center;color:#fff;margin-bottom:40px;">
+      <div class="shop-banner" style="background:url('https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/Shop-banner.webp') center/cover no-repeat;padding:48px;text-align:center;color:#fff;margin-bottom:40px;filter:contrast(95%) brightness(0.92);border-radius:12px;overflow:hidden;">
         <h2 style="font-family:'Playfair Display',serif;font-size:clamp(20px,3.6vw,36px);margin:0;display:flex;align-items:center;justify-content:center;gap:10px;">
           <span>Welcome to My Design Store</span>
-          <img src="https://media.tenor.com/bFkvAnRiQUEAAAAi/stickergiant-swipe-up.gif" alt="Shop animation" style="width:48px;height:auto;" loading="lazy">
+          <img src="https://media.tenor.com/bFkvAnRiQUEAAAAi/stickergiant-swipe-up.gif" alt="Shop animation" style="width:48px;height:auto;filter:grayscale(10%);" loading="lazy">
         </h2>
         <p style="margin-top:12px;color:#f0f0f0;">Browse notebooks, planners, binders, and creative merch — all designed with love!</p>
         <a href="https://www.zazzle.com/store/euneye" target="_blank" class="btn" style="margin-top:16px;">Visit Full Zazzle Store →</a>
@@ -610,7 +607,7 @@
         <div id="about" class="about-left">
           <h3 class="section-title">About Me</h3>
           <div style="display:flex;gap:18px;align-items:center;margin-top:12px;flex-wrap:wrap;">
-            <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/profile_photo.jpg" alt="Hinna Orquiola" style="width:160px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.08);border:3px solid #fff;" loading="lazy">
+            <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/profile_photo.jpg" alt="Hinna Orquiola" style="width:160px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.08);border:3px solid rgba(255,255,255,0.06);" loading="lazy">
             <div>
               <p style="color:var(--muted);margin:0 0 8px;">
                 I’m Hinna Orquiola — a creative partner focused on thoughtful design and meaningful storytelling.
@@ -621,7 +618,7 @@
             </div>
           </div>
 
-          <div style="margin-top:20px; padding:16px 18px; background:var(--card-bg); border-left:4px solid var(--accent); border-radius:8px;">
+          <div style="margin-top:20px; padding:16px 18px; background:var(--card-bg); border-left:4px solid var(--gold-1); border-radius:8px;">
             <p style="margin:0; color:var(--muted);">My mission is to empower creators and entrepreneurs by designing visuals that speak truth, inspire confidence, and tell stories that last.</p>
           </div>
         </div>
@@ -644,7 +641,7 @@
             <div class="blog-content" style="padding:18px;color:#fff">
               <h4>8 Signs You Need a Website Redesign</h4>
               <p>Is your website holding you back? Discover 8 signs it’s time for a redesign and how a fresh look can elevate your brand online.</p>
-              <a href="https://hinnaorquiola.github.io/8SignsYouNeedaWebsiteRedesign.html" target="_blank" class="blog-btn" style="display:inline-block;text-align:center;margin-top:8px;padding:8px 12px;border-radius:8px;background:var(--accent);color:#000;font-weight:700;">Read More</a>
+              <a href="https://hinnaorquiola.github.io/8SignsYouNeedaWebsiteRedesign.html" target="_blank" class="blog-btn" style="display:inline-block;text-align:center;margin-top:8px;padding:8px 12px;border-radius:8px;background:var(--accent-flat);color:#000;font-weight:700;">Read More</a>
             </div>
           </article>
 
@@ -652,7 +649,7 @@
             <div class="blog-content" style="padding:18px;color:#fff">
               <h4>Why Good Design Is Good Business</h4>
               <p>How strategic visuals can build trust and help your brand connect better with your audience.</p>
-              <a href="https://hinnaorquiola.github.io/WhyGoodDesignIsGoodBusiness.html" target="_blank" class="blog-btn" style="display:inline-block;text-align:center;margin-top:8px;padding:8px 12px;border-radius:8px;background:var(--accent);color:#000;font-weight:700;">Read More</a>
+              <a href="https://hinnaorquiola.github.io/WhyGoodDesignIsGoodBusiness.html" target="_blank" class="blog-btn" style="display:inline-block;text-align:center;margin-top:8px;padding:8px 12px;border-radius:8px;background:var(--accent-flat);color:#000;font-weight:700;">Read More</a>
             </div>
           </article>
 
@@ -660,7 +657,7 @@
             <div class="blog-content" style="padding:18px;color:#fff">
               <h4>How I Use AI Tools in My Creative Workflow</h4>
               <p>A look at the tools I use to spark ideas, refine layouts, and speed up my design process responsibly.</p>
-              <a href="https://hinnaorquiola.github.io/HowIUseAIToolsinMyCreativeWorkflow.html" target="_blank" class="blog-btn" style="display:inline-block;text-align:center;margin-top:8px;padding:8px 12px;border-radius:8px;background:var(--accent);color:#000;font-weight:700;">Read More</a>
+              <a href="https://hinnaorquiola.github.io/HowIUseAIToolsinMyCreativeWorkflow.html" target="_blank" class="blog-btn" style="display:inline-block;text-align:center;margin-top:8px;padding:8px 12px;border-radius:8px;background:var(--accent-flat);color:#000;font-weight:700;">Read More</a>
             </div>
           </article>
 
@@ -668,7 +665,7 @@
             <div class="blog-content" style="padding:18px;color:#fff">
               <h4>The Art of Visual Storytelling</h4>
               <p>How images, motion, and color work together to communicate emotion and narrative.</p>
-              <a href="https://hinnaorquiola.github.io/TheArtofVisualStorytelling.html" target="_blank" class="blog-btn" style="display:inline-block;text-align:center;margin-top:8px;padding:8px 12px;border-radius:8px;background:var(--accent);color:#000;font-weight:700;">Read More</a>
+              <a href="https://hinnaorquiola.github.io/TheArtofVisualStorytelling.html" target="_blank" class="blog-btn" style="display:inline-block;text-align:center;margin-top:8px;padding:8px 12px;border-radius:8px;background:var(--accent-flat);color:#000;font-weight:700;">Read More</a>
             </div>
           </article>
         </div>
@@ -679,11 +676,11 @@
     <section id="contact" class="fullwidth reveal">
       <div class="contact-container">
         <div class="contact-left">
-          <h2 style="color:var(--accent);">Let’s Create Together</h2>
+          <h2 style="color:var(--gold-1);">Let’s Create Together</h2>
           <p>Have a project or idea in mind? Fill out the form below and I’ll get back to you within 1–2 business days.</p>
           <div class="meta">
             <p style="margin-top:12px">Email: <a href="mailto:hinnaorquiola@gmail.com" style="color:inherit;text-decoration:underline">hinnaorquiola@gmail.com</a></p>
-            <p style="color:var(--accent);font-weight:600;">Turnaround: 2–10 business days depending on project scope</p>
+            <p style="color:var(--gold-1);font-weight:600;">Turnaround: 2–10 business days depending on project scope</p>
           </div>
         </div>
 
@@ -736,8 +733,8 @@
         <form id="newsletter-form" action="https://formspree.io/f/xdkyowrw" method="POST" style="display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;">
           <input type="hidden" name="_subject" value="Newsletter signup">
           <input type="hidden" name="form_type" value="newsletter">
-          <input type="text" name="name" id="newsletter-name" placeholder="Your name (optional)" style="padding:12px;border-radius:8px;border:1px solid rgba(0,0,0,0.08);min-width:200px">
-          <input type="email" name="email" id="newsletter-email" placeholder="Email address" required style="padding:12px;border-radius:8px;border:1px solid rgba(0,0,0,0.08);min-width:220px">
+          <input type="text" name="name" id="newsletter-name" placeholder="Your name (optional)" style="padding:12px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);min-width:200px">
+          <input type="email" name="email" id="newsletter-email" placeholder="Email address" required style="padding:12px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);min-width:220px">
           <button class="btn" type="submit" style="padding:12px 18px">Subscribe</button>
         </form>
         <div id="newsletter-feedback" role="status" aria-live="polite" style="margin-top:12px;color:var(--muted);display:none"></div>
@@ -811,7 +808,7 @@
     document.querySelectorAll('.service-card').forEach(el => io.observe(el));
     document.querySelectorAll('.blog-card').forEach(el => io.observe(el));
 
-    // Lightbox & gallery
+    // Lightbox & gallery (keeps original functionality)
     (function () {
       const gallery = document.getElementById('gallery');
       if (!gallery) return;
@@ -851,7 +848,7 @@
 
       gallery.addEventListener('click', (e) => {
         const btn = e.target.closest('.control-btn');
-        if (btn) return;
+        if (btn) return; // allow external links
         const item = e.target.closest('.gallery-item');
         if (!item) return;
         const index = parseInt(item.getAttribute('data-index'), 10);
@@ -874,7 +871,7 @@
       });
     })();
 
-    // Theme toggle (persist in localStorage)
+    // Theme toggle (persist in localStorage) — improved indicator contrast
     const themeToggle = document.getElementById('theme-toggle');
     const themeIndicator = document.getElementById('theme-indicator');
 
@@ -910,7 +907,7 @@
         }).then(response => {
           if (response.ok) {
             contactFeedback.style.display = 'block';
-            contactFeedback.textContent = 'Thanks — your message has been sent. I\'ll be in touch soon.';
+            contactFeedback.textContent = 'Thanks — your message has been sent. I\\'ll be in touch soon.';
             contactForm.reset();
           } else {
             response.json().then(data => {
@@ -928,171 +925,42 @@
       });
     }
 
-    // Newsletter form handling -> now posts to your newsletter Formspree endpoint
-    const newsletterForm = document.getElementById('newsletter-form');
-    const newsletterFeedback = document.getElementById('newsletter-feedback');
-    if (newsletterForm) {
-      newsletterForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        newsletterFeedback.style.display = 'none';
-        const formData = new FormData(newsletterForm);
-        fetch(newsletterForm.action, {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        }).then(response => {
-          newsletterFeedback.style.display = 'block';
-          if (response.ok) {
-            newsletterFeedback.textContent = 'Thanks for subscribing — welcome aboard!';
-            newsletterForm.reset();
-          } else {
-            newsletterFeedback.textContent = 'There was a problem subscribing. Try again later.';
-          }
-        }).catch(() => {
-          newsletterFeedback.style.display = 'block';
-          newsletterFeedback.textContent = 'Network error — please try again.';
-        });
-      });
-    }
-
-    // Typing animation (fast: 60ms per char) — types once then stops (no loop)
+    // subtle parallax for hero-bg (very small movement for performance)
     (function(){
-      const typedEl = document.getElementById('typed');
-      const text = 'Empower & Inspire';
-      const speed = 60; // ms per char (fast)
-      let i = 0;
-
-      function typeNext() {
-        if (!typedEl) return;
-        if (i < text.length) {
-          typedEl.textContent += text.charAt(i);
-          i++;
-          setTimeout(typeNext, speed);
-        } else {
-          // remove caret after a short pause
-          setTimeout(()=> {
-            typedEl.style.borderRight = '0';
-          }, 400);
-        }
-      }
-
-      // start typing after small delay for effect
-      window.addEventListener('load', () => {
-        setTimeout(typeNext, 240);
-      });
-    })();
-
-    // Parallax effect for hero-bg (rAF optimized)
-    (function(){
-      const heroBg = document.getElementById('hero-bg');
-      if (!heroBg) return;
-      let latestY = 0;
-      let ticking = false;
-
-      function onScroll() {
-        latestY = window.scrollY;
-        if (!ticking) {
-          window.requestAnimationFrame(() => {
-            // move background slower than scroll for parallax
-            const offset = Math.round(latestY * 0.25);
-            heroBg.style.transform = `translate3d(0, ${offset}px, 0) scale(1.02)`;
+      const bg = document.getElementById('hero-bg');
+      if(!bg) return;
+      let lastY = 0; let ticking = false;
+      function onScroll(){
+        lastY = window.scrollY;
+        if(!ticking){
+          window.requestAnimationFrame(()=>{
+            const y = Math.min(lastY * 0.15, 80);
+            bg.style.transform = `translate3d(0, ${y}px, 0) scale(1.04)`;
             ticking = false;
           });
           ticking = true;
         }
       }
-
-      // only attach if viewport height allows visible parallax
-      if (window.innerHeight > 300) {
-        window.addEventListener('scroll', onScroll, { passive: true });
-      }
+      window.addEventListener('scroll', onScroll, {passive:true});
     })();
 
-    // Testimonials carousel: auto-rotate + manual controls + swipe
+    // basic testimonial carousel (auto + controls)
     (function(){
       const carousel = document.getElementById('testimonial-carousel');
-      const prevBtn = document.getElementById('carousel-prev');
-      const nextBtn = document.getElementById('carousel-next');
-      if (!carousel) return;
-      const cards = Array.from(carousel.children);
-      const cardCount = cards.length;
-      let index = 0;
-      let autoTimer = null;
-      const interval = 5200; // ms
-
-      // layout: set container width to cardCount * 100% and each card flex-basis accordingly
-      carousel.style.width = `${cardCount * 100}%`;
-      cards.forEach(card => card.style.flex = `0 0 ${100 / cardCount}%`);
-
-      function showIndex(i) {
-        index = (i + cardCount) % cardCount;
-        const translate = `translateX(-${(index * 100) / cardCount}%)`;
-        carousel.style.transform = translate;
+      const prev = document.getElementById('carousel-prev');
+      const next = document.getElementById('carousel-next');
+      if(!carousel) return;
+      let idx = 0;
+      const items = Array.from(carousel.children);
+      function show(i){
+        idx = (i + items.length) % items.length;
+        carousel.style.transform = `translateX(calc(${ -idx * (100 + 2)}%))`;
       }
-
-      function next() { showIndex(index + 1); }
-      function prev() { showIndex(index - 1); }
-
-      function startAuto() {
-        stopAuto();
-        autoTimer = setInterval(next, interval);
-      }
-      function stopAuto() {
-        if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
-      }
-
-      // controls
-      nextBtn.addEventListener('click', () => { next(); startAuto(); });
-      prevBtn.addEventListener('click', () => { prev(); startAuto(); });
-
-      // pause on hover/focus
-      const container = carousel.parentElement;
-      container.addEventListener('mouseenter', stopAuto);
-      container.addEventListener('mouseleave', startAuto);
-      container.addEventListener('focusin', stopAuto);
-      container.addEventListener('focusout', startAuto);
-
-      // keyboard navigation
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') prev();
-        if (e.key === 'ArrowRight') next();
-      });
-
-      // touch swipe
-      let touchStartX = 0;
-      let touchDelta = 0;
-      carousel.addEventListener('touchstart', (e) => {
-        stopAuto();
-        touchStartX = e.touches[0].clientX;
-      }, {passive:true});
-      carousel.addEventListener('touchmove', (e) => {
-        touchDelta = e.touches[0].clientX - touchStartX;
-      }, {passive:true});
-      carousel.addEventListener('touchend', () => {
-        if (Math.abs(touchDelta) > 40) {
-          if (touchDelta < 0) next(); else prev();
-        }
-        touchDelta = 0;
-        startAuto();
-      });
-
-      // init
-      showIndex(0);
-      startAuto();
+      prev.addEventListener('click', ()=>show(idx-1));
+      next.addEventListener('click', ()=>show(idx+1));
+      setInterval(()=>show(idx+1), 5200);
+      show(0);
     })();
-
-    // Reduce initial animations on mobile & prefer-reduced-motion
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced) {
-      document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
-    }
-
-    // small initial reveal for elements already in view
-    window.addEventListener('load', ()=> {
-      document.querySelectorAll('.reveal').forEach(el => {
-        if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('active');
-      });
-    });
 
   </script>
 </body>
