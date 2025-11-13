@@ -916,32 +916,30 @@ body {
 
     /* ====== Testimonials carousel (simple) ====== */
     (function(){
-      const carousel = document.getElementById('testimonial-carousel');
-      if (!carousel) return;
-      const cards = Array.from(carousel.children);
-      let idx = 0;
-      function show(i){
-        idx = (i + cards.length) % cards.length;
-        // center selected by using transform on container
-        const width = cards[0].getBoundingClientRect().width + 18;
-        carousel.style.transform = `translateX(${-(width * idx)}px)`;
-      }
-      // prev/next
-      document.getElementById('carousel-prev').addEventListener('click', ()=> show(idx-1));
-      document.getElementById('carousel-next').addEventListener('click', ()=> show(idx+1));
-      // auto-play
-      let autoplay = setInterval(()=> show(idx+1), 5200);
-      carousel.addEventListener('mouseenter', ()=> clearInterval(autoplay));
-      carousel.addEventListener('mouseleave', ()=> autoplay = setInterval(()=> show(idx+1), 5200));
-      // initial
-      // ensure container width small screens: cards wrap so we only use translate when single-row
-      function update() {
-        if (window.innerWidth < 880) carousel.style.transform = 'none';
-        else show(idx);
-      }
-      window.addEventListener('resize', update);
-      update();
-    })();
+  const carousel = document.getElementById('testimonial-carousel');
+  if (!carousel) return;
+  const cards = Array.from(carousel.children);
+  const prevBtn = document.getElementById('carousel-prev');
+  const nextBtn = document.getElementById('carousel-next');
+  let idx = 0;
+
+  function show(i) {
+    idx = (i + cards.length) % cards.length;
+    const cardWidth = cards[0].getBoundingClientRect().width + 18;
+    carousel.style.transform = `translateX(${-idx * cardWidth}px)`;
+  }
+
+  prevBtn.addEventListener('click', () => show(idx - 1));
+  nextBtn.addEventListener('click', () => show(idx + 1));
+
+  // Optional autoplay
+  setInterval(() => show(idx + 1), 6000);
+
+  // Resize recalculation
+  window.addEventListener('resize', () => show(idx));
+
+  show(0);
+})();
 
     /* ====== Typed text (hero) ====== */
     (function(){
