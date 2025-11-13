@@ -1,371 +1,365 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hinna Studio | Minimalist Fashion Collection</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --gold: #bfa14a;
-      --black: #111;
-      --white: #fff;
-      --light: #f9f9f9;
-      --gray: #555;
-      --transition: all 0.4s ease;
-    }
-
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: "Poppins", sans-serif;
-      margin: 0;
-      color: var(--black);
-      background: var(--white);
-      transition: var(--transition);
-    }
-
-    /* 🌙 Dark mode */
-    body.dark {
-      background: #121212;
-      color: #eaeaea;
-    }
-    body.dark header::before { background: rgba(0,0,0,0.6); }
-    body.dark .product-card { background: #1e1e1e; border-color: #333; }
-    body.dark .newsletter, body.dark footer { background: #000; color: #ddd; }
-    body.dark .about { background: #1a1a1a; }
-
-    /* 🪄 Toggle Button */
-    .theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: var(--gold);
-      color: var(--white);
-      border: none;
-      border-radius: 50%;
-      width: 42px;
-      height: 42px;
-      font-size: 1.2rem;
-      cursor: pointer;
-      z-index: 1000;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      transition: var(--transition);
-    }
-    .theme-toggle:hover { transform: rotate(20deg) scale(1.05); }
-
-    /* 🎞️ Header / Hero */
-    header {
-      position: relative;
-      height: 100vh;
-      background: url('https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat fixed;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--white);
-      overflow: hidden;
-    }
-    header::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.45);
-      z-index: 0;
-    }
-    header .content {
-      text-align: center;
-      z-index: 1;
-      animation: fadeIn 2s ease;
-    }
-    header h1 {
-      font-family: "Playfair Display", serif;
-      font-size: 3.5rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-    }
-    header p {
-      font-size: 1.2rem;
-      color: #f2f2f2;
-      margin-bottom: 24px;
-    }
-    header a {
-      background: var(--gold);
-      color: var(--white);
-      padding: 12px 28px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: var(--transition);
-    }
-    header a:hover { background: #d4b45a; box-shadow: 0 0 10px var(--gold); }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: translateY(0);} }
-
-    /* ⬇ Scroll Arrow */
-    .scroll-down {
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 1.6rem;
-      color: #fff;
-      animation: bounce 2s infinite;
-      z-index: 2;
-    }
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
-      40% { transform: translate(-50%, -10px); }
-      60% { transform: translate(-50%, -5px); }
-    }
-
-    /* 🛍️ Products */
-    section.products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 28px;
-      padding: 100px 10%;
-      background: var(--white);
-    }
-    .product-card {
-      position: relative;
-      border: 1px solid #e5e7eb;
-      border-radius: 12px;
-      overflow: hidden;
-      background: #fff;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-      transform: translateY(30px);
-      opacity: 0;
-      transition: var(--transition);
-    }
-    .product-card.visible { transform: translateY(0); opacity: 1; }
-    .product-card img {
-      width: 100%;
-      height: 330px;
-      object-fit: cover;
-      transition: var(--transition);
-    }
-    .product-card:hover img {
-      transform: scale(1.05);
-      filter: brightness(0.85);
-    }
-    .product-card::before {
-      content: "NEW";
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      background: var(--gold);
-      color: var(--white);
-      padding: 4px 10px;
-      font-size: 0.8rem;
-      border-radius: 12px;
-    }
-    .product-info {
-      text-align: center;
-      padding: 18px;
-    }
-    .product-info h4 { margin: 8px 0 4px; font-size: 1.1rem; }
-    .product-info p { color: #777; margin-bottom: 10px; }
-    .product-info a {
-      display: inline-block;
-      text-decoration: none;
-      background: var(--black);
-      color: #fff;
-      padding: 8px 20px;
-      border-radius: 20px;
-      transition: var(--transition);
-    }
-    .product-info a:hover { background: var(--gold); }
-
-    /* 💬 Testimonials */
-    section.testimonials {
-      background: #faf8f5;
-      padding: 100px 10%;
-      text-align: center;
-    }
-    section.testimonials h2 {
-      font-size: 2.2rem;
-      margin-bottom: 24px;
-    }
-    section.testimonials blockquote {
-      font-style: italic;
-      color: #444;
-      font-size: 1.1rem;
-      line-height: 1.6;
-      max-width: 700px;
-      margin: 0 auto 12px;
-    }
-    section.testimonials .author {
-      font-weight: 600;
-      color: var(--gold);
-    }
-
-    /* 🪞 About */
-    section.about {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      padding: 100px 10%;
-      background: var(--light);
-      gap: 40px;
-    }
-    section.about img {
-      flex: 1 1 420px;
-      width: 100%;
-      border-radius: 16px;
-      object-fit: cover;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    }
-    section.about .text {
-      flex: 1 1 420px;
-      text-align: left;
-      animation: fadeIn 1.5s ease;
-    }
-    section.about h2 { font-size: 2rem; margin-bottom: 20px; }
-    section.about p { color: #555; line-height: 1.7; }
-
-    /* ✉ Newsletter */
-    section.newsletter {
-      background: #000;
-      color: #fff;
-      text-align: center;
-      padding: 90px 20px;
-    }
-    section.newsletter h3 { font-size: 1.9rem; margin-bottom: 10px; }
-    section.newsletter input[type="email"] {
-      padding: 12px 16px;
-      border: none;
-      border-radius: 30px;
-      width: 280px;
-      margin-right: 8px;
-    }
-    section.newsletter button {
-      padding: 12px 24px;
-      border: none;
-      border-radius: 30px;
-      background: var(--gold);
-      color: #fff;
-      font-weight: 500;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-    section.newsletter button:hover {
-      background: #fff;
-      color: #000;
-      box-shadow: 0 0 12px var(--gold);
-    }
-    section.newsletter small { display: block; margin-top: 12px; color: #aaa; }
-
-    /* 🖤 Footer */
-    footer {
-      background: var(--black);
-      color: #aaa;
-      text-align: center;
-      padding: 50px 20px;
-      font-size: 0.9rem;
-      position: relative;
-    }
-    footer .socials a {
-      color: var(--gold);
-      text-decoration: none;
-      margin: 0 8px;
-      font-weight: 600;
-    }
-    footer .socials a:hover { text-decoration: underline; }
-    .back-to-top {
-      position: absolute;
-      right: 20px;
-      bottom: 20px;
-      background: var(--gold);
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 42px;
-      height: 42px;
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-    .back-to-top:hover { background: #d4b45a; }
-
-    @media (max-width: 768px) {
-      header h1 { font-size: 2.4rem; }
-      section.about { flex-direction: column; }
-      section.products { padding: 60px 5%; }
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Hinna Studio — Shop</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --gold:#bfa14a; --black:#111; --muted:#777; --glass: rgba(255,255,255,0.7);
+  }
+  *{box-sizing:border-box}
+  body{font-family:"Poppins",sans-serif;margin:0;color:#111;background:#fff;line-height:1.5}
+  /* Header */
+  header{position:relative;height:60vh;background:url('https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1600&q=80') center/cover;display:flex;align-items:center;justify-content:center;color:#fff}
+  header::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.25))}
+  header .wrap{position:relative;z-index:2;text-align:center;padding:0 20px}
+  header h1{font-family:"Playfair Display",serif;font-size:3rem;letter-spacing:2px;margin:0 0 8px;text-transform:uppercase}
+  header p{margin:0 0 18px;color:#f2f2f2}
+  header .actions{display:flex;gap:12px;justify-content:center}
+  a.btn{display:inline-block;padding:10px 18px;border-radius:999px;text-decoration:none;background:#fff;color:#111;font-weight:600}
+  a.btn.alt{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.18)}
+  /* Top bar cart icon */
+  .topbar{position:fixed;top:18px;right:18px;z-index:999;display:flex;gap:10px;align-items:center}
+  .cart-btn{background:var(--gold);border:none;padding:10px;border-radius:50%;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,0.18);font-weight:700}
+  .cart-count{position:relative;left:-10px;top:-8px;background:#111;color:#fff;padding:2px 6px;border-radius:999px;font-size:0.8rem}
+  /* Products */
+  main{padding:48px 6%}
+  .grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .card{border-radius:12px;overflow:hidden;border:1px solid #eee;background:#fff;box-shadow:0 8px 20px rgba(0,0,0,0.06);transition:transform .25s,box-shadow .25s;position:relative}
+  .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,0.09)}
+  .card img{width:100%;height:280px;object-fit:cover;display:block}
+  .card .meta{padding:16px;text-align:center}
+  .price{color:var(--muted);margin-bottom:10px}
+  .tag{position:absolute;top:12px;left:12px;background:var(--gold);color:#fff;padding:6px 10px;border-radius:999px;font-size:0.8rem}
+  /* modal */
+  .modal{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;padding:24px;z-index:1000}
+  .modal.open{display:flex}
+  .sheet{background:#fff;border-radius:12px;max-width:920px;width:100%;overflow:hidden;display:flex;gap:0;box-shadow:0 30px 80px rgba(0,0,0,0.35)}
+  .sheet .left{flex:1 1 50%}
+  .sheet .right{flex:1 1 50%;padding:22px}
+  .sheet img{width:100%;height:100%;object-fit:cover;display:block}
+  .close-btn{position:absolute;right:18px;top:18px;background:#fff;border-radius:50%;border:none;padding:8px;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,0.12)}
+  /* cart drawer */
+  .drawer{position:fixed;right:0;top:0;height:100vh;width:360px;background:#fff;box-shadow:-18px 0 40px rgba(0,0,0,0.12);transform:translateX(110%);transition:transform .35s;z-index:1200;display:flex;flex-direction:column}
+  .drawer.open{transform:translateX(0)}
+  .drawer .head{padding:20px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center}
+  .drawer .items{flex:1;overflow:auto;padding:12px}
+  .item{display:flex;gap:12px;padding:10px;border-radius:8px;align-items:center}
+  .item img{width:72px;height:72px;object-fit:cover;border-radius:8px}
+  .qty{display:flex;align-items:center;gap:8px}
+  .qty button{width:32px;height:32px;border-radius:6px;border:1px solid #ddd;background:#fff;cursor:pointer}
+  .drawer .checkout{padding:20px;border-top:1px solid #eee}
+  .muted{color:var(--muted);font-size:0.95rem}
+  /* small screens */
+  @media (max-width:720px){
+    .sheet{flex-direction:column}
+    .sheet .left{height:280px}
+    .drawer{width:100%}
+  }
+  /* helper */
+  .text-center{text-align:center}
+</style>
 </head>
-
 <body>
-  <button class="theme-toggle" onclick="document.body.classList.toggle('dark')">☀️</button>
+  <!-- top controls -->
+  <div class="topbar">
+    <button class="cart-btn" id="openCart" title="Open cart">👜<span class="cart-count" id="cartCount">0</span></button>
+  </div>
 
+  <!-- hero -->
   <header>
-    <div class="content">
+    <div class="wrap">
       <h1>Hinna Studio</h1>
-      <p>Effortless Style. Everyday Confidence.</p>
-      <a href="#products">Shop Now</a>
+      <p>Minimalist wardrobe. Better choices.</p>
+      <div class="actions">
+        <a class="btn" href="#shop">Shop Collection</a>
+        <a class="btn alt" href="#about">Our Story</a>
+      </div>
     </div>
-    <div class="scroll-down">⬇</div>
   </header>
 
-  <section id="products" class="products">
-    <div class="product-card"><img src="https://img-1.kwcdn.com/thumbnail/s/a9653bcd4032e4d93a79e072ffae7a09_2b51fdcecf7f.jpg" alt="Product 1"><div class="product-info"><h4>Classic Linen Shirt</h4><p>$39.00</p><a href="#">View Details</a></div></div>
-    <div class="product-card"><img src="https://img.kwcdn.com/product/fancy/9f0641c7-d49c-4ffe-9e61-2d95dd4cc88e.jpg" alt="Product 2"><div class="product-info"><h4>High-Waist Trousers</h4><p>$45.00</p><a href="#">View Details</a></div></div>
-    <div class="product-card"><img src="https://img.kwcdn.com/product/open/5907b2ad8eca43a4857d912b0f1682e3-goods.jpeg" alt="Product 3"><div class="product-info"><h4>Minimalist Tote Bag</h4><p>$29.00</p><a href="#">View Details</a></div></div>
-    <div class="product-card"><img src="https://img.kwcdn.com/product/fancy/2ca2f0b9-864a-4645-bbd8-86dae5776e2a.jpg" alt="Product 4"><div class="product-info"><h4>Structured Blazer</h4><p>$69.00</p><a href="#">View Details</a></div></div>
-    <div class="product-card"><img src="https://img.kwcdn.com/product/fancy/1285961b-7668-4afd-8939-4f17d0364a0b.jpg" alt="Product 5"><div class="product-info"><h4>Soft Knit Sweater</h4><p>$42.00</p><a href="#">View Details</a></div></div>
-    <div class="product-card"><img src="https://img.kwcdn.com/product/fancy/d84a8a8d-da2d-4c31-ac94-6e9f0643c8f0.jpg" alt="Product 6"><div class="product-info"><h4>Everyday Denim</h4><p>$55.00</p><a href="#">View Details</a></div></div>
-  </section>
+  <main id="shop">
+    <!-- quick filters / featured -->
+    <section class="text-center" style="margin-bottom:18px">
+      <h2 style="margin:0 0 6px;font-family:'Playfair Display',serif">Featured Collection</h2>
+      <p class="muted" style="margin:0 0 18px">Timeless pieces with sustainable materials</p>
+    </section>
 
-  <section class="testimonials">
-    <h2>What Our Customers Say</h2>
-    <blockquote>“The quality is unmatched. Every piece feels tailored just for me.”</blockquote>
-    <p class="author">— Maya S., Stylist</p>
-  </section>
+    <!-- product grid -->
+    <section class="grid" id="productGrid"></section>
+  </main>
 
-  <section class="about">
-    <img src="https://images.unsplash.com/photo-1582735689338-664f0b3e4c7c?auto=format&fit=crop&w=900&q=80" alt="About Hinna Studio">
-    <div class="text">
-      <h2>About Hinna Studio</h2>
-      <p>Hinna Studio is a minimalist fashion concept focused on timeless pieces, sustainable materials, and effortless design. Every product is crafted to help you express your individuality with comfort and confidence.</p>
+  <!-- testimonial -->
+  <section style="background:#faf8f5;padding:48px 6%">
+    <div style="max-width:900px;margin:0 auto;text-align:center">
+      <h3 style="margin-bottom:12px">What our customers say</h3>
+      <p style="font-style:italic;color:#444">“The quality is unmatched. Every piece feels tailored just for me.” — Maya S.</p>
     </div>
   </section>
 
-  <section class="newsletter">
-    <h3>Join Our Style Circle</h3>
-    <p>Get exclusive updates and style tips straight to your inbox.</p>
-    <form>
-      <input type="email" placeholder="Enter your email" required />
-      <button type="submit">Subscribe</button>
-      <small>We respect your privacy. Unsubscribe anytime.</small>
+  <!-- about -->
+  <section id="about" style="padding:48px 6%;display:flex;gap:24px;align-items:center;flex-wrap:wrap">
+    <img src="https://images.unsplash.com/photo-1582735689338-664f0b3e4c7c?auto=format&fit=crop&w=1000&q=80" alt="about" style="width:420px;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.06)">
+    <div style="max-width:720px">
+      <h3 style="font-family:'Playfair Display',serif;margin-top:0">About Hinna Studio</h3>
+      <p class="muted">Hinna Studio is a minimalist fashion concept focused on timeless pieces, sustainable materials, and effortless design. Every product is crafted to help you express your individuality with comfort and confidence.</p>
+    </div>
+  </section>
+
+  <!-- newsletter -->
+  <section style="background:#000;color:#fff;padding:44px 6%;text-align:center">
+    <h3 style="margin:0 0 6px">Join Our Style Circle</h3>
+    <p class="muted" style="color:#ddd;margin:0 0 14px">Get exclusive updates and style tips straight to your inbox.</p>
+    <form id="newsletterForm" class="text-center" onsubmit="event.preventDefault(); alert('Thanks! (this is a mock)')">
+      <input type="email" required placeholder="Email address" style="padding:10px 12px;border-radius:999px;border:none;width:260px;margin-right:8px">
+      <button style="padding:10px 18px;border-radius:999px;border:none;background:var(--gold);color:#fff;font-weight:700">Subscribe</button>
     </form>
   </section>
 
-  <footer>
-    <div class="socials">
-      <a href="#">Facebook</a> |
-      <a href="#">Instagram</a> |
-      <a href="#">X</a> |
-      <a href="#">LinkedIn</a>
-    </div>
-    <p>© 2025 Hinna Studio — Designed by Hinna Orquiola</p>
-    <p style="color:#777; font-size:0.85rem;">This website is a mock-up design created for portfolio presentation purposes only.</p>
-    <button class="back-to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
+  <!-- footer -->
+  <footer style="padding:28px 6%;text-align:center;color:#999">
+    <div>© 2025 Hinna Studio — Designed by Hinna Orquiola</div>
+    <div style="font-size:13px;margin-top:8px">This demo includes a mock cart and example real-checkout server hooks for Stripe/PayPal integration.</div>
   </footer>
 
-  <script>
-    // Reveal products on scroll
-    const cards = document.querySelectorAll('.product-card');
-    window.addEventListener('scroll', () => {
-      const trigger = window.innerHeight * 0.85;
-      cards.forEach(card => {
-        const top = card.getBoundingClientRect().top;
-        if (top < trigger) card.classList.add('visible');
-      });
+  <!-- product modal -->
+  <div class="modal" id="productModal" aria-hidden="true">
+    <div class="sheet" role="dialog" aria-modal="true">
+      <div class="left"><img id="modalImage" alt=""></div>
+      <div class="right">
+        <button class="close-btn" id="closeModal">✕</button>
+        <h3 id="modalTitle" style="margin-top:8px"></h3>
+        <p id="modalDesc" class="muted"></p>
+        <p style="font-weight:700;margin:14px 0" id="modalPrice"></p>
+        <div style="display:flex;gap:10px;align-items:center;margin-top:12px">
+          <label>Qty</label>
+          <input id="modalQty" type="number" value="1" min="1" style="width:70px;padding:6px;border-radius:6px;border:1px solid #ddd">
+        </div>
+        <div style="margin-top:18px;display:flex;gap:12px">
+          <button id="addToCart" style="padding:10px 16px;border-radius:8px;border:none;background:var(--gold);color:#fff;font-weight:700">Add to cart</button>
+          <button id="buyNow" style="padding:10px 16px;border-radius:8px;border:1px solid #ddd;background:#fff">Buy now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- cart drawer -->
+  <aside class="drawer" id="cartDrawer" aria-hidden="true">
+    <div class="head"><strong>Your Cart</strong><button id="closeCartDrawer" style="background:none;border:none;font-size:18px;cursor:pointer">✕</button></div>
+    <div class="items" id="cartItems"></div>
+    <div class="checkout">
+      <div style="display:flex;justify-content:space-between;margin-bottom:12px"><span class="muted">Subtotal</span><strong id="cartSubtotal">$0.00</strong></div>
+      <div style="display:flex;gap:8px">
+        <!-- Checkout actions -->
+        <button id="checkoutReal" style="flex:1;padding:10px;border-radius:8px;border:none;background:#111;color:#fff;font-weight:700">Checkout (Real)</button>
+        <button id="checkoutMock" style="flex:1;padding:10px;border-radius:8px;border:1px solid #ddd;background:#fff">Mock Pay</button>
+      </div>
+      <p class="muted" style="font-size:12px;margin-top:10px">Real checkout uses Stripe server (example server provided). Mock Pay simulates checkout locally.</p>
+    </div>
+  </aside>
+
+<script>
+/* ============================
+   Product data (can be dynamic)
+   ============================ */
+const PRODUCTS = [
+  { id: "p1", title: "Classic Linen Shirt", price: 39.00, img: "https://img-1.kwcdn.com/thumbnail/s/a9653bcd4032e4d93a79e072ffae7a09_2b51fdcecf7f.jpg", desc: "Lightweight linen shirt. Breathable, natural fibers." },
+  { id: "p2", title: "High-Waist Trousers", price: 45.00, img: "https://img.kwcdn.com/product/fancy/9f0641c7-d49c-4ffe-9e61-2d95dd4cc88e.jpg", desc: "Tailored high-waist trousers for everyday wear." },
+  { id: "p3", title: "Minimalist Tote Bag", price: 29.00, img: "https://img.kwcdn.com/product/open/5907b2ad8eca43a4857d912b0f1682e3-goods.jpeg", desc: "Durable canvas tote with leather handles." },
+  { id: "p4", title: "Structured Blazer", price: 69.00, img: "https://img.kwcdn.com/product/fancy/2ca2f0b9-864a-4645-bbd8-86dae5776e2a.jpg", desc: "Sharp blazer that keeps its shape." },
+  { id: "p5", title: "Soft Knit Sweater", price: 42.00, img: "https://img.kwcdn.com/product/fancy/1285961b-7668-4afd-8939-4f17d0364a0b.jpg", desc: "Cozy sweater with sustainable fibers." },
+  { id: "p6", title: "Everyday Denim", price: 55.00, img: "https://img.kwcdn.com/product/fancy/d84a8a8d-da2d-4c31-ac94-6e9f0643c8f0.jpg", desc: "Classic slim-fit denim with stretch." },
+];
+
+/* ===============
+   Client cart util
+   =============== */
+let CART = JSON.parse(localStorage.getItem("hinna_cart") || "[]");
+
+function saveCart(){ localStorage.setItem("hinna_cart", JSON.stringify(CART)); updateCartUI(); }
+
+function addToCart(productId, qty=1){
+  const p = PRODUCTS.find(x=>x.id===productId);
+  if(!p) return;
+  const exist = CART.find(i=>i.id===productId);
+  if(exist) exist.qty += Number(qty);
+  else CART.push({ id:productId, qty: Number(qty), title:p.title, price:p.price, img:p.img });
+  saveCart();
+}
+
+/* ============
+   Render stuff
+   ============ */
+const productGrid = document.getElementById("productGrid");
+PRODUCTS.forEach(p=>{
+  const el = document.createElement("div");
+  el.className = "card";
+  el.innerHTML = `
+    <span class="tag">NEW</span>
+    <img loading="lazy" src="${p.img}" alt="${p.title}">
+    <div class="meta">
+      <h4 style="margin:8px 0">${p.title}</h4>
+      <div class="price">$${p.price.toFixed(2)}</div>
+      <button style="padding:8px 14px;border-radius:8px;border:1px solid #ddd;background:#fff;cursor:pointer" data-id="${p.id}" class="viewBtn">View</button>
+    </div>
+  `;
+  productGrid.appendChild(el);
+});
+
+/* Modal logic */
+const modal = document.getElementById("productModal");
+const closeModal = document.getElementById("closeModal");
+const modalImage = document.getElementById("modalImage");
+const modalTitle = document.getElementById("modalTitle");
+const modalDesc = document.getElementById("modalDesc");
+const modalPrice = document.getElementById("modalPrice");
+const modalQty = document.getElementById("modalQty");
+let currentProduct = null;
+
+document.addEventListener("click", (e)=>{
+  const v = e.target.closest(".viewBtn");
+  if(v){ const id=v.dataset.id; openModal(id); }
+});
+function openModal(id){
+  const p = PRODUCTS.find(x=>x.id===id); if(!p) return;
+  currentProduct = p;
+  modalImage.src = p.img; modalTitle.textContent = p.title; modalDesc.textContent = p.desc; modalPrice.textContent = "$" + p.price.toFixed(2);
+  modalQty.value = 1;
+  modal.classList.add("open"); modal.setAttribute("aria-hidden","false");
+}
+closeModal.addEventListener("click", ()=>{ modal.classList.remove("open"); modal.setAttribute("aria-hidden","true"); });
+modal.addEventListener("click", (e)=>{ if(e.target===modal) { closeModal.click(); } });
+
+/* Add to cart from modal */
+document.getElementById("addToCart").addEventListener("click", ()=>{
+  const q = Number(modalQty.value || 1);
+  addToCart(currentProduct.id, q);
+  modal.classList.remove("open");
+  openDrawer();
+});
+
+/* Buy Now (direct to checkout) */
+document.getElementById("buyNow").addEventListener("click", async ()=>{
+  const q = Number(modalQty.value || 1);
+  // temporarily add and open checkout
+  addToCart(currentProduct.id, q);
+  // Trigger real checkout flow if server available
+  await startRealCheckout();
+});
+
+/* Drawer logic */
+const drawer = document.getElementById("cartDrawer");
+const openCartBtn = document.getElementById("openCart");
+const closeCartDrawer = document.getElementById("closeCartDrawer");
+openCartBtn.addEventListener("click", openDrawer); closeCartDrawer.addEventListener("click", closeDrawer);
+function openDrawer(){ drawer.classList.add("open"); drawer.setAttribute("aria-hidden","false"); updateCartUI(); }
+function closeDrawer(){ drawer.classList.remove("open"); drawer.setAttribute("aria-hidden","true"); }
+
+function updateCartUI(){
+  const itemsEl = document.getElementById("cartItems");
+  itemsEl.innerHTML = "";
+  let subtotal = 0;
+  CART.forEach(item=>{
+    subtotal += item.price * item.qty;
+    const row = document.createElement("div");
+    row.className = "item";
+    row.innerHTML = `
+      <img src="${item.img}" alt="${item.title}">
+      <div style="flex:1">
+        <div style="font-weight:600">${item.title}</div>
+        <div class="muted" style="font-size:13px">$${item.price.toFixed(2)}</div>
+        <div style="margin-top:8px;display:flex;align-items:center;gap:8px">
+          <div class="qty">
+            <button class="dec" data-id="${item.id}">−</button>
+            <span style="padding:6px 10px;border:1px solid #eee;border-radius:8px">${item.qty}</span>
+            <button class="inc" data-id="${item.id}">+</button>
+          </div>
+          <button style="margin-left:12px;background:none;border:none;color:#b00;cursor:pointer" class="remove" data-id="${item.id}">Remove</button>
+        </div>
+      </div>
+    `;
+    itemsEl.appendChild(row);
+  });
+  document.getElementById("cartSubtotal").textContent = "$" + subtotal.toFixed(2);
+  document.getElementById("cartCount").textContent = CART.reduce((s,i)=>s+i.qty,0);
+  // attach listeners
+  itemsEl.querySelectorAll(".inc").forEach(b=>b.addEventListener("click", ()=>{ adjustQty(b.dataset.id,1); }));
+  itemsEl.querySelectorAll(".dec").forEach(b=>b.addEventListener("click", ()=>{ adjustQty(b.dataset.id,-1); }));
+  itemsEl.querySelectorAll(".remove").forEach(b=>b.addEventListener("click", ()=>{ removeItem(b.dataset.id); }));
+  saveCartLocalOnly();
+}
+
+function adjustQty(id, delta){
+  const it = CART.find(i=>i.id===id); if(!it) return;
+  it.qty = Math.max(1, it.qty + delta);
+  saveCart();
+}
+function removeItem(id){ CART = CART.filter(i=>i.id!==id); saveCart(); }
+function saveCartLocalOnly(){ localStorage.setItem("hinna_cart", JSON.stringify(CART)); }
+
+/* Attach click on product cards to open modal (for keyboard too) */
+document.querySelectorAll('.card').forEach(c=>{
+  c.querySelector('img').addEventListener('click', ()=>{ const idx = Array.from(c.parentNode.children).indexOf(c); openModal(PRODUCTS[idx].id); });
+});
+
+/* Checkout flows: mock and real */
+document.getElementById("checkoutMock").addEventListener("click", ()=>{ mockCheckout(); });
+document.getElementById("checkoutReal").addEventListener("click", ()=>{ startRealCheckout(); });
+
+function mockCheckout(){
+  if(CART.length===0){ alert("Your cart is empty"); return; }
+  // display fake confirmation, then clear cart
+  const items = CART.map(i=>`${i.qty}× ${i.title}`).join("\n");
+  const total = CART.reduce((s,i)=>s+i.qty*i.price,0).toFixed(2);
+  if(confirm(`MOCK CHECKOUT\n\nItems:\n${items}\n\nTotal: $${total}\n\nSimulate successful payment?`)) {
+    CART = []; saveCartLocalOnly(); updateCartUI(); alert("Payment simulated. Thank you!");
+    closeDrawer();
+  }
+}
+
+/* Real checkout: will POST to /create-checkout-session and redirect to Stripe Checkout.
+   Provide example Node server below to handle this. If the server isn't present, we gracefully fallback.
+*/
+async function startRealCheckout(){
+  if(CART.length===0){ alert("Your cart is empty"); return; }
+  // Build line_items payload for server
+  const line_items = CART.map(i=>({ price_data:{
+      currency: "usd",
+      product_data: { name: i.title, images: [i.img] },
+      unit_amount: Math.round(i.price * 100)
+    }, quantity: i.qty }));
+  try{
+    // POST to server endpoint /create-checkout-session
+    const res = await fetch('/create-checkout-session', {
+      method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify({ line_items })
     });
-  </script>
+    if(!res.ok){
+      // no server — fallback
+      throw new Error('No server or server error');
+    }
+    const { url } = await res.json();
+    if(url){
+      // redirect to Stripe Checkout page
+      window.location = url;
+    } else {
+      throw new Error('Invalid response from server');
+    }
+  } catch(err){
+    // fallback: notify user and use mock checkout
+    console.warn("Real checkout failed:", err);
+    if(confirm("Real checkout server not available. Do you want to run a mock checkout instead?")) mockCheckout();
+  }
+}
+
+/* load cart on page load and reveal animation for cards */
+document.addEventListener('DOMContentLoaded', ()=>{
+  CART = JSON.parse(localStorage.getItem("hinna_cart") || "[]");
+  updateCartUI();
+  // simple reveal
+  document.querySelectorAll('.card').forEach((c,i)=>setTimeout(()=>c.style.opacity=1, i*60));
+});
+</script>
 </body>
 </html>
