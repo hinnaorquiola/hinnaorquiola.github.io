@@ -4,126 +4,256 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hinna Studio | Minimalist Fashion Collection</title>
-  <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --gold: #bfa14a;
+      --black: #111;
+      --gray: #555;
+      --light: #f9f9f9;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: "Poppins", sans-serif;
       margin: 0;
       color: #222;
       background: #fff;
+      overflow-x: hidden;
     }
 
+    /* Header / Hero */
     header {
+      position: relative;
       text-align: center;
-      padding: 60px 20px 40px;
-      background: #f7f7f7;
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
     }
-    header h1 {
-  font-family: "Playfair Display", serif;
-  font-size: 3rem;
-  letter-spacing: 1px;
-  color: #111;
-  text-transform: uppercase;
-}
 
-header p {
-  font-family: "Poppins", sans-serif;
-  color: #555;
-  font-size: 1.1rem;
-  letter-spacing: 0.5px;
-}
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+    }
+
+    header .content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      padding: 0 20px;
+    }
+
+    header h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 3.5rem;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #f5f5f5;
+      margin-bottom: 24px;
+    }
 
     header a {
-      background: #000;
-      color: #fff;
-      padding: 10px 24px;
+      background: #fff;
+      color: #000;
+      padding: 12px 28px;
       border-radius: 30px;
       text-decoration: none;
       font-weight: 500;
       transition: 0.3s;
     }
+
     header a:hover {
-      background: #bfa14a;
+      background: var(--gold);
+      color: #fff;
     }
 
-    .products {
+    .scroll-down {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.5rem;
+      color: #fff;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
+      40% { transform: translate(-50%, -10px); }
+      60% { transform: translate(-50%, -5px); }
+    }
+
+    /* Products */
+    section.products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 24px;
-      padding: 60px 10%;
+      padding: 80px 10%;
     }
+
     .product-card {
+      position: relative;
       border: 1px solid #e5e7eb;
       border-radius: 12px;
       overflow: hidden;
       background: #fff;
       transition: 0.3s;
     }
+
     .product-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
     }
+
     .product-card img {
       width: 100%;
       height: 320px;
       object-fit: cover;
+      transition: 0.3s;
     }
+
+    .product-card:hover img {
+      transform: scale(1.05);
+      filter: brightness(0.85);
+    }
+
+    .product-card::before {
+      content: "NEW";
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--gold);
+      color: #fff;
+      padding: 4px 10px;
+      font-size: 0.8rem;
+      border-radius: 12px;
+    }
+
     .product-info {
       padding: 16px;
       text-align: center;
     }
+
     .product-info h4 {
       margin: 8px 0 4px;
       font-size: 1.1rem;
     }
+
     .product-info p {
       color: #777;
       font-size: 0.95rem;
       margin-bottom: 10px;
     }
+
     .product-info a {
       display: inline-block;
       text-decoration: none;
-      background: #000;
+      background: var(--black);
       color: #fff;
       padding: 8px 20px;
       border-radius: 20px;
       transition: 0.3s;
       font-size: 0.9rem;
     }
+
     .product-info a:hover {
-      background: #bfa14a;
+      background: var(--gold);
     }
 
-    section.about {
-      text-align: center;
+    /* Testimonials */
+    section.testimonials {
+      background: #faf8f5;
       padding: 80px 10%;
-      background: #f9f9f9;
+      text-align: center;
     }
+
+    section.testimonials h2 {
+      font-size: 2rem;
+      margin-bottom: 24px;
+    }
+
+    section.testimonials p {
+      color: #555;
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    section.testimonials .author {
+      font-weight: 600;
+      margin-top: 12px;
+      color: #333;
+    }
+
+    /* About */
+    section.about {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 10%;
+      background: var(--light);
+      gap: 40px;
+    }
+
+    section.about img {
+      flex: 1 1 400px;
+      width: 100%;
+      border-radius: 16px;
+      object-fit: cover;
+    }
+
+    section.about .text {
+      flex: 1 1 400px;
+      text-align: left;
+    }
+
     section.about h2 {
       font-size: 2rem;
       margin-bottom: 20px;
     }
+
     section.about p {
       color: #555;
-      max-width: 700px;
-      margin: 0 auto;
       line-height: 1.6;
     }
 
+    /* Newsletter */
     section.newsletter {
       background: #000;
       color: #fff;
       text-align: center;
-      padding: 60px 20px;
+      padding: 80px 20px;
     }
+
     section.newsletter h3 {
       font-size: 1.8rem;
     }
-    section.newsletter form {
-      margin-top: 20px;
+
+    section.newsletter p {
+      color: #ddd;
     }
+
+    section.newsletter form {
+      margin-top: 24px;
+    }
+
     section.newsletter input[type="email"] {
       padding: 10px 16px;
       border: none;
@@ -131,50 +261,94 @@ header p {
       width: 260px;
       margin-right: 8px;
     }
+
     section.newsletter button {
       padding: 10px 22px;
       border: none;
       border-radius: 30px;
-      background: #bfa14a;
+      background: var(--gold);
       color: #fff;
       cursor: pointer;
       font-weight: 500;
       transition: 0.3s;
     }
+
     section.newsletter button:hover {
-      background: #d4b45a;
+      background: #fff;
+      color: #000;
+      box-shadow: 0 0 10px var(--gold);
     }
 
+    section.newsletter small {
+      display: block;
+      margin-top: 10px;
+      color: #aaa;
+      font-size: 0.85rem;
+    }
+
+    /* Footer */
     footer {
-      background: #111;
+      background: var(--black);
       color: #aaa;
       text-align: center;
-      padding: 40px 20px;
+      padding: 50px 20px;
       font-size: 0.9rem;
+      position: relative;
     }
+
     footer p {
       margin: 6px 0;
     }
+
     footer .socials a {
-      color: #bfa14a;
+      color: var(--gold);
       text-decoration: none;
       margin: 0 8px;
       font-weight: 600;
     }
+
     footer .socials a:hover {
       text-decoration: underline;
+    }
+
+    .back-to-top {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      background: var(--gold);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: 0.3s;
+    }
+
+    .back-to-top:hover {
+      background: #d4b45a;
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.4rem; }
+      .about { flex-direction: column; }
+      section.products { padding: 60px 5%; }
     }
   </style>
 </head>
 
 <body>
   <header>
-    <h1>Hinna Studio</h1>
-    <p>Effortless Style. Everyday Confidence.</p>
-    <a href="#">Shop Now</a>
+    <div class="content">
+      <h1>Hinna Studio</h1>
+      <p>Effortless Style. Everyday Confidence.</p>
+      <a href="#products">Shop Now</a>
+    </div>
+    <div class="scroll-down">⬇</div>
   </header>
 
-  <section class="products">
+  <section id="products" class="products">
     <div class="product-card">
       <img src="https://img-1.kwcdn.com/thumbnail/s/a9653bcd4032e4d93a79e072ffae7a09_2b51fdcecf7f.jpg?imageView2/2/w/800/q/70/format/webp" alt="Product 1" />
       <div class="product-info">
@@ -225,12 +399,22 @@ header p {
     </div>
   </section>
 
+  <section class="testimonials">
+    <h2>What Our Customers Say</h2>
+    <p>“The quality is unmatched. Every piece feels tailored just for me.”</p>
+    <p class="author">— Maya S., Stylist</p>
+  </section>
+
   <section class="about">
-    <h2>About Hinna Studio</h2>
-    <p>
-      Hinna Studio is a minimalist fashion concept focused on timeless pieces, sustainable materials,
-      and effortless design. Every product is crafted to help you express your individuality with comfort and confidence.
-    </p>
+    <img src="https://images.unsplash.com/photo-1582735689338-664f0b3e4c7c?auto=format&fit=crop&w=900&q=80" alt="About Hinna Studio">
+    <div class="text">
+      <h2>About Hinna Studio</h2>
+      <p>
+        Hinna Studio is a minimalist fashion concept focused on timeless pieces,
+        sustainable materials, and effortless design. Every product is crafted
+        to help you express your individuality with comfort and confidence.
+      </p>
+    </div>
   </section>
 
   <section class="newsletter">
@@ -239,20 +423,22 @@ header p {
     <form>
       <input type="email" placeholder="Enter your email" required />
       <button type="submit">Subscribe</button>
+      <small>We respect your privacy. Unsubscribe anytime.</small>
     </form>
   </section>
 
   <footer>
-  <div class="socials">
-    <a href="#">Facebook</a> |
-    <a href="#">Instagram</a> |
-    <a href="#">X</a> |
-    <a href="#">LinkedIn</a>
-  </div>
-  <p>© 2025 Hinna Studio — Designed by Hinna Orquiola</p>
-  <p style="color:#777; font-size:0.85rem; margin-top:8px;">
-    This website is a mock-up design created for portfolio presentation purposes only.
-  </p>
-</footer>
+    <div class="socials">
+      <a href="#">Facebook</a> |
+      <a href="#">Instagram</a> |
+      <a href="#">X</a> |
+      <a href="#">LinkedIn</a>
+    </div>
+    <p>© 2025 Hinna Studio — Designed by Hinna Orquiola</p>
+    <p style="color:#777; font-size:0.85rem; margin-top:8px;">
+      This website is a mock-up design created for portfolio presentation purposes only.
+    </p>
+    <button class="back-to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
+  </footer>
 </body>
 </html>
