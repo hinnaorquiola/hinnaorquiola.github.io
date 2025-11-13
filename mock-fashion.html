@@ -6,13 +6,13 @@
   <title>Hinna Studio — Timeless Collection</title>
   <meta name="description" content="Hinna Studio — Timeless pieces, effortless style. Minimalist wardrobe crafted with sustainable materials.">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#f6f2ee;        /* soft paper */
-      --panel:#ffffff;     /* white cards */
-      --gold:#bfa14a;      /* matte gold */
-      --muted:#7b746b;     /* muted text */
+      --bg:#f6f2ee;
+      --panel:#ffffff;
+      --gold:#bfa14a;
+      --muted:#7b746b;
       --dark:#111111;
       --radius:14px;
       --max-width:1200px;
@@ -24,14 +24,8 @@
       font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
       color:var(--dark);
       background:var(--bg);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
       line-height:1.6;
     }
-
-    /* ---------------------
-       Global layout & nav
-       --------------------- */
     .site {max-width:var(--max-width);margin:0 auto;padding:0 24px;}
     header.site-head{
       position:relative;
@@ -40,15 +34,14 @@
       align-items:center;
       justify-content:center;
       overflow:hidden;
-      background-image: url('https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=2000&q=80');
+      background-image: url('images/fashion hero-bg.webp');
       background-size:cover;
       background-position:center;
     }
     header::before{
       content:"";
       position:absolute;inset:0;
-      background:linear-gradient(180deg, rgba(22,18,16,0.25) 0%, rgba(22,18,16,0.15) 30%, rgba(22,18,16,0.25) 100%);
-      mix-blend-mode:multiply;
+      background:linear-gradient(180deg, rgba(22,18,16,0.35) 0%, rgba(22,18,16,0.3) 100%);
     }
     nav.top {
       position:fixed;left:0;right:0;top:18px;z-index:1200;
@@ -68,25 +61,23 @@
     .nav-actions {display:flex;align-items:center;gap:10px}
     .cart-btn {background:var(--panel);border-radius:999px;padding:8px 10px;border:none;cursor:pointer;font-weight:700}
     .cart-count {background:var(--dark);color:#fff;padding:2px 6px;border-radius:999px;font-size:0.8rem;margin-left:-8px}
-
-    /* hero content (centered) */
-    .hero {
-      position:relative;z-index:10;color:#fff;text-align:center;padding:40px 24px;
-      width:100%;
-    }
-    .hero .wrap {
-      max-width:920px;margin:0 auto;transform:translateY(-6%); /* slight lift for editorial feel */
-    }
+    .hero {position:relative;z-index:10;color:#fff;text-align:center;padding:40px 24px;width:100%;}
+    .hero .wrap {max-width:920px;margin:0 auto;transform:translateY(-6%);}
+    /* Updated typography inspired by your image */
     .hero h1{
       font-family:"Playfair Display",serif;
       font-weight:700;
-      font-size:clamp(38px,7vw,64px);
-      margin:0 0 10px;
-      letter-spacing:2px;
-      text-transform:uppercase;
+      font-size:clamp(60px,8vw,100px);
+      margin:0 0 12px;
+      letter-spacing:1px;
+      text-transform:none;
     }
     .hero p.lead {
-      margin:0 0 20px;color:rgba(255,255,255,0.92);font-size:1.05rem;font-weight:300;
+      font-family:'Great Vibes',cursive;
+      margin:0 0 24px;
+      color:rgba(255,255,255,0.92);
+      font-size:clamp(24px,4vw,42px);
+      font-weight:400;
     }
     .hero .cta {display:inline-flex;gap:12px;align-items:center}
     .btn {
@@ -97,19 +88,12 @@
       background:transparent;border:1px solid rgba(255,255,255,0.18);color:#fff;
     }
     .btn:hover{transform:translateY(-3px)}
-
-    /* ---------------------
-       Page sections
-       --------------------- */
     section {padding:64px 0}
     .section-inner{max-width:var(--max-width);margin:0 auto;padding:0 24px}
-
     h2.section-title{
       font-family:"Playfair Display",serif;font-size:28px;margin:0 0 8px;letter-spacing:1px;
     }
     p.section-sub {color:var(--muted);margin:0 0 28px;max-width:800px}
-
-    /* Featured Collection (lookbook grid) */
     .lookbook {
       display:grid;gap:28px;
       grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
@@ -127,28 +111,21 @@
     .product-meta h4{margin:0;font-family:"Playfair Display",serif;font-size:18px}
     .product-meta .price{color:var(--muted);font-weight:600}
     .product-meta .row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:8px}
-
-    /* editorial about */
     .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
     .about-img{border-radius:12px;overflow:hidden;box-shadow:0 18px 30px rgba(16,12,10,0.06)}
     .about-img img{width:100%;height:480px;object-fit:cover;display:block}
     .about-text h3{font-family:"Playfair Display",serif;margin-top:0;font-size:28px}
     .muted{color:var(--muted)}
-
-    /* testimonials/contact */
     .contact-panel{
       background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.82));
       padding:28px;border-radius:12px;border:1px solid #eee;
       display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap;
     }
-
-    /* drawer & modal (cart + product) */
     .drawer{position:fixed;right:0;top:0;height:100vh;width:360px;background:var(--panel);box-shadow:-28px 0 60px rgba(16,12,10,0.12);transform:translateX(110%);transition:transform .35s;z-index:1500;display:flex;flex-direction:column}
     .drawer.open{transform:translateX(0)}
     .drawer .head{padding:20px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center}
     .drawer .items{flex:1;overflow:auto;padding:12px}
     .drawer .checkout{padding:20px;border-top:1px solid #eee}
-
     .modal{position:fixed;inset:0;background:rgba(11,8,6,0.55);display:none;align-items:center;justify-content:center;padding:24px;z-index:1400}
     .modal.open{display:flex}
     .sheet{background:var(--panel);border-radius:12px;max-width:920px;width:100%;overflow:hidden;display:flex;gap:0;box-shadow:0 30px 80px rgba(16,12,10,0.25)}
@@ -156,11 +133,7 @@
     .sheet .right{flex:1 1 50%;padding:28px}
     .sheet img{width:100%;height:100%;object-fit:cover;display:block}
     .close-btn{position:absolute;right:18px;top:18px;background:var(--panel);border-radius:50%;border:none;padding:6px;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,0.08)}
-
-    /* footer */
     footer{padding:36px 0;text-align:center;color:var(--muted);font-size:0.95rem}
-
-    /* responsive */
     @media (max-width:900px){
       .about-grid{grid-template-columns:1fr}
       .product-card img{height:300px}
@@ -169,14 +142,10 @@
     }
     @media (max-width:680px){
       nav .nav-inner{padding:0 12px}
-      .nav-links{display:none} /* simplify nav on mobile */
+      .nav-links{display:none}
       .hero .wrap{transform:none}
       header{height:78vh}
     }
-
-    /* subtle fades */
-    .fade-up{opacity:0;transform:translateY(12px);transition:opacity .6s ease, transform .6s ease}
-    .fade-up.show{opacity:1;transform:none}
   </style>
 </head>
 <body>
@@ -205,7 +174,7 @@
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- HERO (updated typography only) -->
   <header class="site-head" id="home" role="banner" aria-label="Hero">
     <div class="hero">
       <div class="wrap">
@@ -221,8 +190,6 @@
 
   <!-- MAIN -->
   <main>
-
-    <!-- Featured / Collection -->
     <section id="collection" aria-labelledby="collectionTitle">
       <div class="section-inner site">
         <header style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:18px">
@@ -232,14 +199,10 @@
           </div>
           <div style="align-self:center;color:var(--muted);font-size:0.95rem">Spring • 2025</div>
         </header>
-
-        <div class="lookbook" id="productGrid" aria-live="polite">
-          <!-- product cards injected by JS -->
-        </div>
+        <div class="lookbook" id="productGrid"></div>
       </div>
     </section>
 
-    <!-- About / Editorial Spread -->
     <section id="about" aria-labelledby="aboutTitle">
       <div class="section-inner site">
         <div style="display:flex;justify-content:space-between;align-items:center;gap:24px;margin-bottom:28px;flex-wrap:wrap">
@@ -257,7 +220,6 @@
           <div class="about-text">
             <h3>Signature Style</h3>
             <p class="muted">Hinna Studio brings a minimalist wardrobe to modern life — refined tailoring, soft textures, and palettes that age beautifully. Our pieces are designed to be mixed, layered, and loved for seasons.</p>
-
             <div style="display:flex;gap:14px;margin-top:18px;flex-wrap:wrap">
               <div style="min-width:160px">
                 <strong>Material</strong>
@@ -273,14 +235,12 @@
       </div>
     </section>
 
-    <!-- Testimonials & Contact -->
     <section id="contact" aria-labelledby="contactTitle">
       <div class="section-inner site">
         <div style="display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap">
           <div style="flex:1;min-width:320px">
             <h2 id="contactTitle" class="section-title">Contact</h2>
             <p class="section-sub muted">Press, wholesale inquiries, or custom commissions — send us a message and we'll respond within 2 business days.</p>
-
             <div class="contact-panel" style="margin-top:18px">
               <div style="flex:1;min-width:220px">
                 <div style="font-weight:700">Hinna Studio</div>
@@ -297,7 +257,6 @@
               </form>
             </div>
           </div>
-
           <div style="flex:0 0 320px;min-width:260px">
             <h3 style="margin-top:0;font-family:'Playfair Display',serif">What clients say</h3>
             <blockquote style="margin:0;color:var(--muted)">“The quality is unmatched. Every piece feels tailored just for me.” — Maya S.</blockquote>
@@ -305,10 +264,8 @@
         </div>
       </div>
     </section>
-
   </main>
 
-  <!-- FOOTER -->
   <footer>
     <div class="site">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
@@ -354,9 +311,6 @@
   </aside>
 
 <script>
-/* ============================
-   Product data
-   ============================ */
 const PRODUCTS = [
   { id: "p1", title: "Classic Linen Shirt", price: 39.00, img: "https://img-1.kwcdn.com/thumbnail/s/a9653bcd4032e4d93a79e072ffae7a09_2b51fdcecf7f.jpg", desc: "Lightweight linen shirt. Breathable, natural fibers." },
   { id: "p2", title: "High-Waist Trousers", price: 45.00, img: "https://img.kwcdn.com/product/fancy/9f0641c7-d49c-4ffe-9e61-2d95dd4cc88e.jpg", desc: "Tailored high-waist trousers for everyday wear." },
@@ -365,10 +319,6 @@ const PRODUCTS = [
   { id: "p5", title: "Soft Knit Sweater", price: 42.00, img: "https://img.kwcdn.com/product/fancy/1285961b-7668-4afd-8939-4f17d0364a0b.jpg", desc: "Cozy sweater with sustainable fibers." },
   { id: "p6", title: "Everyday Denim", price: 55.00, img: "https://img.kwcdn.com/product/fancy/d84a8a8d-da2d-4c31-ac94-6e9f0643c8f0.jpg", desc: "Classic slim-fit denim with stretch." },
 ];
-
-/* ===============
-   Cart storage & helpers
-   =============== */
 let CART = JSON.parse(localStorage.getItem("hinna_cart") || "[]");
 function saveCart(){ localStorage.setItem("hinna_cart", JSON.stringify(CART)); updateCartUI(); }
 function addToCart(productId, qty=1){
@@ -378,10 +328,6 @@ function addToCart(productId, qty=1){
   else CART.push({ id:productId, qty: Number(qty), title:p.title, price:p.price, img:p.img });
   saveCart();
 }
-
-/* ============
-   Render products into lookbook
-   ============ */
 const productGrid = document.getElementById("productGrid");
 PRODUCTS.forEach((p, idx)=>{
   const el = document.createElement("article");
@@ -398,14 +344,8 @@ PRODUCTS.forEach((p, idx)=>{
     </div>
   `;
   productGrid.appendChild(el);
-
-  // Staged reveal
   setTimeout(()=> el.classList.add('show'), idx * 80);
 });
-
-/* --------------------
-   Modal logic (product)
-   -------------------- */
 const modal = document.getElementById("productModal");
 const closeModal = document.getElementById("closeModal");
 const modalImage = document.getElementById("modalImage");
@@ -414,15 +354,12 @@ const modalDesc = document.getElementById("modalDesc");
 const modalPrice = document.getElementById("modalPrice");
 const modalQty = document.getElementById("modalQty");
 let currentProduct = null;
-
 document.addEventListener("click", (e)=>{
   const v = e.target.closest(".viewBtn");
   if(v){ const id=v.dataset.id; openModal(id); }
-
   const q = e.target.closest(".quickAdd");
   if(q){ addToCart(q.dataset.id, 1); openDrawer(); }
 });
-
 function openModal(id){
   const p = PRODUCTS.find(x=>x.id===id); if(!p) return;
   currentProduct = p;
@@ -432,32 +369,23 @@ function openModal(id){
 }
 closeModal.addEventListener("click", ()=>{ modal.classList.remove("open"); modal.setAttribute("aria-hidden","true"); });
 modal.addEventListener("click", (e)=>{ if(e.target===modal) { closeModal.click(); } });
-
-/* Add to cart from modal */
 document.getElementById("addToCart").addEventListener("click", ()=>{
   const q = Number(modalQty.value || 1);
   addToCart(currentProduct.id, q);
   modal.classList.remove("open");
   openDrawer();
 });
-
-/* Buy Now (direct to checkout) */
 document.getElementById("buyNow").addEventListener("click", async ()=>{
   const q = Number(modalQty.value || 1);
   addToCart(currentProduct.id, q);
   await startRealCheckout();
 });
-
-/* --------------------
-   Drawer logic (cart)
-   -------------------- */
 const drawer = document.getElementById("cartDrawer");
 const openCartBtn = document.getElementById("openCart");
 const closeCartDrawer = document.getElementById("closeCartDrawer");
 openCartBtn.addEventListener("click", openDrawer); closeCartDrawer.addEventListener("click", closeDrawer);
 function openDrawer(){ drawer.classList.add("open"); drawer.setAttribute("aria-hidden","false"); updateCartUI(); }
 function closeDrawer(){ drawer.classList.remove("open"); drawer.setAttribute("aria-hidden","true"); }
-
 function updateCartUI(){
   const itemsEl = document.getElementById("cartItems");
   itemsEl.innerHTML = "";
@@ -486,26 +414,19 @@ function updateCartUI(){
   });
   document.getElementById("cartSubtotal").textContent = "$" + subtotal.toFixed(2);
   document.getElementById("cartCount").textContent = CART.reduce((s,i)=>s+i.qty,0);
-  // attach listeners
   itemsEl.querySelectorAll(".inc").forEach(b=>b.addEventListener("click", ()=>{ adjustQty(b.dataset.id,1); }));
   itemsEl.querySelectorAll(".dec").forEach(b=>b.addEventListener("click", ()=>{ adjustQty(b.dataset.id,-1); }));
   itemsEl.querySelectorAll(".remove").forEach(b=>b.addEventListener("click", ()=>{ removeItem(b.dataset.id); }));
   localStorage.setItem("hinna_cart", JSON.stringify(CART));
 }
-
 function adjustQty(id, delta){
   const it = CART.find(i=>i.id===id); if(!it) return;
   it.qty = Math.max(1, it.qty + delta);
   saveCart();
 }
 function removeItem(id){ CART = CART.filter(i=>i.id!==id); saveCart(); }
-
-/* --------------------
-   Checkout flows
-   -------------------- */
 document.getElementById("checkoutMock").addEventListener("click", ()=>{ mockCheckout(); });
 document.getElementById("checkoutReal").addEventListener("click", ()=>{ startRealCheckout(); });
-
 function mockCheckout(){
   if(CART.length===0){ alert("Your cart is empty"); return; }
   const items = CART.map(i=>`${i.qty}× ${i.title}`).join("\n");
@@ -515,7 +436,6 @@ function mockCheckout(){
     closeDrawer();
   }
 }
-
 async function startRealCheckout(){
   if(CART.length===0){ alert("Your cart is empty"); return; }
   const line_items = CART.map(i=>({ price_data:{
@@ -535,22 +455,14 @@ async function startRealCheckout(){
     if(confirm("Real checkout server not available. Do you want to run a mock checkout instead?")) mockCheckout();
   }
 }
-
-/* --------------------
-   Init on load
-   -------------------- */
 document.addEventListener('DOMContentLoaded', ()=>{
   CART = JSON.parse(localStorage.getItem("hinna_cart") || "[]");
   updateCartUI();
-
-  // Clicking product images opens modal (keyboard/tap friendly)
   document.querySelectorAll('.product-card').forEach((c, idx)=>{
     const img = c.querySelector('img');
     img.addEventListener('click', ()=> openModal(PRODUCTS[idx].id));
   });
 });
-
-/* Smooth scroll helper */
 function scrollToSection(evt, id){
   if(evt) evt.preventDefault();
   const el = document.getElementById(id);
@@ -560,6 +472,3 @@ function scrollToSection(evt, id){
 </script>
 </body>
 </html>
-
-
-
