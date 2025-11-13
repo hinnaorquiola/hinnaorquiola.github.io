@@ -248,6 +248,17 @@ body {
 body {
   overflow-x: hidden;
 }
+/* Fix Shop banner heading layout on mobile */
+@media (max-width: 640px) {
+  .shop-banner h2 {
+    flex-direction: column !important;
+    text-align: center !important;
+  }
+
+  .shop-banner h2 img {
+    margin-top: 8px;
+  }
+}
 
   </style>
 </head>
