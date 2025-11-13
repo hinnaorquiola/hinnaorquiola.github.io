@@ -607,35 +607,38 @@ body {
     </section>
 
     <!-- TESTIMONIALS -->
-    <section id="testimonials" class="testimonials reveal" aria-label="Testimonials">
-      <div class="container" style="position:relative;max-width:1100px;">
-        <div class="carousel-wrap" style="overflow:hidden;padding:6px 0;">
-          <div class="carousel" id="testimonial-carousel" role="list" aria-live="polite">
-            <div class="testimonial-card" role="listitem" aria-label="Testimonial 1">
-              <p style="font-style:italic">“Working with Hinna was a dream, her designs brought my story to life!”</p>
-              <div class="testimonial-meta">— Evelyn, Author</div>
-            </div>
-            <div class="testimonial-card" role="listitem" aria-label="Testimonial 2">
-              <p style="font-style:italic">“Professional, kind, and creative. Every detail was thoughtful.”</p>
-              <div class="testimonial-meta">— Lucas, Business Owner</div>
-            </div>
-            <div class="testimonial-card" role="listitem" aria-label="Testimonial 4">
-              <p style="font-style:italic">“Quick turnaround and exceeded my expectations. Highly recommended!”</p>
-              <div class="testimonial-meta">— Ethan, Author</div>
-            </div>
-            <div class="testimonial-card" role="listitem" aria-label="Testimonial 3">
-              <p style="font-style:italic">“Her illustrations carry emotion and soul — exactly what my project needed.”</p>
-              <div class="testimonial-meta">— Aria</div>
-            </div>
-          </div>
-        </div>
+    <section id="testimonials" class="testimonials reveal" aria-label="Testimonials" style="position:relative;padding:80px 20px;background:linear-gradient(180deg,#0d0d0d,#0a0a0a);color:#fff;overflow:hidden;">
+  <div class="container" style="max-width:900px;margin:0 auto;text-align:center;position:relative;">
+    <h3 class="section-title" style="color:#fff;margin-bottom:32px;">What Clients Say</h3>
 
-        <div class="carousel-controls" aria-hidden="false">
-          <button class="carousel-btn" id="carousel-prev" aria-label="Previous testimonial">‹</button>
-          <button class="carousel-btn" id="carousel-next" aria-label="Next testimonial">›</button>
-        </div>
+    <div class="testimonial-carousel" id="testimonial-carousel" style="display:flex;transition:transform 0.6s ease;gap:20px;">
+      <div class="testimonial-card" style="min-width:100%;background:rgba(255,255,255,0.05);padding:30px;border-radius:12px;">
+        <p style="font-style:italic;font-size:18px;">“Working with Hinna was a dream, her designs brought my story to life!”</p>
+        <div class="testimonial-meta" style="margin-top:12px;color:#f0f0f0;font-weight:600;">— Evelyn, Author</div>
       </div>
-    </section>
+
+      <div class="testimonial-card" style="min-width:100%;background:rgba(255,255,255,0.05);padding:30px;border-radius:12px;">
+        <p style="font-style:italic;font-size:18px;">“Professional, kind, and creative. Every detail was thoughtful.”</p>
+        <div class="testimonial-meta" style="margin-top:12px;color:#f0f0f0;font-weight:600;">— Lucas, Business Owner</div>
+      </div>
+
+      <div class="testimonial-card" style="min-width:100%;background:rgba(255,255,255,0.05);padding:30px;border-radius:12px;">
+        <p style="font-style:italic;font-size:18px;">“Quick turnaround and exceeded my expectations. Highly recommended!”</p>
+        <div class="testimonial-meta" style="margin-top:12px;color:#f0f0f0;font-weight:600;">— Ethan, Author</div>
+      </div>
+
+      <div class="testimonial-card" style="min-width:100%;background:rgba(255,255,255,0.05);padding:30px;border-radius:12px;">
+        <p style="font-style:italic;font-size:18px;">“Her illustrations carry emotion and soul — exactly what my project needed.”</p>
+        <div class="testimonial-meta" style="margin-top:12px;color:#f0f0f0;font-weight:600;">— Aria</div>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:center;gap:12px;margin-top:24px;">
+      <button id="carousel-prev" style="background:rgba(255,255,255,0.12);border:0;padding:10px 14px;border-radius:8px;color:#fff;cursor:pointer;">‹</button>
+      <button id="carousel-next" style="background:rgba(255,255,255,0.12);border:0;padding:10px 14px;border-radius:8px;color:#fff;cursor:pointer;">›</button>
+    </div>
+  </div>
+</section>
 
     <!-- ABOUT + BOOK -->
     <section id="about-book" class="fullwidth reveal" style="background:url('https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/about-bg.webp') center/cover no-repeat;">
