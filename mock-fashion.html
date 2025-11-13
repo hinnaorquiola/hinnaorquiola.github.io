@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Fonts chosen to match the PDF editorial aesthetic -->
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
   <style>
     :root{
       --paper:#FAF8F4;       /* soft paper */
@@ -57,29 +58,82 @@
     .cart-btn{background:var(--white);border-radius:999px;padding:8px 10px;border:1px solid #eee;cursor:pointer;font-weight:700}
     .cart-count{background:var(--dark-brown);color:#fff;padding:2px 6px;border-radius:999px;font-size:0.8rem;margin-left:-8px}
 
-    /* Editorial hero — side-by-side portrait (image left, text right) */
-    header.site-head{
-      position:relative;padding:80px 0 40px;background:transparent;
-    }
-    .hero-wrapper{display:grid;grid-template-columns:520px 1fr;gap:48px;align-items:center;max-width:var(--max-width);margin:28px auto;padding:24px}
-    .hero-image{width:100%;height:820px;overflow:hidden;border-radius:0;box-shadow:none}
-    .hero-image img{width:100%;height:100%;object-fit:cover;display:block}
-    .hero-content{padding:28px 0}
-    .hero h1{
-      font-family:"Libre Baskerville",serif;font-weight:700;margin:0 0 8px;
-      font-size:clamp(44px,6.8vw,84px);line-height:0.95;letter-spacing:1px;color:var(--dark-brown);
-      text-transform:uppercase;
-    }
-    .hero p.lead{
-      margin:12px 0 20px;color:var(--muted);font-weight:300;font-size:1.05rem;
-      max-width:540px;
-    }
-    .cta{display:flex;gap:14px;align-items:center}
-    .btn{
-      display:inline-block;padding:12px 18px;border-radius:999px;text-decoration:none;background:var(--dark-brown);color:var(--paper);font-weight:700;border:none;cursor:pointer;
-      box-shadow:none;
-    }
-    .btn.alt{background:transparent;border:1px solid rgba(0,0,0,0.06);color:var(--dark-brown)}
+   /* === Hero Section (Fashion Collection) === */
+.hero-section{
+  display:grid;
+  grid-template-columns:1fr 480px;
+  align-items:center;
+  gap:40px;
+  background:#f4eadf;           /* beige paper tone */
+  padding:80px 6%;
+  min-height:90vh;
+}
+.hero-text h1{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(52px,7vw,100px);
+  font-weight:700;
+  color:#7d1506;                 /* deep red-brown */
+  line-height:0.95;
+  position:relative;
+  display:inline-block;
+}
+.hero-text h1 span{
+  position:absolute;
+  left:0;
+  bottom:-18%;
+  font-family:"Dancing Script",cursive;
+  font-size:0.55em;
+  color:#111;
+  transform:translateY(40%);
+}
+.hero-text p{
+  margin-top:140px;
+  font-family:"Inter",sans-serif;
+  color:#111;
+  font-size:1.05rem;
+  letter-spacing:0.4px;
+  max-width:460px;
+}
+
+/* Portrait image */
+.hero-img{
+  width:100%;
+  height:auto;
+  overflow:hidden;
+}
+.hero-img img{
+  width:100%;
+  height:auto;
+  object-fit:cover;
+  display:block;
+}
+
+/* Responsive */
+@media(max-width:900px){
+  .hero-section{
+    grid-template-columns:1fr;
+    padding:60px 8%;
+    text-align:center;
+  }
+  .hero-text h1{
+    font-size:clamp(48px,9vw,80px);
+  }
+  .hero-text h1 span{
+    position:relative;
+    display:block;
+    transform:none;
+    bottom:auto;
+    margin-top:-18px;
+  }
+  .hero-text p{
+    margin-top:24px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .hero-img{
+    margin-top:40px;
+  }
+}
 
     /* Section headings styled like PDF */
     h2.section-title{
@@ -173,29 +227,16 @@
     </div>
   </nav>
 
-  <!-- HERO (restyled to editorial spread with portrait) -->
-  <header class="site-head" id="home" role="banner" aria-label="Hero">
-    <div class="hero-wrapper">
-      <div class="hero-image" aria-hidden="true">
-        <img src="https://hinnaorquiola.github.io/images/portrait1.webp" alt="Portrait">
-      </div>
-      <div class="hero-content">
-        <h1>Hinna Studio</h1>
-        <p class="lead">Timeless pieces. Editorial silhouettes. A quiet, intentional wardrobe designed to last.</p>
-        <div style="display:flex;align-items:center;gap:18px;">
-          <div style="max-width:560px;color:var(--muted);">
-            <p style="margin:0 0 14px">An editorial collection inspired by classic tailoring, natural textures, and warm palettes. Each piece is crafted with sustainability and longevity in mind — soft linens, recycled blends, and natural dyes.</p>
-            <div class="divider" aria-hidden="true"></div>
-          </div>
-        </div>
-
-        <div style="margin-top:22px" class="cta">
-          <a class="btn" href="#collection" onclick="scrollToSection(event,'collection')">Shop the Collection</a>
-          <a class="btn alt" href="#about" onclick="scrollToSection(event,'about')">Our Story</a>
-        </div>
-      </div>
-    </div>
-  </header>
+ <!-- === HERO HTML === -->
+<section class="hero-section" id="home">
+  <div class="hero-text">
+    <h1>Fashion <span>Collection</span></h1>
+    <p>Timeless pieces. A quiet, intentional wardrobe designed to last.</p>
+  </div>
+  <div class="hero-img">
+    <img src="https://hinnaorquiola.github.io/images/portrait2.webp" alt="Fashion portrait">
+  </div>
+</section>
 
   <!-- MAIN -->
   <main>
