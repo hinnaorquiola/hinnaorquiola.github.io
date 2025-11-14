@@ -9,13 +9,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#f6f2ee;
-      --panel:#ffffff;
-      --gold:#bfa14a;
-      --muted:#7b746b;
-      --dark:#111111;
-      --radius:14px;
+      --bg: #f9f7f3;           /* cream tone requested */
+      --panel: #ffffff;
+      --gold: #bfa14a;         /* matte gold accent */
+      --gold-600: #c7b27a;
+      --muted: #6f6a63;
+      --dark: #151412;
+      --radius: 14px;
       --max-width:1200px;
+      --transition: 260ms;
+      --elev: 0 14px 40px rgba(21,18,16,0.06);
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -24,195 +27,260 @@
       font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
       color:var(--dark);
       background:var(--bg);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
       line-height:1.6;
+      -webkit-touch-callout:none;
     }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;height:auto;display:block}
+
     .site {max-width:var(--max-width);margin:0 auto;padding:0 24px;}
+
+    /* NAV */
+    nav.top {
+      position:fixed;left:0;right:0;top:0;z-index:1300;
+      display:flex;align-items:center;justify-content:center;
+      background:transparent;padding:14px 0;transition:background var(--transition),box-shadow var(--transition),padding var(--transition);
+      pointer-events:auto;
+    }
+    nav.top.solid { background: linear-gradient(180deg, rgba(249,247,243,0.98), rgba(249,247,243,0.98)); box-shadow: 0 8px 30px rgba(21,18,16,0.06); padding:10px 0;}
+    .nav-inner {width:100%;max-width:var(--max-width);display:flex;justify-content:space-between;align-items:center;padding:0 24px;gap:12px}
+    .brand {display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--dark)}
+    .brand .logo {
+      width:48px;height:48px;border-radius:10px;background:linear-gradient(180deg,#fff, #f7f4ef);
+      display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--dark);
+      font-family:"Playfair Display",serif;font-size:20px;border:1px solid rgba(21,18,16,0.06);
+      box-shadow:0 6px 18px rgba(21,18,16,0.04);
+    }
+    .brand .sub {font-size:12px;color:var(--muted);line-height:1}
+    .nav-links {display:flex;gap:22px;align-items:center}
+    .nav-links a {color:var(--dark);font-weight:600;letter-spacing:0.6px;opacity:0.95;padding:8px;border-radius:8px}
+    .nav-links a:focus{outline:3px solid rgba(191,161,74,0.15)}
+    .nav-actions {display:flex;align-items:center;gap:10px}
+    .cart-btn {background:var(--dark);color:#fff;border-radius:999px;padding:8px 12px;border:none;cursor:pointer;font-weight:700;display:inline-flex;align-items:center;gap:8px}
+    .cart-count {background:var(--gold);color:var(--dark);padding:2px 8px;border-radius:999px;font-size:0.8rem;margin-left:-6px}
+    .menu-btn{background:transparent;border:1px solid rgba(21,18,16,0.06);padding:8px 10px;border-radius:10px;cursor:pointer}
+
+    /* HERO */
     header.site-head{
       position:relative;
-      height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      display:block;
       overflow:hidden;
-      background-image: url('images/fashion hero-bg.webp');
-      background-size:cover;
-      background-position:center;
+      background: #111 url('images/fashion hero-bg.webp') center/cover no-repeat;
+      height:86vh;
+      min-height:560px;
+      display:flex;align-items:center;justify-content:center;
     }
-    header::before{
-      content:"";
-      position:absolute;inset:0;
-      background:linear-gradient(180deg, rgba(22,18,16,0.35) 0%, rgba(22,18,16,0.3) 100%);
+    header.site-head::before{
+      content:"";position:absolute;inset:0;background:
+      linear-gradient(0deg, rgba(249,247,243,0.0) 0%, rgba(21,18,16,0.28) 70%), linear-gradient(180deg, rgba(21,18,16,0.18), rgba(21,18,16,0.12));
+      mix-blend-mode:multiply;
     }
-    nav.top {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  z-index: 1200;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.1); /* light transparent background */
-  backdrop-filter: blur(12px); /* glass effect */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  transition: background 0.3s ease;
-}
-
-    nav .nav-inner {
-      width:100%;max-width:var(--max-width);display:flex;justify-content:space-between;align-items:center;padding:0 24px;pointer-events:auto;
-      gap:12px;
+    .hero {
+      position:relative;z-index:12;max-width:1200px;width:100%;padding:48px;
+      color:var(--panel);text-align:center;
+      display:flex;flex-direction:column;align-items:center;gap:12px;
     }
-    .brand {display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--panel)}
-    .brand .logo {
-      width:44px;height:44px;border-radius:8px;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-family:"Playfair Display",serif
-    }
-    .nav-links {display:flex;gap:18px;align-items:center}
-    .nav-links a {color:#fff;text-decoration:none;font-weight:600;letter-spacing:0.6px;opacity:0.95}
-    .nav-actions {display:flex;align-items:center;gap:10px}
-    .cart-btn {background:var(--panel);border-radius:999px;padding:8px 10px;border:none;cursor:pointer;font-weight:700}
-    .cart-count {background:var(--dark);color:#fff;padding:2px 6px;border-radius:999px;font-size:0.8rem;margin-left:-8px}
-    .hero {position:relative;z-index:10;color:#fff;text-align:center;padding:40px 24px;width:100%;}
-    .hero .wrap {max-width:920px;margin:0 auto;transform:translateY(-6%);}
-    /* Updated typography inspired by your image */
+    .hero .brandline{display:flex;gap:12px;align-items:center;color:rgba(255,255,255,0.88)}
     .hero h1{
-      font-family:"Playfair Display",serif;
-      font-weight:700;
-      font-size:clamp(60px,8vw,100px);
-      margin:0 0 12px;
-      letter-spacing:1px;
-      text-transform:none;
+      font-family:"Playfair Display",serif;font-weight:700;
+      font-size:clamp(36px,6vw,84px);margin:8px 0 6px;letter-spacing:0.2px;
+      color: #fff;text-shadow: 0 10px 30px rgba(0,0,0,0.45);
     }
     .hero p.lead {
-      font-family:'Great Vibes',cursive;
-      margin:0 0 24px;
-      color:rgba(255,255,255,0.92);
-      font-size:clamp(24px,4vw,42px);
-      font-weight:400;
+      font-family:'Great Vibes',cursive;margin:0;color:rgba(255,255,255,0.95);
+      font-size:clamp(20px,3.2vw,36px);
     }
-    .hero .cta {display:inline-flex;gap:12px;align-items:center}
+    .hero .eyebrow {font-size:13px;color:rgba(255,255,255,0.85);letter-spacing:1px}
+    .hero .cta {display:flex;gap:14px;margin-top:12px}
     .btn {
-      display:inline-block;padding:12px 18px;border-radius:999px;text-decoration:none;background:var(--panel);color:var(--dark);font-weight:700;border:none;cursor:pointer;
-      box-shadow:0 10px 30px rgba(16,12,10,0.2);transition:transform .25s,box-shadow .25s;
+      display:inline-flex;gap:8px;align-items:center;padding:12px 20px;border-radius:999px;background:var(--panel);color:var(--dark);font-weight:700;border:none;cursor:pointer;
+      box-shadow:0 14px 40px rgba(21,18,16,0.12);transition:transform var(--transition),box-shadow var(--transition);
     }
-    .btn.alt {
-      background:transparent;border:1px solid rgba(255,255,255,0.18);color:#fff;
-    }
-    .btn:hover{transform:translateY(-3px)}
-    section {padding:64px 0}
+    .btn:hover{transform:translateY(-4px)}
+    .btn.alt { background:transparent;border:1px solid rgba(255,255,255,0.18);color:#fff;box-shadow:none }
+
+    /* SECTION */
+    section {padding:72px 0}
     .section-inner{max-width:var(--max-width);margin:0 auto;padding:0 24px}
     h2.section-title{
-      font-family:"Playfair Display",serif;font-size:28px;margin:0 0 8px;letter-spacing:1px;
+      font-family:"Playfair Display",serif;font-size:28px;margin:0 0 12px;color:var(--dark);letter-spacing:0.6px;
     }
-    p.section-sub {color:var(--muted);margin:0 0 28px;max-width:800px}
+    p.section-sub {color:var(--muted);margin:0 0 28px;max-width:820px}
+
+    /* LOOKBOOK / PRODUCTS */
     .lookbook {
       display:grid;gap:28px;
-      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
       align-items:start;
     }
     .product-card {
-      background:var(--panel);border-radius:var(--radius);overflow:hidden;border:1px solid #eee;
-      box-shadow:0 18px 40px rgba(16,12,10,0.06);
-      transition:transform .35s,box-shadow .35s;
-      display:flex;flex-direction:column;
+      background:var(--panel);border-radius:12px;overflow:hidden;border:1px solid rgba(21,18,16,0.04);
+      box-shadow:var(--elev);transition:transform .36s,box-shadow .36s;display:flex;flex-direction:column;
     }
-    .product-card:hover{transform:translateY(-10px);box-shadow:0 28px 70px rgba(16,12,10,0.08)}
-    .product-card img{width:100%;height:360px;object-fit:cover;display:block}
+    .product-card:hover{transform:translateY(-10px);box-shadow:0 30px 80px rgba(21,18,16,0.08)}
+    .product-card .media{height:360px;overflow:hidden}
+    .product-card img{width:100%;height:100%;object-fit:cover;display:block}
     .product-meta{padding:18px;display:flex;flex-direction:column;gap:8px}
-    .product-meta h4{margin:0;font-family:"Playfair Display",serif;font-size:18px}
+    .product-meta h4{margin:0;font-family:"Playfair Display",serif;font-size:18px;color:var(--dark)}
     .product-meta .price{color:var(--muted);font-weight:600}
     .product-meta .row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:8px}
-    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
-    .about-img{border-radius:12px;overflow:hidden;box-shadow:0 18px 30px rgba(16,12,10,0.06)}
+
+    /* ABOUT / GRID */
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+    .about-img{border-radius:12px;overflow:hidden;box-shadow:var(--elev)}
     .about-img img{width:100%;height:480px;object-fit:cover;display:block}
     .about-text h3{font-family:"Playfair Display",serif;margin-top:0;font-size:28px}
     .muted{color:var(--muted)}
+
+    /* EDITORIAL PORTRAITS */
+    .editorial {
+      display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px;
+    }
+    .editorial .portrait {border-radius:12px;overflow:hidden;min-height:360px;position:relative}
+    .editorial .portrait img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+    .editorial .portrait:hover img{transform:scale(1.04)}
+
+    /* CTA Banner */
+    .banner {
+      background: linear-gradient(90deg, rgba(191,161,74,0.06), rgba(249,247,243,0.02));
+      border-radius:12px;padding:22px;border:1px solid rgba(191,161,74,0.09);
+      display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
+    }
+
+    /* TESTIMONIALS */
+    .testimonial-wrap{display:flex;gap:12px;align-items:center;justify-content:center;flex-direction:column}
+    .testimonial {max-width:820px;text-align:center;padding:22px;border-radius:12px;border:1px solid rgba(21,18,16,0.04);background:var(--panel);box-shadow:0 8px 30px rgba(21,18,16,0.03)}
+    .testimonial p{margin:0;color:var(--muted)}
+    .testimonial cite{display:block;margin-top:12px;font-weight:700;color:var(--dark)}
+
+    /* PRESS */
+    .press-logos{display:flex;gap:18px;align-items:center;justify-content:flex-start;flex-wrap:wrap}
+    .press-logos img{height:36px;opacity:0.85;filter:grayscale(1);transition:opacity .2s,filter .2s}
+    .press-logos img:hover{opacity:1;filter:none}
+
+    /* CONTACT PANEL */
     .contact-panel{
       background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.82));
-      padding:28px;border-radius:12px;border:1px solid #eee;
+      padding:24px;border-radius:12px;border:1px solid rgba(21,18,16,0.04);
       display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap;
     }
-    .drawer{position:fixed;right:0;top:0;height:100vh;width:360px;background:var(--panel);box-shadow:-28px 0 60px rgba(16,12,10,0.12);transform:translateX(110%);transition:transform .35s;z-index:1500;display:flex;flex-direction:column}
+
+    /* DRAWER / MODAL */
+    .drawer{position:fixed;right:0;top:0;height:100vh;width:360px;background:var(--panel);box-shadow:-28px 0 60px rgba(21,18,16,0.12);transform:translateX(110%);transition:transform .35s;z-index:1500;display:flex;flex-direction:column}
     .drawer.open{transform:translateX(0)}
-    .drawer .head{padding:20px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center}
+    .drawer .head{padding:20px;border-bottom:1px solid rgba(21,18,16,0.04);display:flex;justify-content:space-between;align-items:center}
     .drawer .items{flex:1;overflow:auto;padding:12px}
-    .drawer .checkout{padding:20px;border-top:1px solid #eee}
+    .drawer .checkout{padding:18px;border-top:1px solid rgba(21,18,16,0.04)}
     .modal{position:fixed;inset:0;background:rgba(11,8,6,0.55);display:none;align-items:center;justify-content:center;padding:24px;z-index:1400}
     .modal.open{display:flex}
-    .sheet{background:var(--panel);border-radius:12px;max-width:920px;width:100%;overflow:hidden;display:flex;gap:0;box-shadow:0 30px 80px rgba(16,12,10,0.25)}
+    .sheet{background:var(--panel);border-radius:12px;max-width:920px;width:100%;overflow:hidden;display:flex;gap:0;box-shadow:0 30px 80px rgba(21,18,16,0.25)}
     .sheet .left{flex:1 1 50%}
     .sheet .right{flex:1 1 50%;padding:28px}
     .sheet img{width:100%;height:100%;object-fit:cover;display:block}
-    .close-btn{position:absolute;right:18px;top:18px;background:var(--panel);border-radius:50%;border:none;padding:6px;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,0.08)}
-    footer{padding:36px 0;text-align:center;color:var(--muted);font-size:0.95rem}
-    @media (max-width:900px){
-      .about-grid{grid-template-columns:1fr}
-      .product-card img{height:300px}
-      .sheet{flex-direction:column}
-      .sheet .left{height:320px}
+    .close-btn{position:absolute;right:18px;top:18px;background:var(--panel);border-radius:50%;border:none;padding:6px;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,0.06)}
+
+    footer{padding:42px 0;text-align:center;color:var(--muted);font-size:0.95rem}
+
+    /* RESPONSIVE */
+    @media (max-width:1024px){
+      .editorial{grid-template-columns:repeat(2,1fr)}
+      .about-img img{height:360px}
     }
-    @media (max-width:680px){
+    @media (max-width:780px){
+      .about-grid{grid-template-columns:1fr}
+      .editorial{grid-template-columns:1fr}
+      .hero h1{font-size:36px}
+      .product-card .media{height:300px}
+      header.site-head{height:74vh}
       nav .nav-inner{padding:0 12px}
       .nav-links{display:none}
-      .hero .wrap{transform:none}
-      header{height:78vh}
     }
+    /* focus */
+    button:focus, a:focus, input:focus {outline:3px solid rgba(191,161,74,0.12);outline-offset:2px}
+    /* small utilities */
+    .muted-sm{color:var(--muted);font-size:0.95rem}
   </style>
 </head>
 <body>
 
   <!-- NAV -->
-  <nav class="top" role="navigation" aria-label="Main navigation">
+  <nav class="top" role="navigation" aria-label="Main navigation" id="topNav">
     <div class="nav-inner">
       <a class="brand" href="#home" onclick="scrollToSection(event,'home')">
-        <div class="logo">H</div>
-        <div style="color:#fff">
+        <div class="logo" aria-hidden="true">H</div>
+        <div>
           <div style="font-family:'Playfair Display',serif;font-weight:600">Hinna Studio</div>
-          <div style="font-size:12px;color:rgba(255,255,255,0.9)">Editorial & Atelier</div>
+          <div class="sub">Editorial &amp; Atelier</div>
         </div>
       </a>
 
       <div class="nav-links" aria-hidden="false">
         <a href="#home" onclick="scrollToSection(event,'home')">Home</a>
         <a href="#collection" onclick="scrollToSection(event,'collection')">Collection</a>
+        <a href="#editorial" onclick="scrollToSection(event,'editorial')">Editorial</a>
         <a href="#about" onclick="scrollToSection(event,'about')">About</a>
         <a href="#contact" onclick="scrollToSection(event,'contact')">Contact</a>
       </div>
 
       <div class="nav-actions">
-        <button class="cart-btn" id="openCart" title="Open cart">👜 <span class="cart-count" id="cartCount">0</span></button>
+        <button class="menu-btn" id="openMenu" aria-expanded="false" aria-label="Open menu">Menu</button>
+        <button class="cart-btn" id="openCart" title="Open cart" aria-haspopup="dialog">👜 <span class="cart-count" id="cartCount">0</span></button>
       </div>
     </div>
   </nav>
 
-  <!-- HERO (updated typography only) -->
+  <!-- HERO -->
   <header class="site-head" id="home" role="banner" aria-label="Hero">
-    <div class="hero">
-      <div class="wrap">
-        <h1>Hinna Studio</h1>
-        <p class="lead">Timeless pieces. Effortless style.</p>
-        <div class="cta">
-          <a class="btn" href="#collection" onclick="scrollToSection(event,'collection')">Shop the Collection</a>
-          <a class="btn alt" href="#about" onclick="scrollToSection(event,'about')">Our Story</a>
-        </div>
+    <div class="hero site">
+      <div class="brandline eyebrow">Spring • 2025 — New Edit</div>
+      <h1>Hinna Studio</h1>
+      <p class="lead">Timeless pieces. Effortless style.</p>
+      <div class="cta">
+        <a class="btn" href="#collection" onclick="scrollToSection(event,'collection')">Shop the Collection</a>
+        <a class="btn alt" href="#about" onclick="scrollToSection(event,'about')">Our Story</a>
       </div>
     </div>
   </header>
 
-  <!-- MAIN -->
   <main>
+    <!-- COLLECTION -->
     <section id="collection" aria-labelledby="collectionTitle">
       <div class="section-inner site">
-        <header style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:18px">
+        <header style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:18px;flex-wrap:wrap">
           <div>
             <h2 id="collectionTitle" class="section-title">Featured Collection</h2>
             <p class="section-sub muted">A curated selection of wardrobe essentials — crafted for longevity and quiet confidence.</p>
           </div>
           <div style="align-self:center;color:var(--muted);font-size:0.95rem">Spring • 2025</div>
         </header>
-        <div class="lookbook" id="productGrid"></div>
+
+        <div class="lookbook" id="productGrid" aria-live="polite"></div>
       </div>
     </section>
 
+    <!-- EDITORIAL PORTRAITS -->
+    <section id="editorial" aria-labelledby="editorialTitle">
+      <div class="section-inner site">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:24px;margin-bottom:18px;flex-wrap:wrap">
+          <div>
+            <h2 id="editorialTitle" class="section-title">Editorial Gallery</h2>
+            <p class="section-sub muted">Large portraits and editorials that inspired this collection.</p>
+          </div>
+          <div style="border-top:2px solid var(--gold);width:120px;height:4px;margin-top:8px;opacity:0.95"></div>
+        </div>
+
+        <div class="editorial">
+          <figure class="portrait"><img loading="lazy" src="https://hinnaorquiola.github.io/images/portrait1.webp" alt="Hinna Studio editorial portrait 1"></figure>
+          <figure class="portrait"><img loading="lazy" src="https://hinnaorquiola.github.io/images/portrait2.webp" alt="Hinna Studio editorial portrait 2"></figure>
+          <figure class="portrait"><img loading="lazy" src="https://hinnaorquiola.github.io/images/portrait3.webp" alt="Hinna Studio editorial portrait 3"></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
     <section id="about" aria-labelledby="aboutTitle">
       <div class="section-inner site">
         <div style="display:flex;justify-content:space-between;align-items:center;gap:24px;margin-bottom:28px;flex-wrap:wrap">
@@ -220,12 +288,11 @@
             <h2 id="aboutTitle" class="section-title">About Hinna Studio</h2>
             <p class="section-sub muted">We design with an editorial eye and an ethical heart — minimal silhouettes, premium materials, and considered details.</p>
           </div>
-          <div style="border-top:2px solid var(--gold);width:120px;height:4px;margin-top:8px"></div>
         </div>
 
         <div class="about-grid">
           <div class="about-img">
-            <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/portrait2.webp" alt="Hinna Studio about image">
+            <img loading="lazy" src="https://hinnaorquiola.github.io/images/portrait2.webp" alt="Hinna Studio founder portrait">
           </div>
           <div class="about-text">
             <h3>Signature Style</h3>
@@ -245,31 +312,69 @@
       </div>
     </section>
 
-    <section id="contact" aria-labelledby="contactTitle">
+    <!-- BANNER / CTA -->
+    <section aria-hidden="false">
       <div class="section-inner site">
-        <div style="display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap">
-          <div style="flex:1;min-width:320px">
-            <h2 id="contactTitle" class="section-title">Contact</h2>
-            <p class="section-sub muted">Press, wholesale inquiries, or custom commissions — send us a message and we'll respond within 2 business days.</p>
-            <div class="contact-panel" style="margin-top:18px">
-              <div style="flex:1;min-width:220px">
-                <div style="font-weight:700">Hinna Studio</div>
-                <div class="muted" style="margin-top:6px">hello@hinnastudio.example</div>
-                <div class="muted" style="margin-top:4px">+63 912 345 6789</div>
-                <div class="muted" style="margin-top:6px">Tacloban City, Philippines</div>
-              </div>
-              <form id="newsletterForm" style="min-width:220px" onsubmit="event.preventDefault(); alert('Thanks! (this is a mock)')">
-                <label style="display:block;font-weight:600;margin-bottom:8px">Join our style circle</label>
-                <div style="display:flex;gap:8px">
-                  <input type="email" required placeholder="Email address" style="padding:10px 12px;border-radius:999px;border:1px solid #e6e2dd;flex:1">
-                  <button class="btn" style="border-radius:999px">Subscribe</button>
-                </div>
-              </form>
+        <div class="banner" role="region" aria-label="Newsletter call to action">
+          <div>
+            <div style="font-weight:700;font-family:'Playfair Display',serif">Join our style circle</div>
+            <div class="muted-sm">Exclusive early previews, limited drops, and studio notes.</div>
+          </div>
+          <form id="bannerForm" onsubmit="event.preventDefault(); alert('Thanks! (this is a mock)')" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+            <input type="email" required placeholder="Your email" aria-label="email" style="padding:10px 12px;border-radius:999px;border:1px solid rgba(21,18,16,0.06);min-width:220px">
+            <button class="btn" aria-label="Subscribe">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS + PRESS -->
+    <section>
+      <div class="section-inner site" style="display:grid;grid-template-columns:1fr 360px;gap:24px;align-items:start">
+        <div>
+          <h2 class="section-title">What clients say</h2>
+          <p class="section-sub muted">Real feedback from the studio’s clients and partners.</p>
+
+          <div class="testimonial-wrap" id="testimonialWrap" aria-live="polite">
+            <div class="testimonial" id="testimonialSlide">
+              <p>“The quality is unmatched. Every piece feels tailored just for me.”</p>
+              <cite>— Maya S.</cite>
+            </div>
+            <div style="display:flex;gap:8px;margin-top:12px;justify-content:center">
+              <button class="menu-btn" id="prevTest" aria-label="Previous testimonial">◀</button>
+              <button class="menu-btn" id="nextTest" aria-label="Next testimonial">▶</button>
             </div>
           </div>
-          <div style="flex:0 0 320px;min-width:260px">
-            <h3 style="margin-top:0;font-family:'Playfair Display',serif">What clients say</h3>
-            <blockquote style="margin:0;color:var(--muted)">“The quality is unmatched. Every piece feels tailored just for me.” — Maya S.</blockquote>
+
+          <div style="margin-top:28px">
+            <h3 style="font-family:'Playfair Display',serif">Featured in</h3>
+            <div class="press-logos" aria-hidden="false" style="margin-top:12px">
+              <!-- Placeholder images; keep accessible alt text -->
+              <img loading="lazy" src="https://via.placeholder.com/120x36?text=Vogue" alt="Vogue logo">
+              <img loading="lazy" src="https://via.placeholder.com/120x36?text=Elle" alt="Elle logo">
+              <img loading="lazy" src="https://via.placeholder.com/120x36?text=Wallpaper" alt="Wallpaper logo">
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="section-title" style="margin-top:0">Contact</h2>
+          <p class="muted-sm">Press, wholesale inquiries, or custom commissions — send us a message.</p>
+
+          <div class="contact-panel" style="margin-top:12px">
+            <div style="flex:1;min-width:220px">
+              <div style="font-weight:700">Hinna Studio</div>
+              <div class="muted" style="margin-top:6px">hello@hinnastudio.example</div>
+              <div class="muted" style="margin-top:4px">+63 912 345 6789</div>
+              <div class="muted" style="margin-top:6px">Tacloban City, Philippines</div>
+            </div>
+            <form id="newsletterForm" style="min-width:220px" onsubmit="event.preventDefault(); alert('Thanks! (this is a mock)')">
+              <label style="display:block;font-weight:600;margin-bottom:8px">Join our style circle</label>
+              <div style="display:flex;gap:8px">
+                <input type="email" required placeholder="Email address" style="padding:10px 12px;border-radius:999px;border:1px solid rgba(21,18,16,0.06);flex:1" aria-label="email newsletter">
+                <button class="btn" style="border-radius:999px">Subscribe</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -289,10 +394,10 @@
   <div class="modal" id="productModal" aria-hidden="true">
     <div class="sheet" role="dialog" aria-modal="true" id="sheet">
       <div class="left"><img id="modalImage" alt=""></div>
-      <div class="right">
+      <div class="right" style="position:relative">
         <button class="close-btn" id="closeModal" aria-label="Close">✕</button>
         <h3 id="modalTitle" style="margin-top:8px"></h3>
-        <p id="modalDesc" class="muted"></p>
+        <p id="modalDesc" class="muted" style="margin-top:6px"></p>
         <p style="font-weight:700;margin:14px 0" id="modalPrice"></p>
         <div style="display:flex;gap:10px;align-items:center;margin-top:12px">
           <label>Qty</label>
@@ -300,27 +405,28 @@
         </div>
         <div style="margin-top:18px;display:flex;gap:12px">
           <button id="addToCart" class="btn" style="background:var(--gold);border:none;color:#111">Add to cart</button>
-          <button id="buyNow" class="btn" style="background:#fff;border:1px solid #eee">Buy now</button>
+          <button id="buyNow" class="btn" style="background:#fff;border:1px solid rgba(21,18,16,0.06)">Buy now</button>
         </div>
       </div>
     </div>
   </div>
 
   <!-- CART DRAWER -->
-  <aside class="drawer" id="cartDrawer" aria-hidden="true">
-    <div class="head"><strong>Your Cart</strong><button id="closeCartDrawer" style="background:none;border:none;font-size:18px;cursor:pointer">✕</button></div>
+  <aside class="drawer" id="cartDrawer" aria-hidden="true" aria-label="Shopping cart">
+    <div class="head"><strong>Your Cart</strong><button id="closeCartDrawer" style="background:none;border:none;font-size:18px;cursor:pointer" aria-label="Close cart">✕</button></div>
     <div class="items" id="cartItems"></div>
     <div class="checkout">
       <div style="display:flex;justify-content:space-between;margin-bottom:12px"><span class="muted">Subtotal</span><strong id="cartSubtotal">$0.00</strong></div>
       <div style="display:flex;gap:8px">
         <button id="checkoutReal" style="flex:1;padding:10px;border-radius:8px;border:none;background:var(--dark);color:#fff;font-weight:700">Checkout (Real)</button>
-        <button id="checkoutMock" style="flex:1;padding:10px;border-radius:8px;border:1px solid #ddd;background:#fff">Mock Pay</button>
+        <button id="checkoutMock" style="flex:1;padding:10px;border-radius:8px;border:1px solid rgba(21,18,16,0.06);background:#fff">Mock Pay</button>
       </div>
       <p class="muted" style="font-size:12px;margin-top:10px">Real checkout uses Stripe server (example server provided). Mock Pay simulates checkout locally.</p>
     </div>
   </aside>
 
 <script>
+/* ---------- PRODUCTS & CART (kept and polished) ---------- */
 const PRODUCTS = [
   { id: "p1", title: "Classic Linen Shirt", price: 39.00, img: "https://img-1.kwcdn.com/thumbnail/s/a9653bcd4032e4d93a79e072ffae7a09_2b51fdcecf7f.jpg", desc: "Lightweight linen shirt. Breathable, natural fibers." },
   { id: "p2", title: "High-Waist Trousers", price: 45.00, img: "https://img.kwcdn.com/product/fancy/9f0641c7-d49c-4ffe-9e61-2d95dd4cc88e.jpg", desc: "Tailored high-waist trousers for everyday wear." },
@@ -329,7 +435,9 @@ const PRODUCTS = [
   { id: "p5", title: "Soft Knit Sweater", price: 42.00, img: "https://img.kwcdn.com/product/fancy/1285961b-7668-4afd-8939-4f17d0364a0b.jpg", desc: "Cozy sweater with sustainable fibers." },
   { id: "p6", title: "Everyday Denim", price: 55.00, img: "https://img.kwcdn.com/product/fancy/d84a8a8d-da2d-4c31-ac94-6e9f0643c8f0.jpg", desc: "Classic slim-fit denim with stretch." },
 ];
+
 let CART = JSON.parse(localStorage.getItem("hinna_cart") || "[]");
+
 function saveCart(){ localStorage.setItem("hinna_cart", JSON.stringify(CART)); updateCartUI(); }
 function addToCart(productId, qty=1){
   const p = PRODUCTS.find(x=>x.id===productId); if(!p) return;
@@ -337,25 +445,34 @@ function addToCart(productId, qty=1){
   if(exist) exist.qty += Number(qty);
   else CART.push({ id:productId, qty: Number(qty), title:p.title, price:p.price, img:p.img });
   saveCart();
+  showToast(`${p.title} added to cart`);
 }
+
+/* render products */
 const productGrid = document.getElementById("productGrid");
-PRODUCTS.forEach((p, idx)=>{
-  const el = document.createElement("article");
-  el.className = "product-card fade-up";
-  el.innerHTML = `
-    <img loading="lazy" src="${p.img}" alt="${p.title}">
-    <div class="product-meta">
-      <h4>${p.title}</h4>
-      <div class="price">$${p.price.toFixed(2)}</div>
-      <div class="row">
-        <button data-id="${p.id}" class="viewBtn" style="padding:8px 12px;border-radius:8px;border:1px solid #eee;background:#fff;cursor:pointer">View</button>
-        <button data-id="${p.id}" class="quickAdd" style="padding:8px 12px;border-radius:8px;border:none;background:var(--gold);font-weight:700;cursor:pointer">Add</button>
+function renderProducts(){
+  productGrid.innerHTML = "";
+  PRODUCTS.forEach((p, idx)=>{
+    const el = document.createElement("article");
+    el.className = "product-card fade-up";
+    el.innerHTML = `
+      <div class="media"><img loading="lazy" src="${p.img}" alt="${p.title}"></div>
+      <div class="product-meta">
+        <h4>${p.title}</h4>
+        <div class="price">$${p.price.toFixed(2)}</div>
+        <div class="row">
+          <button data-id="${p.id}" class="viewBtn" style="padding:8px 12px;border-radius:8px;border:1px solid rgba(21,18,16,0.04);background:#fff;cursor:pointer">View</button>
+          <button data-id="${p.id}" class="quickAdd" style="padding:8px 12px;border-radius:8px;border:none;background:var(--gold);font-weight:700;cursor:pointer">Add</button>
+        </div>
       </div>
-    </div>
-  `;
-  productGrid.appendChild(el);
-  setTimeout(()=> el.classList.add('show'), idx * 80);
-});
+    `;
+    productGrid.appendChild(el);
+    setTimeout(()=> el.classList.add('show'), idx * 60);
+  });
+}
+renderProducts();
+
+/* modal & drawer logic */
 const modal = document.getElementById("productModal");
 const closeModal = document.getElementById("closeModal");
 const modalImage = document.getElementById("modalImage");
@@ -364,12 +481,14 @@ const modalDesc = document.getElementById("modalDesc");
 const modalPrice = document.getElementById("modalPrice");
 const modalQty = document.getElementById("modalQty");
 let currentProduct = null;
+
 document.addEventListener("click", (e)=>{
   const v = e.target.closest(".viewBtn");
   if(v){ const id=v.dataset.id; openModal(id); }
   const q = e.target.closest(".quickAdd");
   if(q){ addToCart(q.dataset.id, 1); openDrawer(); }
 });
+
 function openModal(id){
   const p = PRODUCTS.find(x=>x.id===id); if(!p) return;
   currentProduct = p;
@@ -379,6 +498,7 @@ function openModal(id){
 }
 closeModal.addEventListener("click", ()=>{ modal.classList.remove("open"); modal.setAttribute("aria-hidden","true"); });
 modal.addEventListener("click", (e)=>{ if(e.target===modal) { closeModal.click(); } });
+
 document.getElementById("addToCart").addEventListener("click", ()=>{
   const q = Number(modalQty.value || 1);
   addToCart(currentProduct.id, q);
@@ -390,12 +510,15 @@ document.getElementById("buyNow").addEventListener("click", async ()=>{
   addToCart(currentProduct.id, q);
   await startRealCheckout();
 });
+
+/* drawer */
 const drawer = document.getElementById("cartDrawer");
 const openCartBtn = document.getElementById("openCart");
 const closeCartDrawer = document.getElementById("closeCartDrawer");
 openCartBtn.addEventListener("click", openDrawer); closeCartDrawer.addEventListener("click", closeDrawer);
 function openDrawer(){ drawer.classList.add("open"); drawer.setAttribute("aria-hidden","false"); updateCartUI(); }
 function closeDrawer(){ drawer.classList.remove("open"); drawer.setAttribute("aria-hidden","true"); }
+
 function updateCartUI(){
   const itemsEl = document.getElementById("cartItems");
   itemsEl.innerHTML = "";
@@ -404,7 +527,7 @@ function updateCartUI(){
     subtotal += item.price * item.qty;
     const row = document.createElement("div");
     row.className = "item";
-    row.style.display = "flex"; row.style.gap = "12px"; row.style.padding = "12px 0"; row.style.borderBottom = "1px solid #f1eeea";
+    row.style.display = "flex"; row.style.gap = "12px"; row.style.padding = "12px 0"; row.style.borderBottom = "1px solid rgba(21,18,16,0.03)";
     row.innerHTML = `
       <img src="${item.img}" alt="${item.title}" style="width:72px;height:72px;object-fit:cover;border-radius:8px">
       <div style="flex:1">
@@ -412,9 +535,9 @@ function updateCartUI(){
         <div class="muted" style="font-size:13px">$${item.price.toFixed(2)}</div>
         <div style="margin-top:8px;display:flex;align-items:center;gap:8px">
           <div style="display:flex;align-items:center;gap:8px">
-            <button class="dec" data-id="${item.id}" style="width:32px;height:32px;border-radius:6px;border:1px solid #ddd;background:#fff;cursor:pointer">−</button>
-            <span style="padding:6px 10px;border:1px solid #eee;border-radius:8px">${item.qty}</span>
-            <button class="inc" data-id="${item.id}" style="width:32px;height:32px;border-radius:6px;border:1px solid #ddd;background:#fff;cursor:pointer">+</button>
+            <button class="dec" data-id="${item.id}" style="width:32px;height:32px;border-radius:6px;border:1px solid rgba(21,18,16,0.06);background:#fff;cursor:pointer">−</button>
+            <span style="padding:6px 10px;border:1px solid rgba(21,18,16,0.04);border-radius:8px">${item.qty}</span>
+            <button class="inc" data-id="${item.id}" style="width:32px;height:32px;border-radius:6px;border:1px solid rgba(21,18,16,0.06);background:#fff;cursor:pointer">+</button>
           </div>
           <button style="margin-left:12px;background:none;border:none;color:#b00;cursor:pointer" class="remove" data-id="${item.id}">Remove</button>
         </div>
@@ -429,14 +552,17 @@ function updateCartUI(){
   itemsEl.querySelectorAll(".remove").forEach(b=>b.addEventListener("click", ()=>{ removeItem(b.dataset.id); }));
   localStorage.setItem("hinna_cart", JSON.stringify(CART));
 }
+
 function adjustQty(id, delta){
   const it = CART.find(i=>i.id===id); if(!it) return;
   it.qty = Math.max(1, it.qty + delta);
   saveCart();
 }
 function removeItem(id){ CART = CART.filter(i=>i.id!==id); saveCart(); }
+
 document.getElementById("checkoutMock").addEventListener("click", ()=>{ mockCheckout(); });
 document.getElementById("checkoutReal").addEventListener("click", ()=>{ startRealCheckout(); });
+
 function mockCheckout(){
   if(CART.length===0){ alert("Your cart is empty"); return; }
   const items = CART.map(i=>`${i.qty}× ${i.title}`).join("\n");
@@ -465,20 +591,106 @@ async function startRealCheckout(){
     if(confirm("Real checkout server not available. Do you want to run a mock checkout instead?")) mockCheckout();
   }
 }
+
+/* INITIALIZE UI */
 document.addEventListener('DOMContentLoaded', ()=>{
   CART = JSON.parse(localStorage.getItem("hinna_cart") || "[]");
   updateCartUI();
-  document.querySelectorAll('.product-card').forEach((c, idx)=>{
-    const img = c.querySelector('img');
+  // make images clickable to open modal
+  document.querySelectorAll('.product-card .media img').forEach((img, idx)=>{
     img.addEventListener('click', ()=> openModal(PRODUCTS[idx].id));
+    img.style.cursor = "pointer";
   });
 });
+
+/* SCROLL NAV behavior */
+const topNav = document.getElementById('topNav');
+window.addEventListener('scroll', ()=>{
+  if(window.scrollY > 24) topNav.classList.add('solid'); else topNav.classList.remove('solid');
+});
+
+/* small toast */
+function showToast(msg){
+  const t = document.createElement('div');
+  t.textContent = msg;
+  t.style.position='fixed';t.style.right='18px';t.style.bottom='18px';t.style.padding='12px 16px';
+  t.style.background='rgba(21,18,16,0.9)';t.style.color='#fff';t.style.borderRadius='10px';t.style.zIndex=9999;
+  document.body.appendChild(t);
+  setTimeout(()=> t.style.opacity=0,2200);
+  setTimeout(()=> t.remove(),2600);
+}
+
+/* NAV: simple menu for small screens */
+document.getElementById('openMenu').addEventListener('click', (e)=>{
+  const el = e.currentTarget;
+  const expanded = el.getAttribute('aria-expanded') === 'true';
+  el.setAttribute('aria-expanded', String(!expanded));
+  if(!expanded){
+    // show a simple overlay menu
+    const overlay = document.createElement('div');
+    overlay.id = 'mobileMenu';
+    overlay.style.position='fixed';overlay.style.inset=0;overlay.style.background='rgba(11,8,6,0.8)';overlay.style.zIndex=1400;
+    overlay.innerHTML = `
+      <div style="max-width:420px;margin:120px auto;background:var(--panel);padding:28px;border-radius:12px;text-align:center;">
+        <button id="closeMobile" style="float:right;background:none;border:none;font-size:20px">✕</button>
+        <nav style="display:flex;flex-direction:column;gap:12px;margin-top:6px">
+          <a href="#home" onclick="closeMobileMenu(event,'home')">Home</a>
+          <a href="#collection" onclick="closeMobileMenu(event,'collection')">Collection</a>
+          <a href="#editorial" onclick="closeMobileMenu(event,'editorial')">Editorial</a>
+          <a href="#about" onclick="closeMobileMenu(event,'about')">About</a>
+          <a href="#contact" onclick="closeMobileMenu(event,'contact')">Contact</a>
+        </nav>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+    document.getElementById('closeMobile').addEventListener('click', ()=>{ document.getElementById('mobileMenu')?.remove(); el.setAttribute('aria-expanded','false'); });
+  } else {
+    document.getElementById('mobileMenu')?.remove();
+  }
+});
+function closeMobileMenu(e,id){ if(e) e.preventDefault(); document.getElementById('mobileMenu')?.remove(); document.getElementById('openMenu').setAttribute('aria-expanded','false'); scrollToSection(null, id); }
+
+/* SMALL: smooth scroll helper */
 function scrollToSection(evt, id){
   if(evt) evt.preventDefault();
   const el = document.getElementById(id);
   if(!el) return;
   el.scrollIntoView({behavior:'smooth',block:'start'});
 }
+
+/* TESTIMONIALS: simple slider */
+const TESTIMONIALS = [
+  { text: "“The quality is unmatched. Every piece feels tailored just for me.”", by: "Maya S." },
+  { text: "“Subtle, refined, and comfortable — I wear their pieces constantly.”", by: "Lina R." },
+  { text: "“A small studio with incredible attention to detail.”", by: "Press: Atelier Mag" }
+];
+let tIndex = 0;
+const testEl = document.getElementById('testimonialSlide');
+function renderTestimonial(i){
+  const t = TESTIMONIALS[i];
+  testEl.innerHTML = `<p>${t.text}</p><cite>— ${t.by}</cite>`;
+}
+renderTestimonial(0);
+document.getElementById('prevTest').addEventListener('click', ()=>{ tIndex = (tIndex - 1 + TESTIMONIALS.length) % TESTIMONIALS.length; renderTestimonial(tIndex);});
+document.getElementById('nextTest').addEventListener('click', ()=>{ tIndex = (tIndex + 1) % TESTIMONIALS.length; renderTestimonial(tIndex);});
+
+/* accessibility: close drawer with escape */
+document.addEventListener('keydown', (e)=>{
+  if(e.key === 'Escape'){
+    modal.classList.remove('open'); drawer.classList.remove('open'); document.getElementById('mobileMenu')?.remove();
+  }
+});
+
+/* small intersection for fade up effect */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(ent=>{
+    if(ent.isIntersecting) ent.target.classList.add('show'); else ent.target.classList.remove('show');
+  });
+},{threshold:0.12});
+document.querySelectorAll('.fade-up').forEach(el=> io.observe(el));
+
+/* initial toast note (optional) */
+showToast('Design updated — Luxury boutique aesthetic applied.');
 </script>
 </body>
 </html>
