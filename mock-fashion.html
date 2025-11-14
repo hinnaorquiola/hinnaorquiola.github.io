@@ -11,6 +11,7 @@
     :root{
       --bg: #f9f7f3;           /* cream tone requested */
       --panel: #ffffff;
+      --alt-bg: #f3efe7; /* soft section background used for collection & about */
       --gold: #bfa14a;         /* matte gold accent */
       --gold-600: #c7b27a;
       --muted: #6f6a63;
@@ -21,7 +22,7 @@
       --elev: 0 14px 40px rgba(21,18,16,0.06);
     }
     *{box-sizing:border-box}
-    html,body{height:100%}
+    html,body{height:100%;overflow-x:hidden;} /* prevent horizontal scroll */
     body{
       margin:0;
       font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
@@ -45,7 +46,7 @@
       background:transparent;padding:14px 0;transition:background var(--transition),box-shadow var(--transition),padding var(--transition);
       pointer-events:auto;
     }
-    nav.top.solid { background: linear-gradient(180deg, rgba(249,247,243,0.98), rgba(249,247,243,0.98)); box-shadow: 0 8px 30px rgba(21,18,16,0.06); padding:10px 0;}
+    nav.top.solid { background: linear-gradient(180deg, rgba(249,247,243,0.98), rgba(249,247,243,0.98)); box-shadow: 0 8px 30px rgba(21,18,16,0.06); padding:10px 0;backdrop-filter:blur(6px)}
     .nav-inner {width:100%;max-width:var(--max-width);display:flex;justify-content:space-between;align-items:center;padding:0 24px;gap:12px}
     .brand {display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--dark)}
     .brand .logo {
@@ -109,6 +110,9 @@
       font-family:"Playfair Display",serif;font-size:28px;margin:0 0 12px;color:var(--dark);letter-spacing:0.6px;
     }
     p.section-sub {color:var(--muted);margin:0 0 28px;max-width:820px}
+
+    /* *** ALT SECTION BACKGROUND *** */
+    section.alt-bg{background:var(--alt-bg);border-top:1px solid rgba(21,18,16,0.02)}
 
     /* LOOKBOOK / PRODUCTS */
     .lookbook {
@@ -184,6 +188,10 @@
 
     footer{padding:42px 0;text-align:center;color:var(--muted);font-size:0.95rem}
 
+    /* footer editorial image fix */
+    .footer-image-wrapper{width:100%;display:flex;justify-content:flex-end;margin:0;padding:0;overflow:hidden}
+    .footer-image-wrapper img{width:420px;max-width:45%;object-fit:cover;display:block;border-top-left-radius:18px}
+
     /* RESPONSIVE */
     @media (max-width:1024px){
       .editorial{grid-template-columns:repeat(2,1fr)}
@@ -197,6 +205,7 @@
       header.site-head{height:74vh}
       nav .nav-inner{padding:0 12px}
       .nav-links{display:none}
+      .footer-image-wrapper img{max-width:55%}
     }
     /* focus */
     button:focus, a:focus, input:focus {outline:3px solid rgba(191,161,74,0.12);outline-offset:2px}
@@ -246,8 +255,8 @@
   </header>
 
   <main>
-    <!-- COLLECTION -->
-    <section id="collection" aria-labelledby="collectionTitle">
+    <!-- COLLECTION (soft background applied) -->
+    <section id="collection" class="alt-bg" aria-labelledby="collectionTitle">
       <div class="section-inner site">
         <header style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:18px;flex-wrap:wrap">
           <div>
@@ -261,7 +270,7 @@
       </div>
     </section>
 
-    <!-- EDITORIAL PORTRAITS -->
+    <!-- EDITORIAL PORTRAITS (kept clean white) -->
     <section id="editorial" aria-labelledby="editorialTitle">
       <div class="section-inner site">
         <div style="display:flex;justify-content:space-between;align-items:center;gap:24px;margin-bottom:18px;flex-wrap:wrap">
@@ -281,8 +290,8 @@
       </div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about" aria-labelledby="aboutTitle">
+    <!-- ABOUT (soft background applied) -->
+    <section id="about" class="alt-bg" aria-labelledby="aboutTitle">
       <div class="section-inner site">
         <div style="display:flex;justify-content:space-between;align-items:center;gap:24px;margin-bottom:28px;flex-wrap:wrap">
           <div>
@@ -390,9 +399,10 @@
       </div>
     </div>
   </footer>
-  <div class="footer-image-wrapper" style="width:100%;display:flex;justify-content:flex-end;margin:0;padding:0;">
-  <img src="https://hinnaorquiola.github.io/images/shop now.webp" alt="Footer Editorial Image" style="width:420px;max-width:45%;object-fit:cover;display:block;border-top-left-radius:18px;">
-</div>
+
+  <div class="footer-image-wrapper" aria-hidden="true">
+    <img src="https://hinnaorquiola.github.io/images/shop now.webp" alt="Footer Editorial Image">
+  </div>
 
   <!-- PRODUCT MODAL -->
   <div class="modal" id="productModal" aria-hidden="true">
@@ -571,9 +581,17 @@ document.getElementById("checkoutReal").addEventListener("click", ()=>{ startRea
 
 function mockCheckout(){
   if(CART.length===0){ alert("Your cart is empty"); return; }
-  const items = CART.map(i=>`${i.qty}× ${i.title}`).join("\n");
+  const items = CART.map(i=>`${i.qty}× ${i.title}`).join("
+");
   const total = CART.reduce((s,i)=>s+i.qty*i.price,0).toFixed(2);
-  if(confirm(`MOCK CHECKOUT\n\nItems:\n${items}\n\nTotal: $${total}\n\nSimulate successful payment?`)) {
+  if(confirm(`MOCK CHECKOUT
+
+Items:
+${items}
+
+Total: $${total}
+
+Simulate successful payment?`)) {
     CART = []; localStorage.setItem("hinna_cart","[]"); updateCartUI(); alert("Payment simulated. Thank you!");
     closeDrawer();
   }
