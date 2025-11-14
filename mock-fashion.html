@@ -141,12 +141,22 @@
     grid-template-columns: 1fr !important;
   }
 
+  /* Order adjustments */
   #contact .site > div:nth-child(2) {
     order: 2;
   }
 
   #contact .site > div:nth-child(1) {
     order: 1;
+  }
+
+  /* Center ONLY the testimonial card contents */
+  #contact .site .testimonial-card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;   /* centers avatar, stars, text */
+    justify-content: center;
   }
 }
 
