@@ -135,6 +135,11 @@
     .cta{background:var(--forest-green);color:#fff;padding:40px 20px;border-radius:12px;text-align:center}
     .cta a{display:inline-block;margin-top:12px;padding:12px 18px;background:var(--accent);color:#fff;border-radius:8px;}
 
+    /* form styles */
+    form .form-row{display:grid;grid-template-columns:1fr;gap:12px}
+    label{font-size:0.95rem}
+    input,textarea,select{padding:10px;border-radius:8px;border:1px solid #ddd;width:100%}
+
     /* BOOKING WIZARD */
     #wizard{background:#fff;padding:20px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08)}
     .step{display:none}
@@ -335,23 +340,23 @@
   <div class="announcement container" style="background:var(--forest-green);color:#fff;padding:14px;border-radius:8px;text-align:center;font-weight:600">🌿 Limited Offer: Get 10% off all cabin bookings this month!</div>
 
   <!-- CONTACT -->
-  <section class="contact container" id="contact">
-    <h2>Contact Us</h2>
-    <form style="margin-top:18px;background:#fff;padding:18px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);">
-      <div>
-        <label>Full name</label>
-        <input type="text" placeholder="Full Name" required>
-        <label>Email address</label>
-        <input type="email" placeholder="Email Address" required>
-        <label>Your message</label>
-        <textarea placeholder="Your Message" rows="5" required></textarea>
-      </div>
-      <div style="margin-top:10px;display:flex;gap:8px;justify-content:flex-end">
-        <button type="reset" class="btn ghost">Reset</button>
-        <button type="submit" class="btn primary">Send Message</button>
-      </div>
-    </form>
-  </section>
+  <section class="contact container" id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact Us</h2>
+      <form action="#" method="post" onsubmit="return false;" style="margin-top:18px;background:#fff;padding:18px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);">
+        <div class="form-row">
+          <label for="name">Full name</label>
+          <input id="name" name="name" type="text" placeholder="Full Name" required>
+          <label for="email">Email address</label>
+          <input id="email" name="email" type="email" placeholder="Email Address" required>
+          <label for="message">Your message</label>
+          <textarea id="message" name="message" placeholder="Your Message" required rows="5"></textarea>
+        </div>
+        <div style="margin-top:10px;display:flex;gap:8px;justify-content:flex-end">
+          <button type="reset" class="btn ghost">Reset</button>
+          <button type="submit" class="btn primary">Send Message</button>
+        </div>
+      </form>
+    </section>
 
   <!-- MEALS -->
   <section class="meals container">
@@ -372,56 +377,55 @@
     </div>
   </section>
 
-  <!-- BOOKING WIZARD -->
-  <section class="booking-wizard container" id="booking">
-    <h2>Book Your Stay</h2>
-    <div id="wizard" style="margin-top:18px">
+  <section class="booking-wizard container" id="booking" aria-labelledby="booking-heading">
+      <h2 id="booking-heading">Book Your Stay</h2>
+      <div id="wizard" style="margin-top:18px">
+        <div class="step active" data-step="1">
+          <h3>Step 1: Guest Information</h3>
+          <label for="guest-name">Full name</label>
+          <input id="guest-name" type="text" required>
+          <label for="guest-email">Email address</label>
+          <input id="guest-email" type="email" required>
+          <div style="margin-top:12px;text-align:right"><button class="btn primary" type="button" data-action="next">Next →</button></div>
+        </div>
 
-      <div class="step active" data-step="1">
-        <h3>Step 1: Guest Information</h3>
-        <label>Full name</label>
-        <input id="guest-name" type="text" required>
-        <label>Email address</label>
-        <input id="guest-email" type="email" required>
-        <div style="margin-top:12px;text-align:right"><button class="btn primary" data-action="next">Next →</button></div>
-      </div>
+        <div class="step" data-step="2">
+          <h3>Step 2: Select Dates</h3>
+          <label for="checkin">Check-in</label>
+          <input id="checkin" type="date" required>
+          <label for="checkout">Check-out</label>
+          <input id="checkout" type="date" required>
+          <div style="margin-top:12px;display:flex;justify-content:space-between">
+            <button class="btn ghost" type="button" data-action="back">← Back</button>
+            <button class="btn primary" type="button" data-action="next">Next →</button>
+          </div>
+        </div>
 
-      <div class="step" data-step="2">
-        <h3>Step 2: Select Dates</h3>
-        <label>Check-in</label>
-        <input id="checkin" type="date">
-        <label>Check-out</label>
-        <input id="checkout" type="date">
-        <div style="margin-top:12px;display:flex;justify-content:space-between">
-          <button class="btn ghost" data-action="back">← Back</button>
-          <button class="btn primary" data-action="next">Next →</button>
+        <div class="step" data-step="3">
+          <h3>Step 3: Cabin Type</h3>
+          <label for="cabin">Cabin</label>
+          <select id="cabin" required>
+            <option value="" disabled selected>Select Cabin Type</option>
+            <option value="standard">Standard Cabin</option>
+            <option value="deluxe">Deluxe Cabin</option>
+            <option value="family">Family Cabin</option>
+          </select>
+          <div style="margin-top:12px;display:flex;justify-content:space-between">
+            <button class="btn ghost" type="button" data-action="back">← Back</button>
+            <button class="btn primary" type="button" data-action="next">Next →</button>
+          </div>
+        </div>
+
+        <div class="step" data-step="4">
+          <h3>Step 4: Confirm Booking</h3>
+          <p id="summary">Review your details and confirm your stay.</p>
+          <div style="margin-top:12px;display:flex;justify-content:space-between">
+            <button class="btn ghost" type="button" data-action="back">← Back</button>
+            <button class="btn primary" type="button" id="confirm">Confirm Booking</button>
+          </div>
         </div>
       </div>
-
-      <div class="step" data-step="3">
-        <h3>Step 3: Cabin Type</h3>
-        <select id="cabin" required>
-          <option value="" disabled selected>Select Cabin Type</option>
-          <option value="standard">Standard Cabin</option>
-          <option value="deluxe">Deluxe Cabin</option>
-          <option value="family">Family Cabin</option>
-        </select>
-        <div style="margin-top:12px;display:flex;justify-content:space-between">
-          <button class="btn ghost" data-action="back">← Back</button>
-          <button class="btn primary" data-action="next">Next →</button>
-        </div>
-      </div>
-
-      <div class="step" data-step="4">
-        <h3>Step 4: Confirm Booking</h3>
-        <p id="summary"></p>
-        <div style="margin-top:12px;display:flex;justify-content:space-between">
-          <button class="btn ghost" data-action="back">← Back</button>
-          <button class="btn primary" id="confirm">Confirm Booking</button>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
   <!-- GALLERY -->
   <section class="gallery container">
