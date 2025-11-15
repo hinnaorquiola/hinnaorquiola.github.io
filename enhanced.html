@@ -322,6 +322,26 @@ body {
     text-align:center;
   }
 }
+    /* Make sure the container doesn’t overflow when cat image overflows */
+#pricing .container {
+  position: relative;
+}
+
+/* Responsive: On mobile, stack the content */
+@media (max-width: 880px) {
+  #pricing .container {
+    display: block;
+  }
+  #pricing .pricing-cat {
+    margin-bottom: 30px;
+    text-align: center;
+    position: static;
+  }
+  #pricing .pricing-cat img {
+    max-width: 90%;
+    position: static;
+  }
+}
     
   </style>
 </head>
@@ -624,7 +644,10 @@ body {
       <br>Unlimited: <b>Custom</b>
 
     </div>
-
+ <!-- RIGHT: Cat Image -->
+    <div class="pricing-cat">
+      <img src="https://hinnaorquiola.github.io/images/cat%20peeking.png" alt="Peeking Cat">
+    </div>
   </div>
 </section>
 
