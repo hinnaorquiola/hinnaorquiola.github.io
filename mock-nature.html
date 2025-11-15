@@ -6,14 +6,15 @@
   <title>Whispering Pines Retreat — Nature Retreat</title>
   <meta name="description" content="Whispering Pines — nature retreats, cabins, mindfulness sessions and guided forest walks." />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
   <style>
     :root{--forest-green:#3a5a40;--light-green:#dfe8cc;--dark-green:#283618;--cream:#f9f9f7;--text-dark:#333;--accent:#8fbf88}
     *{box-sizing:border-box}
     html,body{height:100%}
     body{margin:0;font-family:'Poppins',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.6;scroll-behavior:smooth}
-    a{color:inherit}
+    a{color:inherit;text-decoration:none}
 
-    /* CLEAN + FIXED STICKY HEADER */
+    /* HEADER */
     header {
       position: sticky;
       top: 0;
@@ -24,29 +25,83 @@
       border-bottom: 1px solid #e6e6e6;
     }
 
-   .container{max-width:1100px;margin:0 auto;padding:0 20px}
+    .container{max-width:1100px;margin:0 auto;padding:0 20px}
 
-    /* accessible skip link */
-    .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
-    .skip-link:focus{left:10px;top:10px;width:auto;height:auto;padding:8px 12px;background:#000;color:#fff;border-radius:4px}
-
-    nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0;position:relative;}
-    .brand{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--dark-green);font-weight:600}
-    .nav-links{display:flex;gap:18px}
-    .nav-links a{padding:8px 10px;border-radius:6px;text-decoration:none;transition:background 0.2s}
-    .nav-links a:hover{background:var(--light-green)}
-
-    /* mobile menu */
-    .menu-btn{display:none;background:none;border:none;font-size:1.7rem;cursor:pointer}
-    @media(max-width:760px){
-      .nav-links{display: none;}
-      .nav-links.open{display:flex}
-      .nav-links a{padding:12px;border-radius:6px}
-      .menu-btn{display:block}
+    nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 0;
+      position:relative;
     }
-    .brand{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--dark-green)}
-    .nav-links{display:flex;gap:16px}
-    .nav-links a{padding:8px 10px;border-radius:6px;text-decoration:none}
+
+    .brand{
+      font-family:'Playfair Display',serif;
+      font-size:1.4rem;
+      font-weight:600;
+      color:var(--dark-green);
+    }
+
+    .menu-btn{
+      display:none;
+      background:none;
+      border:none;
+      font-size:2rem;
+      cursor:pointer;
+      color:var(--dark-green);
+    }
+
+    .nav-links{
+      display:flex;
+      gap:20px;
+      transition:all .3s ease;
+      align-items:center;
+    }
+
+    .nav-links a{
+      padding:8px 10px;
+      border-radius:6px;
+      transition:background .2s;
+    }
+
+    .nav-links a:hover{
+      background:var(--light-green);
+    }
+
+    /* MOBILE MENU */
+    @media(max-width:760px){
+      .menu-btn{
+        display:block;
+      }
+
+      .nav-links{
+        display:none;
+        position:absolute;
+        top:100%;
+        left:0;
+        width:100%;
+        flex-direction:column;
+        background:#fff;
+        padding:14px 0;
+        border-radius:0 0 12px 12px;
+        box-shadow:0 6px 18px rgba(0,0,0,0.12);
+      }
+
+      .nav-links.open{
+        display:flex;
+        animation:slideDown .25s ease-out;
+      }
+
+      @keyframes slideDown{
+        from{opacity:0;transform:translateY(-8px)}
+        to{opacity:1;transform:none}
+      }
+
+      .nav-links a{
+        width:100%;
+        padding:12px 20px;
+      }
+    }
 
     /* HERO */
     .hero{position:relative;overflow:hidden;color:#fff;text-align:center;padding:140px 20px;background:#222 url('https://images.pexels.com/photos/5197912/pexels-photo-5197912.jpeg') center/cover no-repeat}
@@ -55,34 +110,32 @@
     .hero h1{font-family:'Playfair Display',serif;font-size:2.6rem;margin:0 0 10px}
     .hero p{font-size:1.1rem;margin:0}
 
-    /* sections */
     section{padding:64px 0}
     h2{font-family:'Playfair Display',serif;color:var(--forest-green);font-size:1.9rem;margin:0 0 18px}
     .grid{display:grid;gap:20px}
 
-    /* offers */
+    /* OFFER CARDS */
     .offers{background:var(--light-green)}
     .offer-grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));max-width:1000px;margin:0 auto;padding:0 20px}
     .offer{background:#fff;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.08);overflow:hidden;display:flex;flex-direction:column}
     .offer img{width:100%;height:160px;object-fit:cover}
     .offer .body{padding:16px}
-    .offer h3{margin:0 0 8px}
 
-    /* testimonials */
+    /* TESTIMONIALS */
     .testimonial-grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));max-width:900px;margin:0 auto}
     .testimonial{background:#fff;border-left:6px solid var(--forest-green);padding:18px;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.06)}
 
-    /* faq */
+    /* FAQ */
     .faq-list{max-width:900px;margin:0 auto}
-    .faq-item{background:#fff;padding:16px;border-radius:10px;margin-bottom:10px;box-shadow:0 3px 8px rgba(0,0,0,0.05)}
+    .faq-item{background:#fff;padding:16px;border-radius:10px;margin-bottom:10px;box-shadow:0 3px 8px rgba(0,0,0,0.05);cursor:pointer}
     .faq-item h4{margin:0;display:flex;justify-content:space-between;align-items:center}
     .faq-item p{margin:8px 0 0;display:none}
 
-    /* cta */
+    /* CTA */
     .cta{background:var(--forest-green);color:#fff;padding:40px 20px;border-radius:12px;text-align:center}
-    .cta a{display:inline-block;margin-top:12px;padding:12px 18px;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none}
+    .cta a{display:inline-block;margin-top:12px;padding:12px 18px;background:var(--accent);color:#fff;border-radius:8px;}
 
-    /* booking wizard */
+    /* BOOKING WIZARD */
     #wizard{background:#fff;padding:20px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08)}
     .step{display:none}
     .step.active{display:block}
@@ -90,23 +143,7 @@
     .btn.primary{background:var(--forest-green);color:#fff}
     .btn.ghost{background:#eee}
 
-    /* responsive tweaks */
-    @media (min-width:900px){.hero h1{font-size:3.2rem}}
-    @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-
-    footer{background:#f0efe8;padding:30px 0;text-align:center;color:#555}
-
-    /* small improvements: parallax fallback for mobile */
-    .parallax{background-position:center;background-size:cover;background-repeat:no-repeat;border-radius:14px;height:320px;margin:48px 0}
-    @supports ((-webkit-overflow-scrolling:touch) or (touch-action:manipulation)){
-      .parallax{background-attachment:scroll}
-    }
-
-    /* form styles */
-    form .form-row{display:grid;grid-template-columns:1fr;gap:12px}
-    label{font-size:0.95rem}
-    input,textarea,select{padding:10px;border-radius:8px;border:1px solid #ddd;width:100%}
-      /* Video Parallax Fix */
+    /* VIDEO SECTION */
     .video-section {
       position: relative;
       height: 380px;
@@ -123,7 +160,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transform: translateZ(-1px) scale(2); /* creates parallax depth */
+      transform: translateZ(-1px) scale(2);
     }
 
     .overlay-content {
@@ -135,27 +172,29 @@
       text-shadow: 0 2px 8px rgba(0,0,0,0.6);
     }
 
-    /* Gallery slideshow */
+    /* GALLERY */
     .slideshow{position:relative;max-width:800px;margin:0 auto;border-radius:12px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,0.15)}
     .slides{position:relative;width:100%;height:420px}
     .slide{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.8s ease}
     .slide.active{opacity:1}
     .slideshow button{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.5);color:#fff;border:none;font-size:2rem;padding:6px 12px;border-radius:8px;cursor:pointer}
-    .slideshow .prev{left:10px}
-    .slideshow .next{right:10px}
-    .slideshow button:hover{background:rgba(0,0,0,0.7)}
+    .prev{left:10px}
+    .next{right:10px}
 
-    
+    footer{background:#f0efe8;padding:30px 0;text-align:center;color:#555}
+
+    @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
   </style>
 </head>
+
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header role="banner">
+
+<header>
   <div class="container">
     <nav>
       <div class="brand">Whispering Pines</div>
       <button class="menu-btn" aria-label="Menu">☰</button>
-      <div class="nav-links" aria-label="Primary">
+      <div class="nav-links">
         <a href="#offers">Offers</a>
         <a href="#pricing">Pricing</a>
         <a href="#booking">Book</a>
@@ -165,330 +204,334 @@
   </div>
 </header>
 
-  <main id="main">
-    <section class="hero" role="region" aria-label="Nature hero">
-      <div class="hero-content container">
-        <h1>Find Your Calm in Nature</h1>
-        <p>Breathe. Escape. Reconnect at Whispering Pines Retreat.</p>
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Nature hero">
+    <div class="hero-content container">
+      <h1>Find Your Calm in Nature</h1>
+      <p>Breathe. Escape. Reconnect at Whispering Pines Retreat.</p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about container">
+    <h2>Welcome to Whispering Pines Retreat</h2>
+    <p>Immerse yourself in nature’s embrace. Our retreat offers reflection, quiet, and renewal — surrounded by lush forests and soothing mountain winds.</p>
+  </section>
+
+  <!-- OFFERS -->
+  <section id="offers" class="offers">
+    <div class="container">
+      <h2>What We Offer</h2>
+      <div class="offer-grid grid">
+        <article class="offer">
+          <img src="https://images.pexels.com/photos/8968895/pexels-photo-8968895.jpeg">
+          <div class="body"><h3>Forest Trails</h3><p>Discover tranquil paths.</p></div>
+        </article>
+        <article class="offer">
+          <img src="https://images.pexels.com/photos/9004279/pexels-photo-9004279.jpeg">
+          <div class="body"><h3>Mindfulness Sessions</h3><p>Daily guided meditations.</p></div>
+        </article>
+        <article class="offer">
+          <img src="https://images.pexels.com/photos/17399352/pexels-photo-17399352.jpeg">
+          <div class="body"><h3>Cabin Stays</h3><p>Eco-friendly cabins.</p></div>
+        </article>
+        <article class="offer">
+          <img src="https://images.pexels.com/photos/5442659/pexels-photo-5442659.jpeg">
+          <div class="body"><h3>Yoga Deck</h3><p>Sunrise & sunset yoga.</p></div>
+        </article>
+        <article class="offer">
+          <img src="https://images.pexels.com/photos/10066114/pexels-photo-10066114.jpeg">
+          <div class="body"><h3>Bonfire Nights</h3><p>Stories & stargazing.</p></div>
+        </article>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="about container" aria-labelledby="about-heading">
-      <h2 id="about-heading">Welcome to Whispering Pines Retreat</h2>
-      <p>Immerse yourself in nature’s embrace. Our retreat offers reflection, quiet, and renewal — surrounded by lush forests and soothing mountain winds.</p>
-    </section>
+  <!-- TESTIMONIALS -->
+  <section class="testimonials container">
+    <h2>What Guests Say</h2>
+    <div class="testimonial-grid grid">
+      <blockquote class="testimonial">“The most peaceful weekend of my life.”</blockquote>
+      <blockquote class="testimonial">“The mindfulness sessions helped me reconnect.”</blockquote>
+      <blockquote class="testimonial">“Cozy cabins, lovely hosts!”</blockquote>
+    </div>
+  </section>
 
-    <section id="offers" class="offers" aria-labelledby="offers-heading">
-      <div class="container">
-        <h2 id="offers-heading">What We Offer</h2>
-        <div class="offer-grid grid">
-          <article class="offer" aria-labelledby="o1">
-            <img src="https://images.pexels.com/photos/8968895/pexels-photo-8968895.jpeg" alt="Forest Trails">
-            <div class="body"><h3 id="o1">Forest Trails</h3><p>Discover tranquil paths surrounded by evergreens and flowing streams.</p></div>
-          </article>
-
-          <article class="offer" aria-labelledby="o2">
-            <img src="https://images.pexels.com/photos/9004279/pexels-photo-9004279.jpeg" alt="Mindfulness Sessions">
-            <div class="body"><h3 id="o2">Mindfulness Sessions</h3><p>Daily guided meditations to restore your inner balance.</p></div>
-          </article>
-
-          <article class="offer" aria-labelledby="o3">
-            <img src="https://images.pexels.com/photos/17399352/pexels-photo-17399352.jpeg" alt="Cabin Stay">
-            <div class="body"><h3 id="o3">Cabin Stays</h3><p>Relax in eco-friendly cabins designed for peace and comfort.</p></div>
-          </article>
-         
-          <article class="offer" aria-labelledby="o4">
-            <img src="https://images.pexels.com/photos/5442659/pexels-photo-5442659.jpeg" alt="Yoga Deck">
-            <div class="body"><h3 id="o4">Outdoor Yoga Deck</h3><p>Stretch and unwind with sunrise and sunset yoga overlooking the forest.</p></div>
-            </article>
-
-          <article class="offer" aria-labelledby="o5">
-            <img src="https://images.pexels.com/photos/10066114/pexels-photo-10066114.jpeg" alt="Bonfire Nights">
-            <div class="body"><h3 id="o5">Bonfire Nights</h3><p>Relax by the fire with warm drinks, storytelling, and stargazing.</p></div>
-            </article>
-        </div>
+  <!-- FAQ -->
+  <section class="faq container">
+    <h2>FAQ</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h4>What should I bring? <span>+</span></h4>
+        <p>Comfortable shoes, warm clothes, and essentials.</p>
       </div>
-    </section>
-
-    <section class="testimonials container" aria-labelledby="testi">
-      <h2 id="testi">What Guests Say</h2>
-      <div class="testimonial-grid grid">
-        <blockquote class="testimonial">“The most peaceful weekend of my life. The trails were magical.”</blockquote>
-        <blockquote class="testimonial">“The mindfulness sessions helped me reconnect with myself.”</blockquote>
-        <blockquote class="testimonial">“Cozy cabins, beautiful nature, and lovely hosts!”</blockquote>
+      <div class="faq-item">
+        <h4>Are meals provided? <span>+</span></h4>
+        <p>Yes — all meals are organic and fresh.</p>
       </div>
-    </section>
-
-    <section class="faq container" aria-labelledby="faq-heading">
-      <h2 id="faq-heading">FAQ</h2>
-      <div class="faq-list">
-        <div class="faq-item" tabindex="0" aria-expanded="false">
-          <h4>What should I bring? <span aria-hidden>+</span></h4>
-          <p>Comfortable shoes, warm clothes, toiletries, and a peaceful heart.</p>
-        </div>
-        <div class="faq-item" tabindex="0" aria-expanded="false">
-          <h4>Are meals provided? <span aria-hidden>+</span></h4>
-          <p>Yes — guests enjoy locally sourced organic meals (special diets accommodated with notice).</p>
-        </div>
-        <div class="faq-item" tabindex="0" aria-expanded="false">
-          <h4>Do cabins have Wi‑Fi? <span aria-hidden>+</span></h4>
-          <p>We offer optional Wi‑Fi in main areas and select cabins for guests who need connectivity.</p>
-        </div>
+      <div class="faq-item">
+        <h4>Do cabins have Wi-Fi? <span>+</span></h4>
+        <p>Available in main areas and selected cabins.</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="pricing container" id="pricing" aria-labelledby="pricing-heading">
-<h2 id="pricing-heading">Cabin Pricing</h2>
-<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:18px;gap:18px">
-<div style="background:#fff;padding:16px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.08);text-align:center">
-<img src="https://images.pexels.com/photos/26588439/pexels-photo-26588439.jpeg" alt="Standard Cabin" style="width:100%;height:150px;object-fit:cover;border-radius:8px;margin-bottom:10px;">
-<h3>Standard Cabin</h3>
-<p>Perfect for solo travelers.</p>
-<strong>$120 / night</strong>
-</div>
-<div style="background:#fff;padding:16px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.08);text-align:center">
-<img src="https://images.pexels.com/photos/15814340/pexels-photo-15814340.jpeg" alt="Deluxe Cabin" style="width:100%;height:150px;object-fit:cover;border-radius:8px;margin-bottom:10px;">
-<h3>Deluxe Cabin</h3>
-<p>Cozy cabin with fireplace.</p>
-<strong>$180 / night</strong>
-</div>
-<div style="background:#fff;padding:16px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.08);text-align:center">
-<img src="https://images.pexels.com/photos/8533865/pexels-photo-8533865.jpeg" alt="Family Cabin" style="width:100%;height:150px;object-fit:cover;border-radius:8px;margin-bottom:10px;">
-<h3>Family Cabin</h3>
-<p>Spacious cabin for groups.</p>
-<strong>$250 / night</strong>
-</div>
-</div>
-</section>
-
-    <section class="video-hero" aria-hidden="false">
-      <div class="video-section">
-        <video autoplay muted loop playsinline>
-          <source src="https://hinnaorquiola.github.io/naturevideo.mp4" type="video/mp4">
-        </video>
-        <div class="overlay-content">
-          <h2>Nature Surrounds You</h2>
-          <p>Experience tranquility in motion.</p>
-        </div>
+  <!-- PRICING -->
+  <section id="pricing" class="pricing container">
+    <h2>Cabin Pricing</h2>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px">
+      <div style="background:#fff;padding:16px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.08);text-align:center">
+        <img src="https://images.pexels.com/photos/26588439/pexels-photo-26588439.jpeg" style="width:100%;height:150px;object-fit:cover;border-radius:8px;margin-bottom:10px;">
+        <h3>Standard Cabin</h3><p>Perfect for solo travelers.</p><strong>$120 / night</strong>
       </div>
-    </section>
-
-    <section class="weather container" aria-labelledby="weather-heading">
-      <h2 id="weather-heading">Current Weather</h2>
-      <div id="weather-card" style="margin-top:16px;background:#fff;padding:14px;border-radius:12px;min-height:72px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,0.06)">Loading weather…</div>
-    </section>
-
-    <section class="schedule container" aria-labelledby="schedule-heading">
-      <h2 id="schedule-heading">Retreat Day Schedule</h2>
-      <div style="margin-top:18px;background:#fff;padding:16px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08)">
-        <ul style="list-style:none;padding:0;margin:0;line-height:1.8">
-          <li><strong>6:00 AM</strong> — Sunrise meditation</li>
-          <li><strong>7:30 AM</strong> — Organic breakfast</li>
-          <li><strong>9:00 AM</strong> — Guided forest walk</li>
-          <li><strong>12:00 PM</strong> — Lunch & rest</li>
-          <li><strong>2:00 PM</strong> — Breathwork session</li>
-          <li><strong>4:00 PM</strong> — Journaling by the river</li>
-          <li><strong>6:30 PM</strong> — Sunset bonfire gathering</li>
-        </ul>
+      <div style="background:#fff;padding:16px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.08);text-align:center">
+        <img src="https://images.pexels.com/photos/15814340/pexels-photo-15814340.jpeg" style="width:100%;height:150px;object-fit:cover;border-radius:8px;margin-bottom:10px;">
+        <h3>Deluxe Cabin</h3><p>Cozy cabin with fireplace.</p><strong>$180 / night</strong>
       </div>
-    </section>
+      <div style="background:#fff;padding:16px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.08);text-align:center">
+        <img src="https://images.pexels.com/photos/8533865/pexels-photo-8533865.jpeg" style="width:100%;height:150px;object-fit:cover;border-radius:8px;margin-bottom:10px;">
+        <h3>Family Cabin</h3><p>Spacious cabin for groups.</p><strong>$250 / night</strong>
+      </div>
+    </div>
+  </section>
 
-    <div class="announcement container" style="background:var(--forest-green);color:#fff;padding:14px;border-radius:8px;text-align:center;font-weight:600">🌿 Limited Offer: Get 10% off all cabin bookings this month!</div>
+  <!-- VIDEO PARALLAX -->
+  <section class="video-hero">
+    <div class="video-section">
+      <video autoplay muted loop playsinline>
+        <source src="https://hinnaorquiola.github.io/naturevideo.mp4" type="video/mp4">
+      </video>
+      <div class="overlay-content">
+        <h2>Nature Surrounds You</h2>
+        <p>Experience tranquility in motion.</p>
+      </div>
+    </div>
+  </section>
 
-    <section class="contact container" id="contact" aria-labelledby="contact-heading">
-      <h2 id="contact-heading">Contact Us</h2>
-      <form action="#" method="post" onsubmit="return false;" style="margin-top:18px;background:#fff;padding:18px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);">
-        <div class="form-row">
-          <label for="name">Full name</label>
-          <input id="name" name="name" type="text" placeholder="Full Name" required>
-          <label for="email">Email address</label>
-          <input id="email" name="email" type="email" placeholder="Email Address" required>
-          <label for="message">Your message</label>
-          <textarea id="message" name="message" placeholder="Your Message" required rows="5"></textarea>
-        </div>
-        <div style="margin-top:10px;display:flex;gap:8px;justify-content:flex-end">
-          <button type="reset" class="btn ghost">Reset</button>
-          <button type="submit" class="btn primary">Send Message</button>
-        </div>
-      </form>
-    </section>
+  <!-- WEATHER -->
+  <section class="weather container">
+    <h2>Current Weather</h2>
+    <div id="weather-card" style="margin-top:16px;background:#fff;padding:14px;border-radius:12px;min-height:72px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,0.06)">Loading weather…</div>
+  </section>
 
-    <section class="meals container" aria-labelledby="meals-heading">
-<h2 id="meals-heading">Organic Meal Menu</h2>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:18px">
-<div style="background:#fff;padding:14px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);text-align:center">
-<img src="https://images.pexels.com/photos/30018456/pexels-photo-30018456.jpeg" alt="Healthy Breakfast" style="width:100%;height:150px;object-fit:cover;border-radius:8px;margin-bottom:10px;">
-<h3>Breakfast</h3>
-<p>Fresh fruits, overnight oats, herbal teas.</p>
-</div>
-<div style="background:#fff;padding:14px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);text-align:center">
-<img src="https://images.pexels.com/photos/5182118/pexels-photo-5182118.jpeg" alt="Healthy Lunch" style="width:100%;height:150px;object-fit:cover;border-radius:8px;margin-bottom:10px;">
-<h3>Lunch</h3>
-<p>Farm-to-table bowls, roasted vegetables, soups.</p>
-</div>
-<div style="background:#fff;padding:14px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);text-align:center">
-<img src="https://cdn.pixabay.com/photo/2016/05/09/10/26/rice-1381146_1280.jpg" alt="Healthy Dinner" style="width:100%;height:150px;object-fit:cover;border-radius:8px;margin-bottom:10px;">
-<h3>Dinner</h3>
-<p>Warm meals, herbal broths, fresh greens.</p>
-</div>
-</div>
-</section>
+  <!-- SCHEDULE -->
+  <section class="schedule container">
+    <h2>Retreat Day Schedule</h2>
+    <div style="margin-top:18px;background:#fff;padding:16px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08)">
+      <ul style="list-style:none;padding:0;margin:0;line-height:1.8">
+        <li><strong>6:00 AM</strong> — Sunrise meditation</li>
+        <li><strong>7:30 AM</strong> — Organic breakfast</li>
+        <li><strong>9:00 AM</strong> — Guided forest walk</li>
+        <li><strong>12:00 PM</strong> — Lunch & rest</li>
+        <li><strong>2:00 PM</strong> — Breathwork session</li>
+        <li><strong>4:00 PM</strong> — Journaling by the river</li>
+        <li><strong>6:30 PM</strong> — Sunset bonfire gathering</li>
+      </ul>
+    </div>
+  </section>
 
-    <section class="booking-wizard container" id="booking" aria-labelledby="booking-heading">
-      <h2 id="booking-heading">Book Your Stay</h2>
-      <div id="wizard" style="margin-top:18px">
-        <div class="step active" data-step="1">
-          <h3>Step 1: Guest Information</h3>
-          <label for="guest-name">Full name</label>
-          <input id="guest-name" type="text" required>
-          <label for="guest-email">Email address</label>
-          <input id="guest-email" type="email" required>
-          <div style="margin-top:12px;text-align:right"><button class="btn primary" type="button" data-action="next">Next →</button></div>
-        </div>
+  <div class="announcement container" style="background:var(--forest-green);color:#fff;padding:14px;border-radius:8px;text-align:center;font-weight:600">🌿 Limited Offer: Get 10% off all cabin bookings this month!</div>
 
-        <div class="step" data-step="2">
-          <h3>Step 2: Select Dates</h3>
-          <label for="checkin">Check-in</label>
-          <input id="checkin" type="date" required>
-          <label for="checkout">Check-out</label>
-          <input id="checkout" type="date" required>
-          <div style="margin-top:12px;display:flex;justify-content:space-between">
-            <button class="btn ghost" type="button" data-action="back">← Back</button>
-            <button class="btn primary" type="button" data-action="next">Next →</button>
-          </div>
-        </div>
+  <!-- CONTACT -->
+  <section class="contact container" id="contact">
+    <h2>Contact Us</h2>
+    <form style="margin-top:18px;background:#fff;padding:18px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);">
+      <div>
+        <label>Full name</label>
+        <input type="text" placeholder="Full Name" required>
+        <label>Email address</label>
+        <input type="email" placeholder="Email Address" required>
+        <label>Your message</label>
+        <textarea placeholder="Your Message" rows="5" required></textarea>
+      </div>
+      <div style="margin-top:10px;display:flex;gap:8px;justify-content:flex-end">
+        <button type="reset" class="btn ghost">Reset</button>
+        <button type="submit" class="btn primary">Send Message</button>
+      </div>
+    </form>
+  </section>
 
-        <div class="step" data-step="3">
-          <h3>Step 3: Cabin Type</h3>
-          <label for="cabin">Cabin</label>
-          <select id="cabin" required>
-            <option value="" disabled selected>Select Cabin Type</option>
-            <option value="standard">Standard Cabin</option>
-            <option value="deluxe">Deluxe Cabin</option>
-            <option value="family">Family Cabin</option>
-          </select>
-          <div style="margin-top:12px;display:flex;justify-content:space-between">
-            <button class="btn ghost" type="button" data-action="back">← Back</button>
-            <button class="btn primary" type="button" data-action="next">Next →</button>
-          </div>
-        </div>
+  <!-- MEALS -->
+  <section class="meals container">
+    <h2>Organic Meal Menu</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:18px">
+      <div style="background:#fff;padding:14px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);text-align:center">
+        <img src="https://images.pexels.com/photos/30018456/pexels-photo-30018456.jpeg" style="width:100%;height:150px;object-fit:cover;border-radius:8px;margin-bottom:10px;">
+        <h3>Breakfast</h3><p>Fruits, oats, herbal teas.</p>
+      </div>
+      <div style="background:#fff;padding:14px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);text-align:center">
+        <img src="https://images.pexels.com/photos/5182118/pexels-photo-5182118.jpeg" style="width:100%;height:150px;object-fit:cover;border-radius:8px;margin-bottom:10px;">
+        <h3>Lunch</h3><p>Farm bowls & soups.</p>
+      </div>
+      <div style="background:#fff;padding:14px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);text-align:center">
+        <img src="https://cdn.pixabay.com/photo/2016/05/09/10/26/rice-1381146_1280.jpg" style="width:100%;height:150px;object-fit:cover;border-radius:8px;margin-bottom:10px;">
+        <h3>Dinner</h3><p>Warm meals & greens.</p>
+      </div>
+    </div>
+  </section>
 
-        <div class="step" data-step="4">
-          <h3>Step 4: Confirm Booking</h3>
-          <p id="summary">Review your details and confirm your stay.</p>
-          <div style="margin-top:12px;display:flex;justify-content:space-between">
-            <button class="btn ghost" type="button" data-action="back">← Back</button>
-            <button class="btn primary" type="button" id="confirm">Confirm Booking</button>
-          </div>
+  <!-- BOOKING WIZARD -->
+  <section class="booking-wizard container" id="booking">
+    <h2>Book Your Stay</h2>
+    <div id="wizard" style="margin-top:18px">
+
+      <div class="step active" data-step="1">
+        <h3>Step 1: Guest Information</h3>
+        <label>Full name</label>
+        <input id="guest-name" type="text" required>
+        <label>Email address</label>
+        <input id="guest-email" type="email" required>
+        <div style="margin-top:12px;text-align:right"><button class="btn primary" data-action="next">Next →</button></div>
+      </div>
+
+      <div class="step" data-step="2">
+        <h3>Step 2: Select Dates</h3>
+        <label>Check-in</label>
+        <input id="checkin" type="date">
+        <label>Check-out</label>
+        <input id="checkout" type="date">
+        <div style="margin-top:12px;display:flex;justify-content:space-between">
+          <button class="btn ghost" data-action="back">← Back</button>
+          <button class="btn primary" data-action="next">Next →</button>
         </div>
       </div>
-    </section>
 
-    
-    <!-- Slideshow Gallery Section -->
-    <section class="gallery container" aria-labelledby="gallery-heading">
-      <h2 id="gallery-heading">Photo Gallery</h2>
-      <div class="slideshow">
-        <div class="slides">
-          <img src="https://images.pexels.com/photos/2371892/pexels-photo-2371892.jpeg" alt="Forest River" class="slide active">
-          <img src="https://images.pexels.com/photos/30648385/pexels-photo-30648385.jpeg" alt="Foggy Forest" class="slide">
-          <img src="https://images.pexels.com/photos/1775391/pexels-photo-1775391.jpeg" alt="Cabin in Woods" class="slide">
-          <img src="https://images.pexels.com/photos/11015838/pexels-photo-11015838.jpeg" alt="Mountain Trees" class="slide">
-          <img src="https://images.pexels.com/photos/4378963/pexels-photo-4378963.jpeg" alt="Mountain Trees" class="slide">
-          <img src="https://images.pexels.com/photos/9160581/pexels-photo-9160581.jpeg" alt="Mountain Trees" class="slide">
-          <img src="https://images.pexels.com/photos/12446434/pexels-photo-12446434.jpeg" alt="Mountain Trees" class="slide">
+      <div class="step" data-step="3">
+        <h3>Step 3: Cabin Type</h3>
+        <select id="cabin" required>
+          <option value="" disabled selected>Select Cabin Type</option>
+          <option value="standard">Standard Cabin</option>
+          <option value="deluxe">Deluxe Cabin</option>
+          <option value="family">Family Cabin</option>
+        </select>
+        <div style="margin-top:12px;display:flex;justify-content:space-between">
+          <button class="btn ghost" data-action="back">← Back</button>
+          <button class="btn primary" data-action="next">Next →</button>
         </div>
-        <button class="prev" aria-label="Previous">❮</button>
-        <button class="next" aria-label="Next">❯</button>
       </div>
-    </section>
+
+      <div class="step" data-step="4">
+        <h3>Step 4: Confirm Booking</h3>
+        <p id="summary"></p>
+        <div style="margin-top:12px;display:flex;justify-content:space-between">
+          <button class="btn ghost" data-action="back">← Back</button>
+          <button class="btn primary" id="confirm">Confirm Booking</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery container">
+    <h2>Photo Gallery</h2>
+    <div class="slideshow">
+      <div class="slides">
+        <img src="https://images.pexels.com/photos/2371892/pexels-photo-2371892.jpeg" class="slide active">
+        <img src="https://images.pexels.com/photos/30648385/pexels-photo-30648385.jpeg" class="slide">
+        <img src="https://images.pexels.com/photos/1775391/pexels-photo-1775391.jpeg" class="slide">
+        <img src="https://images.pexels.com/photos/11015838/pexels-photo-11015838.jpeg" class="slide">
+        <img src="https://images.pexels.com/photos/4378963/pexels-photo-4378963.jpeg" class="slide">
+      </div>
+      <button class="prev">❮</button>
+      <button class="next">❯</button>
+    </div>
+  </section>
 
 </main>
 
-  <footer>
-    <div class="container">
-      <p>Enhanced mock design by <strong>Hinna Orquiola</strong></p>
-      <p><a href="#main">Back to Top ↑</a></p>
-    </div>
-  </footer>
+<footer>
+  <div class="container">
+    <p>Enhanced mock design by <strong>Hinna Orquiola</strong></p>
+    <p><a href="#main">Back to Top ↑</a></p>
+  </div>
+</footer>
 
-  <script>
-    // --- FAQ toggle accessible ---
-    document.querySelectorAll('.faq-item').forEach(item => {
-      item.addEventListener('click', () => toggleFAQ(item));
-      item.addEventListener('keydown', e => { if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleFAQ(item); }});
+<script>
+/* MOBILE MENU */
+const menuBtn = document.querySelector('.menu-btn');
+const navLinks = document.querySelector('.nav-links');
+
+menuBtn.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+  menuBtn.textContent = navLinks.classList.contains('open') ? "✖" : "☰";
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    menuBtn.textContent = "☰";
+  });
+});
+
+/* FAQ */
+document.querySelectorAll('.faq-item').forEach(item=>{
+  item.addEventListener('click',()=>{
+    const p=item.querySelector('p');
+    p.style.display=p.style.display==='block'?'none':'block';
+  });
+});
+
+/* BOOKING WIZARD */
+(function(){
+  const steps=[...document.querySelectorAll('#wizard .step')];
+  let i=0;
+  const show=()=>steps.forEach((s,idx)=>s.classList.toggle('active',idx===i));
+  document.querySelectorAll('[data-action]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const a=btn.getAttribute('data-action');
+      if(a==='next') i=Math.min(i+1,steps.length-1);
+      if(a==='back') i=Math.max(i-1,0);
+      show();
+      update();
     });
-    function toggleFAQ(item){
-      const expanded = item.getAttribute('aria-expanded') === 'true';
-      item.setAttribute('aria-expanded', !expanded);
-      const p = item.querySelector('p');
-      if(p) p.style.display = expanded ? 'none' : 'block';
-    }
+  });
+  function update(){
+    const name=document.getElementById('guest-name').value||'—';
+    const email=document.getElementById('guest-email').value||'—';
+    const inD=document.getElementById('checkin').value||'—';
+    const out=document.getElementById('checkout').value||'—';
+    const cabin=document.getElementById('cabin').value||'—';
+    document.getElementById('summary').textContent=`Name: ${name} | Email: ${email} | ${inD} → ${out} | Cabin: ${cabin}`;
+  }
+  document.getElementById('confirm').addEventListener('click',()=>{
+    alert('Booking confirmed — demo only.');
+  });
+})();
 
-    // --- booking wizard ---
-    (function(){
-      const steps = Array.from(document.querySelectorAll('#wizard .step'));
-      let idx = 0;
-      function show(i){ steps.forEach((s,si)=> s.classList.toggle('active', si===i)); }
-      document.querySelectorAll('[data-action]').forEach(btn=>{
-        btn.addEventListener('click', (e)=>{
-          const action = btn.getAttribute('data-action');
-          if(action === 'next'){ idx = Math.min(idx+1, steps.length-1); show(idx); updateSummary(); }
-          if(action === 'back'){ idx = Math.max(idx-1,0); show(idx); }
-        });
-      });
-      document.getElementById('confirm').addEventListener('click', ()=>{
-        alert('Booking confirmed — this is a demo. Integrate with your backend to complete booking.');
-      });
-      function updateSummary(){
-        const name = document.getElementById('guest-name').value || '—';
-        const email = document.getElementById('guest-email').value || '—';
-        const checkin = document.getElementById('checkin').value || '—';
-        const checkout = document.getElementById('checkout').value || '—';
-        const cabin = document.getElementById('cabin').value || '—';
-        document.getElementById('summary').textContent = `Name: ${name} | Email: ${email} | ${checkin} → ${checkout} | Cabin: ${cabin}`;
-      }
-    })();
+/* WEATHER */
+(function(){
+  const card=document.getElementById('weather-card');
+  const lat=14.5995,lon=120.9842;
+  fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`)
+  .then(r=>r.json())
+  .then(d=>{
+    const w=d.current_weather;
+    card.innerHTML=`<strong>${w.temperature}°C</strong> &nbsp; Wind: ${w.windspeed} km/h`;
+  })
+  .catch(()=>card.textContent='Weather unavailable');
+})();
 
-    // --- fetch weather (client-side) ---
-    (function(){
-      const card = document.getElementById('weather-card');
-      // Manila coordinates used in original file; update as needed
-      const lat = 14.5995, lon = 120.9842;
-      fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`)
-        .then(r => r.ok ? r.json() : Promise.reject(r.status))
-        .then(data => {
-          const w = data.current_weather;
-          if(!w) throw new Error('No weather data');
-          card.innerHTML = `<div style="text-align:center"><strong>${w.temperature}°C</strong><div style="opacity:0.85">Wind: ${w.windspeed} km/h | Direction: ${w.winddirection}°</div></div>`;
-        }).catch(err => { card.textContent = 'Weather unavailable.'; console.warn(err); });
-    })();
-  // mobile menu toggle
-    document.querySelector('.menu-btn').addEventListener('click',()=>{
-      document.querySelector('.nav-links').classList.toggle('open');
-    });
-  // slideshow gallery
-    (function(){
-      let index = 0;
-      const slides = document.querySelectorAll('.slide');
-      const show = (i)=>{
-        slides.forEach(s=>s.classList.remove('active'));
-        slides[i].classList.add('active');
-      };
-      document.querySelector('.next').addEventListener('click',()=>{
-        index = (index + 1) % slides.length;
-        show(index);
-      });
-      document.querySelector('.prev').addEventListener('click',()=>{
-        index = (index - 1 + slides.length) % slides.length;
-        show(index);
-      });
-      setInterval(()=>{
-        index = (index + 1) % slides.length;
-        show(index);
-      }, 6000);
-    })();
+/* SLIDESHOW */
+(function(){
+  let idx=0;
+  const slides=document.querySelectorAll('.slide');
+  const show=i=>{
+    slides.forEach(s=>s.classList.remove('active'));
+    slides[i].classList.add('active');
+  };
+  document.querySelector('.next').addEventListener('click',()=>{
+    idx=(idx+1)%slides.length;
+    show(idx);
+  });
+  document.querySelector('.prev').addEventListener('click',()=>{
+    idx=(idx-1+slides.length)%slides.length;
+    show(idx);
+  });
+  setInterval(()=>{idx=(idx+1)%slides.length;show(idx);},6000);
+})();
+</script>
 
-  </script>
 </body>
 </html>
