@@ -378,6 +378,26 @@ body {
     justify-content: center;
   }
 }
+    /* Prevent horizontal scrolling */
+html, body {
+  overflow-x: hidden !important;
+}
+
+/* Extra safety: stop specific sections from overflowing */
+section,
+.container,
+.gallery,
+.gallery-item,
+.shop-grid,
+.faq-icon {
+  overflow-x: hidden;
+}
+@media (max-width: 600px) {
+  .big-bulb {
+    max-height: 260px !important;
+    width: 70% !important;
+  }
+}
 
   </style>
 </head>
