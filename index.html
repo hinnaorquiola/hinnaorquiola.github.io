@@ -105,6 +105,113 @@
     .service-card:hover{transform:translateY(-8px)}
     .service-card:hover .card-bg{transform:scale(1.06)}
 
+  /* ====== PREMIUM PRICING CARDS ====== */
+    .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-bottom:50px}
+    .pricing-card{
+      position:relative;
+      background:linear-gradient(180deg,#fff,#fff);
+      padding:28px;border-radius:16px;
+      box-shadow:0 18px 44px rgba(14,12,12,0.08);
+      border:1px solid rgba(0,0,0,0.06);
+      overflow:hidden;
+      transition:transform .36s cubic-bezier(.2,.9,.2,1);
+    }
+    .pricing-card:hover{transform:translateY(-8px) scale(1.01)}
+    .pricing-card::before{
+      /* thin accent stripe */
+      content:"";
+      position:absolute;left:0;top:0;height:6px;width:100%;
+      background:linear-gradient(90deg,var(--gold),var(--gold-2));
+      box-shadow:0 6px 18px rgba(212,175,55,0.08);
+    }
+    .pricing-card h4{margin-top:2px;font-size:18px}
+    .pricing-card h2{font-family:'Playfair Display',serif;font-size:28px;margin:10px 0;color:var(--accent)}
+    .pricing-card ul{margin:10px 0 0;padding-left:18px;color:var(--mid)}
+    .pricing-card .btn{margin-top:14px}
+
+    /* ====== INDIVIDUAL SERVICES (HORIZONTAL GRID, ICONS) ====== */
+    .individual-services-row {
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:28px;
+      margin-top:28px;
+      align-items:start;
+    }
+    .service-col {
+      background:var(--card-bg);
+      border-radius:12px;
+      padding:18px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.04);
+      border:1px solid rgba(0,0,0,0.04);
+      transition:transform var(--transition);
+      min-height:120px;
+    }
+    .service-col:hover{transform:translateY(-6px)}
+    .service-head{display:flex;gap:12px;align-items:center;margin-bottom:10px}
+    .service-icon{
+      flex:0 0 46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(212,175,55,0.12),rgba(240,199,94,0.06));
+      border:1px solid rgba(212,175,55,0.08);font-size:20px;color:var(--gold);
+    }
+    .service-head h5{margin:0;font-size:16px}
+    .service-col p{color:var(--mid);margin:0;font-size:15px;line-height:1.6;margin-top:6px}
+
+    /* small responsive adjustments */
+    @media (max-width:1200px){ .services-row{grid-template-columns:repeat(2,1fr)} .individual-services-row{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:880px){
+      .nav-inner{padding:12px}
+      .menu-toggle{display:block}
+      nav.primary{display:none;position:fixed;inset:var(--header-h) 0 auto 0;flex-direction:column;background:rgba(0,0,0,0.95);padding:20px;gap:10px;z-index:1300}
+      nav.primary.open{display:flex}
+      .hero-inner{grid-template-columns:1fr;margin-top:8px;min-height:70vh;text-align:left}
+      .hero-right{text-align:center}
+      .hero-img{max-width:320px;margin:0 auto}
+      .services-row{grid-template-columns:1fr}
+      .about-book{grid-template-columns:1fr}
+      .contact-container{grid-template-columns:1fr}
+      .individual-services-row{grid-template-columns:1fr 1fr;gap:18px}
+    }
+    @media (max-width:480px){
+      .hero-inner{padding:18px;grid-template-columns:1fr}
+      .brand p{display:none}
+      h3.section-title{font-size:18px}
+      .gallery{grid-template-columns:repeat(1,1fr)}
+      .product-card{height:260px}
+      .floating-cta{right:12px;left:auto;bottom:16px;padding:10px 12px}
+      .blog-card{height:320px}
+    }
+
+    /* FAQ specific styles (Apple-style smooth animation) */
+    @keyframes floatIcon {
+      0%,100% { transform:translateY(0); }
+      50% { transform:translateY(-12px); }
+    }
+    .big-bulb {
+      height: 100%;
+      max-height: 520px;
+      width: auto;
+      animation: floatIcon 4s ease-in-out infinite;
+      display:block;
+      margin:0 auto;
+    }
+    #faq .faq-icon { display:flex;align-items:center;justify-content:center;height:100%; }
+
+    #faq .faq-list { margin-top:12px; }
+    .faq-item { margin-bottom:18px; border-radius:10px; overflow:hidden; border:1px solid rgba(0,0,0,0.04); background:linear-gradient(180deg,#fff,#fff); box-shadow:0 8px 26px rgba(12,12,12,0.04) }
+    .faq-question {
+      width:100%; text-align:left; background:none; border:0; padding:18px 20px; font-weight:700; cursor:pointer; display:flex;align-items:center;justify-content:space-between;
+    }
+    .faq-question .q-left { display:flex;gap:12px;align-items:center }
+    .faq-question .q-icon {
+      width:44px;height:44px;border-radius:10px;background:linear-gradient(180deg,rgba(212,175,55,0.12),rgba(240,199,94,0.06));
+      display:flex;align-items:center;justify-content:center;color:var(--gold);font-weight:700;border:1px solid rgba(212,175,55,0.06)
+    }
+    .faq-toggle { transition:transform .28s ease; transform-origin:center; color:var(--mid) }
+    .faq-answer {
+      padding:0 20px 18px 20px; color:var(--muted); font-size:15px; max-height:0; overflow:hidden; transition:max-height .45s cubic-bezier(.2,.9,.2,1);
+    }
+    .faq-item.active .faq-answer { max-height:400px; }
+    .faq-item.active .faq-toggle{ transform:rotate(180deg); color:var(--dark) }
+    
     /* ====== Gallery ====== */
     .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
     .gallery-item{position:relative;overflow:hidden;border-radius:12px;background:#0f0f0f;min-height:160px}
@@ -459,6 +566,175 @@ body {
         </div>
       </div>
     </section>
+
+    <!-- PRICING SECTION -->
+    <section id="pricing" class="fullwidth reveal" style="background:var(--cream);padding:80px 20px;">
+      <div class="container" style="max-width:1100px;">
+        <h3 class="section-title">Pricing</h3>
+        <p class="lead" style="max-width:700px;margin-bottom:30px;">
+          Fair & transparent pricing designed to match your project needs.
+        </p>
+
+        <!-- PREMIUM PRICING PACKAGES -->
+        <div class="pricing-grid">
+
+          <div class="pricing-card" aria-label="Branding Starter">
+            <h4>Branding Starter</h4>
+            <p class="text-muted">Best for authors & small businesses</p>
+            <h2>$180+</h2>
+            <div class="gold-divider"></div>
+            <ul>
+              <li>Logo + Color Palette</li>
+              <li>Font Pairing</li>
+              <li>2 Revisions</li>
+            </ul>
+            <a href="#contact" class="btn">Book Now</a>
+          </div>
+
+          <div class="pricing-card" aria-label="Website Essentials">
+            <h4>Website Essentials</h4>
+            <p class="text-muted">Your first professional website</p>
+            <h2>$350–$700</h2>
+            <div class="gold-divider"></div>
+            <ul>
+              <li>3–5 Pages</li>
+              <li>Mobile Responsive</li>
+              <li>SEO Friendly</li>
+            </ul>
+            <a href="#contact" class="btn">Book Now</a>
+          </div>
+
+          <div class="pricing-card" aria-label="Author Premium Bundle">
+            <h4>Author Premium Bundle</h4>
+            <p class="text-muted">Complete design package</p>
+            <h2>$600–$900</h2>
+            <div class="gold-divider"></div>
+            <ul>
+              <li>Book Cover Design</li>
+              <li>Author Website</li>
+              <li>Branding Kit</li>
+            </ul>
+            <a href="#contact" class="btn">Book Now</a>
+          </div>
+
+        </div>
+
+        <!-- GOLD DIVIDER -->
+        <div class="gold-divider" aria-hidden="true"></div>
+
+        <!-- DETAILED PRICE LIST — now horizontal with icons -->
+        <h3 class="section-title" style="margin-top:10px;">Individual Services</h3>
+
+        <div class="individual-services-row" role="list" aria-label="Individual services list">
+          <div class="service-col" role="listitem" aria-label="Book Cover Design">
+            <div class="service-head">
+              <div class="service-icon" aria-hidden="true">📘</div>
+              <h5>Book Cover Design</h5>
+            </div>
+            <p>Simple: <strong>$120–$180</strong><br>Standard: <strong>$180–$280</strong><br>Illustrated: <strong>$300–$450</strong></p>
+          </div>
+
+          <div class="service-col" role="listitem" aria-label="Website Design">
+            <div class="service-head">
+              <div class="service-icon" aria-hidden="true">💻</div>
+              <h5>Website Design</h5>
+            </div>
+            <p>1 Page: <strong>$180–$250</strong><br>3–5 Pages: <strong>$350–$700</strong><br>Full Website + Branding: <strong>$800–$1,200</strong></p>
+          </div>
+
+          <div class="service-col" role="listitem" aria-label="Graphic Design">
+            <div class="service-head">
+              <div class="service-icon" aria-hidden="true">🎨</div>
+              <h5>Graphic Design</h5>
+            </div>
+            <p>Logo: <strong>$80–$150</strong><br>Marketing Graphics: <strong>$30–$80</strong><br>Brand Kit: <strong>$180–$300</strong></p>
+          </div>
+
+          <div class="service-col" role="listitem" aria-label="Virtual Assistant">
+            <div class="service-head">
+              <div class="service-icon" aria-hidden="true">🗂</div>
+              <h5>Virtual Assistant (VA)</h5>
+            </div>
+            <p>Hourly: <strong>$8–$14/hr</strong><br>10 Hours: <strong>$90</strong><br>30 Hours: <strong>$270</strong><br>Unlimited: <strong>Custom</strong></p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="fullwidth reveal" style="padding:80px 20px;background:var(--card-bg);">
+      <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;">
+
+        <!-- LEFT: Animated Icon (bigger) -->
+        <div class="faq-icon" style="text-align:center;">
+          <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/bulb.gif" alt="Spark Icon" class="big-bulb">
+        </div>
+
+        <!-- RIGHT: Animated Accordion FAQ -->
+        <div>
+          <h3 class="section-title">Frequently Asked Questions</h3>
+
+          <div class="faq-list" role="list" aria-label="FAQ list">
+
+            <div class="faq-item" role="listitem">
+              <button class="faq-question" aria-expanded="false">
+                <span class="q-left">
+                  <span class="q-icon">❓</span>
+                  <span>How long does a project take?</span>
+                </span>
+                <span class="faq-toggle" aria-hidden="true">⌄</span>
+              </button>
+              <div class="faq-answer">
+                <p>Most designs take 2–10 business days depending on the scope. Larger brand or website projects may take several weeks; timelines are confirmed during discovery.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+              <button class="faq-question" aria-expanded="false">
+                <span class="q-left">
+                  <span class="q-icon">🔁</span>
+                  <span>How many revisions do I get?</span>
+                </span>
+                <span class="faq-toggle" aria-hidden="true">⌄</span>
+              </button>
+              <div class="faq-answer">
+                <p>You get 2–3 rounds of revisions depending on the package. Larger bundles include more revision rounds — we’ll clarify this when you book.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+              <button class="faq-question" aria-expanded="false">
+                <span class="q-left">
+                  <span class="q-icon">🗂️</span>
+                  <span>Do you provide editable files?</span>
+                </span>
+                <span class="faq-toggle" aria-hidden="true">⌄</span>
+              </button>
+              <div class="faq-answer">
+                <p>Yes — you receive high-resolution PNG/JPG plus editable source files (PSD/AI/SVG) upon request or as part of premium packages.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+              <button class="faq-question" aria-expanded="false">
+                <span class="q-left">
+                  <span class="q-icon">🎨</span>
+                  <span>Can you match a specific style?</span>
+                </span>
+                <span class="faq-toggle" aria-hidden="true">⌄</span>
+              </button>
+              <div class="faq-answer">
+                <p>Absolutely — mood boards and references help shape the visual direction. I’ll propose concepts that match your brief and goals.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
 
     <!-- PORTFOLIO -->
     <section id="portfolio" class="fullwidth reveal" aria-label="Portfolio">
@@ -846,6 +1122,28 @@ body {
       menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
 
+/* ====== Smooth 'Apple-style' FAQ Accordion ====== */
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const open = item.classList.contains('active');
+
+        // Close all items first (optional: keep only one open)
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('active');
+          i.querySelectorAll('.faq-question').forEach(q => q.setAttribute('aria-expanded','false'));
+        });
+
+        if(!open){
+          item.classList.add('active');
+          btn.setAttribute('aria-expanded','true');
+        } else {
+          item.classList.remove('active');
+          btn.setAttribute('aria-expanded','false');
+        }
+      });
+    });
+    
     /* ====== Navbar solid on scroll (throttled) ====== */
     const navInner = document.querySelector('.nav-inner');
     function handleNavScroll() {
