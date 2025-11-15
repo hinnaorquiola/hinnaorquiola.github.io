@@ -21,13 +21,29 @@
     .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
     .skip-link:focus{left:10px;top:10px;width:auto;height:auto;padding:8px 12px;background:#000;color:#fff;border-radius:4px}
 
-    nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+    nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0;position:relative;}
+    .brand{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--dark-green);font-weight:600}
+    .nav-links{display:flex;gap:18px}
+    .nav-links a{padding:8px 10px;border-radius:6px;text-decoration:none;transition:background 0.2s}
+    .nav-links a:hover{background:var(--light-green)}
+
+    /* sticky */
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.9);backdrop-filter:blur(8px);border-bottom:1px solid #e6e6e6}
+
+    /* mobile menu */
+    .menu-btn{display:none;background:none;border:none;font-size:1.7rem;cursor:pointer}
+    @media(max-width:760px){
+      .nav-links{position:absolute;top:100%;right:0;background:#fff;flex-direction:column;gap:0;width:200px;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.12);padding:10px;display:none}
+      .nav-links.open{display:flex}
+      .nav-links a{padding:12px;border-radius:6px}
+      .menu-btn{display:block}
+    }
     .brand{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--dark-green)}
     .nav-links{display:flex;gap:16px}
     .nav-links a{padding:8px 10px;border-radius:6px;text-decoration:none}
 
     /* HERO */
-    .hero{position:relative;overflow:hidden;color:#fff;text-align:center;padding:140px 20px;background:#222 url('https://images.pexels.com/photos/1671325/pexels-photo-1671325.jpeg') center/cover no-repeat}
+    .hero{position:relative;overflow:hidden;color:#fff;text-align:center;padding:140px 20px;background:#222 url('https://images.pexels.com/photos/5197912/pexels-photo-5197912.jpeg') center/cover no-repeat}
     .hero::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,0.45)}
     .hero-content{position:relative;z-index:2;max-width:820px;margin:0 auto;animation:fadeIn 800ms ease-out}
     .hero h1{font-family:'Playfair Display',serif;font-size:2.6rem;margin:0 0 10px}
@@ -91,6 +107,7 @@
   <header class="container" role="banner">
     <nav>
       <div class="brand">Whispering Pines</div>
+      <button class="menu-btn" aria-label="Menu">☰</button>
       <div class="nav-links" aria-label="Primary">
         <a href="#offers">Offers</a>
         <a href="#pricing">Pricing</a>
@@ -172,7 +189,7 @@
     </section>
 
     <section class="video-hero" aria-hidden="false">
-      <div class="parallax" style="background-image:url('https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg')"></div>
+      <div class="parallax" style="background-image:url('https://www.pexels.com/download/video/4328789/')"></div>
       <div style="position:relative;background:#000;color:#fff;text-align:center;padding:30px 20px;border-radius:12px;margin-top:18px">
         <h2 style="margin:0;font-family:'Playfair Display',serif">Nature Surrounds You</h2>
         <p style="opacity:0.9;margin:8px 0 0">Experience tranquility in motion.</p>
@@ -282,7 +299,7 @@
 
   <footer>
     <div class="container">
-      <p>Mock project for portfolio display <strong>Designed by Hinna Orquiola</strong></p>
+      <p>Enhanced mock design by <strong>Hinna Orquiola</strong></p>
       <p><a href="#main">Back to Top ↑</a></p>
     </div>
   </footer>
@@ -338,6 +355,10 @@
           card.innerHTML = `<div style="text-align:center"><strong>${w.temperature}°C</strong><div style="opacity:0.85">Wind: ${w.windspeed} km/h | Direction: ${w.winddirection}°</div></div>`;
         }).catch(err => { card.textContent = 'Weather unavailable.'; console.warn(err); });
     })();
+  // mobile menu toggle
+    document.querySelector('.menu-btn').addEventListener('click',()=>{
+      document.querySelector('.nav-links').classList.toggle('open');
+    });
   </script>
 </body>
 </html>
