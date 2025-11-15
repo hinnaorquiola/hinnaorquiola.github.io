@@ -139,11 +139,29 @@
     .slideshow .next{right:10px}
     .slideshow button:hover{background:rgba(0,0,0,0.7)}
 
+    .nav-links {
+  display: none;
+}
+
+.nav-links.open {
+  display: flex !important;
+}
+    header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #e6e6e6;
+}
+
   </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="container" role="banner">
+  <header role="banner">
+  <div class="container">
     <nav>
       <div class="brand">Whispering Pines</div>
       <button class="menu-btn" aria-label="Menu">☰</button>
@@ -154,7 +172,8 @@
         <a href="#contact">Contact</a>
       </div>
     </nav>
-  </header>
+  </div>
+</header>
 
   <main id="main">
     <section class="hero" role="region" aria-label="Nature hero">
