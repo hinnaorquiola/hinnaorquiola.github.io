@@ -13,6 +13,17 @@
     body{margin:0;font-family:'Poppins',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.6;scroll-behavior:smooth}
     a{color:inherit}
 
+    /* CLEAN + FIXED STICKY HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #e6e6e6;
+    }
+
     .container{max-width:1100px;margin:0 auto;padding:0 20px}
 
     /* accessible skip link */
@@ -28,7 +39,7 @@
     /* mobile menu */
     .menu-btn{display:none;background:none;border:none;font-size:1.7rem;cursor:pointer}
     @media(max-width:760px){
-      .nav-links{position:absolute;top:100%;right:0;background:#fff;flex-direction:column;gap:0;width:200px;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.12);padding:10px;display:none}
+      .nav-links{display: none;}
       .nav-links.open{display:flex}
       .nav-links a{padding:12px;border-radius:6px}
       .menu-btn{display:block}
@@ -134,23 +145,7 @@
     .slideshow .next{right:10px}
     .slideshow button:hover{background:rgba(0,0,0,0.7)}
 
-    .nav-links {
-  display: none;
-}
-
-.nav-links.open {
-  display: flex !important;
-}
-   header {
-  position: sticky;
-  top: 0;
-  z-index: 999;
-  width: 100%;
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid #e6e6e6;
-}
-
+    
   </style>
 </head>
 <body>
