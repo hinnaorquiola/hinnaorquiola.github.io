@@ -13,8 +13,6 @@
     body{margin:0;font-family:'Poppins',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.6;scroll-behavior:smooth}
     a{color:inherit}
 
-    /* layout */
-    header{background:linear-gradient(180deg, rgba(0,0,0,0.15), transparent)}
     .container{max-width:1100px;margin:0 auto;padding:0 20px}
 
     /* accessible skip link */
@@ -26,9 +24,6 @@
     .nav-links{display:flex;gap:18px}
     .nav-links a{padding:8px 10px;border-radius:6px;text-decoration:none;transition:background 0.2s}
     .nav-links a:hover{background:var(--light-green)}
-
-    /* sticky */
-    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.9);backdrop-filter:blur(8px);border-bottom:1px solid #e6e6e6}
 
     /* mobile menu */
     .menu-btn{display:none;background:none;border:none;font-size:1.7rem;cursor:pointer}
@@ -146,12 +141,12 @@
 .nav-links.open {
   display: flex !important;
 }
-    header {
+   header {
   position: sticky;
   top: 0;
-  width: 100%;
   z-index: 999;
-  background: rgba(255,255,255,0.9);
+  width: 100%;
+  background: rgba(255,255,255,0.95);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid #e6e6e6;
 }
