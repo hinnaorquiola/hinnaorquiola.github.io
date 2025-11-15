@@ -23,38 +23,37 @@
   <style>
     /* ====== Variables & Base ====== */
     :root{
-  --white:#ffffff;
-  --light:#faf7f2;
-  --gold:#d4af37;
-  --gold-2:#f0c75e;
-  --muted:#7a7a7a;
-  --mid:#444444;
-  --dark:#0c0c0c;
-  --black:#000000;
-  --gutter:clamp(12px,2.4vw,32px);
-  --header-h:70px;
-  --max-width:1200px;
-  --radius:16px;
-  --glass: rgba(255,255,255,0.06);
-  --transition:.28s ease;
-  --bg:var(--light);
-  --text:#111111;
-  --card-bg:#ffffff;
-  --accent:var(--gold);
-  --shadow: 0 8px 28px rgba(0,0,0,0.18);
-}
-
+      --white:#ffffff;
+      --light:#faf7f2;
+      --cream:#f9f7f3;
+      --gold:#d4af37;
+      --gold-2:#f0c75e;
+      --muted:#7a7a7a;
+      --mid:#444444;
+      --dark:#0c0c0c;
+      --black:#000000;
+      --gutter:clamp(12px,2.4vw,32px);
+      --header-h:70px;
+      --max-width:1200px;
+      --radius:16px;
+      --glass: rgba(255,255,255,0.06);
+      --transition:.32s cubic-bezier(.2,.9,.2,1);
+      --bg:var(--light);
+      --text:#111111;
+      --card-bg:#ffffff;
+      --accent:var(--gold);
+      --shadow: 0 8px 28px rgba(0,0,0,0.18);
+    }
 
     html{scroll-behavior:smooth;font-family:'Poppins',sans-serif}
     body{
       margin:0;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;
       overflow-x:hidden;line-height:1.45;
-      -webkit-font-smoothing:antialiased;
     }
     img{max-width:100%;height:auto;display:block}
     a{color:inherit;text-decoration:none;cursor:pointer}
     h1,h2,h3 { font-family:'Playfair Display', serif; margin:0; color:var(--text); }
-    h4 { font-family:'Playfair Display', serif; margin:0; /* no color here */ }
+    h4 { font-family:'Playfair Display', serif; margin:0; }
     p{margin:0}
 
     /* ====== Header ====== */
@@ -94,24 +93,10 @@
     .section-title{font-family:'Playfair Display',serif;font-size:clamp(20px,3vw,28px);margin:0 0 12px;color:var(--text);display:inline-block;position:relative}
     .section-title::after{content:"";display:block;height:4px;width:72px;border-radius:8px;background:linear-gradient(90deg,var(--gold),var(--gold-2));margin-top:8px}
 
+    /* subtle gold divider for premium feel */
+    .gold-divider { height:1px; background:linear-gradient(90deg,rgba(212,175,55,0.06), rgba(240,199,94,0.12)); margin:20px 0 28px;border-radius:2px; }
+
     p.lead{color:var(--mid);margin-top:6px}
-
-    .skill-bar {
-  width:100%;
-  height:10px;
-  background:#eee;
-  border-radius:6px;
-  overflow:hidden;
-}
-.skill-bar span {
-  display:block;
-  height:100%;
-  background:linear-gradient(90deg,var(--gold),var(--gold-2));
-  border-radius:6px;
-  animation:fillBar 1.6s ease forwards;
-}
-@keyframes fillBar { from {width:0;} to {width:100%;} }
-
 
     /* ====== Services grid ====== */
     .services-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -122,69 +107,58 @@
     .service-card:hover{transform:translateY(-8px)}
     .service-card:hover .card-bg{transform:scale(1.06)}
 
-    /* ====== Gallery ====== */
-    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-    .gallery-item{position:relative;overflow:hidden;border-radius:12px;background:#0f0f0f;min-height:160px}
-    .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .45s}
-    .gallery-item:hover img{transform:scale(1.03)}
-    .controls{position:absolute;inset:auto 12px 12px 12px;display:flex;justify-content:center;opacity:0;transform:translateY(8px);transition:opacity .22s,transform .22s}
-    .gallery-item:hover .controls{opacity:1;transform:none}
-    .control-btn{display:inline-block;padding:8px 12px;border-radius:8px;background:rgba(255, 215, 0, 1);border:1px solid rgba(255,255,255,0.14);color:#fff;font-weight:700;text-decoration:none}
-    .control-btn:hover{background:#d4af37;color:#000}
+    /* ====== PREMIUM PRICING CARDS ====== */
+    .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-bottom:50px}
+    .pricing-card{
+      position:relative;
+      background:linear-gradient(180deg,#fff,#fff);
+      padding:28px;border-radius:16px;
+      box-shadow:0 18px 44px rgba(14,12,12,0.08);
+      border:1px solid rgba(0,0,0,0.06);
+      overflow:hidden;
+      transition:transform .36s cubic-bezier(.2,.9,.2,1);
+    }
+    .pricing-card:hover{transform:translateY(-8px) scale(1.01)}
+    .pricing-card::before{
+      /* thin accent stripe */
+      content:"";
+      position:absolute;left:0;top:0;height:6px;width:100%;
+      background:linear-gradient(90deg,var(--gold),var(--gold-2));
+      box-shadow:0 6px 18px rgba(212,175,55,0.08);
+    }
+    .pricing-card h4{margin-top:2px;font-size:18px}
+    .pricing-card h2{font-family:'Playfair Display',serif;font-size:28px;margin:10px 0;color:var(--accent)}
+    .pricing-card ul{margin:10px 0 0;padding-left:18px;color:var(--mid)}
+    .pricing-card .btn{margin-top:14px}
 
-    /* ====== Lightbox ====== */
-    .lb-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.96);z-index:2200;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .28s}
-    .lb-overlay.open{opacity:1;pointer-events:auto}
-    .lb-content{max-width:1100px;width:100%;max-height:90vh;display:flex;align-items:center;justify-content:center}
-    .lb-content img{max-width:100%;max-height:90vh;border-radius:6px;box-shadow:0 18px 50px rgba(0,0,0,0.6)}
-    .lb-close,.lb-nav{position:absolute;background:transparent;border:0;color:#fff;font-size:26px;padding:12px;cursor:pointer}
-    .lb-close{right:18px;top:18px}
-    .lb-prev{left:18px;top:50%;transform:translateY(-50%)}
-    .lb-next{right:18px;top:50%;transform:translateY(-50%)}
+    /* ====== INDIVIDUAL SERVICES (HORIZONTAL GRID, ICONS) ====== */
+    .individual-services-row {
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:28px;
+      margin-top:28px;
+      align-items:start;
+    }
+    .service-col {
+      background:var(--card-bg);
+      border-radius:12px;
+      padding:18px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.04);
+      border:1px solid rgba(0,0,0,0.04);
+      transition:transform var(--transition);
+      min-height:120px;
+    }
+    .service-col:hover{transform:translateY(-6px)}
+    .service-head{display:flex;gap:12px;align-items:center;margin-bottom:10px}
+    .service-icon{
+      flex:0 0 46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(212,175,55,0.12),rgba(240,199,94,0.06));
+      border:1px solid rgba(212,175,55,0.08);font-size:20px;color:var(--gold);
+    }
+    .service-head h5{margin:0;font-size:16px}
+    .service-col p{color:var(--mid);margin:0;font-size:15px;line-height:1.6;margin-top:6px}
 
-    /* ====== Shop ====== */
-    .shop-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;max-width:var(--max-width);margin:18px auto 0}
-    .product-card{position:relative;height:320px;border-radius:12px;overflow:hidden;background-size:cover;background-position:center;border:1px solid rgba(0,0,0,0.06);box-shadow:0 6px 18px rgba(0,0,0,0.06);display:flex;align-items:flex-end}
-    .product-overlay{background:rgba(255,255,255,0.95);display:flex;justify-content:space-between;align-items:center;padding:14px}
-    .shop-btn {display:inline-block;padding:8px 12px;border-radius:8px;background:var(--gold);color:#000;font-weight:700;cursor:pointer;border:0}
-    .shop-btn:hover {background:#000;color:var(--gold)}
-
-    /* ====== Testimonials ====== */
-    .testimonials{position:relative;min-height:260px;padding:clamp(28px,6vw,64px);background:linear-gradient(180deg,#0d0d0d,#0a0a0a);color:#fff;overflow:hidden}
-    .testimonials .carousel{display:flex;gap:18px;align-items:center;justify-content:center;transition:transform .6s cubic-bezier(.2,.9,.2,1)}
-    .testimonial-card{min-width:280px;max-width:520px;background:rgba(255,255,255,0.03);padding:24px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);text-align:left}
-    .testimonial-meta{margin-top:12px;color:var(--light);font-weight:600}
-    .carousel-controls{position:absolute;right:18px;top:50%;transform:translateY(-50%);display:flex;gap:8px;z-index:10}
-    .carousel-btn{background:rgba(255,255,255,0.06);border:0;padding:8px 10px;border-radius:8px;color:#fff;cursor:pointer}
-    .carousel-btn:hover{background:rgba(255,255,255,0.12)}
-
-    /* ====== About + Book ====== */
-    .about-book{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
-    .book-right{background:var(--card-bg);padding:24px;border-radius:16px;box-shadow:var(--shadow);text-align:center}
-
-    /* ====== Blog ====== */
-    .blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-    .blog-card{position:relative;overflow:hidden;border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,0.18);height:360px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff}
-    .blog-content{position:relative;z-index:2;padding:20px;display:flex;flex-direction:column;justify-content:flex-end;height:100%}
-    .blog-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.12),rgba(0,0,0,0.6));z-index:1}
-
-    /* ====== Contact ====== */
-    #contact{background:var(--card-bg);color:var(--text);padding:clamp(36px,6vw,72px) var(--gutter)}
-    .contact-container{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:32px}
-    .contact-right form{display:flex;flex-direction:column;gap:12px}
-    .contact-right input,.contact-right select,.contact-right textarea{padding:12px;border-radius:8px;border:1px solid rgba(0,0,0,0.08);background:var(--bg);color:var(--text)}
-    .submit-btn{background:var(--gold);color:#000;padding:12px;border-radius:8px;border:0;font-weight:700}
-
-    /* ====== Footer ====== */
-    footer{padding:28px var(--gutter);text-align:center;color:var(--muted);background:linear-gradient(180deg,var(--card-bg),transparent)}
-
-    /* ====== Utilities & Reveal ====== */
-    .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
-    .reveal.active{opacity:1;transform:none}
-    .floating-cta{position:fixed;right:20px;bottom:22px;background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#000;border-radius:999px;padding:12px 16px;box-shadow:0 12px 36px rgba(0,0,0,0.18);z-index:1400;font-weight:800;display:flex;gap:10px;align-items:center}
-
-    /* ====== Responsive ====== */
-    @media (max-width:1200px){.gallery{grid-template-columns:repeat(3,1fr)}.services-row{grid-template-columns:repeat(2,1fr)}}
+    /* small responsive adjustments */
+    @media (max-width:1200px){ .services-row{grid-template-columns:repeat(2,1fr)} .individual-services-row{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:880px){
       .nav-inner{padding:12px}
       .menu-toggle{display:block}
@@ -196,6 +170,7 @@
       .services-row{grid-template-columns:1fr}
       .about-book{grid-template-columns:1fr}
       .contact-container{grid-template-columns:1fr}
+      .individual-services-row{grid-template-columns:1fr 1fr;gap:18px}
     }
     @media (max-width:480px){
       .hero-inner{padding:18px;grid-template-columns:1fr}
@@ -207,174 +182,45 @@
       .blog-card{height:320px}
     }
 
-* {
-  max-width: 100%;
-  box-sizing: border-box;
-}
-body {
-  overflow-x: hidden;
-}
-    /* small polish */
-    .social-icons{display:flex;gap:12px;justify-content:center;align-items:center}
-    .social-icons a{display:inline-flex;width:40px;height:40px;align-items:center;justify-content:center;border-radius:8px;background:rgba(0,0,0,0.06)}
-    .hidden{display:none !important}
-    /* ==== RESPONSIVE DESIGN ==== */
-/* ✅ Improved mobile nav + hero layout */
-@media (max-width: 992px) {
-  .menu-toggle { display:block; }
-
-  nav.primary {
-    display: none;
-    flex-direction: column;
-    position: fixed;
-    inset: var(--header-h) 0 0 0;
-    background: rgba(0,0,0,0.95);
-    padding: 32px 0;
-    text-align: center;
-    gap: 18px;
-    height: calc(100vh - var(--header-h));
-    overflow-y: auto;
-  }
-
-  nav.primary.open {
-    display: flex;
-  }
-
-  .hero-inner {
-    grid-template-columns: 1fr;
-    min-height: auto;
-    margin-top: 0;
-    padding-top: 90px;
-    text-align: center;
-    row-gap: 24px;
-  }
-
-  .hero-img { 
-    max-width: 260px; 
-    width: 90%; 
-    margin: 0 auto;
-  }
-  .hero-cta {
-    justify-content: center;
-  }
-}
-
-/* Prevent layout overflow */
-.hero-inner,
-.hero,
-body {
-  overflow-x: hidden;
-}
-/* Fix Shop banner heading layout on mobile */
-@media (max-width: 640px) {
-  .shop-banner h2 {
-    flex-direction: column !important;
-    text-align: center !important;
-  }
-
-  .shop-banner h2 img {
-    margin-top: 8px;
-  }
-}
-    /* Center hero tagline only on tablet screens */
-@media (min-width: 768px) and (max-width: 1024px) {
-  .hero-left .tagline {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .hero-cta {
-    justify-content: center;
-  }
-}
-
+    /* FAQ specific styles (Apple-style smooth animation) */
     @keyframes floatIcon {
-  0%,100% { transform:translateY(0); }
-  50% { transform:translateY(-12px); }
-}
-
-.faq-item {
-  margin-bottom:16px;
-  border-bottom:1px solid rgba(0,0,0,0.1);
-}
-.faq-question {
-  width:100%;
-  text-align:left;
-  background:none;
-  border:0;
-  padding:12px 0;
-  font-weight:600;
-  cursor:pointer;
-}
-.faq-answer {
-  display:none;
-  padding:0 0 10px 0;
-  color:var(--muted);
-}
-.faq-item.active .faq-answer {
-  display:block;
-}
-
-@media(max-width:880px){
-  #faq .container {
-    grid-template-columns:1fr;
-    text-align:center;
-  }
-}
+      0%,100% { transform:translateY(0); }
+      50% { transform:translateY(-12px); }
+    }
     .big-bulb {
-  height: 100%;
-  max-height: 480px;   /* You can increase to 520px if you want */
-  width: auto;
-  animation: floatIcon 4s ease-in-out infinite;
-}
+      height: 100%;
+      max-height: 520px;
+      width: auto;
+      animation: floatIcon 4s ease-in-out infinite;
+      display:block;
+      margin:0 auto;
+    }
+    #faq .faq-icon { display:flex;align-items:center;justify-content:center;height:100%; }
 
-#faq .faq-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
+    #faq .faq-list { margin-top:12px; }
+    .faq-item { margin-bottom:18px; border-radius:10px; overflow:hidden; border:1px solid rgba(0,0,0,0.04); background:linear-gradient(180deg,#fff,#fff); box-shadow:0 8px 26px rgba(12,12,12,0.04) }
+    .faq-question {
+      width:100%; text-align:left; background:none; border:0; padding:18px 20px; font-weight:700; cursor:pointer; display:flex;align-items:center;justify-content:space-between;
+    }
+    .faq-question .q-left { display:flex;gap:12px;align-items:center }
+    .faq-question .q-icon {
+      width:44px;height:44px;border-radius:10px;background:linear-gradient(180deg,rgba(212,175,55,0.12),rgba(240,199,94,0.06));
+      display:flex;align-items:center;justify-content:center;color:var(--gold);font-weight:700;border:1px solid rgba(212,175,55,0.06)
+    }
+    .faq-toggle { transition:transform .28s ease; transform-origin:center; color:var(--mid) }
+    .faq-answer {
+      padding:0 20px 18px 20px; color:var(--muted); font-size:15px; max-height:0; overflow:hidden; transition:max-height .45s cubic-bezier(.2,.9,.2,1);
+    }
+    .faq-item.active .faq-answer { max-height:400px; }
+    .faq-item.active .faq-toggle{ transform:rotate(180deg); color:var(--dark) }
 
-    .individual-services {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 40px;
-  align-items: center;
-  margin-top: 20px;
-  position: relative;
-}
+    /* small polish for gold accent under titles */
+    .section-title.gold-under::after { width:100px; }
 
-.services-text p {
-  margin-bottom: 20px;
-  font-size: 18px;
-  color: var(--mid);
-  line-height: 1.8;
-}
+    /* utilities */
+    .text-muted{color:var(--muted)}
+    .align-right{text-align:right}
 
-.services-text strong {
-  color: var(--dark);
-  font-size: 20px;
-}
-
-.services-cat img {
-  height: 420px;
-  width: auto;
-  object-fit: contain;
-}
-
-@media (max-width: 880px) {
-  .individual-services {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-  .services-cat img {
-    margin-top: 10px;
-    height: 260px;
-  }
-}
-
-    
   </style>
 </head>
 
@@ -452,7 +298,7 @@ body {
     <!-- WHY WORK WITH ME -->
     <section id="why-me" class="fullwidth reveal" style="background:var(--card-bg);text-align:center;padding:60px 20px;">
       <div class="container">
-        <h3 class="section-title">Why Work With Me</h3>
+        <h3 class="section-title gold-under">Why Work With Me</h3>
         <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:24px;margin-top:24px;">
           <div style="max-width:220px;">
             <div style="font-size:28px;">⏱️</div>
@@ -500,38 +346,37 @@ body {
     </section>
 
     <!-- SKILLS SECTION -->
-<section id="skills" class="fullwidth reveal" style="background:var(--card-bg);padding:60px 20px;">
-  <div class="container" style="max-width:1000px;">
-    <h3 class="section-title">My Skills</h3>
-    <p class="lead" style="margin-bottom:20px;">A blend of design, creativity, and technical experience.</p>
+    <section id="skills" class="fullwidth reveal" style="background:var(--card-bg);padding:60px 20px;">
+      <div class="container" style="max-width:1000px;">
+        <h3 class="section-title">My Skills</h3>
+        <p class="lead" style="margin-bottom:20px;">A blend of design, creativity, and technical experience.</p>
 
-    <div class="skill-box" style="margin-bottom:20px;">
-      <p>Graphic Design — 98%</p>
-      <div class="skill-bar"><span style="width:98%"></span></div>
-    </div>
+        <div class="skill-box" style="margin-bottom:20px;">
+          <p>Graphic Design — 98%</p>
+          <div class="skill-bar"><span style="width:98%"></span></div>
+        </div>
 
-    <div class="skill-box" style="margin-bottom:20px;">
-      <p>Book Cover Design — 95%</p>
-      <div class="skill-bar"><span style="width:95%"></span></div>
-    </div>
+        <div class="skill-box" style="margin-bottom:20px;">
+          <p>Book Cover Design — 95%</p>
+          <div class="skill-bar"><span style="width:95%"></span></div>
+        </div>
 
-    <div class="skill-box" style="margin-bottom:20px;">
-      <p>Website Design — 92%</p>
-      <div class="skill-bar"><span style="width:92%"></span></div>
-    </div>
+        <div class="skill-box" style="margin-bottom:20px;">
+          <p>Website Design — 92%</p>
+          <div class="skill-bar"><span style="width:92%"></span></div>
+        </div>
 
-    <div class="skill-box" style="margin-bottom:20px;">
-      <p>Illustration & Animation — 88%</p>
-      <div class="skill-bar"><span style="width:88%"></span></div>
-    </div>
+        <div class="skill-box" style="margin-bottom:20px;">
+          <p>Illustration & Animation — 88%</p>
+          <div class="skill-bar"><span style="width:88%"></span></div>
+        </div>
 
-    <div class="skill-box">
-      <p>Virtual Assistance — 90%</p>
-      <div class="skill-bar"><span style="width:90%"></span></div>
-    </div>
-  </div>
-</section>
-
+        <div class="skill-box">
+          <p>Virtual Assistance — 90%</p>
+          <div class="skill-bar"><span style="width:90%"></span></div>
+        </div>
+      </div>
+    </section>
 
     <!-- SERVICES -->
     <section id="services" class="fullwidth reveal" aria-label="Services" style="background:url('https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/services-bg.webp') center/cover no-repeat;padding-bottom:120px;">
@@ -540,6 +385,7 @@ body {
         <p class="lead">Offering creative and professional solutions to help authors, entrepreneurs, and businesses build their presence with impact and clarity.</p>
 
         <div class="services-row" style="margin-top:24px">
+          <!-- service card examples remain unchanged -->
           <div class="service-card" role="article" aria-label="Book Cover Design">
             <div class="card-bg" style="background-image:url('https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/book-cover.webp')"></div>
             <div class="card-content">
@@ -598,129 +444,172 @@ body {
     </section>
 
     <!-- PRICING SECTION -->
-<section id="pricing" class="fullwidth reveal" style="background:#f9f9f9;padding:80px 20px;">
-  <div class="container" style="max-width:1100px;">
+    <section id="pricing" class="fullwidth reveal" style="background:var(--cream);padding:80px 20px;">
+      <div class="container" style="max-width:1100px;">
+        <h3 class="section-title">Pricing</h3>
+        <p class="lead" style="max-width:700px;margin-bottom:30px;">
+          Fair & transparent pricing designed to match your project needs.
+        </p>
 
-    <h3 class="section-title">Pricing</h3>
-    <p class="lead" style="max-width:700px;margin-bottom:30px;">
-      Fair & transparent pricing designed to match your project needs.
-    </p>
+        <!-- PREMIUM PRICING PACKAGES -->
+        <div class="pricing-grid">
 
-    <!-- PRICING PACKAGES -->
-    <div class="pricing-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-bottom:50px;">
+          <div class="pricing-card" aria-label="Branding Starter">
+            <h4>Branding Starter</h4>
+            <p class="text-muted">Best for authors & small businesses</p>
+            <h2>$180+</h2>
+            <div class="gold-divider"></div>
+            <ul>
+              <li>Logo + Color Palette</li>
+              <li>Font Pairing</li>
+              <li>2 Revisions</li>
+            </ul>
+            <a href="#contact" class="btn">Book Now</a>
+          </div>
 
-      <div class="pricing-card" style="background:#fff;padding:24px;border-radius:16px;box-shadow:var(--shadow);">
-        <h4>Branding Starter</h4>
-        <p style="color:var(--muted)">Best for authors & small businesses</p>
-        <h2 style="color:var(--accent);margin:10px 0">$180+</h2>
-        <ul style="color:var(--mid);line-height:1.6;">
-          <li>Logo + Color Palette</li>
-          <li>Font Pairing</li>
-          <li>2 Revisions</li>
-        </ul>
-        <a href="#contact" class="btn" style="margin-top:12px;">Book Now</a>
+          <div class="pricing-card" aria-label="Website Essentials">
+            <h4>Website Essentials</h4>
+            <p class="text-muted">Your first professional website</p>
+            <h2>$350–$700</h2>
+            <div class="gold-divider"></div>
+            <ul>
+              <li>3–5 Pages</li>
+              <li>Mobile Responsive</li>
+              <li>SEO Friendly</li>
+            </ul>
+            <a href="#contact" class="btn">Book Now</a>
+          </div>
+
+          <div class="pricing-card" aria-label="Author Premium Bundle">
+            <h4>Author Premium Bundle</h4>
+            <p class="text-muted">Complete design package</p>
+            <h2>$600–$900</h2>
+            <div class="gold-divider"></div>
+            <ul>
+              <li>Book Cover Design</li>
+              <li>Author Website</li>
+              <li>Branding Kit</li>
+            </ul>
+            <a href="#contact" class="btn">Book Now</a>
+          </div>
+
+        </div>
+
+        <!-- GOLD DIVIDER -->
+        <div class="gold-divider" aria-hidden="true"></div>
+
+        <!-- DETAILED PRICE LIST — now horizontal with icons -->
+        <h3 class="section-title" style="margin-top:10px;">Individual Services</h3>
+
+        <div class="individual-services-row" role="list" aria-label="Individual services list">
+          <div class="service-col" role="listitem" aria-label="Book Cover Design">
+            <div class="service-head">
+              <div class="service-icon" aria-hidden="true">📘</div>
+              <h5>Book Cover Design</h5>
+            </div>
+            <p>Simple: <strong>$120–$180</strong><br>Standard: <strong>$180–$280</strong><br>Illustrated: <strong>$300–$450</strong></p>
+          </div>
+
+          <div class="service-col" role="listitem" aria-label="Website Design">
+            <div class="service-head">
+              <div class="service-icon" aria-hidden="true">💻</div>
+              <h5>Website Design</h5>
+            </div>
+            <p>1 Page: <strong>$180–$250</strong><br>3–5 Pages: <strong>$350–$700</strong><br>Full Website + Branding: <strong>$800–$1,200</strong></p>
+          </div>
+
+          <div class="service-col" role="listitem" aria-label="Graphic Design">
+            <div class="service-head">
+              <div class="service-icon" aria-hidden="true">🎨</div>
+              <h5>Graphic Design</h5>
+            </div>
+            <p>Logo: <strong>$80–$150</strong><br>Marketing Graphics: <strong>$30–$80</strong><br>Brand Kit: <strong>$180–$300</strong></p>
+          </div>
+
+          <div class="service-col" role="listitem" aria-label="Virtual Assistant">
+            <div class="service-head">
+              <div class="service-icon" aria-hidden="true">🗂</div>
+              <h5>Virtual Assistant (VA)</h5>
+            </div>
+            <p>Hourly: <strong>$8–$14/hr</strong><br>10 Hours: <strong>$90</strong><br>30 Hours: <strong>$270</strong><br>Unlimited: <strong>Custom</strong></p>
+          </div>
+        </div>
+
       </div>
-
-      <div class="pricing-card" style="background:#fff;padding:24px;border-radius:16px;box-shadow:var(--shadow);">
-        <h4>Website Essentials</h4>
-        <p style="color:var(--muted)">Your first professional website</p>
-        <h2 style="color:var(--accent);margin:10px 0">$350–$700</h2>
-        <ul style="color:var(--mid);line-height:1.6;">
-          <li>3–5 Pages</li>
-          <li>Mobile Responsive</li>
-          <li>SEO Friendly</li>
-        </ul>
-        <a href="#contact" class="btn" style="margin-top:12px;">Book Now</a>
-      </div>
-
-      <div class="pricing-card" style="background:#fff;padding:24px;border-radius:16px;box-shadow:var(--shadow);">
-        <h4>Author Premium Bundle</h4>
-        <p style="color:var(--muted)">Complete design package</p>
-        <h2 style="color:var(--accent);margin:10px 0">$600–$900</h2>
-        <ul style="color:var(--mid);line-height:1.6;">
-          <li>Book Cover Design</li>
-          <li>Author Website</li>
-          <li>Branding Kit</li>
-        </ul>
-        <a href="#contact" class="btn" style="margin-top:12px;">Book Now</a>
-      </div>
-
-    </div>
-
-    <!-- DETAILED PRICE LIST -->
-    <h3 class="section-title" style="margin-top:20px;">Individual Services</h3>
-
-<div class="individual-services">
-
-  <div class="services-text">
-    <p><strong>📘 Book Cover Design</strong><br>
-    Simple: <b>$120–$180</b><br>
-    Standard: <b>$180–$280</b><br>
-    Illustrated: <b>$300–$450</b></p>
-
-    <p><strong>💻 Website Design</strong><br>
-    1 Page: <b>$180–$250</b><br>
-    3–5 Pages: <b>$350–$700</b><br>
-    Full Website + Branding: <b>$800–$1,200</b></p>
-
-    <p><strong>🎨 Graphic Design</strong><br>
-    Logo: <b>$80–$150</b><br>
-    Marketing Graphics: <b>$30–$80</b><br>
-    Brand Kit: <b>$180–$300</b></p>
-
-    <p><strong>🗂 Virtual Assistant (VA)</strong><br>
-    Hourly: <b>$8–$14/hr</b><br>
-    10 Hours: <b>$90</b><br>
-    30 Hours: <b>$270</b><br>
-    Unlimited: <b>Custom</b></p>
-  </div>
-
-  <div class="services-cat">
-    <img src="https://hinnaorquiola.github.io/images/cat%20peeking.png" alt="Peeking Cat">
-  </div>
-
-</div>
-  </div>
-</section>
+    </section>
 
     <!-- FAQ SECTION -->
-<section id="faq" class="fullwidth reveal" style="padding:80px 20px;background:var(--card-bg);">
-  <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;">
+    <section id="faq" class="fullwidth reveal" style="padding:80px 20px;background:var(--card-bg);">
+      <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;">
 
-    <!-- LEFT: Animated Icon -->
-    <div class="faq-icon" style="text-align:center;">
-      <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/bulb.gif" alt="Spark Icon"
-     class="big-bulb">
+        <!-- LEFT: Animated Icon (bigger) -->
+        <div class="faq-icon" style="text-align:center;">
+          <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/bulb.gif" alt="Spark Icon" class="big-bulb">
+        </div>
 
-    </div>
+        <!-- RIGHT: Animated Accordion FAQ -->
+        <div>
+          <h3 class="section-title">Frequently Asked Questions</h3>
 
-    <!-- RIGHT: Accordion FAQ -->
-    <div>
-      <h3 class="section-title">Frequently Asked Questions</h3>
+          <div class="faq-list" role="list" aria-label="FAQ list">
 
-      <div class="faq-item">
-        <button class="faq-question">How long does a project take?</button>
-        <div class="faq-answer">Most designs take 2–10 business days depending on the scope.</div>
+            <div class="faq-item" role="listitem">
+              <button class="faq-question" aria-expanded="false">
+                <span class="q-left">
+                  <span class="q-icon">❓</span>
+                  <span>How long does a project take?</span>
+                </span>
+                <span class="faq-toggle" aria-hidden="true">⌄</span>
+              </button>
+              <div class="faq-answer">
+                <p>Most designs take 2–10 business days depending on the scope. Larger brand or website projects may take several weeks; timelines are confirmed during discovery.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+              <button class="faq-question" aria-expanded="false">
+                <span class="q-left">
+                  <span class="q-icon">🔁</span>
+                  <span>How many revisions do I get?</span>
+                </span>
+                <span class="faq-toggle" aria-hidden="true">⌄</span>
+              </button>
+              <div class="faq-answer">
+                <p>You get 2–3 rounds of revisions depending on the package. Larger bundles include more revision rounds — we’ll clarify this when you book.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+              <button class="faq-question" aria-expanded="false">
+                <span class="q-left">
+                  <span class="q-icon">🗂️</span>
+                  <span>Do you provide editable files?</span>
+                </span>
+                <span class="faq-toggle" aria-hidden="true">⌄</span>
+              </button>
+              <div class="faq-answer">
+                <p>Yes — you receive high-resolution PNG/JPG plus editable source files (PSD/AI/SVG) upon request or as part of premium packages.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+              <button class="faq-question" aria-expanded="false">
+                <span class="q-left">
+                  <span class="q-icon">🎨</span>
+                  <span>Can you match a specific style?</span>
+                </span>
+                <span class="faq-toggle" aria-hidden="true">⌄</span>
+              </button>
+              <div class="faq-answer">
+                <p>Absolutely — mood boards and references help shape the visual direction. I’ll propose concepts that match your brief and goals.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
       </div>
-
-      <div class="faq-item">
-        <button class="faq-question">How many revisions do I get?</button>
-        <div class="faq-answer">You get 2–3 rounds of revisions depending on the package.</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question">Do you provide editable files?</button>
-        <div class="faq-answer">Yes! You receive high-resolution PNG/JPG plus editable files upon request.</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question">Can you match a specific style?</button>
-        <div class="faq-answer">Absolutely — mood boards help shape the visual direction.</div>
-      </div>
-
-    </div>
-  </div>
-</section>
+    </section>
 
 
     <!-- PORTFOLIO -->
@@ -1109,6 +998,28 @@ body {
       menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
 
+ /* ====== Smooth 'Apple-style' FAQ Accordion ====== */
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const open = item.classList.contains('active');
+
+        // Close all items first (optional: keep only one open)
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('active');
+          i.querySelectorAll('.faq-question').forEach(q => q.setAttribute('aria-expanded','false'));
+        });
+
+        if(!open){
+          item.classList.add('active');
+          btn.setAttribute('aria-expanded','true');
+        } else {
+          item.classList.remove('active');
+          btn.setAttribute('aria-expanded','false');
+        }
+      });
+    });
+    
     /* ====== Navbar solid on scroll (throttled) ====== */
     const navInner = document.querySelector('.nav-inner');
     function handleNavScroll() {
