@@ -443,6 +443,67 @@ section,
   .gold-divider::after{ width:34px; top:-5px; }
 }
 
+    .logo-strip {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:50px;
+  margin-top:28px;
+  flex-wrap:wrap;
+  opacity:0.8;
+}
+
+.client-logo {
+  height:40px;
+  filter: grayscale(100%) brightness(0.3);
+  opacity:0.7;
+  transition:opacity .3s ease, filter .3s ease;
+}
+
+.client-logo:hover {
+  opacity:1;
+  filter:grayscale(0%) brightness(0.9);
+}
+
+    .featured-strip {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:45px;
+  flex-wrap:wrap;
+}
+
+.featured-item img {
+  height:40px;
+  filter:grayscale(100%) brightness(0.3);
+  opacity:0.7;
+  transition:opacity .3s ease, filter .3s ease;
+}
+
+.featured-item img:hover {
+  opacity:1;
+  filter:grayscale(0%) brightness(0.9);
+}
+
+    .filter-btn {
+  background:transparent;
+  border:2px solid var(--accent);
+  color:var(--accent);
+  padding:8px 14px;
+  margin:0 8px;
+  border-radius:8px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all .3s ease;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background:var(--accent);
+  color:#000;
+}
+
+
   </style>
 </head>
 
@@ -540,6 +601,19 @@ section,
         </div>
       </div>
     </section>
+
+    <section id="client-logos" class="fullwidth reveal" style="padding:50px 0;background:var(--card-bg);">
+  <div class="container" style="text-align:center;">
+    <h3 class="section-title">Trusted By</h3>
+    <p style="color:var(--muted);margin-top:6px;">Clients and platforms I’ve collaborated with</p>
+
+    <div class="logo-strip">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Fiverr_logo.svg" alt="Fiverr" class="client-logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/Upwork-logo.svg" alt="Upwork" class="client-logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Amazon_kdp_logo.png" alt="Amazon KDP" class="client-logo">
+    </div>
+  </div>
+</section>
 
     <!-- PROCESS -->
     <section id="process" class="fullwidth reveal" style="text-align:center;background:linear-gradient(180deg,rgba(0,0,0,0.03),transparent);">
@@ -805,6 +879,13 @@ section,
           <p style="color:var(--muted);margin:0">Selected website, book cover, and animation work — click any image to view.</p>
         </div>
 
+        <div class="portfolio-filters" style="text-align:center;margin:20px 0 30px;">
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="site">Websites</button>
+  <button class="filter-btn" data-filter="image">Book Covers</button>
+  <button class="filter-btn" data-filter="video">Animation</button>
+</div>
+  
         <div class="gallery-wrap" style="padding:18px 24px 6px">
           <div class="gallery" id="gallery">
             <div class="gallery-item" data-index="0" data-type="site" data-link="https://hinnaorquiola.github.io/mock-nature.html">
@@ -997,6 +1078,27 @@ section,
     <div style="display:flex;justify-content:center;gap:12px;margin-top:24px;">
       <button id="carousel-prev" style="background:rgba(255,255,255,0.12);border:0;padding:10px 14px;border-radius:8px;color:#fff;cursor:pointer;">‹</button>
       <button id="carousel-next" style="background:rgba(255,255,255,0.12);border:0;padding:10px 14px;border-radius:8px;color:#fff;cursor:pointer;">›</button>
+    </div>
+  </div>
+</section>
+
+    <section id="featured-on" class="fullwidth reveal" style="padding:60px 0;text-align:center;">
+  <div class="container">
+    <h3 class="section-title">Featured On</h3>
+    <p style="color:var(--muted);margin-bottom:20px;">Where my work and products have been showcased</p>
+
+    <div class="featured-strip">
+      <div class="featured-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Amazon_kdp_logo.png" alt="Amazon Kindle Direct Publishing">
+      </div>
+
+      <div class="featured-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Zazzle_logo.svg/2560px-Zazzle_logo.svg.png" alt="Zazzle">
+      </div>
+
+      <div class="featured-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Fiverr_logo.svg" alt="Fiverr">
+      </div>
     </div>
   </div>
 </section>
@@ -1427,6 +1529,28 @@ section,
     elems.forEach(el => io.observe(el));
   })();
 
+    const filterBtns = document.querySelectorAll('.filter-btn');
+  const items = document.querySelectorAll('.gallery-item');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelector('.filter-btn.active').classList.remove('active');
+      btn.classList.add('active');
+
+      const filter = btn.getAttribute('data-filter');
+
+      items.forEach(item => {
+        const type = item.getAttribute('data-type');
+
+        if (filter === 'all' || type === filter) {
+          item.style.display = 'block';
+          item.style.opacity = 1;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
   </script>
 </body>
 </html>
