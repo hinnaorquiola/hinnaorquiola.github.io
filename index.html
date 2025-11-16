@@ -399,6 +399,50 @@ section,
   }
 }
 
+    /* Gold divider — thin & elegant */
+.gold-divider{
+  width: clamp(120px, 18%, 300px); /* responsive width */
+  height: 4px;                     /* thin line */
+  margin: 28px auto;               /* vertical spacing and centered */
+  border-radius: 999px;            /* pill ends */
+  position: relative;
+  background: linear-gradient(90deg, rgba(212,175,55,0.12) 0%, rgba(212,175,55,0.95) 50%, rgba(240,199,94,0.85) 100%);
+  box-shadow: 0 6px 18px rgba(212,175,55,0.06), 0 1px 0 rgba(255,255,255,0.02) inset;
+  overflow: visible;
+}
+
+/* subtle highlight line above the divider for depth */
+.gold-divider::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -6px;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 1px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.95), rgba(255,255,255,0.15));
+  opacity: 0.22;
+}
+
+/* shimmer effect (apply .shimmer to .gold-divider to enable) */
+.gold-divider.shimmer{
+  background: linear-gradient(90deg, rgba(212,175,55,0.12) 0%, rgba(255,255,255,0.95) 40%, rgba(240,199,94,0.95) 60%, rgba(212,175,55,0.12) 100%);
+  background-size: 200% 100%;
+  animation: goldShimmer 2.6s linear infinite;
+}
+
+@keyframes goldShimmer {
+  0%   { background-position: -120% 0; }
+  100% { background-position: 120% 0;  }
+}
+
+/* small responsive tweaks */
+@media (max-width:480px){
+  .gold-divider { width: clamp(100px, 32%, 180px); margin:18px auto; height:3px; }
+  .gold-divider::after{ width:34px; top:-5px; }
+}
+
   </style>
 </head>
 
@@ -811,6 +855,7 @@ section,
       </div>
     </section>
 
+  <div class="gold-divider" role="separator" aria-hidden="true"></div>
     <!-- CTA -->
     <section id="cta" class="fullwidth reveal" style="background:var(--light);text-align:center;padding:48px 24px">
       <div class="container">
@@ -1097,7 +1142,8 @@ section,
         <div id="newsletter-feedback" role="status" aria-live="polite" style="margin-top:12px;color:var(--muted);display:none"></div>
       </div>
     </section>
-
+    
+<div class="gold-divider" role="separator" aria-hidden="true"></div>
     <!-- FOOTER -->
     <footer class="reveal">
       <div class="container" style="padding:20px 0">
@@ -1368,6 +1414,21 @@ section,
       `;
       document.head.appendChild(style);
     })();
+
+    (function(){
+    if (!('IntersectionObserver' in window)) return;
+    const elems = document.querySelectorAll('.gold-divider');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('shimmer');
+          // optional: stop observing so animation starts only once:
+          io.unobserve(e.target);
+        }
+      });
+    }, {threshold: 0.12});
+    elems.forEach(el => io.observe(el));
+  })();
 
   </script>
 </body>
