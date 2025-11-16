@@ -50,17 +50,9 @@
     .nav-right{display:flex;align-items:center;gap:12px}
     .hamburger{display:none;border:1px solid rgba(255,255,255,0.04);padding:8px;border-radius:8px;background:transparent}
     .hamburger svg{display:block}
-     .mobile-menu{
-    display:none; /* always hidden unless JS opens it */
-    position:fixed;
-    inset:72px 18px auto 18px;
-    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-    border-radius:12px;
-    padding:14px;
-    border:1px solid rgba(255,255,255,0.03);
-    z-index:999;
-  }
-
+    .mobile-menu{display:none;position:fixed;inset:72px 18px auto 18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;padding:14px;border:1px solid rgba(255,255,255,0.03)}
+    .mobile-menu a{margin:6px 0;color:var(--text)}
+    
     /* Hero */
     .hero{display:grid;grid-template-columns:1fr 420px;gap:32px;align-items:center;padding:40px 0 60px}
     .hero-left h2{font-size:48px;line-height:1.02;margin:0 0 18px;font-weight:800;letter-spacing:-0.02em;color:var(--text);transform:translateY(6px);opacity:0;animation:slideUp .6s forwards .15s}
