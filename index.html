@@ -502,32 +502,6 @@ section,
   }
 }
 
-    /* Modal overlay + card styles (kept compact and theme-aware) */
-.modal-overlay{position:fixed;inset:0;background:rgba(8,8,8,0.6);display:flex;align-items:center;justify-content:center;padding:24px;z-index:3000}
-.modal-card{background:var(--card-bg);max-width:780px;width:100%;border-radius:12px;padding:22px;box-shadow:0 18px 48px rgba(6,6,6,0.28);position:relative;max-height:84vh;overflow:auto}
-.modal-card h3{margin-top:0}
-.modal-close{position:absolute;right:14px;top:12px;border:0;background:transparent;font-size:20px;cursor:pointer}
-.modal-overlay.hidden{opacity:0;pointer-events:none;transform:translateY(8px);transition:all .18s ease}
-.modal-overlay:not(.hidden){opacity:1;pointer-events:auto}
-
-
-/* small tweaks for modal content */
-.modal-card ul{margin:8px 0 0 18px;color:var(--muted)}
-.modal-card p{color:var(--muted)}
-
-
-/* ensure read-more buttons sit nicely */
-.service-col .btn{font-size:14px;padding:8px 12px}
-
-
-@media (max-width:880px){
-.individual-services-row{grid-template-columns:1fr 1fr}
-.modal-card{padding:18px}
-}
-@media (max-width:480px){
-.individual-services-row{grid-template-columns:1fr}
-}
-
   </style>
 </head>
 
@@ -730,50 +704,97 @@ section,
       </div>
     </section>
 
-   <section id="pricing" class="fullwidth reveal" style="background:var(--cream);padding:80px 20px;">
+    <!-- PRICING SECTION -->
+    <section id="pricing" class="fullwidth reveal" style="background:var(--cream);padding:80px 20px;">
+      <div class="container" style="max-width:1100px;">
+        <h3 class="section-title">Pricing</h3>
+        <p class="lead" style="max-width:700px;margin-bottom:30px;">
+          Fair & transparent pricing designed to match your project needs.
+        </p>
 
+        <!-- PREMIUM PRICING PACKAGES -->
+        <div class="pricing-grid">
 
-<h4 style="margin-top:14px">Common Options</h4>
-<ul>
-<li><strong>Hourly</strong> — $8–$14/hr: ad-hoc tasks, email management, scheduling, content posting.</li>
-<li><strong>10-hour block</strong> — $90: good for short-term admin bursts or setup tasks.</li>
-<li><strong>30-hour block</strong> — $270: ongoing weekly support for small projects.</li>
-<li><strong>Unlimited / Retainer</strong> — Custom: tailored to scope and response SLA.</li>
-</ul>
+          <div class="pricing-card" aria-label="Branding Starter">
+            <h4>Branding Starter</h4>
+            <p class="text-muted">Best for authors & small businesses</p>
+            <h2>$180+</h2>
+            <ul>
+              <li>Logo + Color Palette</li>
+              <li>Font Pairing</li>
+              <li>2 Revisions</li>
+            </ul>
+            <a href="#contact" class="btn">Book Now</a>
+          </div>
 
+          <div class="pricing-card" aria-label="Website Essentials">
+            <h4>Website Essentials</h4>
+            <p class="text-muted">Your first professional website</p>
+            <h2>$350–$700</h2>
+            <ul>
+              <li>3–5 Pages</li>
+              <li>Mobile Responsive</li>
+              <li>SEO Friendly</li>
+            </ul>
+            <a href="#contact" class="btn">Book Now</a>
+          </div>
 
-<h4 style="margin-top:12px">Services Included</h4>
-<ul>
-<li>Email & inbox triage</li>
-<li>Calendar management & scheduling</li>
-<li>Basic social posting & content scheduling</li>
-<li>Customer support templates & replies</li>
-<li>Light graphic tweaks and file prep (within hourly limits)</li>
-</ul>
+          <div class="pricing-card" aria-label="Author Premium Bundle">
+            <h4>Author Premium Bundle</h4>
+            <p class="text-muted">Complete design package</p>
+            <h2>$600–$900</h2>
+            <ul>
+              <li>Book Cover Design</li>
+              <li>Author Website</li>
+              <li>Branding Kit</li>
+            </ul>
+            <a href="#contact" class="btn">Book Now</a>
+          </div>
 
+        </div>
 
-<h4 style="margin-top:12px">Add-ons & Extras</h4>
-<ul>
-<li>Weekly reporting & analytics summary: <strong>+$20/week</strong></li>
-<li>Social media strategy session (1 hour): <strong>+$40</strong></li>
-<li>Dedicated hours with guaranteed SLA (faster turnaround): <strong>Custom</strong></li>
-</ul>
+        <!-- GOLD DIVIDER -->
+        <div class="gold-divider" aria-hidden="true"></div>
 
+        <!-- DETAILED PRICE LIST — now horizontal with icons -->
+        <h3 class="section-title" style="margin-top:10px;">Individual Services</h3>
 
-<h4 style="margin-top:12px">Notes on Billing & Communication</h4>
-<p style="color:var(--muted);">Time is tracked and billed honestly. Preferred communication: email/Upwork/Slack — agreed during onboarding.</p>
+        <div class="individual-services-row" role="list" aria-label="Individual services list">
+          <div class="service-col" role="listitem" aria-label="Book Cover Design">
+            <div class="service-head">
+              <div class="service-icon" aria-hidden="true">📘</div>
+              <h5>Book Cover Design</h5>
+            </div>
+            <p>Simple: <strong>$120–$180</strong><br>Standard: <strong>$180–$280</strong><br>Illustrated: <strong>$300–$450</strong></p>
+          </div>
 
+          <div class="service-col" role="listitem" aria-label="Website Design">
+            <div class="service-head">
+              <div class="service-icon" aria-hidden="true">💻</div>
+              <h5>Website Design</h5>
+            </div>
+            <p>1 Page: <strong>$180–$250</strong><br>3–5 Pages: <strong>$350–$700</strong><br>Full Website + Branding: <strong>$800–$1,200</strong></p>
+          </div>
 
-<div style="display:flex;gap:12px;margin-top:16px">
-<a class="btn" href="#contact">Book This Service</a>
-<button class="btn secondary modal-close">Close</button>
-</div>
-</div>
-</div>
+          <div class="service-col" role="listitem" aria-label="Graphic Design">
+            <div class="service-head">
+              <div class="service-icon" aria-hidden="true">🎨</div>
+              <h5>Graphic Design</h5>
+            </div>
+            <p>Logo: <strong>$80–$150</strong><br>Marketing Graphics: <strong>$30–$80</strong><br>Brand Kit: <strong>$180–$300</strong></p>
+          </div>
 
+          <div class="service-col" role="listitem" aria-label="Virtual Assistant">
+            <div class="service-head">
+              <div class="service-icon" aria-hidden="true">🗂</div>
+              <h5>Virtual Assistant (VA)</h5>
+            </div>
+            <p>Hourly: <strong>$8–$14/hr</strong><br>10 Hours: <strong>$90</strong><br>30 Hours: <strong>$270</strong><br>Unlimited: <strong>Custom</strong></p>
+          </div>
+        </div>
 
-</div>
-</section>
+      </div>
+    </section>
 
     <!-- FAQ SECTION -->
     <section id="faq" class="fullwidth reveal" style="padding:80px 20px;background:var(--card-bg);">
@@ -1509,57 +1530,6 @@ section,
     });
   });
 
-    (function(){
-// modal open/close handlers
-document.querySelectorAll('.read-more').forEach(function(btn){
-btn.addEventListener('click', function(e){
-var target = btn.getAttribute('data-modal-target');
-if(!target) return;
-var modal = document.querySelector(target);
-if(!modal) return;
-modal.classList.remove('hidden');
-modal.setAttribute('aria-hidden','false');
-// focus handling
-var focusable = modal.querySelector('button, a, [tabindex]');
-if(focusable) focusable.focus();
-});
-});
-
-
-// close buttons
-document.querySelectorAll('.modal-close').forEach(function(btn){
-btn.addEventListener('click', function(){
-var overlay = btn.closest('.modal-overlay');
-if(!overlay) return;
-overlay.classList.add('hidden');
-overlay.setAttribute('aria-hidden','true');
-});
-});
-
-
-// close on overlay click
-document.querySelectorAll('.modal-overlay').forEach(function(overlay){
-overlay.addEventListener('click', function(e){
-if(e.target === overlay){
-overlay.classList.add('hidden');
-overlay.setAttribute('aria-hidden','true');
-}
-});
-});
-
-
-// trap escape key
-document.addEventListener('keydown', function(e){
-if(e.key === 'Escape'){
-document.querySelectorAll('.modal-overlay').forEach(function(m){
-if(!m.classList.contains('hidden')){
-m.classList.add('hidden');
-m.setAttribute('aria-hidden','true');
-}
-});
-}
-});
-})();
   </script>
 </body>
 </html>
