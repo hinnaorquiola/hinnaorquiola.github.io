@@ -273,3 +273,12 @@
       });
     });
   });
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".lazy-bg").forEach(el => {
+    const bg = el.dataset.bg;
+    if (!bg) return;
+    requestIdleCallback(() => {
+      el.style.backgroundImage = `url('${bg}')`;
+    });
+  });
+});
