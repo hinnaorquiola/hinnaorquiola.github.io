@@ -1,7 +1,4 @@
-<!doctype html>
-<html lang="en">
-<script>
-    /* ====== Footer Year ====== */
+/* ====== Footer Year ====== */
     document.getElementById('year').textContent = new Date().getFullYear();
 
     /* ====== Mobile Menu Toggle ====== */
@@ -276,6 +273,3 @@
       });
     });
   });
-
-  </script>
-</html>
