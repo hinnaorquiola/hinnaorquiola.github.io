@@ -303,6 +303,16 @@
 
 /* Prevent layout overflow */
 
+.container,
+.gallery,
+.gallery-item,
+.shop-grid,
+.hero-inner,
+.hero,
+.faq-icon {
+  overflow-x: hidden;
+}
+
 /* Fix Shop banner heading layout on mobile */
 @media (max-width: 640px) {
   .shop-banner h2 {
