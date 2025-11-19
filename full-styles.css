@@ -1,8 +1,4 @@
-<!doctype html>
-<html lang="en">
-<style>
-    /* ====== Variables & Base ====== */
-    :root{
+:root{
   --white:#ffffff;
   --light:#faf7f2;
   --gold:#d4af37;
@@ -481,6 +477,3 @@ section,
     border-radius: 12px;
   }
 }
-
-  </style>
-</html>
