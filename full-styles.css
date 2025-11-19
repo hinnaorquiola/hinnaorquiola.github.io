@@ -132,20 +132,7 @@
     .service-col p{color:var(--mid);margin:0;font-size:15px;line-height:1.6;margin-top:6px}
 
     /* small responsive adjustments */
-    @media (max-width:1200px){ .services-row{grid-template-columns:repeat(2,1fr)} .individual-services-row{grid-template-columns:repeat(2,1fr)}}
-    @media (max-width:880px){
-      .nav-inner{padding:12px}
-      .menu-toggle{display:block}
-      nav.primary{display:none;position:fixed;inset:var(--header-h) 0 auto 0;flex-direction:column;background:rgba(0,0,0,0.95);padding:20px;gap:10px;z-index:1300}
-      nav.primary.open{display:flex}
-      .hero-inner{grid-template-columns:1fr;margin-top:8px;min-height:70vh;text-align:left}
-      .hero-right{text-align:center}
-      .hero-img{max-width:320px;margin:0 auto}
-      .services-row{grid-template-columns:1fr}
-      .about-book{grid-template-columns:1fr}
-      .contact-container{grid-template-columns:1fr}
-      .individual-services-row{grid-template-columns:1fr 1fr;gap:18px}
-    }
+    @media (max-width:1200px){ .services-row{grid-template-columns:repeat(2,1fr)}{.gallery{grid-template-columns:repeat(3,1fr)}.individual-services-row{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:480px){
       .hero-inner{padding:18px;grid-template-columns:1fr}
       .brand p{display:none}
@@ -154,6 +141,8 @@
       .product-card{height:260px}
       .floating-cta{right:12px;left:auto;bottom:16px;padding:10px 12px}
       .blog-card{height:320px}
+      .gold-divider { width: clamp(100px, 32%, 180px); margin:18px auto; height:3px; }
+      .gold-divider::after{ width:34px; top:-5px; }
     }
 
     /* FAQ specific styles (Apple-style smooth animation) */
@@ -250,7 +239,6 @@
     .floating-cta{position:fixed;right:20px;bottom:22px;background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#000;border-radius:999px;padding:12px 16px;box-shadow:0 12px 36px rgba(0,0,0,0.18);z-index:1400;font-weight:800;display:flex;gap:10px;align-items:center}
 
     /* ====== Responsive ====== */
-    @media (max-width:1200px){.gallery{grid-template-columns:repeat(3,1fr)}.services-row{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:880px){
       .nav-inner{padding:12px}
       .menu-toggle{display:block}
@@ -262,23 +250,11 @@
       .services-row{grid-template-columns:1fr}
       .about-book{grid-template-columns:1fr}
       .contact-container{grid-template-columns:1fr}
-    }
-    @media (max-width:480px){
-      .hero-inner{padding:18px;grid-template-columns:1fr}
-      .brand p{display:none}
-      h3.section-title{font-size:18px}
-      .gallery{grid-template-columns:repeat(1,1fr)}
-      .product-card{height:260px}
-      .floating-cta{right:12px;left:auto;bottom:16px;padding:10px 12px}
-      .blog-card{height:320px}
+      .individual-services-row{grid-template-columns:1fr 1fr; gap:18px}
     }
 
-* {
-  max-width: 100%;
+{
   box-sizing: border-box;
-}
-body {
-  overflow-x: hidden;
 }
     /* small polish */
     .social-icons{display:flex;gap:12px;justify-content:center;align-items:center}
@@ -326,11 +302,7 @@ body {
 }
 
 /* Prevent layout overflow */
-.hero-inner,
-.hero,
-body {
-  overflow-x: hidden;
-}
+
 /* Fix Shop banner heading layout on mobile */
 @media (max-width: 640px) {
   .shop-banner h2 {
@@ -365,6 +337,8 @@ section,
 .gallery,
 .gallery-item,
 .shop-grid,
+.hero-inner,
+.hero,
 .faq-icon {
   overflow-x: hidden;
 }
@@ -411,12 +385,6 @@ section,
 @keyframes goldShimmer {
   0%   { background-position: -120% 0; }
   100% { background-position: 120% 0;  }
-}
-
-/* small responsive tweaks */
-@media (max-width:480px){
-  .gold-divider { width: clamp(100px, 32%, 180px); margin:18px auto; height:3px; }
-  .gold-divider::after{ width:34px; top:-5px; }
 }
 
     .logo-strip {
