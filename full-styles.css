@@ -33,6 +33,19 @@
     h4 { font-family:'Playfair Display', serif; margin:0; /* no color here */ }
     p{margin:0}
 
+    #portfolio,
+    #services,
+    #shop,
+    #testimonials,
+    #pricing,
+    #blog,
+    #contact,
+    #newsletter {
+      content-visibility: auto;
+      contain-intrinsic-size: 800px;
+      }
+
+
     /* ====== Header ====== */
     header.site-header{position:fixed;inset:0 0 auto 0;height:var(--header-h);z-index:1200;backdrop-filter:blur(6px);transition:background .24s,box-shadow .24s}
     .nav-inner{max-width:var(--max-width);margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;gap:12px}
