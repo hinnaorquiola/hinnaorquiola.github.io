@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://hinnaorquiola.github.io/</loc>
+    <loc>https://hinnaorquiola.site/</loc>
     <priority>1.0</priority>
-    <lastmod>2025-10-26</lastmod>
   </url>
   <url>
-    <loc>https://hinnaorquiola.github.io/#services</loc>
-    <priority>0.8</priority>
-    <lastmod>2025-10-26</lastmod>
+    <loc>https://hinnaorquiola.site/about</loc>
   </url>
   <url>
-    <loc>https://hinnaorquiola.github.io/#portfolio</loc>
-    <priority>0.8</priority>
-    <lastmod>2025-10-26</lastmod>
+    <loc>https://hinnaorquiola.site/services</loc>
   </url>
   <url>
-    <loc>https://hinnaorquiola.github.io/#contact</loc>
-    <priority>0.5</priority>
-    <lastmod>2025-10-26</lastmod>
+    <loc>https://hinnaorquiola.site/portfolio</loc>
+  </url>
+  <url>
+    <loc>https://hinnaorquiola.site/blog</loc>
+  </url>
+  <url>
+    <loc>https://hinnaorquiola.site/my-products</loc>
+  </url>
+  <url>
+    <loc>https://hinnaorquiola.site/book</loc>
+  </url>
+  <url>
+    <loc>https://hinnaorquiola.site/contact</loc>
   </url>
 </urlset>
 
