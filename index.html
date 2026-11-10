@@ -51,7 +51,22 @@
     .case-study-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}.case-study-card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);background:#574a40;border:1px solid rgba(255,255,255,.12);min-height:250px;overflow:hidden}.case-study-card img{width:100%;height:100%;min-height:250px;object-fit:cover}.case-study-copy{padding:23px;display:flex;flex-direction:column;align-items:flex-start}.case-study-label{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--champagne);font-weight:700}.case-study-copy h4{font:500 1.45rem/1.2 var(--serif);margin:10px 0}.case-study-copy p{font-size:.82rem;line-height:1.7;color:#e0d7ce;margin:0 0 15px}.case-study-meta{font-size:.68rem;color:#c8b9a9;margin:0 0 18px}.case-study-copy .text-link{color:var(--paper);margin-top:auto}.concept-note{max-width:760px;margin:25px auto 0;text-align:center;color:#d0c5b9;font-size:.78rem}
     @media(max-width:900px){.case-study-grid{grid-template-columns:1fr}}
     @media(max-width:560px){.case-study-card{grid-template-columns:1fr}.case-study-card img{height:210px;min-height:0}.case-study-copy{padding:20px}}
-  </style>
+  
+/* Journal refresh */
+.blog-section .section-head { max-width: 720px; margin: 0 auto 42px; text-align: center; }
+.blog-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.blog-card { display: flex; flex-direction: column; min-width: 0; background: var(--paper, #fffdf9); border: 1px solid var(--line, rgba(73,61,52,.14)); transition: transform .25s ease, box-shadow .25s ease; }
+.blog-card:hover { transform: translateY(-5px); box-shadow: 0 14px 35px rgba(55,43,32,.09); }
+.blog-card img { display: block; width: 100%; height: 220px; object-fit: cover; }
+.blog-copy { display: flex; flex: 1; flex-direction: column; align-items: flex-start; padding: 23px; }
+.blog-meta { margin: 0 0 10px; color: var(--gold, #b99a6b); font-size: .68rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+.blog-copy h3 { margin: 0 0 11px; font-family: var(--serif, Georgia, serif); font-size: 1.35rem; line-height: 1.25; }
+.blog-copy p:not(.blog-meta) { margin: 0 0 20px; color: var(--muted, #82766a); font-size: .88rem; }
+.blog-copy a { margin-top: auto; padding-bottom: 4px; border-bottom: 1px solid var(--gold, #b99a6b); font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+@media (max-width: 900px) { .blog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .blog-grid { grid-template-columns: 1fr; } .blog-card img { height: 210px; } }
+
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -60,7 +75,7 @@
     <a class="brand" href="#home" aria-label="Hinna Orquiola home"><strong>Hinna Orquiola</strong><span>Creative Studio</span></a>
     <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">☰</button>
     <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-      <a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#portfolio">Portfolio</a><a href="#blog">Journal</a><a href="#shop">Shop</a><a href="#book">My Book</a><a class="nav-cta" href="#contact">Let’s Talk</a>
+      <a href="#top" class="home-scroll">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#portfolio">Portfolio</a><a href="#blog">Journal</a><a href="#shop">Shop</a><a href="#book">My Book</a><a class="nav-cta" href="#contact">Let’s Talk</a>
     </nav>
   </div>
 </header>
@@ -156,13 +171,42 @@
     <a class="product" href="https://www.zazzle.com/she_can_minimalist_fashion_sketch_binder-256679246216328041" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/she_can.webp" alt="She Can minimalist fashion sketch binder"><div class="product-info"><h3>She Can — Minimalist Fashion Sketch Binder</h3><p>Binder • Fashion</p><span>Shop now ↗</span></div></a>
   </div><p style="text-align:center;color:var(--muted);margin:28px auto 0;max-width:700px">All designs are original and created by me — crafted to bring creativity to your everyday tools.<br><em>With Love, Meow.</em></p><div style="text-align:center;margin-top:25px"><a class="btn" href="https://www.zazzle.com/store/euneye" target="_blank" rel="noopener">Visit my store for more products ↗</a></div></div></section>
   <section class="section about-section reveal" id="about"><div class="container about-grid"><div><img class="about-photo" src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/profile_photo.jpg" alt="Hinna Orquiola"></div><div class="about-copy"><p class="eyebrow">A little about me</p><h2>Design is where story and strategy meet.</h2><p>I’m Hinna Orquiola — a creative partner focused on thoughtful design and meaningful storytelling. I craft websites, book covers, branding, and shop products that help creators and businesses communicate with clarity and style.</p><p class="mission">My mission is to empower creators and entrepreneurs by designing visuals that speak truth, inspire confidence, and tell stories that last.</p><div class="book-card" id="book"><img src="https://m.media-amazon.com/images/I/91Xd1USf7BL._SL1500_.jpg" alt="I Was Everyone But Me: A Journey Back to Myself book cover"><div><p class="eyebrow">My published book</p><h3>I Was Everyone But Me: A Journey Back to Myself</h3><p>My published book — designed and written by me.</p><a class="text-link" href="https://www.amazon.com/dp/B0FHHQYF62" target="_blank" rel="noopener">Buy on Amazon ↗</a></div></div></div></div></section>
-  <section class="section blog-section reveal" id="blog"><div class="container"><div class="section-head"><p class="eyebrow">Notes & inspiration</p><h2>Latest from the journal</h2></div><div class="blog-grid">
-    <article class="blog-card"><img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/blog-post4.webp" alt="Website redesign"><div class="blog-copy"><h3>8 Signs You Need a Website Redesign</h3><p>Is your website holding you back? Discover 8 signs it’s time for a redesign and how a fresh look can elevate your brand online.</p><a href="https://hinnaorquiola.github.io/8SignsYouNeedaWebsiteRedesign.html" target="_blank" rel="noopener">Read more ↗</a></div></article>
-    <article class="blog-card"><img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/post1.png" alt="Design and business"><div class="blog-copy"><h3>Why Good Design Is Good Business</h3><p>How strategic visuals can build trust and help your brand connect better with your audience.</p><a href="https://hinnaorquiola.github.io/WhyGoodDesignIsGoodBusiness.html" target="_blank" rel="noopener">Read more ↗</a></div></article>
-    <article class="blog-card"><img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/post2.png" alt="Creative workflow"><div class="blog-copy"><h3>How I Use AI Tools in My Creative Workflow</h3><p>A look at the tools I use to spark ideas, refine layouts, and speed up my design process responsibly.</p><a href="https://hinnaorquiola.github.io/HowIUseAIToolsinMyCreativeWorkflow.html" target="_blank" rel="noopener">Read more ↗</a></div></article>
-    <article class="blog-card"><img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/post3.png" alt="Visual storytelling"><div class="blog-copy"><h3>The Art of Visual Storytelling</h3><p>How images, motion, and color work together to communicate emotion and narrative.</p><a href="https://hinnaorquiola.github.io/TheArtofVisualStorytelling.html" target="_blank" rel="noopener">Read more ↗</a></div></article>
-  </div></div></section>
-  <section class="section contact-section reveal" id="contact"><div class="container contact-grid"><div><div class="section-head"><p class="eyebrow">Your next chapter starts here</p><h2>Let’s create together.</h2><p>Have a project or idea in mind? Fill out the form below and I’ll get back to you within 1–2 business days.</p></div><div class="contact-details"><p>Email: <a href="mailto:contact@hinnaorquiola.site">contact@hinnaorquiola.site</a></p><p>Turnaround: 2–10 business days depending on project scope</p></div></div><form class="contact-form" id="contactForm" action="https://formspree.io/f/xkgpnljp" method="POST">
+  <section class="section blog-section reveal" id="blog">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Notes, ideas & creative reflections</p>
+      <h2>Stories from the studio.</h2>
+      <p>A growing collection of thoughts on thoughtful design, digital experiences, creative tools, and the little details that make ideas feel alive.</p>
+    </div>
+    <div class="blog-grid">
+      <article class="blog-card">
+        <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/blog-post4.webp" alt="Website redesign inspiration" loading="lazy">
+        <div class="blog-copy"><p class="blog-meta">Web Design · Website Strategy</p><h3>8 Signs You Need a Website Redesign</h3><p>Is your website holding you back? Explore signs it may be time for a refresh and how a clearer experience can support your brand.</p><a href="https://hinnaorquiola.github.io/8SignsYouNeedaWebsiteRedesign.html" target="_blank" rel="noopener">Read the journal ↗</a></div>
+      </article>
+      <article class="blog-card">
+        <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/post1.png" alt="Design details and brand identity" loading="lazy">
+        <div class="blog-copy"><p class="blog-meta">Design · Brand Building</p><h3>Why Good Design Is Good Business</h3><p>How thoughtful visual choices can build trust, communicate value, and help a brand connect with the people it hopes to reach.</p><a href="https://hinnaorquiola.github.io/WhyGoodDesignIsGoodBusiness.html" target="_blank" rel="noopener">Read the journal ↗</a></div>
+      </article>
+      <article class="blog-card">
+        <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/post2.png" alt="Creative workflow and digital tools" loading="lazy">
+        <div class="blog-copy"><p class="blog-meta">Creative Process · Technology</p><h3>How I Use AI Tools in My Creative Workflow</h3><p>A thoughtful look at using AI to explore ideas, organize possibilities, and support—not replace—creative judgment.</p><a href="https://hinnaorquiola.github.io/HowIUseAIToolsinMyCreativeWorkflow.html" target="_blank" rel="noopener">Read the journal ↗</a></div>
+      </article>
+      <article class="blog-card">
+        <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/post3.png" alt="Visual storytelling through image and color" loading="lazy">
+        <div class="blog-copy"><p class="blog-meta">Visual Design · Storytelling</p><h3>The Art of Visual Storytelling</h3><p>How imagery, motion, typography, and color can work together to create a feeling and carry a story beyond words.</p><a href="https://hinnaorquiola.github.io/TheArtofVisualStorytelling.html" target="_blank" rel="noopener">Read the journal ↗</a></div>
+      </article>
+      <article class="blog-card">
+        <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/nature-website.webp" alt="A calm, nature-inspired website concept" loading="lazy">
+        <div class="blog-copy"><p class="blog-meta">Web Design · Creative Direction</p><h3>A Website Should Feel Like Your Brand</h3><p>A website is more than a collection of pages. It is an opportunity to translate a brand’s personality into a clear, welcoming digital experience.</p><a href="https://hinnaorquiola.github.io/AWebsiteShouldFeelLikeYourBrand.html" target="_blank" rel="noopener">Read the journal ↗</a></div>
+      </article>
+      <article class="blog-card">
+        <img src="https://raw.githubusercontent.com/hinnaorquiola/hinnaorquiola.github.io/main/images/image_mock_fashion.webp" alt="Editorial-inspired website design details" loading="lazy">
+        <div class="blog-copy"><p class="blog-meta">Creative Practice · Design Details</p><h3>The Beauty of Thoughtful Details</h3><p>From spacing and type to mobile layouts and small interactions, discover why the quiet details can make a design feel considered.</p><a href="https://hinnaorquiola.github.io/TheBeautyofThoughtfulDetails.html" target="_blank" rel="noopener">Read the journal ↗</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="section contact-section reveal" id="contact"><div class="container contact-grid"><div><div class="section-head"><p class="eyebrow">Your next chapter starts here</p><h2>Let’s create together.</h2><p>Have a project or idea in mind? Fill out the form below and I’ll get back to you within 1–2 business days.</p></div><div class="contact-details"><p>Email: <a href="mailto:contact@hinnaorquiola.site">contact@hinnaorquiola.site</a></p><p>Turnaround: 2–10 business days depending on project scope</p></div></div><form class="contact-form" id="contactForm" action="https://formspree.io/f/xkgpnljp" method="POST">
     <div class="field"><label for="name">Full name</label><input id="name" name="name" placeholder="Your name" required></div>
     <div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" placeholder="Your email" required></div>
     <div class="field"><label for="service">Select a service</label><select id="service" name="service" required><option value="">Choose a service</option><option value="book">Book Cover Design</option><option value="web">Website Design</option><option value="graphic">Graphic Design</option><option value="va">Virtual Assistant</option></select></div>
@@ -173,7 +217,7 @@
   </form></div></section>
   <section class="newsletter"><div class="container"><p class="eyebrow">A little note in your inbox</p><h2>Join the newsletter</h2><p>Get occasional design tips, freebies, and updates on new shop drops. No spam — unsubscribe anytime.</p><form class="newsletter-form" id="newsletterForm" action="https://formspree.io/f/xdkyowrw" method="POST"><input type="hidden" name="_subject" value="Newsletter signup"><input type="hidden" name="form_type" value="newsletter"><input type="text" name="name" placeholder="Your name (optional)"><input type="email" name="email" placeholder="Email address" required><button class="btn" type="submit">Subscribe ↗</button></form><p class="newsletter-feedback" id="newsletterFeedback" role="status" aria-live="polite"></p></div></section>
 </main>
-<footer><div class="container"><div class="footer-brand">Hinna Orquiola</div><p class="eyebrow" style="color:var(--champagne)">Creative Studio</p><div class="footer-links"><a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#portfolio">Portfolio</a><a href="#shop">Shop</a><a href="#contact">Contact</a></div><div class="socials"><a href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a><a href="https://twitter.com" target="_blank" rel="noopener">X / Twitter</a><a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a></div><small>© <span id="year"></span> Hinna Orquiola — Virtual Assistant, Graphic & Web Designer</small></div></footer>
+<footer><div class="container"><div class="footer-brand">Hinna Orquiola</div><p class="eyebrow" style="color:var(--champagne)">Creative Studio</p><div class="footer-links"><a href="#top" class="home-scroll">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#portfolio">Portfolio</a><a href="#shop">Shop</a><a href="#contact">Contact</a></div><div class="socials"><a href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a><a href="https://twitter.com" target="_blank" rel="noopener">X / Twitter</a><a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a></div><small>© <span id="year"></span> Hinna Orquiola — Virtual Assistant, Graphic & Web Designer</small></div></footer>
 <a class="floating" href="#contact">Let’s work together ↗</a>
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Portfolio image preview"><button class="close" id="lightboxClose" aria-label="Close preview">×</button><img id="lightboxImage" alt=""></div>
 
@@ -280,6 +324,13 @@
   }), {threshold:.08});
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  document.querySelectorAll('a.home-scroll').forEach(link => {
+    link.addEventListener('click', event => {
+      event.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
 
   async function handleForm(form, feedback, successText) {
     form.addEventListener('submit', async event => {
